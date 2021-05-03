@@ -16,14 +16,14 @@
   </url>
   
   <url>
-    <loc>https://jason-huanghao.github.io/2021/05/03/cat3/third_test_category/</loc>
+    <loc>https://jason-huanghao.github.io/2021/05/03/cat3/second-test-blog/</loc>
     
     <lastmod>2021-05-03</lastmod>
     
   </url>
   
   <url>
-    <loc>https://jason-huanghao.github.io/2021/05/03/cat3/second-test-blog/</loc>
+    <loc>https://jason-huanghao.github.io/2021/05/03/cat3/third_test_category/</loc>
     
     <lastmod>2021-05-03</lastmod>
     
@@ -60,6 +60,13 @@
 
   
   <url>
+    <loc>https://jason-huanghao.github.io/tags/tag1/</loc>
+    <lastmod>2021-05-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://jason-huanghao.github.io/tags/tag2/</loc>
     <lastmod>2021-05-03</lastmod>
     <changefreq>daily</changefreq>
@@ -68,13 +75,6 @@
   
   <url>
     <loc>https://jason-huanghao.github.io/tags/tag3/</loc>
-    <lastmod>2021-05-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://jason-huanghao.github.io/tags/tag1/</loc>
     <lastmod>2021-05-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
