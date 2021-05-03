@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>my first post</title>
-    <url>/2021/05/03/cat2/my-first-post/</url>
-    <content><![CDATA[<h1 id="This-blog-is-for"><a href="#This-blog-is-for" class="headerlink" title="This blog is for"></a>This blog is for</h1><p>testing hexo!</p>
+    <title>second test blog</title>
+    <url>/2021/05/03/cat3/second-test-blog/</url>
+    <content><![CDATA[<p>Second Test blog </p>
+<!---  more --->
+
+<p>some words </p>
+<p>后面内容都隐藏了咯</p>
+<p>哈哈哈😁</p>
 ]]></content>
       <categories>
-        <category>cat2</category>
+        <category>cat3</category>
       </categories>
       <tags>
         <tag>tag1</tag>
         <tag>tag2</tag>
-        <tag>tag3</tag>
       </tags>
   </entry>
   <entry>
@@ -32,21 +36,17 @@
       </tags>
   </entry>
   <entry>
-    <title>second test blog</title>
-    <url>/2021/05/03/cat3/second-test-blog/</url>
-    <content><![CDATA[<p>Second Test blog </p>
-<!---  more --->
-
-<p>some words </p>
-<p>后面内容都隐藏了咯</p>
-<p>哈哈哈😁</p>
+    <title>my first post</title>
+    <url>/2021/05/03/cat2/my-first-post/</url>
+    <content><![CDATA[<h1 id="This-blog-is-for"><a href="#This-blog-is-for" class="headerlink" title="This blog is for"></a>This blog is for</h1><p>testing hexo!</p>
 ]]></content>
       <categories>
-        <category>cat3</category>
+        <category>cat2</category>
       </categories>
       <tags>
         <tag>tag1</tag>
         <tag>tag2</tag>
+        <tag>tag3</tag>
       </tags>
   </entry>
   <entry>
