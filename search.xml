@@ -23,6 +23,37 @@
   </entry>
   <entry>
     <title>my first post</title>
+    <url>/2021/05/03/cat2/my-first-post/</url>
+    <content><![CDATA[<h1 id="This-blog-is-for"><a href="#This-blog-is-for" class="headerlink" title="This blog is for"></a>This blog is for</h1><p>testing hexo!</p>
+]]></content>
+      <categories>
+        <category>cat2</category>
+      </categories>
+      <tags>
+        <tag>tag1</tag>
+        <tag>tag2</tag>
+        <tag>tag3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>my first post</title>
+    <url>/2021/05/03/cat2/my-math-test/</url>
+    <content><![CDATA[<h1 id="This-blog-is-for"><a href="#This-blog-is-for" class="headerlink" title="This blog is for"></a>This blog is for</h1><p>testing hexo!</p>
+<p>see whether</p>
+<h1 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h1><p>I want to test whether it is support math</p>
+<p>$G = mg$<br>$$<br>V = \frac{\theta}{\eta}<br>$$</p>
+]]></content>
+      <categories>
+        <category>cat2</category>
+      </categories>
+      <tags>
+        <tag>tag1</tag>
+        <tag>tag2</tag>
+        <tag>tag3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>my first post</title>
     <url>/2021/05/03/cat2/my-zero/</url>
     <content><![CDATA[<h1 id="This-blog-is-for"><a href="#This-blog-is-for" class="headerlink" title="This blog is for"></a>This blog is for</h1><p>testing hexo!</p>
 <p>the zero th blog</p>
@@ -33,53 +64,6 @@
       <tags>
         <tag>tag2</tag>
         <tag>tag3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>my first post</title>
-    <url>/2021/05/03/cat2/my-first-post/</url>
-    <content><![CDATA[<h1 id="This-blog-is-for"><a href="#This-blog-is-for" class="headerlink" title="This blog is for"></a>This blog is for</h1><p>testing hexo!</p>
-]]></content>
-      <categories>
-        <category>cat2</category>
-      </categories>
-      <tags>
-        <tag>tag2</tag>
-        <tag>tag3</tag>
-        <tag>tag1</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>my first post</title>
-    <url>/2021/05/03/cat2/my-first-post%20copy/</url>
-    <content><![CDATA[<h1 id="This-blog-is-for"><a href="#This-blog-is-for" class="headerlink" title="This blog is for"></a>This blog is for</h1><p>testing hexo!</p>
-<p>I want to test whether it is support math</p>
-<p>$G = mg$<br>$$<br>V = \frac{\theta}{\eta}<br>$$</p>
-]]></content>
-      <categories>
-        <category>cat2</category>
-      </categories>
-      <tags>
-        <tag>tag2</tag>
-        <tag>tag3</tag>
-        <tag>tag1</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>second test blog</title>
-    <url>/2021/05/03/cat3/third_test_category/</url>
-    <content><![CDATA[<h1 id="Third-Test-blog"><a href="#Third-Test-blog" class="headerlink" title="Third Test blog"></a>Third Test blog</h1><!---  more --->
-
-<p>some words </p>
-<p>后面内容都隐藏了咯</p>
-<p>哈哈哈😁</p>
-]]></content>
-      <categories>
-        <category>cat3</category>
-      </categories>
-      <tags>
-        <tag>tag2</tag>
-        <tag>tag1</tag>
       </tags>
   </entry>
   <entry>
@@ -96,8 +80,25 @@
         <category>cat3</category>
       </categories>
       <tags>
-        <tag>tag2</tag>
         <tag>tag1</tag>
+        <tag>tag2</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>second test blog</title>
+    <url>/2021/05/03/cat3/third_test_category/</url>
+    <content><![CDATA[<h1 id="Third-Test-blog"><a href="#Third-Test-blog" class="headerlink" title="Third Test blog"></a>Third Test blog</h1><!---  more --->
+
+<p>some words </p>
+<p>后面内容都隐藏了咯</p>
+<p>哈哈哈😁</p>
+]]></content>
+      <categories>
+        <category>cat3</category>
+      </categories>
+      <tags>
+        <tag>tag1</tag>
+        <tag>tag2</tag>
       </tags>
   </entry>
 </search>
