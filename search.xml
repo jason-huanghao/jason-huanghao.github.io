@@ -2,6 +2,28 @@
 <search>
   <entry>
     <title>my first post</title>
+    <url>/2021/05/03/cat2/my-first-post/</url>
+    <content><![CDATA[<h1 id="This-blog-is-for"><a href="#This-blog-is-for" class="headerlink" title="This blog is for"></a>This blog is for</h1><p>testing hexo!</p>
+<span id="more"></span>
+
+<p>asdfa</p>
+<p>a</p>
+<p>fa</p>
+<p>f</p>
+<p>asf</p>
+<p>a</p>
+]]></content>
+      <categories>
+        <category>cat2</category>
+      </categories>
+      <tags>
+        <tag>tag1</tag>
+        <tag>tag2</tag>
+        <tag>tag3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>my first post</title>
     <url>/2021/05/03/cat3/my-math-test2/</url>
     <content><![CDATA[<h1 id="This-blog-is-for"><a href="#This-blog-is-for" class="headerlink" title="This blog is for"></a>This blog is for</h1><p>test mathematic equation</p>
 <hr>
@@ -16,28 +38,6 @@
 ]]></content>
       <categories>
         <category>cat3</category>
-      </categories>
-      <tags>
-        <tag>tag1</tag>
-        <tag>tag2</tag>
-        <tag>tag3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>my first post</title>
-    <url>/2021/05/03/cat2/my-first-post/</url>
-    <content><![CDATA[<h1 id="This-blog-is-for"><a href="#This-blog-is-for" class="headerlink" title="This blog is for"></a>This blog is for</h1><p>testing hexo!</p>
-<span id="more"></span>
-
-<p>asdfa</p>
-<p>a</p>
-<p>fa</p>
-<p>f</p>
-<p>asf</p>
-<p>a</p>
-]]></content>
-      <categories>
-        <category>cat2</category>
       </categories>
       <tags>
         <tag>tag1</tag>
