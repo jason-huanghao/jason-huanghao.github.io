@@ -268,12 +268,6 @@ video {
   margin-right: auto;
   max-width: 100%;
 }
-hr {
-  background-image: repeating-linear-gradient(-45deg, #ddd, #ddd 4px, transparent 4px, transparent 8px);
-  border: 0;
-  height: 3px;
-  margin: 40px 0;
-}
 blockquote {
   border-left: 4px solid #ddd;
   color: #666;
@@ -1199,7 +1193,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #94ffaa;
+  background: #dbfa9a;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2427,4 +2421,11 @@ embed {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+body {
+  background: url("/images/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
 }
