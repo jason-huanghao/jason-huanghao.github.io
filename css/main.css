@@ -1234,7 +1234,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #1bffde;
+  background: #132854;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2863,7 +2863,7 @@ span.exturl:hover {
 .category-list li a {
   font-size: 16px;
   text-decoration: none;
-  color: #ff2a2a;
+  color: #ff116b;
   font-family: Helvetica, Verdana, sans-serif;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
