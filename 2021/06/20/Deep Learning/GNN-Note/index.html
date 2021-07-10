@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="code-SnIEO2eNeq">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jason-huanghao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+
+  <meta name="description" content="Why need GNN utilize the structure and relationship of data (CNN cannot deal with non-Euclidean space) semi-supervised learning (partial labels)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GNN Note">
+<meta property="og:url" content="https://jason-huanghao.github.io/2021/06/20/Deep%20Learning/GNN-Note/index.html">
+<meta property="og:site_name" content="Jason Hao&#39;s Blog">
+<meta property="og:description" content="Why need GNN utilize the structure and relationship of data (CNN cannot deal with non-Euclidean space) semi-supervised learning (partial labels)">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621200951.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621203710.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621203834.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621203428.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621204309.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621204924.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622105032.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621210209.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622110851.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621210811.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621212722.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621212959.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621214351.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621214821.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621215353.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621215520.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622101443.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622190152.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622190608.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622191918.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622192254.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622193501.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622194440.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622193523.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622194715.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210623090134.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622210221.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622210316.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210623111406.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210623111955.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210623105003.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210623114430.png">
+<meta property="article:published_time" content="2021-06-20T01:54:55.000Z">
+<meta property="article:modified_time" content="2021-07-09T02:43:39.470Z">
+<meta property="article:author" content="Jason Hao">
+<meta property="article:tag" content="GNN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621200951.png">
+
+<link rel="canonical" href="https://jason-huanghao.github.io/2021/06/20/Deep%20Learning/GNN-Note/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <!-- require APlayer -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+  <!-- require MetingJS -->
+  <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+  <meting-js
+    server="netease"
+    type="playlist"
+    fixed="true"
+    id="430657150"
+    auto=""
+    mini="true"
+    autoplay="true"
+    theme=""
+    loop="all"
+    order="random"
+    preload="auto"
+    volume="0.5"
+    mutex="true"
+    list-folded="true"
+    list-max-height="340px"
+    storage-name="metingjs" >
+  </meting-js>
+
+  <title>GNN Note | Jason Hao's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jason Hao's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>Sitemap</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/jason-huanghao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/06/20/Deep%20Learning/GNN-Note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jason Hao">
+      <meta itemprop="description" content="If you get a dream, You gonna protect it!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jason Hao's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GNN Note
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-20 09:54:55" itemprop="dateCreated datePublished" datetime="2021-06-20T09:54:55+08:00">2021-06-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-09 10:43:39" itemprop="dateModified" datetime="2021-07-09T10:43:39+08:00">2021-07-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index"><span itemprop="name">Deep Learning</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/06/20/Deep%20Learning/GNN-Note/" class="post-meta-item leancloud_visitors" data-flag-title="GNN Note" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/06/20/Deep%20Learning/GNN-Note/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/20/Deep%20Learning/GNN-Note/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>9.9k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>9 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Why-need-GNN"><a href="#Why-need-GNN" class="headerlink" title="Why need GNN"></a>Why need GNN</h1><ol>
+<li>utilize the structure and relationship of data (CNN cannot deal with non-Euclidean space)</li>
+<li>semi-supervised learning (partial labels)</li>
+</ol>
+<span id="more"></span>
+
+<h1 id="How-to-Embed-node-into-a-feature-space-using-convolution"><a href="#How-to-Embed-node-into-a-feature-space-using-convolution" class="headerlink" title="How to Embed node into a feature space using convolution?"></a>How to Embed node into a feature space using convolution?</h1><p>Suppose a graph $G={V, E}$, $V$ is a set of $N=|V|$ nodes, $E\subseteq V\times V$ is a set of edges between nodes. There are two different groups of GNN:</p>
+<ol>
+<li>Generalize convolution into Graph: Spatial-based Convolution</li>
+<li>Back into signal processing: Spectral-based Convolution</li>
+</ol>
+<h1 id="1-Spatial-based-Convolution"><a href="#1-Spatial-based-Convolution" class="headerlink" title="1. Spatial-based Convolution"></a>1. Spatial-based Convolution</h1><p>Two important problem to be solved:</p>
+<ol>
+<li>Aggreation: how to update the next hidden sate by using neighbor’s information</li>
+<li>Readout: how to represent graph using features from all nodes</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621200951.png"></p>
+<h2 id="NN4G"><a href="#NN4G" class="headerlink" title="NN4G"></a>NN4G</h2><p><a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/4773279">reference paper</a></p>
+<p><strong>Aggregate</strong> by sum</p>
+<ol>
+<li><p>from input layer to $0_{th}$ hidden layer</p>
+<p> $h_{n}^0=x_n \cdot w_n, n \in [1,2…,N]$</p>
+</li>
+<li><p>from hidden layer $k$ to hidden layer $k+1$</p>
+<p> $h_n^{k+1}=w_n^{k,k+1}\cdot \sum_{v\in \mathcal{N}(h_n^k)}h_v^k$</p>
+<p> where $\mathcal{N}(x)$ is all neighbors of $x$</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621203710.png"></p>
+<p><strong>Readout</strong> </p>
+<p>$y=\sum_{k=0}^K{w_k}^T(mean(h^k)), h^k=[h_0^k,…,h_N^k]$<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621203834.png"></p>
+<h2 id="DCNN"><a href="#DCNN" class="headerlink" title="DCNN"></a>DCNN</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1511.02136">reference paper</a></p>
+<p><strong>Aggregate</strong> by mean</p>
+<ol>
+<li><p>from input layer to $0_{th}$ hidden layer (the same as NN4G)</p>
+<p> $h_{n}^0=x_n \cdot w_n, n \in [1,2…,N]$</p>
+</li>
+<li><p>from hidden layer $k$ to hidden layer $k+1$</p>
+<p> $h_n^{k+1}=w_n^{k,k+1} Mean(h_{d(n,.)=k+1}^k)$, $d(n,.)=k+1$ is these nodes that has a distance of $k+1$ to node $n$</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621203428.png"></p>
+<p><strong>Readout</strong> </p>
+<p>$y_n=[h_n^0,h_n^1,…,h_n^K]^T W$</p>
+<p>the feature of a node $v_1$ is<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621204309.png"></p>
+<h2 id="DGC"><a href="#DGC" class="headerlink" title="DGC"></a>DGC</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1707.01926.pdf">reference paper ICLR 2018</a></p>
+<p><strong>Aggregate</strong> by mean</p>
+<p>similar to DCNN</p>
+<p><strong>Readout</strong> </p>
+<p>the feature of each node is directly sum over multiple hideen sates<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621204924.png"></p>
+<h2 id="MoNET"><a href="#MoNET" class="headerlink" title="MoNET"></a>MoNET</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1611.08402.pdf">reference paper</a></p>
+<p><strong>Aggregate</strong> by weighted sum</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622105032.png"><br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621210209.png"></p>
+<p>$D_j(x)f=\sum_{y\in\mathcal{N}(x)}w_j(u(x,y))f(y),j=1,…,J$</p>
+<p>$(f*g)(x)-\sum_{j=1}^Jg_j D_j(x)f$</p>
+<p>where $u(x,y)$ is used for measuring distance between $x$ and $y$, but it is a $d$-dementional vector. Then using a list of weight functions (kernels) $w_{\Theta}(u)=(w_1(u),…,w_J(u))$ to extract features and aggregate feature for hidden state of next layer</p>
+<p>Different Spatial based GNN differ in choosing on the pseudo-coordinates $u$ and the weight functions $w(u)$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622110851.png"></p>
+<h2 id="GraphSAGE"><a href="#GraphSAGE" class="headerlink" title="GraphSAGE"></a>GraphSAGE</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1706.02216.pdf">GraphSAGE</a> is Sample and Aggregate, learning how to embed node features from neighors</p>
+<p><strong>Aggregate</strong> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621210811.png"></p>
+<ol>
+<li><p>Aggregate by Mean</p>
+<p> replace line 4 and line 5 with<br> $h_v^k\leftarrow \sigma(W\cdot Mean({h_v^{k-1}}\cup {h_u^{k-1}}),u\in \mathcal{N}(v)$</p>
+</li>
+<li><p>Aggregate by LSTM</p>
+<p> applying LSTM to a random permutation of the node’s neighbors</p>
+</li>
+<li><p>Aggregate by Pooling</p>
+<p> $AGGREGATE_k^{pool}=max({\sigma(W_{pool}h_{u}^k)+b}), u\in\mathcal{N}(v)$</p>
+</li>
+</ol>
+<p>Loss Function:</p>
+<p>$J_{\mathcal{G}}(z_u)=-log(\sigma(z_u^Tz_v))-Q\cdot \mathbb{E}<em>{v_n\sim P_n(v)}log(\sigma(-z_u^Tz</em>{v_n}))$</p>
+<p>where $Q$ is the number of samples by negative sampling process. In supervised method, $v$ is postive samples, $v_n$ is negative samples; In unsupervised method, $v$ is neighboring nodes, $v_n$ is nodes that far away from $u$.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621212722.png"></p>
+<h2 id="GAT"><a href="#GAT" class="headerlink" title="GAT"></a>GAT</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1710.10903.pdf">reference paper ICLR 2018</a></p>
+<p>In MoNet, the distance measurement $u(i,j)$ and kernel $w_j(u)$ is manually defined. GAT, however learn these measurements and weight functions as engergy $e_{i,j}$.</p>
+<p><strong>Aggregate</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621212959.png"></p>
+<p>Node feature $h={\vec h_1, \vec h_2,…,\vec h_N},\vec h_i\in \mathbb{R}^F$</p>
+<p>Energy Calculation: $e_{i,j}=a(W\vec h_i, W\vec h_j)$</p>
+<p>Attention Score over neighbors: $a_{i,j}=\frac{exp(LeakyReLU(\vec \alpha^T [W\vec h_i || W\vec h_j]))}{\sum_{k\in\mathcal{N}(i)} exp(LeakyReLU(\vec \alpha^T [W\vec h_i || W\vec h_k]))}$ </p>
+<p>where $j$ is one neighbor of $i$, $||$ means concatenation, $\vec \alpha \in \mathbb{R}^{2F’}$ is the parameter of the feedforward neural network</p>
+<p>Node $i$ is updated by $\vec h_i’ = \sigma(\sum_{j\in \mathcal{N}(i)}\alpha_{i,j}W\vec h_j)$, which is a 1-head attention. One can even use a Multi-head attention like </p>
+<p>$\vec h_i’ = {||}<em>{k=1}^K \sigma(\sum</em>{j\in \mathcal{N}(i)}\alpha_{i,j}W^k \vec h_j)$ or $\vec h_i’ = \sigma(\frac{1}{K}\sum_{k=1}^K \sum_{j\in \mathcal{N}(i)}\alpha_{i,j}W^k \vec h_j)$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621214351.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621214821.png"></p>
+<p>Transductive task: the feature of testing data can be used in training stage, but the label can not be observed.</p>
+<p>Inductive task: the testing data can not be used in training stage.</p>
+<h2 id="GIN"><a href="#GIN" class="headerlink" title="GIN"></a>GIN</h2><p><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=ryGs6iA5Km">reference paper ICLR 2019</a></p>
+<p>A GNN can be at most as powerful as WL isomorphic test</p>
+<p>Theoretical proofs were provided</p>
+<p><strong>Aggregate</strong></p>
+<p>$h_v^k = MLP^{k}((1+\epsilon^k)\cdot h_v^{k-1} +\sum_{u\in \mathcal{N}(n)}h_u^{k-1})$</p>
+<ol>
+<li>suggest using Sum instead of mean or max</li>
+<li>suggest using MLP instead of 1-layer</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621215353.png"></p>
+<h1 id="2-Spectral-based-Convolution"><a href="#2-Spectral-based-Convolution" class="headerlink" title="2. Spectral-based Convolution"></a>2. Spectral-based Convolution</h1><p>Main idea of spectral-based convolution: </p>
+<p>(1) transform signal from time domain into frequency domain; </p>
+<p>(2) using filter to process signal; </p>
+<p>(3) transform signal back into time domain</p>
+<p><strong>Different spectral-based models differ in the way of learning filter $g_{\theta}(L)$</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210621215520.png"></p>
+<h2 id="Fourier-Transformation"><a href="#Fourier-Transformation" class="headerlink" title="Fourier Transformation"></a>Fourier Transformation</h2><p>In order to understand better what’s the transformation between Time Domain and Frequency Domain, thinking about the Fourier Transformation.</p>
+<h3 id="Time-Domain"><a href="#Time-Domain" class="headerlink" title="Time Domain"></a>Time Domain</h3><p>$\vec A=\sum_i a_i \vec v_i$</p>
+<p>$x(t)=\int_{-\infty}^{\infty}x(\tau)\delta(t-\tau)d\tau$</p>
+<h3 id="Frequency-Domain"><a href="#Frequency-Domain" class="headerlink" title="Frequency Domain"></a>Frequency Domain</h3><p>$\vec A=\sum_k b_k \vec u_k$</p>
+<p>$x(t)=\frac{1}{2\pi}\int_{-\infty}^{\infty}X(j\omega)e^{j\omega t}d\omega$</p>
+<p>A signal can be represented by the weighted combination of infinite basis. The basis is $e^{-j\omega t}$, whose weight is $X(j\omega)$. For spectral-based Convolution GNNs, the idea is behind the designing of a list of basis and weights. </p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622101443.png"></p>
+<h2 id="Spectral-Graph-Theory"><a href="#Spectral-Graph-Theory" class="headerlink" title="Spectral Graph Theory"></a>Spectral Graph Theory</h2><p>the spectral graph theory will provide a way to obtaining a group of basis and their weights.</p>
+<p><strong>Notations</strong></p>
+<p>For a undirected graph $G=(V,E),N=|V|$. </p>
+<p>The adjacency matrix of $G$ is $A\in \mathbb{R}^{N\times N}$, where $A_{i,j}=0\ if\ e_{i,j}\notin E, else\ A_{i,j}=w(i,j)$. </p>
+<p>The degree matrix of $G$ is $D\in \mathbb{R}^{N\times N}$, where $D_{i,j}=d(i)\ if\ i=j, else\ D_{i,j}=0, d(i)=\sum_j A_{i,j}$.</p>
+<p>The signal on $G$(vertices) is $f:V\rightarrow \mathbb{R}^{N}$, where $f(i)$ denotes the signal of vertex $i$.</p>
+<p><strong>Spectral Decomposition</strong></p>
+<p>The Laplacian Matrix of $G$ is $L=D-A$ (one type of Laplacian Matrix, it is positive semidefinite). Do decomposition on $L=U\Lambda U^T$, where $\Lambda=diag(\lambda_0,…,\lambda_{N-1})\in \mathbb{R}^{N\times N}$, $U=[u_0,…,u_{N-1}]\in \mathbb{R}^{N\times N}$ (they are orthonormal with each other). Therefore, we found the basis $u_n$ and its corresponding weight $\lambda_n,n=0,…,N-1$.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622190152.png"></p>
+<p><strong>Example</strong><br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622190608.png"></p>
+<p><strong>The meaning of $Lf$</strong> is actually represent the sum of signal (state) difference between node $i$ and its neighbors<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622191918.png"><br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622192254.png"></p>
+<p><strong>Graph Fourier Transform of signal</strong><br>$\hat x=U^T x$<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622193501.png"></p>
+<p><strong>Filtering</strong></p>
+<p>Convolution in time domain is multiplication in frequency domain<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622194440.png"></p>
+<p><strong>Inverse Graph Fourier Transform of signal</strong><br>$x=U\hat x$<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622193523.png"></p>
+<h2 id="What-are-spectral-based-GNN-need-to-learnt"><a href="#What-are-spectral-based-GNN-need-to-learnt" class="headerlink" title="What are spectral-based GNN need to learnt?"></a>What are spectral-based GNN need to learnt?</h2><p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622194715.png"><br>The GNN basically learnt the filter $g_{\theta}(L)$, and this function can be any function.</p>
+<p>For example $g_{\theta}(L)=log(I+L)=L-\frac{L^2}{2}+\frac{L^3}{3}…, L=D-A$. </p>
+<p><strong>Two problem will happen</strong> if we use this function $log(I+L)$</p>
+<ol>
+<li>The size of parameters is growing up with $O(N)$, $N=|V|$ is dimention of $\theta$. Because the decomposition of $L$ must produce $N$ eigenvectors (bases)</li>
+<li>The signal $y$ is not localized (over smoothing). Because when $k$ (of $L^{k}$) becomes bigger, signal of all other nodes will be aggregated in current node. finally, the output of different nodes will be the same. ($K$ should be resonably small)</li>
+<li>The decomposition of $L$ is time-costing $O(N^2)$</li>
+</ol>
+<p>When $g_{\theta}(L)=L$, each node will just consider aggregate the information from their neighbors. When $g_{\theta}(L)=L^2$, each node will consider all nodes that has a distance (within 2) from this node. $x=[f(0),f(1),f(2),f(3)]$<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210623090134.png"></p>
+<p>Therefore all those spectral-based GNN use different strategy to overcome the difficulty of learning $g_{\theta}(L)$</p>
+<h2 id="ChebNet"><a href="#ChebNet" class="headerlink" title="ChebNet"></a>ChebNet</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1606.09375.pdf">reference paper</a></p>
+<p>ChebNet use polynomial to parametrize $g_{\theta}(L)$ and prevent the decomposition of $L$ (explicitly calculate eigenvectors). The localization is managed by $K$ (K-hop neighbors).</p>
+<p>$g_{\theta}(L)=\sum_{k=1}^K \theta_k L^k$</p>
+<p>$g_{\theta}(\Lambda)=\sum_{k=1}^K \theta_k \Lambda^k$</p>
+<p>$y=Ug_{\theta}(\Lambda)U^Tx=\sum_{k=1}^K \theta_k L^kx=U(\sum_{k=1}^K \theta_k \Lambda^k)U^Tx$</p>
+<p>Therefore, the size of parameter is $K$, and the localization is fixed by $K$. But the calculate $L^k$ and obtaining eigenvectors $U$ need time complexity of $O(N^2)$</p>
+<p>Therefore Chebyshev poluyomial is used to calculate $\Lambda^k$ in a recursive way and also prohibit the calculation of eigenvectors $U$.</p>
+<p>$T_0(\tilde \Lambda)=I, T_1(\tilde \Lambda)=\tilde{\Lambda}, T_l(\tilde \Lambda)=2\tilde \Lambda\ T_{k-1}(\tilde \Lambda)-T_{k-2}(\tilde \Lambda)$, where $\tilde \Lambda=\frac{2\Lambda}{\lambda_{max}}-I, \tilde \lambda\in[-1,1]$</p>
+<p>$g_{\theta}(\Lambda)=\sum_{k=1}^K \theta_k \Lambda^k\rightarrow g_{\theta’}(\Lambda)=\sum_{k=1}^K \theta_k’ T_k(\tilde{\Lambda})$</p>
+<p>Therefore the final signal $y$ can be efficiently computed, $y=g_{\theta’}(\tilde{L})x=\sum_{k=1}^K \theta_k’ T_k(\tilde{L})x$<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622210221.png"><br><strong>ChebNet</strong><br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210622210316.png"></p>
+<h2 id="GCN"><a href="#GCN" class="headerlink" title="GCN"></a>GCN</h2><p><a target="_blank" rel="noopener" href="https://openreview.net/pdf?id=SJU4ayYgl">reference paper</a></p>
+<p>The designing of $g_{\theta}(L)$</p>
+<p>$y=g_{\theta’}(L)x\approx \sum_{k=0}^K\theta_k’ T_k(\tilde{L})x, K=1$</p>
+<p>$y=g_{\theta’}(L)x\approx\theta_0’x+\theta_1’\tilde{L}x,\ \ \ \ \tilde{L}=\frac{2L}{\lambda_{max}}-I$</p>
+<p>$=\theta_0’x+\theta_1’(\frac{2L}{\lambda_{max}}-I)x,\ \ \ \ \lambda_{max}\approx 2$</p>
+<p>$=\theta_0’x+\theta_1’(L-I)x,\ \ \ \ L=I-D^{-\frac{1}{2}}AD^{-\frac{1}{2}}$</p>
+<p>$=\theta_0’x-\theta_1’(D^{-\frac{1}{2}}AD^{-\frac{1}{2}})x,\ \ \ \ \theta=\theta_0’=-\theta_1’$</p>
+<p>$=\theta(I+D^{-\frac{1}{2}}AD^{-\frac{1}{2}})x$</p>
+<p>Use the renomalization trick: $I+D^{-\frac{1}{2}}AD^{-\frac{1}{2}}\rightarrow \tilde{D}^{-\frac{1}{2}}\tilde{A}\tilde{D}^{-\frac{1}{2}}$, where $\tilde{A}=A+I$, and $\tilde{D}<em>{ii}=\sum_j \tilde{A}</em>{i,j}$</p>
+<p>Therefore, the classic GCN use $y\approx \theta(\tilde{D}^{-\frac{1}{2}}\tilde{A}\tilde{D}^{-\frac{1}{2}})x$, why GCN use $\tilde{D}^{-\frac1{2}}$, because it can reduce the information from neighbors according to the degree of node. Node with a few neighbors will get more information from its neighbors, while node with many neighbors should get less information from its neighbors.</p>
+<p>The updating function of layer $l+1$ is<br>$H^{(l+1)}=\sigma(\tilde{D}^{-\frac{1}{2}}\tilde{A}\tilde{D}^{-\frac{1}{2}}H^{(l)}W^{(l)})$</p>
+<p>An example of 2 layer GCN is </p>
+<p>$Z=f(X,\tilde{A})=softmax(\tilde{A}\ ReLU(\tilde{A}X\ W^{(0)})\ W^{(1)}), \tilde{A}=\tilde{D}^{-\frac{1}{2}}\tilde{A}\tilde{D}^{-\frac{1}{2}}$</p>
+<h2 id="HyperGCN"><a href="#HyperGCN" class="headerlink" title="HyperGCN"></a>HyperGCN</h2><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1809.02589.pdf">reference paper 2019 NeurIPS</a> deals with the network of co-author, co-citation. The main idea is simplifying the hypergraph into a simple graph that can be processed by GNN.</p>
+<p>Hypergraph<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210623111406.png"></p>
+<p>Graph Convolution on a hypernode $v$ using HyperGCN, where </p>
+<p>$\tau$ is the number of epoch</p>
+<p>$h_v^{\tau+1}$ is the hidden state in epoch $\tau+1$</p>
+<p>$\mathcal{N}(v)$ is neighbors of node $v$</p>
+<p>$[\bar A_s^{(\tau)}]_{u,v}$ is the normalized weight between node $v$ and $u$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210623111955.png"></p>
+<h1 id="Differences-between-Spatial-based-GNN-and-Spectral-based-GNN"><a href="#Differences-between-Spatial-based-GNN-and-Spectral-based-GNN" class="headerlink" title="Differences between Spatial-based GNN and Spectral-based GNN"></a>Differences between Spatial-based GNN and Spectral-based GNN</h1><ol>
+<li>Spectral-based GNN can not assign different weights for neighbors in different hop, GAT (spatial-based GNN) solved this problem. For example, $w_{0,2},w_{1,2},w_{2,2}$ are hop-1 neighbors of $v_2$, while $w_{3,2}$ is is hop-2 neighbor of $v_2$. In spectral-based GNN, $w_{0,2}=w_{1,2}=w_{2,2}\neq w_{3,2}$; in GAT, $w_{0,2}\neq w_{1,2}\neq w_{2,2}\neq w_{3,2}$</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210623105003.png"></p>
+<h1 id="Python-implementation-of-GNN"><a href="#Python-implementation-of-GNN" class="headerlink" title="Python implementation of GNN"></a>Python implementation of GNN</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/rusty1s/pytorch_geometric">Pytorch Geometric</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.dgl.ai/">Deep Graph Library</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/graph4ai/graph4nlp">Graph4NLP</a></li>
+</ol>
+<h1 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h1><ol>
+<li>CORA: citation network. 2.7k nodes and 5.4k links </li>
+<li>TU-MUTAG: 188  molecules with 18 nodes on average</li>
+</ol>
+<h1 id="Summarization"><a href="#Summarization" class="headerlink" title="Summarization"></a>Summarization</h1><p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210623114430.png"></p>
+<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_37589575/article/details/106540831">Graph Neural Networks (GNN)（一）：Spatial-GNN</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_37589575/article/details/107013739">Graph Neural Networks (GNN)（三）：Spectral-GNN</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=eybCCtNKwzA">姜成翰 GNN 李宏毅</a></li>
+<li><a target="_blank" rel="noopener" href="http://speech.ee.ntu.edu.tw/~tlkagk/courses/ML2020/GNN.pdf">姜成翰 GNN 李宏毅 PPT</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Jason Hao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://jason-huanghao.github.io/2021/06/20/Deep%20Learning/GNN-Note/" title="GNN Note">https://jason-huanghao.github.io/2021/06/20/Deep Learning/GNN-Note/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/GNN/" rel="tag"><i class="fa fa-tag"></i> GNN</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/19/Life/%E7%8E%8B%E9%98%B3%E6%98%8E%E5%BF%83%E5%AD%A6/" rel="prev" title="王阳明心学">
+      <i class="fa fa-chevron-left"></i> 王阳明心学
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/23/Paper%20Reading/GNN/GNN-Survey/" rel="next" title="GNN Survey">
+      GNN Survey <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Why-need-GNN"><span class="nav-number">1.</span> <span class="nav-text">Why need GNN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-Embed-node-into-a-feature-space-using-convolution"><span class="nav-number">2.</span> <span class="nav-text">How to Embed node into a feature space using convolution?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Spatial-based-Convolution"><span class="nav-number">3.</span> <span class="nav-text">1. Spatial-based Convolution</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NN4G"><span class="nav-number">3.1.</span> <span class="nav-text">NN4G</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DCNN"><span class="nav-number">3.2.</span> <span class="nav-text">DCNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DGC"><span class="nav-number">3.3.</span> <span class="nav-text">DGC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MoNET"><span class="nav-number">3.4.</span> <span class="nav-text">MoNET</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GraphSAGE"><span class="nav-number">3.5.</span> <span class="nav-text">GraphSAGE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GAT"><span class="nav-number">3.6.</span> <span class="nav-text">GAT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GIN"><span class="nav-number">3.7.</span> <span class="nav-text">GIN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Spectral-based-Convolution"><span class="nav-number">4.</span> <span class="nav-text">2. Spectral-based Convolution</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fourier-Transformation"><span class="nav-number">4.1.</span> <span class="nav-text">Fourier Transformation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Time-Domain"><span class="nav-number">4.1.1.</span> <span class="nav-text">Time Domain</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frequency-Domain"><span class="nav-number">4.1.2.</span> <span class="nav-text">Frequency Domain</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spectral-Graph-Theory"><span class="nav-number">4.2.</span> <span class="nav-text">Spectral Graph Theory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-are-spectral-based-GNN-need-to-learnt"><span class="nav-number">4.3.</span> <span class="nav-text">What are spectral-based GNN need to learnt?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ChebNet"><span class="nav-number">4.4.</span> <span class="nav-text">ChebNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GCN"><span class="nav-number">4.5.</span> <span class="nav-text">GCN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HyperGCN"><span class="nav-number">4.6.</span> <span class="nav-text">HyperGCN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Differences-between-Spatial-based-GNN-and-Spectral-based-GNN"><span class="nav-number">5.</span> <span class="nav-text">Differences between Spatial-based GNN and Spectral-based GNN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-implementation-of-GNN"><span class="nav-number">6.</span> <span class="nav-text">Python implementation of GNN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dataset"><span class="nav-number">7.</span> <span class="nav-text">Dataset</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Summarization"><span class="nav-number">8.</span> <span class="nav-text">Summarization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">9.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jason Hao"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Jason Hao</p>
+  <div class="site-description" itemprop="description">If you get a dream, You gonna protect it!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jason-huanghao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jason-huanghao" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/jason.hao.academic@gmail.com" title="E-Mail → jason.hao.academic@gmail.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/Hao%20Huang" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;Hao Huang" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Hao</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="Symbols count total">90k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:22</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'STLjflsxBIAFNnGAcBVgq6Vu-gzGzoHsz',
+      appKey     : '6zO0wFSDgLF6LulPGcifgFOW',
+      placeholder: "Thank you for your opinions! ^ω^ I will reply you soon! Leave your email if you want. ^ω^",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'en' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

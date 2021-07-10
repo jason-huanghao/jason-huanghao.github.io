@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="code-SnIEO2eNeq">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jason-huanghao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+
+  <meta name="description" content="This blog is a water-tight version of Zhiyuanliu’s tutorial on how to write a qualified NLP paper. Process of Paper PublicationUsually, a classic process of paper publication is : Proposal $\longright">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to write a quilified academic paper?">
+<meta property="og:url" content="https://jason-huanghao.github.io/2021/07/05/Research%20Method/How-to-write-a-quilified-academic-paper/index.html">
+<meta property="og:site_name" content="Jason Hao&#39;s Blog">
+<meta property="og:description" content="This blog is a water-tight version of Zhiyuanliu’s tutorial on how to write a qualified NLP paper. Process of Paper PublicationUsually, a classic process of paper publication is : Proposal $\longright">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-07-05T12:43:06.000Z">
+<meta property="article:modified_time" content="2021-07-09T03:03:14.107Z">
+<meta property="article:author" content="Jason Hao">
+<meta property="article:tag" content="Writing">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jason-huanghao.github.io/2021/07/05/Research%20Method/How-to-write-a-quilified-academic-paper/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <!-- require APlayer -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+  <!-- require MetingJS -->
+  <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+  <meting-js
+    server="netease"
+    type="playlist"
+    fixed="true"
+    id="430657150"
+    auto=""
+    mini="true"
+    autoplay="true"
+    theme=""
+    loop="all"
+    order="random"
+    preload="auto"
+    volume="0.5"
+    mutex="true"
+    list-folded="true"
+    list-max-height="340px"
+    storage-name="metingjs" >
+  </meting-js>
+
+  <title>How to write a quilified academic paper? | Jason Hao's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jason Hao's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>Sitemap</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/jason-huanghao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/07/05/Research%20Method/How-to-write-a-quilified-academic-paper/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jason Hao">
+      <meta itemprop="description" content="If you get a dream, You gonna protect it!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jason Hao's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          How to write a quilified academic paper?
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-05 20:43:06" itemprop="dateCreated datePublished" datetime="2021-07-05T20:43:06+08:00">2021-07-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-09 11:03:14" itemprop="dateModified" datetime="2021-07-09T11:03:14+08:00">2021-07-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Research-Method/" itemprop="url" rel="index"><span itemprop="name">Research Method</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/07/05/Research%20Method/How-to-write-a-quilified-academic-paper/" class="post-meta-item leancloud_visitors" data-flag-title="How to write a quilified academic paper?" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/07/05/Research%20Method/How-to-write-a-quilified-academic-paper/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/05/Research%20Method/How-to-write-a-quilified-academic-paper/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>4.5k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>4 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>This blog is a water-tight version of Zhiyuanliu’s tutorial on how to write a qualified NLP paper.</p>
+<h1 id="Process-of-Paper-Publication"><a href="#Process-of-Paper-Publication" class="headerlink" title="Process of Paper Publication"></a>Process of Paper Publication</h1><p>Usually, a classic process of paper publication is :</p>
+<p>Proposal $\longrightarrow$ Model Design $\longrightarrow$ Coding $\longleftrightarrow$ Parameter Tuning $\longrightarrow$ Paper Writing $\longleftrightarrow$ Paper Reediting $\longrightarrow$ Paper Sumbmitting $\longrightarrow$ Presentation</p>
+<p>An excellet paper = An excellent work (step 1) + An excellent Writting (step 2)</p>
+<span id="more"></span>
+
+<h1 id="Classic-Framwork-of-a-NLP-paper"><a href="#Classic-Framwork-of-a-NLP-paper" class="headerlink" title="Classic Framwork of a NLP paper"></a>Classic Framwork of a NLP paper</h1><p>Most of the conference papers (8-10 pages) should include 6 components: Abstract, Introduction, Related Work, Method, Experiment, and Conclusion.</p>
+<ul>
+<li>Abstract: Using 100-200 words to describe clearly the task, existing challenges, your methodology, your experiment results, and finally, your conclusion.</li>
+<li>Introduction: Leaving 1 page to detail the research problem, existing state-of-the-arts, main challenges, typology of methods, specific methods in each branch, and overall performance of each method. </li>
+<li>Related Work: Using 0.5-1 page for related works, distinguish the differences between your work and others.</li>
+<li>Method: Using 2-3 pages to introduce all details of your proposal.</li>
+<li>Experiment: Using 2-3 pages to recommend the datasets, experimental criteria, parameter setting, experimental results, and analysis of these results. </li>
+<li>Conclusion: Summing up the main work and contributions, and proposing some possible directions for the future.</li>
+</ul>
+<p>tips:</p>
+<ol>
+<li>Writing in the interest of readers. Remember to describe all new concepts in your paper, and detail the work to the extend that can your reader easily to grap your idea.</li>
+<li>Writing with rigorous logic. Guarantee the consistency and coherence of your chapeters, paragraphs, and sentences. </li>
+</ol>
+<p>For example. (1) If you mentioned 3 challenges in your introduction, then, make sure you have 3 components in your proposal to deal with all challenges, 3 algorithms in your method part, and 3 types of experiments to verifying each of your algorithms; (2) You should clear the strctures of your paragraphs, whehter they are organized parallelly, or incrementally. Make sure there is a sentence or adverb to connect paragraphs or sentences. </p>
+<h1 id="How-to-write-Abstract-and-Introduction-part"><a href="#How-to-write-Abstract-and-Introduction-part" class="headerlink" title="How to write Abstract and Introduction part"></a>How to write Abstract and Introduction part</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ol>
+<li>Problem description and the importance of solving it. For a well-known problem, you don’t need to emphasis much. However, for a new research problem, you should write more words to highlight the importance of this problem.</li>
+<li>Existing Works. Standing upon the gaint’s shoulder, introduce the representative of all methods. You are going to improve the representative.</li>
+<li>Presenting challenges and shortcomings of the representative. Make objective criticism on those works.</li>
+<li>How can your method solve those challenges you mentioned before? </li>
+<li>Proofing that your method can work better considering those challenges. </li>
+<li>Summing up the main contributions or your work with precise and concise sentences.</li>
+</ol>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>Abstract can be view as a brief of your introduction. But you should paraphrase the content in introduction part. You can see clearly the conrespondence between abstract and introduction. </p>
+<h1 id="How-to-write-Method-part"><a href="#How-to-write-Method-part" class="headerlink" title="How to write Method part"></a>How to write Method part</h1><ol>
+<li>You should introduce the total framework of your method, which offers an overview of your work. Then, give a mathematical formula to describe your prolbem if possible. All notations you going to use should be listed. Finally, introduce all components of your method.</li>
+<li>You detail every component from the whole to the part, and bold the title of each part. This will navigate the reader to look through your content with a clear clue.</li>
+</ol>
+<p>Make the description of framework different from what has been mentioned in introduction part. The description here should be correlated with that in introduction part, but offers more details. Another thing is that you should explain every new notation explicitly. </p>
+<h1 id="How-to-write-Experiment-part"><a href="#How-to-write-Experiment-part" class="headerlink" title="How to write Experiment part"></a>How to write Experiment part</h1><p>Before posting the experimental results, you should mention the datasets you used, those criteria you chosen, and all baselines you compared in your expriments. </p>
+<p>For presenting your experiments. You should mainly focus on valid the effectiveness of your method on the challenges you dealing with. That’s means your method should be proofed to improve the performance after using it. However, Comparison with the most recent state-of-the-art is not required. </p>
+<p>In order to present the advantage and characteristic of your method. You can do some experiment to test the <strong>hyperparameter effects</strong>, <strong>Ablation Test</strong> (how much contribution each component made), <strong>Impact of Datsets</strong> (few-shot, class-imbalanced), <strong>Error Analysis</strong> (limitation of your method, where your method fails), <strong>Case study</strong> (strength of your method, where your method works best) and so on.</p>
+<h1 id="How-to-write-Related-Work-part"><a href="#How-to-write-Related-Work-part" class="headerlink" title="How to write Related Work part"></a>How to write Related Work part</h1><p>The function of this part is to conclude, classify, and analyse the existing works. The content can be organized chronically or taxonomically. The content should emphasis the challenges they tackled, and the problems they didn’t fix. Finally, you should highlight the differences of your method compared with others. </p>
+<h1 id="How-to-write-Conclusion"><a href="#How-to-write-Conclusion" class="headerlink" title="How to write Conclusion"></a>How to write Conclusion</h1><p>Conclusion is used to summarize contributions and the results to support those contributions. Additionally, one may further possible research topics for future. </p>
+<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/X48Cm58eub_sULlLRk-VIA">https://mp.weixin.qq.com/s/X48Cm58eub_sULlLRk-VIA</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Jason Hao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://jason-huanghao.github.io/2021/07/05/Research%20Method/How-to-write-a-quilified-academic-paper/" title="How to write a quilified academic paper?">https://jason-huanghao.github.io/2021/07/05/Research Method/How-to-write-a-quilified-academic-paper/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Writing/" rel="tag"><i class="fa fa-tag"></i> Writing</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/05/NLP/NLP-Datasets/" rel="prev" title="NLP Datasets">
+      <i class="fa fa-chevron-left"></i> NLP Datasets
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/07/09/Paper%20Reading/Term%20Weight/Measuring-Fine-Grained-Domain-Relevance-of-Terms-ACL2021/" rel="next" title="Measuring Fine-Grained Domain Relevance of Terms ACL2021">
+      Measuring Fine-Grained Domain Relevance of Terms ACL2021 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Process-of-Paper-Publication"><span class="nav-number">1.</span> <span class="nav-text">Process of Paper Publication</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Classic-Framwork-of-a-NLP-paper"><span class="nav-number">2.</span> <span class="nav-text">Classic Framwork of a NLP paper</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-write-Abstract-and-Introduction-part"><span class="nav-number">3.</span> <span class="nav-text">How to write Abstract and Introduction part</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">3.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Abstract"><span class="nav-number">3.2.</span> <span class="nav-text">Abstract</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-write-Method-part"><span class="nav-number">4.</span> <span class="nav-text">How to write Method part</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-write-Experiment-part"><span class="nav-number">5.</span> <span class="nav-text">How to write Experiment part</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-write-Related-Work-part"><span class="nav-number">6.</span> <span class="nav-text">How to write Related Work part</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-write-Conclusion"><span class="nav-number">7.</span> <span class="nav-text">How to write Conclusion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">8.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jason Hao"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Jason Hao</p>
+  <div class="site-description" itemprop="description">If you get a dream, You gonna protect it!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jason-huanghao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jason-huanghao" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/jason.hao.academic@gmail.com" title="E-Mail → jason.hao.academic@gmail.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/Hao%20Huang" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;Hao Huang" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Hao</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="Symbols count total">90k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:22</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'STLjflsxBIAFNnGAcBVgq6Vu-gzGzoHsz',
+      appKey     : '6zO0wFSDgLF6LulPGcifgFOW',
+      placeholder: "Thank you for your opinions! ^ω^ I will reply you soon! Leave your email if you want. ^ω^",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'en' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

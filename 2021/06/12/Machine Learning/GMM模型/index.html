@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="code-SnIEO2eNeq">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jason-huanghao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+
+  <meta name="description" content="单个高维高斯分布$d$ 维的高斯分布的密度函数为 $N(x;\mu,\Sigma)&#x3D;\frac{1}{\sqrt{(2\pi)^{d}det(\Sigma)}}exp\left[-\frac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu) \right]]$ 其中 $x$ 是一个 $d$ 维的数据，$\mu$ 是一个 $d$ 维的向量，$\Sigma$ 是一个 $d\times">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GMM模型">
+<meta property="og:url" content="https://jason-huanghao.github.io/2021/06/12/Machine%20Learning/GMM%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Jason Hao&#39;s Blog">
+<meta property="og:description" content="单个高维高斯分布$d$ 维的高斯分布的密度函数为 $N(x;\mu,\Sigma)&#x3D;\frac{1}{\sqrt{(2\pi)^{d}det(\Sigma)}}exp\left[-\frac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu) \right]]$ 其中 $x$ 是一个 $d$ 维的数据，$\mu$ 是一个 $d$ 维的向量，$\Sigma$ 是一个 $d\times">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-12T12:00:10.000Z">
+<meta property="article:modified_time" content="2021-06-23T08:49:28.654Z">
+<meta property="article:author" content="Jason Hao">
+<meta property="article:tag" content="GMM">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://jason-huanghao.github.io/2021/06/12/Machine%20Learning/GMM%E6%A8%A1%E5%9E%8B/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <!-- require APlayer -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+  <!-- require MetingJS -->
+  <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+  <meting-js
+    server="netease"
+    type="playlist"
+    fixed="true"
+    id="430657150"
+    auto=""
+    mini="true"
+    autoplay="true"
+    theme=""
+    loop="all"
+    order="random"
+    preload="auto"
+    volume="0.5"
+    mutex="true"
+    list-folded="true"
+    list-max-height="340px"
+    storage-name="metingjs" >
+  </meting-js>
+
+  <title>GMM模型 | Jason Hao's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jason Hao's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>Sitemap</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/jason-huanghao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/06/12/Machine%20Learning/GMM%E6%A8%A1%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jason Hao">
+      <meta itemprop="description" content="If you get a dream, You gonna protect it!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jason Hao's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GMM模型
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-12 20:00:10" itemprop="dateCreated datePublished" datetime="2021-06-12T20:00:10+08:00">2021-06-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-23 16:49:28" itemprop="dateModified" datetime="2021-06-23T16:49:28+08:00">2021-06-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/06/12/Machine%20Learning/GMM%E6%A8%A1%E5%9E%8B/" class="post-meta-item leancloud_visitors" data-flag-title="GMM模型" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/06/12/Machine%20Learning/GMM%E6%A8%A1%E5%9E%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/12/Machine%20Learning/GMM%E6%A8%A1%E5%9E%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>2.4k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="单个高维高斯分布"><a href="#单个高维高斯分布" class="headerlink" title="单个高维高斯分布"></a>单个高维高斯分布</h1><p>$d$ 维的高斯分布的密度函数为</p>
+<p>$N(x;\mu,\Sigma)=\frac{1}{\sqrt{(2\pi)^{d}det(\Sigma)}}exp\left[-\frac{1}{2}(x-\mu)^T \Sigma^{-1}(x-\mu) \right]]$</p>
+<p>其中 $x$ 是一个 $d$ 维的数据，$\mu$ 是一个 $d$ 维的向量，$\Sigma$ 是一个 $d\times d$ 的协方差矩阵</p>
+<span id="more"></span>
+
+<h1 id="混合高斯推导"><a href="#混合高斯推导" class="headerlink" title="混合高斯推导"></a>混合高斯推导</h1><p><strong>混合高斯模型的概率密度函数</strong></p>
+<p>$p(x|\Theta)=\sum_k \alpha_k N(x;\mu_k,\Sigma_k)=\sum_k \alpha_k\frac{1}{\sqrt{(2\pi)^d det(\Sigma_k)}}exp\left[-\frac{1}{2}(x-\mu_k)^T \Sigma_k^{-1}(x-\mu_k)\right]$</p>
+<p>其中 $\Theta$ 包含 ${\alpha_k,\mu_k,\Sigma_k},k=1,2,…,K$</p>
+<p><strong>ELBO 下限函数的推导</strong></p>
+<p>$l(\Theta)=\sum_i log(p(x_i|\Theta))$</p>
+<p>$=\sum_i log(\sum_{k}p(x_i,z_k|\Theta))$</p>
+<p>$=\sum_i log(\sum_{k}p(x_i|z_k,\Theta)p(z_k=k))$</p>
+<p>$= \sum_i log(\sum_{k}Q_k(z_k|x_i,\mu_k,\Sigma_k)\frac{p(x_i|z_k=k,\mu_k,\Sigma_k)p(z_k=k)}{Q_k(z_k|x_i,\mu_k,\Sigma_k)})$</p>
+<p>$\geq ELBO(\Theta) = \sum_i \sum_k Q_k(z_k|x_i,\mu_k,\Sigma_k) log\frac{p(x_i|z_k=k,\mu_k,\Sigma_k)p(z_k=k)}{Q_k(z_k|x_i,\mu_k,\Sigma_k)}$</p>
+<p><strong>Q 函数的推导</strong></p>
+<p>为了使得获得一个最好的 $(\Theta)$ 的 ELBO 下限函数，要求 $\frac{p(x_i|z_k=k,\mu_k,\Sigma_k)p(z_k=k)}{Q_k(z_k|x_i,\mu_k,\Sigma_k)}=c$，而 $\sum_k Q_k(z_k|x_i,\mu_k,\Sigma_k)=1$（分母归一化），因此</p>
+<p>$Q_k(z_k|x_i,\mu_k,\Sigma_k)=\frac{p(x_i|z_k=k,\mu_k,\Sigma_k)p(z_k=k) }{\sum_k p(x_i|z_k=k,\mu_k,\Sigma_k)p(z_k=k)}=\frac{N(x_i|\mu_k,\Sigma_k)\alpha_k}{\sum_k N(x_i|\mu_k,\Sigma_k)\alpha_k}=p(z_k=k|x_i,\mu_k,\Sigma_k)$</p>
+<p>其中 $p(z_k=k)=\alpha_k$ 为先验概率；GMM 选用的隐变量是 $z=[z_1,…,z_K]$, 代表数据 $x_i$ 来自第 $k$ 个高斯分布的概率。关于隐变量 $z_k$ 的 Q 函数为 $Q_k(z_k)=p(z_k=k|x_i,\mu_k, \Sigma_k)$（给定部分观测数据 $x_i$ 和参数，$z_k$ 的后验概率）。不等式由 Jensen 不等式推导得到（$E(f(x))\geq f(E(x))$ 如果 $f(x)$ 是一个凸函数）</p>
+<p>那么 EM 在 E 步时计算 Q 函数，在 M 步最大化 $\Theta={\alpha_k, \mu_k, \Sigma_k},k=1,2,…,K$</p>
+<h1 id="GMM-的EM-算法"><a href="#GMM-的EM-算法" class="headerlink" title="GMM 的EM 算法"></a>GMM 的EM 算法</h1><p><strong>Initialization</strong></p>
+<p>初始化参数 ${\alpha_k,\mu_k,\Sigma_k},k=1,2,…,K$</p>
+<p><strong>E-step</strong></p>
+<p>计算 Q 函数 $Q_k(z_k|x_i,\mu_k,\Sigma_k)=\frac{N(x_i|\mu_k,\Sigma_k)\alpha_k}{\sum_k N(x_i|\mu_k,\Sigma_k)\alpha_k}$</p>
+<p>计算新的 ELBO 函数 </p>
+<p>$ELBO(\Theta)=\sum_i\sum_k Q_k(z_k|x_i,\mu_k,\Sigma_k) log\frac{p(x_i|z_k=k,\mu_k,\Sigma_k)p(z_k=k)}{Q_k(z_k|x_i,\mu_k,\Sigma_k)}$</p>
+<p>$=\sum_i\sum_k Q_k(z_k|x_i,\mu_k,\Sigma_k)log\left(\frac{\alpha_k}{Q_k(z_k|x_i,\mu_k,\Sigma_k)}\frac{1}{\sqrt{(2\pi)^d det(\Sigma_k)}}exp[-\frac{1}{2}(x_i-\mu_k)^T\Sigma_k^T(x_i-\mu_k)]\right)$</p>
+<p><strong>M-step</strong><br>用更新过后的 $ELBO(\Theta)$ 对参数 $\alpha_k,\mu_k,\Sigma_k,k=1,2,…,K$ 分别求导，令导数等于 0，令 $Q_k(i)=Q_k(z_k|x_i,\mu_k,\Sigma_k)$ 最后得到参数更新公式</p>
+<p>更新参数 $\alpha_k, k=1,2,…,K$，<br>$\alpha_k=\frac{\sum_i Q_k(i)}{N}$</p>
+<p>更新参数 $\alpha_k, k=1,2,…,K$，<br>$\mu_k==\frac{\sum_i Q_k(i)x_i}{\sum_i Q_k(i)}$</p>
+<p>更新参数 $\alpha_k, k=1,2,…,K$，<br>$\Sigma_k=\frac{\sum_i Q_k(i)(x_i-\mu_k)(x_i-\mu_k)^T}{\sum_i Q_k(i)}$</p>
+<p>其中 $N$ 是数据点的数量（假设每个数据点都是独立同分布产生的），$K$ 是 GMM 中高斯分布的个数</p>
+<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://wjchen.net/post/cn/gmm-em-cn.html">https://wjchen.net/post/cn/gmm-em-cn.html</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Jason Hao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://jason-huanghao.github.io/2021/06/12/Machine%20Learning/GMM%E6%A8%A1%E5%9E%8B/" title="GMM模型">https://jason-huanghao.github.io/2021/06/12/Machine Learning/GMM模型/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/GMM/" rel="tag"><i class="fa fa-tag"></i> GMM</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/12/Machine%20Learning/EM%E7%AE%97%E6%B3%95/" rel="prev" title="EM算法">
+      <i class="fa fa-chevron-left"></i> EM算法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/15/Machine%20Learning/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1/" rel="next" title="估计方法">
+      估计方法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E4%B8%AA%E9%AB%98%E7%BB%B4%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83"><span class="nav-number">1.</span> <span class="nav-text">单个高维高斯分布</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B7%E5%90%88%E9%AB%98%E6%96%AF%E6%8E%A8%E5%AF%BC"><span class="nav-number">2.</span> <span class="nav-text">混合高斯推导</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GMM-%E7%9A%84EM-%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">GMM 的EM 算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">4.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jason Hao"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Jason Hao</p>
+  <div class="site-description" itemprop="description">If you get a dream, You gonna protect it!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jason-huanghao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jason-huanghao" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/jason.hao.academic@gmail.com" title="E-Mail → jason.hao.academic@gmail.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/Hao%20Huang" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;Hao Huang" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Hao</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="Symbols count total">90k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:22</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'STLjflsxBIAFNnGAcBVgq6Vu-gzGzoHsz',
+      appKey     : '6zO0wFSDgLF6LulPGcifgFOW',
+      placeholder: "Thank you for your opinions! ^ω^ I will reply you soon! Leave your email if you want. ^ω^",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'en' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

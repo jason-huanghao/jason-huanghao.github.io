@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="code-SnIEO2eNeq">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jason-huanghao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+
+  <meta name="description" content="Transformer 主包括两个部分，Encoder 和 Decoder，整体流程如下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Transformer笔记">
+<meta property="og:url" content="https://jason-huanghao.github.io/2021/06/09/NLP/Transformer%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Jason Hao&#39;s Blog">
+<meta property="og:description" content="Transformer 主包括两个部分，Encoder 和 Decoder，整体流程如下">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210609174026.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210609122322.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210609160537.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210609175256.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210609180115.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210609123150.png">
+<meta property="article:published_time" content="2021-06-09T01:45:36.000Z">
+<meta property="article:modified_time" content="2021-06-17T03:36:11.228Z">
+<meta property="article:author" content="Jason Hao">
+<meta property="article:tag" content="Transformer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210609174026.png">
+
+<link rel="canonical" href="https://jason-huanghao.github.io/2021/06/09/NLP/Transformer%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <!-- require APlayer -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+  <!-- require MetingJS -->
+  <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+  <meting-js
+    server="netease"
+    type="playlist"
+    fixed="true"
+    id="430657150"
+    auto=""
+    mini="true"
+    autoplay="true"
+    theme=""
+    loop="all"
+    order="random"
+    preload="auto"
+    volume="0.5"
+    mutex="true"
+    list-folded="true"
+    list-max-height="340px"
+    storage-name="metingjs" >
+  </meting-js>
+
+  <title>Transformer笔记 | Jason Hao's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jason Hao's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>Sitemap</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/jason-huanghao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/06/09/NLP/Transformer%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jason Hao">
+      <meta itemprop="description" content="If you get a dream, You gonna protect it!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jason Hao's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Transformer笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-09 09:45:36" itemprop="dateCreated datePublished" datetime="2021-06-09T09:45:36+08:00">2021-06-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-17 11:36:11" itemprop="dateModified" datetime="2021-06-17T11:36:11+08:00">2021-06-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index"><span itemprop="name">NLP</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/06/09/NLP/Transformer%E7%AC%94%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="Transformer笔记" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/06/09/NLP/Transformer%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/09/NLP/Transformer%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>2k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Transformer 主包括两个部分，Encoder 和 Decoder，整体流程如下</p>
+<span id="more"></span>
+
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210609174026.png"></p>
+<h1 id="Encoder"><a href="#Encoder" class="headerlink" title="Encoder"></a>Encoder</h1><p>Encoder 包含了两个子层，一个 multi-headed attention 子层，一个全连接子层。此外这两个子模块都是用了残差连接，然后从一个归一化层输出</p>
+<p>$Encoding(x,mask)=FeedForward(MultiHeadAttention(x))$</p>
+<h2 id="多头注意力-Sublayer"><a href="#多头注意力-Sublayer" class="headerlink" title="多头注意力 Sublayer"></a>多头注意力 Sublayer</h2><p>$Z=MultiHead(X)=Concat(head_0,…,head_h)W^O$</p>
+<p>$head_i=Z_i=Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_k}})V; Q=XW^Q, K=XW^K, V=XW^V$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210609122322.png"></p>
+<h2 id="全连接层-Sublayer"><a href="#全连接层-Sublayer" class="headerlink" title="全连接层 Sublayer"></a>全连接层 Sublayer</h2><p>从全连接层输出的向量维度跟输入的维度一致，<br>$FFN(x)=max(0, xW_1+b_1)W_2+b_2$</p>
+<h2 id="Add-amp-Norm"><a href="#Add-amp-Norm" class="headerlink" title="Add&amp;Norm"></a>Add&amp;Norm</h2><p>$Z_n=LayerNorm(Z_{n-1}, SubLayer(Z_{n-1}))$</p>
+<h1 id="Decoder"><a href="#Decoder" class="headerlink" title="Decoder"></a>Decoder</h1><p>根据 Transformer 最后一层 Encoder 出来的向量，也就是 $LayerNorm(Z_{n-1}+Z_{n})$，$n$ 为 Encoder 的数量计算得到的 attention 向量 $K$ 和 $V$。这两个矩阵将作为 Decoder 的输入来帮助 Decoder 关注输入序列中的重要位置信息</p>
+<p>$Decoding(x,memory,mask1,mask2)=FeedForward(MultiHeadAttention(MultiHeadAttention(x,mask1),memory,mask2))$</p>
+<h2 id="第一个-multi-headed-self-attention-层"><a href="#第一个-multi-headed-self-attention-层" class="headerlink" title="第一个 multi-headed self attention 层"></a>第一个 multi-headed self attention 层</h2><p>用于训练 Decoder 的输出序列按照时间步来进行，每个时间步输入当前位置的前面所有的序列信息，这可以通过在 self-attnetion 子模块中的 softmax 层前面用 $-inf$ mask 掉当前位置之后的序列信息。这样 self attention 层输出的就是被 mask 后的输出序列的 $Z$<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210609160537.png"><br>对于机器对话任务而言，Decoder 的工作模式如下图所示</p>
+<h2 id="第二个-multi-headed-encoder-decoder-层"><a href="#第二个-multi-headed-encoder-decoder-层" class="headerlink" title="第二个 multi-headed encoder-decoder 层"></a>第二个 multi-headed encoder-decoder 层</h2><p>对于这个 encoder-decoder 子模块而言，它使用了从 Encoder 的输出向量复制两份作为 $Q$ 和 $K$，使用了 Decoder self-attention 子模块的 $V$ 作为输入，这个子模块为输出序列匹配了输入序列。读者肯定会有疑问，输入序列的长度（也就是 $Q$ 和 $K$ 矩阵的高度）和输出序列的长度（也就是 $V$ 矩阵的高度）不一样，怎么能进行计算呢？答案是 Transformer 给输入和输入序列定长为 512，多余的没有内容的地方用一些空字符替代。</p>
+<h2 id="线性分类器和最后一个-softmax"><a href="#线性分类器和最后一个-softmax" class="headerlink" title="线性分类器和最后一个 softmax"></a>线性分类器和最后一个 softmax</h2><p>最后一层分类器根据前面的输出序列信息和输入序列信息来预测对于当前位置的词汇，因此最后 softmax 的输出向量的维度为所有输出序列包含的词汇表的大小<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210609175256.png"></p>
+<h2 id="Loss-Function"><a href="#Loss-Function" class="headerlink" title="Loss Function"></a>Loss Function</h2><p>对于某个翻译的实例 (“Je suis etudiant, merci” –&gt; “I am a student, thanks”)，此时预测的词是 “I”，那么我们需要 softmax 层输出的是 $[0,0,1,0,0,0]$，通过softmax 层的输出向量和这个期望的向量进行交叉熵或者 KL 距离计算，来作为 Loss</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210609180115.png"></p>
+<h1 id="Position-Encoding"><a href="#Position-Encoding" class="headerlink" title="Position Encoding"></a>Position Encoding</h1><p>为了向 Transformer 引入词汇的位置信息，通过下面的方法对位置进行编码来实现，最终得到下图的矩阵，形状为 $len_{seq}\times dim_{embed}$</p>
+<p>对于句子中第 $pos$ 个词汇的位置向量的偶数位，$PE(pos,2i)=sin(\frac{pos}{10000^{2i/dim_{embed}}})$</p>
+<p>对于句子中第 $pos$ 个词汇的位置向量的奇数位，$PE(pos,2i+1)=cos(\frac{pos}{10000^{2i/dim_{embed}}})$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210609123150.png"></p>
+<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1706.03762">Attention is All You Need</a></li>
+<li><a target="_blank" rel="noopener" href="http://nlp.seas.harvard.edu/2018/04/03/attention.html">Stanford implement of Transformer</a></li>
+<li><a target="_blank" rel="noopener" href="https://jalammar.github.io/illustrated-transformer/">https://jalammar.github.io/illustrated-transformer/</a></li>
+<li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/illustrated-guide-to-transformers-step-by-step-explanation-f74876522bc0">https://towardsdatascience.com/illustrated-guide-to-transformers-step-by-step-explanation-f74876522bc0</a></li>
+<li><a target="_blank" rel="noopener" href="https://wandb.ai/authors/One-Shot-3D-Photography/reports/-Transformer---Vmlldzo0MDIwMjc">https://wandb.ai/authors/One-Shot-3D-Photography/reports/-Transformer---Vmlldzo0MDIwMjc</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Jason Hao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://jason-huanghao.github.io/2021/06/09/NLP/Transformer%E7%AC%94%E8%AE%B0/" title="Transformer笔记">https://jason-huanghao.github.io/2021/06/09/NLP/Transformer笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Transformer/" rel="tag"><i class="fa fa-tag"></i> Transformer</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/06/07/Machine%20Learning/%E4%B8%BB%E9%A2%98%E6%8C%87%E6%A0%87/" rel="prev" title="主题指标">
+      <i class="fa fa-chevron-left"></i> 主题指标
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/06/10/NLP/Bert%E7%AC%94%E8%AE%B0/" rel="next" title="Bert笔记">
+      Bert笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Encoder"><span class="nav-number">1.</span> <span class="nav-text">Encoder</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B-Sublayer"><span class="nav-number">1.1.</span> <span class="nav-text">多头注意力 Sublayer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82-Sublayer"><span class="nav-number">1.2.</span> <span class="nav-text">全连接层 Sublayer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-amp-Norm"><span class="nav-number">1.3.</span> <span class="nav-text">Add&amp;Norm</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Decoder"><span class="nav-number">2.</span> <span class="nav-text">Decoder</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AA-multi-headed-self-attention-%E5%B1%82"><span class="nav-number">2.1.</span> <span class="nav-text">第一个 multi-headed self attention 层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E4%B8%AA-multi-headed-encoder-decoder-%E5%B1%82"><span class="nav-number">2.2.</span> <span class="nav-text">第二个 multi-headed encoder-decoder 层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E5%99%A8%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA-softmax"><span class="nav-number">2.3.</span> <span class="nav-text">线性分类器和最后一个 softmax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Loss-Function"><span class="nav-number">2.4.</span> <span class="nav-text">Loss Function</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Position-Encoding"><span class="nav-number">3.</span> <span class="nav-text">Position Encoding</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">4.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jason Hao"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Jason Hao</p>
+  <div class="site-description" itemprop="description">If you get a dream, You gonna protect it!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jason-huanghao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jason-huanghao" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/jason.hao.academic@gmail.com" title="E-Mail → jason.hao.academic@gmail.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/Hao%20Huang" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;Hao Huang" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Hao</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="Symbols count total">90k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:22</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'STLjflsxBIAFNnGAcBVgq6Vu-gzGzoHsz',
+      appKey     : '6zO0wFSDgLF6LulPGcifgFOW',
+      placeholder: "Thank you for your opinions! ^ω^ I will reply you soon! Leave your email if you want. ^ω^",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'en' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
