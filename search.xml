@@ -2242,19 +2242,22 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
 <span id="more"></span>
 <h1 id="paper-collections-and-paper-recommendation">Paper Collections and Paper Recommendation</h1>
 <ol type="1">
-<li><p><a href="https://www.jiqizhixin.com/columns/paperweekly">Paperweekly 机器之心</a>, <a href="https://www.paperweekly.site">Paperweekly Official Site</a></p></li>
-<li><p><a href="https://www.jiqizhixin.com/columns">机器之心专栏</a> 各个组织的分享文章. <a href="https://www.jiqizhixin.com/sota">SOTA models</a></p></li>
-<li><p><a href="https://github.com/mengliu1998/awesome-deep-gnn">awesome-deep-gnn papers</a></p></li>
-<li><p><a href="https://github.com/shaoxiongji/knowledge-graphs">Knowledge Graphs papers</a></p></li>
-<li><p><a href="https://github.com/xinguoxia/KGE">Knowledge Graph Embedding papers</a></p></li>
-<li><p><a href="https://github.com/thunlp/KRLPapers">KRL: knowledge representation learning &amp; KE: knowledge embedding must read papers</a></p></li>
-<li><p><a href="https://github.com/THU-KEG/Knowledge_Graph_Reasoning_Papers">Knowledge Graph Reasoning Papers</a></p></li>
-<li><p><a href="https://github.com/heathersherry/Knowledge-Graph-Tutorials-and-Papers">Knowledge Graph Tutorials and Papers &amp; Data</a> ❤️</p></li>
-<li><p><a href="https://github.com/haipinglu/awesome-knowledge-graph">Awesome Knowledge Graph papers &amp; Data</a> ❤️ <a href="https://www.sheffield.ac.uk/dcs/people/academic/haiping-lu">吕海平 The University of Sheffield</a> machine learning, brain imaging, and tensor analysis</p></li>
-<li><p><a href="https://github.com/dkmfbk/dket">Ontology Learning as Machine Translation</a> Expressive ontology learning as neural machine translation,2018 把OL当做MT来做 ❤️</p></li>
-<li><p><a href="https://github.com/edowson/ai-ontology">AI/RL Ontology</a> 一个强化学习领域的Ontology by <a href="https://webprotege.stanford.edu">WebProtege</a></p></li>
-<li><p><a href="https://github.com/vieyra/KnOWLearn-Tool">KnOWLearn-Tool</a> 一个ontology learning 工具，包含 term extraction, <a href="https://github.com/vieyra/KnOWLearn-Tool/tree/master/KnOWLearn-Tool/data">data from different domain</a> Author<a href="https://github.com/vieyra">Samuel Vieyra</a> ❤️</p></li>
-<li><p><a href="https://github.com/SmartDataAnalytics/Knowledge-Graph-Analysis-Programming-Exercises">Programming Exercises for the Analysis of Knowledge Graphs</a> allows interested students and researchers to perform hands-on analysis of knowledge graphs <a href="https://github.com/SmartDataAnalytics">Smart Data Analytics Github</a> from <a href="https://sda.tech">Smart Data Analytics of University of Bonn, German</a> ❤️ # Knowledge Graph or Ontology</p></li>
+<li><a href="https://www.jiqizhixin.com/columns/paperweekly">Paperweekly 机器之心</a>, <a href="https://www.paperweekly.site">Paperweekly Official Site</a></li>
+<li><a href="https://www.jiqizhixin.com/columns">机器之心专栏</a> 各个组织的分享文章. <a href="https://www.jiqizhixin.com/sota">SOTA models</a></li>
+<li><a href="https://github.com/mengliu1998/awesome-deep-gnn">awesome-deep-gnn papers</a></li>
+<li><a href="https://github.com/shaoxiongji/knowledge-graphs">Knowledge Graphs papers</a></li>
+<li><a href="https://github.com/xinguoxia/KGE">Knowledge Graph Embedding papers</a></li>
+<li><a href="https://github.com/thunlp/KRLPapers">KRL: knowledge representation learning &amp; KE: knowledge embedding must read papers</a></li>
+<li><a href="https://github.com/THU-KEG/Knowledge_Graph_Reasoning_Papers">Knowledge Graph Reasoning Papers</a></li>
+<li><a href="https://github.com/heathersherry/Knowledge-Graph-Tutorials-and-Papers">Knowledge Graph Tutorials and Papers &amp; Data</a> ❤️</li>
+<li><a href="https://github.com/haipinglu/awesome-knowledge-graph">Awesome Knowledge Graph papers &amp; Data</a> ❤️ <a href="https://www.sheffield.ac.uk/dcs/people/academic/haiping-lu">吕海平 The University of Sheffield</a> machine learning, brain imaging, and tensor analysis</li>
+<li><a href="https://github.com/dkmfbk/dket">Ontology Learning as Machine Translation</a> Expressive ontology learning as neural machine translation,2018 把OL当做MT来做 ❤️</li>
+<li><a href="https://github.com/edowson/ai-ontology">AI/RL Ontology</a> 一个强化学习领域的Ontology by <a href="https://webprotege.stanford.edu">WebProtege</a></li>
+<li><a href="https://github.com/vieyra/KnOWLearn-Tool">KnOWLearn-Tool</a> 一个ontology learning 工具，包含 term extraction, <a href="https://github.com/vieyra/KnOWLearn-Tool/tree/master/KnOWLearn-Tool/data">data from different domain</a> Author<a href="https://github.com/vieyra">Samuel Vieyra</a> ❤️</li>
+<li><a href="https://github.com/SmartDataAnalytics/Knowledge-Graph-Analysis-Programming-Exercises">Programming Exercises for the Analysis of Knowledge Graphs</a> allows interested students and researchers to perform hands-on analysis of knowledge graphs <a href="https://github.com/SmartDataAnalytics">Smart Data Analytics Github</a> from <a href="https://sda.tech">Smart Data Analytics of University of Bonn, German</a> ❤️</li>
+</ol>
+<h1 id="knowledge-graph-or-ontology">Knowledge Graph or Ontology</h1>
+<ol type="1">
 <li><p><a href="http://yuhao.im/">张宇浩 Stanford, 清华</a>, Relation Extraction, GCN, NLP in medicine</p></li>
 <li><p>KAUST Bio-Ontology Research Group (韩国科技大学生物本体研究小组). <a href="http://borg.kaust.edu.sa">Main Page</a>, <a href="https://github.com/bio-ontology-research-group">Github Page</a>, <a href="https://github.com/bio-ontology-research-group/ontology-tutorial">Ontology Tutorial</a>, <a href="https://github.com/bio-ontology-research-group/machine-learning-with-ontologies">Machine Learning with Ontology</a>, <a href="https://github.com/bio-ontology-research-group/semisupCR">Simi-supervised Concept Recognition with pytorch BIRT</a></p></li>
 <li><p><a href="http://net.pku.edu.cn/dlib">北京大学张铭老师团队</a>. 知识图谱辅助及其对话, 知识图谱协同推理</p></li>
@@ -2377,9 +2380,7 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
 <li><p><a href="https://tech.meituan.com/2019/03/14/information-flow-creative-optimization-practices.html">美团NLG</a> （信息流推荐系统涉及内容挖掘、召回、精排、重排、<strong>创意</strong>等多层机制和排序）</p></li>
 <li><p><a href="https://air.jd.com/#index">京东 NLP Group</a> 1. <a href="https://scholar.google.com/citations?hl=zh-CN&amp;user=JFg9QC4AAAAJ">Haoran Li (李浩然)</a>: Summarization, Multi-model; <a href="https://scholar.google.com/citations?user=fWrjVnQAAAAJ&amp;hl=zh-CN">Youzheng Wu (吴友正)</a>: Dialog</p></li>
 </ol>
-<figure>
-<img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210604172027.jpg" alt="img" /><figcaption aria-hidden="true">img</figcaption>
-</figure>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210604172027.jpg" /></p>
 <h1 id="international-scholars-国外学术界">International Scholars (国外学术界)</h1>
 <p>麻省理工学院：Regina Barzilay, Tommi S. Jaakkola。</p>
 <p>卡内基梅隆大学：Jaime Carbonell, Justine Cassell, William Cohen（主要做信息抽取）, Chris Dyer（主要做机器翻译）, Scott Fahlman,（主要做只是表示和知识推理），Robert Frederking, Eduard Hovy, Alon Lavie, Lori Levin, Brian MacWhinney,（做的比较杂），Teruko Mitamura,（主要做QA），Tom Mitchell, Eric Nyberg，Kemal Oflazer, Carolyn Penstein Rosé,（主要做聊天），Roni Rosenfeld, Noah Smith, Eric Xing。</p>
@@ -2419,6 +2420,7 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
 <h1 id="references">References</h1>
 <ol type="1">
 <li>https://www.jiqizhixin.com/articles/2018-12-27-16</li>
+<li>https://zhuanlan.zhihu.com/p/361445123</li>
 </ol>
 ]]></content>
       <categories>
