@@ -226,7 +226,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/05/31/Machine%20Learning/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/06/12/Machine%20Learning/EM%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -240,7 +240,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/05/31/Machine%20Learning/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%B3%95/" class="post-title-link" itemprop="url">朴素贝叶斯法</a>
+            <a href="/2021/06/12/Machine%20Learning/EM%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">EM算法</a>
         </h2>
 
         <div class="post-meta">
@@ -250,7 +250,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-05-31 17:10:19" itemprop="dateCreated datePublished" datetime="2021-05-31T17:10:19+08:00">2021-05-31</time>
+              <time title="Created: 2021-06-12 10:06:41" itemprop="dateCreated datePublished" datetime="2021-06-12T10:06:41+08:00">2021-06-12</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -270,7 +270,7 @@
             </span>
 
           
-            <span id="/2021/05/31/Machine%20Learning/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%B3%95/" class="post-meta-item leancloud_visitors" data-flag-title="朴素贝叶斯法" title="Views">
+            <span id="/2021/06/12/Machine%20Learning/EM%E7%AE%97%E6%B3%95/" class="post-meta-item leancloud_visitors" data-flag-title="EM算法" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -285,8 +285,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2021/05/31/Machine%20Learning/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%B3%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/05/31/Machine%20Learning/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF%E6%B3%95/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/06/12/Machine%20Learning/EM%E7%AE%97%E6%B3%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/12/Machine%20Learning/EM%E7%AE%97%E6%B3%95/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -295,13 +295,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>1.2k</span>
+              <span>2.5k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>1 mins.</span>
+              <span>2 mins.</span>
             </span>
 
         </div>
@@ -313,150 +313,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <span id="more"></span>
-
-<h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>数据集：$D={(x_1, y_1), (x_2, y_2), …, (x_N, y_N)}$. 其中 $x\in X, X\subseteq \mathbf{R}^n$; $y\in Y, Y={c_1, C_2, …, C_K}$. </p>
-<p>当给定一个新的数据 $x$，它的分类是什么？<br>即求 $P(Y=c_k|X=x)=\frac{P(Y=c_k)P(X=x|Y=c_k)}{P(X=x)}=\frac{P(Y=c_k)P(X=x|Y=c_k)}{\sum_{k’}P(Y=c_{k’})P(X=x|Y=c_{k’})}$</p>
-<h1 id="问题建模"><a href="#问题建模" class="headerlink" title="问题建模"></a>问题建模</h1><p>为此对于上面的问题，最重要的是对先验概率 $P(Y=c_k), k=1,2,…,K$ 和条件概率 $P(X=x|Y=c_k)=P(X^{(1)}=x^{(1)},…,X^{(n)}=x^{(n)}|Y=c_k), k=1,2,…,K$ 进行建模，或者说对联合概率 $P(X,Y)=P(Y)P(X|Y)$ 进行建模. </p>
-<p>最终 $x$ 的分类为 $y=f(x)=\underset{c_k}{argmax}\frac{P(Y=c_k)P(X=x|Y=c_k)}{\sum_{k’}P(Y=c_{k’})P(X=x|Y=c_{k’})}$</p>
-<h1 id="条件独立性假设"><a href="#条件独立性假设" class="headerlink" title="条件独立性假设"></a>条件独立性假设</h1><p>假设 $x$ 的每一个维度都有 $V$ 个取值，那么所需要的参数个数是 $K\times V^n$, 为此，朴素贝叶斯对条件概率分布做了条件独立性假设，令<br>$P(X=x|Y=c_k)=P(X^{(1)}=x^{(1)},…,X^{(n)}=x^{(n)}|Y=c_k)=\prod_{j=1}^n P(X^{(j)}=x^{(j)}|Y=c_k)$，这样联合概率的参数个数变为了 $K\times n \times V$</p>
-<h1 id="参数估计"><a href="#参数估计" class="headerlink" title="参数估计"></a>参数估计</h1><h2 id="最大后验概率估计"><a href="#最大后验概率估计" class="headerlink" title="最大后验概率估计"></a>最大后验概率估计</h2><p>对于先验概率 $P(Y=c_k)=\frac{\sum_{i=1}^N I(y_i=c_k)}{N}, k=1,2,…,K$</p>
-<p>对于条件概率 $P(X^{(j)}=a_{jv}|Y=c_k)=\frac{\sum_{i=1}^N I(a_{jv}, y_i=c_k)}{\sum_{i=1}^N I(y_i=c_k)}, j=1,2,…,n; v=1,2,…,V; k=1,2,…,K$</p>
-<h2 id="贝叶斯估计"><a href="#贝叶斯估计" class="headerlink" title="贝叶斯估计"></a>贝叶斯估计</h2><p>对于先验概率 $P(Y=c_k)=\frac{\sum_{i=1}^N I(y_i=c_k)}{N}, k=1,2,…,K$</p>
-<p>对于条件概率 $P(X^{(j)}=a_{jv}|Y=c_k)=\frac{\sum_{i=1}^N I(a_{jv}, y_i=c_k)+\lambda}{\sum_{i=1}^N I(y_i=c_k)+V\lambda}, j=1,2,…,n; v=1,2,…,V; k=1,2,…,K$</p>
-<p>为每个特征维度 $x^{(j)}$ 的每种取值，预先存在 $\lambda$ 个样例，这样对那些没有出现过的样例的概率进行平滑，不至于概率为 0，当 $\lambda=1$ 时，称为拉普拉斯平滑</p>
-<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
-<li>《统计学习方法第2版》</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/05/31/Machine%20Learning/%E5%88%86%E7%B1%BB%E6%8C%87%E6%A0%87/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Jason Hao">
-      <meta itemprop="description" content="If you get a dream, You gonna protect it!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jason Hao's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/31/Machine%20Learning/%E5%88%86%E7%B1%BB%E6%8C%87%E6%A0%87/" class="post-title-link" itemprop="url">分类指标</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-05-31 11:46:06" itemprop="dateCreated datePublished" datetime="2021-05-31T11:46:06+08:00">2021-05-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-23 16:49:28" itemprop="dateModified" datetime="2021-06-23T16:49:28+08:00">2021-06-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/05/31/Machine%20Learning/%E5%88%86%E7%B1%BB%E6%8C%87%E6%A0%87/" class="post-meta-item leancloud_visitors" data-flag-title="分类指标" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/05/31/Machine%20Learning/%E5%88%86%E7%B1%BB%E6%8C%87%E6%A0%87/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/05/31/Machine%20Learning/%E5%88%86%E7%B1%BB%E6%8C%87%E6%A0%87/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              <span>1k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Predifinition"><a href="#Predifinition" class="headerlink" title="Predifinition"></a>Predifinition</h1><p>Suppose that there is a set $s$ to be predicted as class $c$. A data point in $s$ is can be predicted as positive (P, means belonging to $c$), or negative (N, means belonging to other classes)</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>Predicted P</th>
-<th>Predicgted N</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>P</td>
-<td>TP</td>
-<td>FN</td>
-</tr>
-<tr>
-<td>N</td>
-<td>FP</td>
-<td>TN</td>
-</tr>
-</tbody></table>
+          <h1 id="em-基本思想">EM 基本思想</h1>
+<p>已知观察数据，未知隐含数据和模型参数。在E步，我们所做的事情是固定模型参数的值，优化隐含数据的分布（猜想隐变量的数据），而在M步，我们所做的事情是固定隐含数据分布，优化模型参数的值（基于观测数据和猜测的隐变量数据最大化对数似然函数）
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/05/31/Machine%20Learning/%E5%88%86%E7%B1%BB%E6%8C%87%E6%A0%87/#more" rel="contents">
+              <a class="btn" href="/2021/06/12/Machine%20Learning/EM%E7%AE%97%E6%B3%95/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -480,7 +341,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/05/31/Probability/%E4%BF%A1%E6%81%AF%E8%AE%BA/">
+    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/06/10/NLP/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E7%90%86%E8%A7%A3%E4%BB%BB%E5%8A%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -494,7 +355,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/05/31/Probability/%E4%BF%A1%E6%81%AF%E8%AE%BA/" class="post-title-link" itemprop="url">信息论</a>
+            <a href="/2021/06/10/NLP/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E7%90%86%E8%A7%A3%E4%BB%BB%E5%8A%A1/" class="post-title-link" itemprop="url">自然语言理解任务</a>
         </h2>
 
         <div class="post-meta">
@@ -504,128 +365,14 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-05-31 10:56:29" itemprop="dateCreated datePublished" datetime="2021-05-31T10:56:29+08:00">2021-05-31</time>
+              <time title="Created: 2021-06-10 17:03:42" itemprop="dateCreated datePublished" datetime="2021-06-10T17:03:42+08:00">2021-06-10</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-06-23 16:49:28" itemprop="dateModified" datetime="2021-06-23T16:49:28+08:00">2021-06-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Probability/" itemprop="url" rel="index"><span itemprop="name">Probability</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/05/31/Probability/%E4%BF%A1%E6%81%AF%E8%AE%BA/" class="post-meta-item leancloud_visitors" data-flag-title="信息论" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/05/31/Probability/%E4%BF%A1%E6%81%AF%E8%AE%BA/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/05/31/Probability/%E4%BF%A1%E6%81%AF%E8%AE%BA/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              <span>1.3k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="自信息"><a href="#自信息" class="headerlink" title="自信息"></a>自信息</h1><p>量化事件的信息量<br>$I(X=x)=-log p(X=x)$</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/05/31/Probability/%E4%BF%A1%E6%81%AF%E8%AE%BA/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/05/21/NLP/word2vec%E8%AF%A6%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Jason Hao">
-      <meta itemprop="description" content="If you get a dream, You gonna protect it!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jason Hao's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/21/NLP/word2vec%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">word2vec详解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2021-05-21 11:20:34" itemprop="dateCreated datePublished" datetime="2021-05-21T11:20:34+08:00">2021-05-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-05-31 10:50:52" itemprop="dateModified" datetime="2021-05-31T10:50:52+08:00">2021-05-31</time>
+                <time title="Modified: 2021-06-15 11:56:30" itemprop="dateModified" datetime="2021-06-15T11:56:30+08:00">2021-06-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -638,7 +385,7 @@
             </span>
 
           
-            <span id="/2021/05/21/NLP/word2vec%E8%AF%A6%E8%A7%A3/" class="post-meta-item leancloud_visitors" data-flag-title="word2vec详解" title="Views">
+            <span id="/2021/06/10/NLP/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E7%90%86%E8%A7%A3%E4%BB%BB%E5%8A%A1/" class="post-meta-item leancloud_visitors" data-flag-title="自然语言理解任务" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -653,8 +400,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2021/05/21/NLP/word2vec%E8%AF%A6%E8%A7%A3/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/05/21/NLP/word2vec%E8%AF%A6%E8%A7%A3/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/06/10/NLP/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E7%90%86%E8%A7%A3%E4%BB%BB%E5%8A%A1/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/10/NLP/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E7%90%86%E8%A7%A3%E4%BB%BB%E5%8A%A1/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -663,13 +410,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>3.3k</span>
+              <span>710</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>3 mins.</span>
+              <span>1 mins.</span>
             </span>
 
         </div>
@@ -681,10 +428,238 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Word2vec的训练目标"><a href="#Word2vec的训练目标" class="headerlink" title="Word2vec的训练目标"></a>Word2vec的训练目标</h1><p>Word2vec都被认为是用于训练词向量表达的工具。但是词向量其实是一个完成了Word2vec网络模型的一个副产品。它的训练目标是训练一个三层神经网络，使得上下文相似的词汇的相似度变高。达到这个目标后，发现输入层到隐藏层的参数竟然奇迹般的能用于词的向量表示，并且还有些神奇的效果，比如 ”King“-“Men”+”Women”=”Queen”、 ”日本“-”东京“+”中国”=”北京”；或者 “北京”和”烤鸭”的相似性 &gt; “北京”和”早茶”的相似性。</p>
+          <p>9项GLUE任务 General Language Understanding Evaluation 包含了很多自然语言理解的任务。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/05/21/NLP/word2vec%E8%AF%A6%E8%A7%A3/#more" rel="contents">
+              <a class="btn" href="/2021/06/10/NLP/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E7%90%86%E8%A7%A3%E4%BB%BB%E5%8A%A1/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/06/10/NLP/Bert%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jason Hao">
+      <meta itemprop="description" content="If you get a dream, You gonna protect it!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jason Hao's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/10/NLP/Bert%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Bert笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-10 15:46:05" itemprop="dateCreated datePublished" datetime="2021-06-10T15:46:05+08:00">2021-06-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-15 11:56:11" itemprop="dateModified" datetime="2021-06-15T11:56:11+08:00">2021-06-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index"><span itemprop="name">NLP</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/06/10/NLP/Bert%E7%AC%94%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="Bert笔记" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/06/10/NLP/Bert%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/10/NLP/Bert%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>使用了Mask Language Model(MLM) 和 Next Sentence Prediction(NSP) 的多任务训练目标；</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/06/10/NLP/Bert%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/06/09/NLP/Transformer%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jason Hao">
+      <meta itemprop="description" content="If you get a dream, You gonna protect it!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jason Hao's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/06/09/NLP/Transformer%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Transformer笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-06-09 09:45:36" itemprop="dateCreated datePublished" datetime="2021-06-09T09:45:36+08:00">2021-06-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-06-17 11:36:11" itemprop="dateModified" datetime="2021-06-17T11:36:11+08:00">2021-06-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index"><span itemprop="name">NLP</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/06/09/NLP/Transformer%E7%AC%94%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="Transformer笔记" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/06/09/NLP/Transformer%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/06/09/NLP/Transformer%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>2k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Transformer 主包括两个部分，Encoder 和 Decoder，整体流程如下
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/06/09/NLP/Transformer%E7%AC%94%E8%AE%B0/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -707,7 +682,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -775,7 +750,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -788,7 +763,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -835,12 +810,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:33</span>
 </div>
 
 

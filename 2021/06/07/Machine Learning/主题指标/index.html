@@ -325,36 +325,47 @@
         <p>通常 Topic Model 对文本数据集建模，模型对训练数据集拟合的程度自然而然的使用来作为衡量模型好坏的指标，但是这样学出来的主题通常与人对主题的理解有较大差异。由此提出了一些用于衡量 Topic 质量的指标，主要分为两种（1）intrinsic measures；（2）extrinsic measures</p>
 <span id="more"></span>
 <p>在这篇最新的 <a target="_blank" rel="noopener" href="https://svn.aksw.org/papers/2015/WSDM_Topic_Evaluation/public.pdf">paper</a> 中，主题质量的衡量分为四个步骤：</p>
-<ol>
+<ol type="1">
 <li>Segmentation of Word Subsets 某个主题内词子集的划分</li>
 <li>Probability Estimation 基本的概率值的计算</li>
 <li>Confirmation Measure 支持度计算</li>
 <li>Aggregation 整合所有主题上的主题指标</li>
 </ol>
-<h1 id="1-Segmentation-of-Word-Subsets"><a href="#1-Segmentation-of-Word-Subsets" class="headerlink" title="1 Segmentation of Word Subsets"></a>1 Segmentation of Word Subsets</h1><p>一个词集合 $W$ 的一致性（Coherence）是用于描述主题内一个词子集被其他词子集支持的程度。本步骤主要的任务是构造一个词子集对集合 $S$，数学表示为 $S={(W’, W^*)}, W’\cap W^* = \emptyset，W’\subseteq W, W^* \subseteq W$ </p>
-<h1 id="2-Probability-Estimation"><a href="#2-Probability-Estimation" class="headerlink" title="2 Probability Estimation"></a>2 Probability Estimation</h1><p>考虑数据单元的粒度大小，对于词有四个不同的概率计算方法</p>
-<p>$P_{bd}$: Boolean Document Estimation. 在文档级别上对出现的词只计数一次</p>
-<p>$P_{bp}$: Boolean Paragraph Estimation. 在段落级别上对出现的词只计数一次</p>
-<p>$P_{bs}$: Boolean Sentence Estimation. 在句子级别上对出现的词只计数一次</p>
-<p>$P_{sw}$: Boolean Sliding Window Estimation. 在窗口（窗口大小可自定义）级别上对出现的词只计数一次</p>
-<p>概率 $P(w_i, w_j)=\frac{Count(w_i,w_j)}{|D|}$</p>
-<p>概率 $P(w_i)=\frac{Count(w_i)}{|D|}$</p>
-<p>其中 $Count(w_i,w_j)$ 是同时出现 $w_i$ 和 $w_j$ 的数据单元个数，$Count(w_i)$ 是包含 $w_i$ 的数据单元的数量，$|D|$ 是数据集中数据单元的数量。当数据单元的粒度为文档的时候，$|D|$ 就是总的文档的数量；当粒度为 Window 的时候，$|D|$ 就是总的窗口的数量</p>
-<h1 id="3-Confirmation-Measure"><a href="#3-Confirmation-Measure" class="headerlink" title="3 Confirmation Measure"></a>3 Confirmation Measure</h1><p>这个步骤就是真正定义 topic score 衡量主题质量的方法了，各种 Topic Coherence 计算方法在这个步骤上不同，基于上一步中的概率公式来计算</p>
-<h2 id="UMass-Mimno11a"><a href="#UMass-Mimno11a" class="headerlink" title="UMass Mimno11a"></a>UMass <a href="">Mimno11a</a></h2><p>$score(w_i,w_j)=log\frac{P_{bd}(w_i,w_j)+\epsilon}{P_{bd}(w_j)}, j&lt;i$</p>
-<h2 id="UCI-Newman10a"><a href="#UCI-Newman10a" class="headerlink" title="UCI Newman10a"></a>UCI <a href="">Newman10a</a></h2><p>$score(w_i,w_j)=log\frac{P_{sw}(w_i,w_j)+\epsilon}{P_{sw}(w_i)P_{sw}(w_j)}, j&lt;i$</p>
-<h2 id="NPMI"><a href="#NPMI" class="headerlink" title="NPMI"></a>NPMI</h2><p>$score(w_i,w_j)=\frac{log\frac{P_{sw}(w_i,w_j)+\epsilon}{P_{sw}(w_i)P_{sw}(w_j)}}{-log(P_{sw}(w_i,w_j))+\epsilon}, j&lt;i$</p>
-<h2 id="Word2vec-based-Similarity-Score"><a href="#Word2vec-based-Similarity-Score" class="headerlink" title="Word2vec based Similarity Score"></a>Word2vec based Similarity Score</h2><p>$score(w_i,w_j) = cosine(V_{w_i}, V_{w_j}), j&lt;i$</p>
-<h2 id="TF-IDF-based-improvement-for-UMass"><a href="#TF-IDF-based-improvement-for-UMass" class="headerlink" title="TF-IDF based improvement for UMass"></a>TF-IDF based improvement for UMass</h2><p>$score(w_i,w_j) = log(\frac{\sum_{d=1}^{|D|} \left(tfidf(d,w_i)\times tfidf(d,w_j)+\epsilon\right)}{\sum_{d=1}^{|D|} tfidf(d,w_j)}), j&lt;i$</p>
-<h2 id="TBuckets"><a href="#TBuckets" class="headerlink" title="TBuckets"></a>TBuckets</h2><p><a target="_blank" rel="noopener" href="https://www.aclweb.org/anthology/E17-2070/">Reference Paper</a></p>
-<h1 id="4-Aggregation"><a href="#4-Aggregation" class="headerlink" title="4 Aggregation"></a>4 Aggregation</h1><p>上面的三个步骤是针对一个主题的计算方法，第四步是为了整合多个 Topic 上的得分。比如和取多个主题得分的均值，中位数或者几何中心等等</p>
-<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
+<h1 id="segmentation-of-word-subsets">1 Segmentation of Word Subsets</h1>
+<p>一个词集合 <span class="math inline">\(W\)</span> 的一致性（Coherence）是用于描述主题内一个词子集被其他词子集支持的程度。本步骤主要的任务是构造一个词子集对集合 <span class="math inline">\(S\)</span>，数学表示为 <span class="math inline">\(S=\{(W&#39;, W^*)\}, W&#39;\cap W^* = \emptyset，W&#39;\subseteq W, W^* \subseteq W\)</span></p>
+<h1 id="probability-estimation">2 Probability Estimation</h1>
+<p>考虑数据单元的粒度大小，对于词有四个不同的概率计算方法</p>
+<p><span class="math inline">\(P_{bd}\)</span>: Boolean Document Estimation. 在文档级别上对出现的词只计数一次</p>
+<p><span class="math inline">\(P_{bp}\)</span>: Boolean Paragraph Estimation. 在段落级别上对出现的词只计数一次</p>
+<p><span class="math inline">\(P_{bs}\)</span>: Boolean Sentence Estimation. 在句子级别上对出现的词只计数一次</p>
+<p><span class="math inline">\(P_{sw}\)</span>: Boolean Sliding Window Estimation. 在窗口（窗口大小可自定义）级别上对出现的词只计数一次</p>
+<p>概率 <span class="math inline">\(P(w_i, w_j)=\frac{Count(w_i,w_j)}{|D|}\)</span></p>
+<p>概率 <span class="math inline">\(P(w_i)=\frac{Count(w_i)}{|D|}\)</span></p>
+<p>其中 <span class="math inline">\(Count(w_i,w_j)\)</span> 是同时出现 <span class="math inline">\(w_i\)</span> 和 <span class="math inline">\(w_j\)</span> 的数据单元个数，<span class="math inline">\(Count(w_i)\)</span> 是包含 <span class="math inline">\(w_i\)</span> 的数据单元的数量，<span class="math inline">\(|D|\)</span> 是数据集中数据单元的数量。当数据单元的粒度为文档的时候，<span class="math inline">\(|D|\)</span> 就是总的文档的数量；当粒度为 Window 的时候，<span class="math inline">\(|D|\)</span> 就是总的窗口的数量</p>
+<h1 id="confirmation-measure">3 Confirmation Measure</h1>
+<p>这个步骤就是真正定义 topic score 衡量主题质量的方法了，各种 Topic Coherence 计算方法在这个步骤上不同，基于上一步中的概率公式来计算</p>
+<h2 id="umass-mimno11a">UMass <a href="">Mimno11a</a></h2>
+<p><span class="math inline">\(score(w_i,w_j)=log\frac{P_{bd}(w_i,w_j)+\epsilon}{P_{bd}(w_j)}, j&lt;i\)</span></p>
+<h2 id="uci-newman10a">UCI <a href="">Newman10a</a></h2>
+<p><span class="math inline">\(score(w_i,w_j)=log\frac{P_{sw}(w_i,w_j)+\epsilon}{P_{sw}(w_i)P_{sw}(w_j)}, j&lt;i\)</span></p>
+<h2 id="npmi">NPMI</h2>
+<p><span class="math inline">\(score(w_i,w_j)=\frac{log\frac{P_{sw}(w_i,w_j)+\epsilon}{P_{sw}(w_i)P_{sw}(w_j)}}{-log(P_{sw}(w_i,w_j))+\epsilon}, j&lt;i\)</span></p>
+<h2 id="word2vec-based-similarity-score">Word2vec based Similarity Score</h2>
+<p><span class="math inline">\(score(w_i,w_j) = cosine(V_{w_i}, V_{w_j}), j&lt;i\)</span></p>
+<h2 id="tf-idf-based-improvement-for-umass">TF-IDF based improvement for UMass</h2>
+<p><span class="math inline">\(score(w_i,w_j) = log(\frac{\sum_{d=1}^{|D|} \left(tfidf(d,w_i)\times tfidf(d,w_j)+\epsilon\right)}{\sum_{d=1}^{|D|} tfidf(d,w_j)}), j&lt;i\)</span></p>
+<h2 id="tbuckets">TBuckets</h2>
+<p><a target="_blank" rel="noopener" href="https://www.aclweb.org/anthology/E17-2070/">Reference Paper</a></p>
+<h1 id="aggregation">4 Aggregation</h1>
+<p>上面的三个步骤是针对一个主题的计算方法，第四步是为了整合多个 Topic 上的得分。比如和取多个主题得分的均值，中位数或者几何中心等等</p>
+<h1 id="参考-references">参考 (References)</h1>
+<ol type="1">
 <li><a target="_blank" rel="noopener" href="https://www.aclweb.org/anthology/D12-1087.pdf">Exploring Topic Coherence over many models and many topics 2012</a></li>
 <li><a target="_blank" rel="noopener" href="https://svn.aksw.org/papers/2015/WSDM_Topic_Evaluation/public.pdf">Exploring the Space of Topic Coherence Measures 2015</a></li>
 <li><a target="_blank" rel="noopener" href="https://radimrehurek.com/gensim/models/coherencemodel.html">Gensim Implements of Topic Coherence Measurements</a></li>
-<li><a target="_blank" rel="noopener" href="https://labs.imaginea.com/how-to-measure-topic-coherence/">https://labs.imaginea.com/how-to-measure-topic-coherence/</a></li>
-<li><a target="_blank" rel="noopener" href="http://qpleple.com/topic-coherence-to-evaluate-topic-models/">http://qpleple.com/topic-coherence-to-evaluate-topic-models/</a></li>
-<li><a target="_blank" rel="noopener" href="http://qpleple.com/bib/#Newman10a">http://qpleple.com/bib/#Newman10a</a></li>
+<li>https://labs.imaginea.com/how-to-measure-topic-coherence/</li>
+<li>http://qpleple.com/topic-coherence-to-evaluate-topic-models/</li>
+<li>http://qpleple.com/bib/#Newman10a</li>
 </ol>
 
     </div>
@@ -454,7 +465,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Segmentation-of-Word-Subsets"><span class="nav-number">1.</span> <span class="nav-text">1 Segmentation of Word Subsets</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Probability-Estimation"><span class="nav-number">2.</span> <span class="nav-text">2 Probability Estimation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Confirmation-Measure"><span class="nav-number">3.</span> <span class="nav-text">3 Confirmation Measure</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UMass-Mimno11a"><span class="nav-number">3.1.</span> <span class="nav-text">UMass Mimno11a</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UCI-Newman10a"><span class="nav-number">3.2.</span> <span class="nav-text">UCI Newman10a</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NPMI"><span class="nav-number">3.3.</span> <span class="nav-text">NPMI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Word2vec-based-Similarity-Score"><span class="nav-number">3.4.</span> <span class="nav-text">Word2vec based Similarity Score</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TF-IDF-based-improvement-for-UMass"><span class="nav-number">3.5.</span> <span class="nav-text">TF-IDF based improvement for UMass</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TBuckets"><span class="nav-number">3.6.</span> <span class="nav-text">TBuckets</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Aggregation"><span class="nav-number">4.</span> <span class="nav-text">4 Aggregation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">5.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#segmentation-of-word-subsets"><span class="nav-number">1.</span> <span class="nav-text">1 Segmentation of Word Subsets</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#probability-estimation"><span class="nav-number">2.</span> <span class="nav-text">2 Probability Estimation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#confirmation-measure"><span class="nav-number">3.</span> <span class="nav-text">3 Confirmation Measure</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#umass-mimno11a"><span class="nav-number">3.1.</span> <span class="nav-text">UMass Mimno11a</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#uci-newman10a"><span class="nav-number">3.2.</span> <span class="nav-text">UCI Newman10a</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npmi"><span class="nav-number">3.3.</span> <span class="nav-text">NPMI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#word2vec-based-similarity-score"><span class="nav-number">3.4.</span> <span class="nav-text">Word2vec based Similarity Score</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tf-idf-based-improvement-for-umass"><span class="nav-number">3.5.</span> <span class="nav-text">TF-IDF based improvement for UMass</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tbuckets"><span class="nav-number">3.6.</span> <span class="nav-text">TBuckets</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#aggregation"><span class="nav-number">4.</span> <span class="nav-text">4 Aggregation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-references"><span class="nav-number">5.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -470,7 +481,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -483,7 +494,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -530,12 +541,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:33</span>
 </div>
 
 

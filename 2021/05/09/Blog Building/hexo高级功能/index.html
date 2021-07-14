@@ -23,12 +23,12 @@
 
 
 
-  <meta name="description" content="站内搜索安装hexo-generator-searchdb 1npm install hexo-generator-searchdb --save">
+  <meta name="description" content="站内搜索 安装hexo-generator-searchdb 1npm install hexo-generator-searchdb --save">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo高级功能">
 <meta property="og:url" content="https://jason-huanghao.github.io/2021/05/09/Blog%20Building/hexo%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD/index.html">
 <meta property="og:site_name" content="Jason Hao&#39;s Blog">
-<meta property="og:description" content="站内搜索安装hexo-generator-searchdb 1npm install hexo-generator-searchdb --save">
+<meta property="og:description" content="站内搜索 安装hexo-generator-searchdb 1npm install hexo-generator-searchdb --save">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221613.png">
 <meta property="og:image" content="https://leezhiy.github.io/images/daovoice-get-appid.png">
@@ -333,223 +333,189 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="站内搜索"><a href="#站内搜索" class="headerlink" title="站内搜索"></a>站内搜索</h1><p>安装hexo-generator-searchdb</p>
+        <h1 id="站内搜索">站内搜索</h1>
+<p>安装hexo-generator-searchdb</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
 <p>在 hexo/themes/next/_config.yml 中修改配置<code>local_search</code>：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">local_search:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>		<span class="comment"># 开启站内搜索</span></span><br><span class="line">  <span class="attr">trigger:</span> <span class="string">auto</span>		<span class="comment"># 自动和手动触发</span></span><br><span class="line">  <span class="attr">top_n_per_article:</span> <span class="number">3</span>  <span class="comment"># 每篇文章显示的搜索结果数量</span></span><br><span class="line">  <span class="attr">unescape:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Auto-category"><a href="#Auto-category" class="headerlink" title="Auto category"></a>Auto category</h1><p>下载 Auto Category</p>
+<h1 id="auto-category">Auto category</h1>
+<p>下载 Auto Category</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-auto-category <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
-
 <p>在 hexo/_config.yml 文件后添加下面的语句</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Generate categories from directory-tree</span></span><br><span class="line"><span class="comment"># Dependencies: https://github.com/xu-song/hexo-auto-category</span></span><br><span class="line"><span class="comment"># depth: the max_depth of directory-tree you want to generate, should &gt; 0</span></span><br><span class="line"><span class="attr">auto_category:</span></span><br><span class="line"> <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line"> <span class="attr">depth:</span> </span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Hexo-Next-DaoVoice-实现在线联系-页面不显示问题未解决！暂时不用该功能"><a href="#Hexo-Next-DaoVoice-实现在线联系-页面不显示问题未解决！暂时不用该功能" class="headerlink" title="Hexo Next DaoVoice 实现在线联系 (页面不显示问题未解决！暂时不用该功能)"></a>Hexo Next DaoVoice 实现在线联系 (页面不显示问题未解决！暂时不用该功能)</h1><p><strong>DaoVoice 注册</strong></p>
-<p><a target="_blank" rel="noopener" href="http://dashboard.daovoice.io/">register link</a> </p>
-<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p><strong>head.swig 修改</strong> </p>
+<h1 id="hexo-next-daovoice-实现在线联系-页面不显示问题未解决暂时不用该功能">Hexo Next DaoVoice 实现在线联系 (页面不显示问题未解决！暂时不用该功能)</h1>
+<p><strong>DaoVoice 注册</strong></p>
+<p><a target="_blank" rel="noopener" href="http://dashboard.daovoice.io">register link</a></p>
+<h2 id="方法一">方法一</h2>
+<p><strong>head.swig 修改</strong></p>
 <p>在文件 hexo/themes/next/layout/_partials/head/head.swig 中添加以下语句</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.daovoice %&#125;</span><br><span class="line"> &lt;script&gt;(function(i,s,o,g,r,a,m)&#123;i[&quot;DaoVoiceObject&quot;]=r;i[r]=i[r]||function()&#123;(i[r].q=i[r].q||[]).push(arguments)&#125;,i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset=&quot;utf-8&quot;;m.parentNode.insertBefore(a,m)&#125;)(window,document,&quot;script&quot;,(&#x27;https:&#x27; == document.location.protocol ? &#x27;https:&#x27; : &#x27;http:&#x27;) + &quot;//widget.daovoice.io/widget/b6dbddb6.js&quot;,&quot;daovoice&quot;)</span><br><span class="line"> daovoice(&#x27;init&#x27;, &#123;</span><br><span class="line">  app_id: &quot;APP ID&quot;</span><br><span class="line">&#125;);</span><br><span class="line">daovoice(&#x27;update&#x27;);</span><br><span class="line"> &lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-
 <p>其中 “APP ID” 使用你在 DaoVoice 中的 “app_id”</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221613.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221613.png" /></p>
 <p><strong>config.yml 配置文件修改</strong></p>
 <p>在文件 hexo/themes/next/_config.yml 中添加以下语句</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">daovoice: true</span><br><span class="line">daovoice_app_id: f32df35e</span><br></pre></td></tr></table></figure>
-
 <p><strong>修改聊天图标等设置</strong></p>
 <figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">应用设置 -&gt; 聊天设置 -&gt; </span><br></pre></td></tr></table></figure>
-
 <p><strong>部署 DaoVoice</strong></p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
-
 <p><strong>DaoVoice 显示接入成功</strong></p>
 <p>![注册</p>
 <p>首先需要在 DaoVoice 注册个账号，<a target="_blank" rel="noopener" href="http://dashboard.daovoice.io/get-started?invite_code=4e6b4c7f">点击注册</a></p>
 <p>注册成功后，进入后台控制台，进入到 应用设置–&gt; 安装到网站 页面，可以得到一个 app_id：</p>
-<p><img src="https://leezhiy.github.io/images/daovoice-get-appid.png" alt="获取APPID"></p>
-<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p><strong>利用 NexT 主题的 Injects 功能管理 DaoVoice 插件</strong></p>
+<figure>
+<img src="https://leezhiy.github.io/images/daovoice-get-appid.png" alt="获取APPID" /><figcaption aria-hidden="true">获取APPID</figcaption>
+</figure>
+<h2 id="方法二">方法二</h2>
+<p><strong>利用 NexT 主题的 Injects 功能管理 DaoVoice 插件</strong></p>
 <p>在 NexT 使用过程中，我们免不了要安装一些 NexT 暂时未集成的插件，但我们又不想修改主题的源码，这时就需要使用 Next 的 <code>theme-inject</code> 功能，它通过注入代码的方式提供多个注入点实现定制内容。 Injects 具体的定义见 <a target="_blank" rel="noopener" href="https://theme-next.org/docs/advanced-settings">NexT 文档</a></p>
 <p><strong>修改配置文件</strong></p>
 <p>首先，打开 主题配置文件 ，在最底部添加</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">script</span></span><br><span class="line"><span class="comment"># DaoVoice</span></span><br><span class="line"><span class="attr">daovoice:</span></span><br><span class="line">  <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">app_id:</span> <span class="comment"># 输入你自己的 app_id</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>注入布局</strong></p>
 <p>第二步，我们在 Hexo 的 <code>scripts</code> 创建一个 js 文件 plugins.js（用来管理需要修改代码的第三方插件），添加以下内容。只要是这里面的脚本，Hexo 运行时会执行它。</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">&#x27;theme_inject&#x27;</span>, <span class="function"><span class="keyword">function</span> <span class="params">(injects)</span></span> &#123;</span><br><span class="line">    // hexo.theme.<span class="built_in">config</span>.daovoice 就是上面配置的值，我们将配置参数传递给 daovoice.swig</span><br><span class="line">    injects.head.file(<span class="string">&#x27;daovoice&#x27;</span>, <span class="string">&#x27;source/_data/DaoVoice.swig&#x27;</span>, &#123;daovoice: hexo.theme.<span class="built_in">config</span>.daovoice&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
 <p>最后，我们创建 <code>Hexo/source/_data/DaoVoice.swig</code> 文件，添加以下内容。</p>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">if</span></span> daovoice.enabled %&#125;</span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml">  (function(i,s,o,g,r,a,m)&#123;i[&quot;DaoVoiceObject&quot;]=r;i[r]=i[r]||function()&#123;(i[r].q=i[r].q||[]).push(arguments)&#125;,i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset=&quot;utf-8&quot;;m.parentNode.insertBefore(a,m)&#125;)(window,document,&quot;script&quot;,(&#x27;https:&#x27; == document.location.protocol ? &#x27;https:&#x27; : &#x27;http:&#x27;) + &quot;//widget.daovoice.io/widget/0f81ff2f.js&quot;,&quot;daovoice&quot;)</span></span><br><span class="line"><span class="xml">  daovoice(&#x27;init&#x27;, &#123;</span></span><br><span class="line"><span class="xml">    app_id: &#x27;</span><span class="template-variable">&#123;&#123;daovoice.app_id&#125;&#125;</span><span class="xml">&#x27;,   // 必填，您的 APP 标识</span></span><br><span class="line"><span class="xml">  &#125;);</span></span><br><span class="line"><span class="xml">  daovoice(&#x27;update&#x27;);</span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">endif</span></span> %&#125;</span></span><br></pre></td></tr></table></figure>
-
 <p>运行 <code>hexo s</code> , 发现右下角已经出现如图下所示图标，DaoVoice 已经接入成功。</p>
 <p><strong>安装 hexo-cake-moon-menu 插件，并添加按钮接管 DaoVoice</strong></p>
 <p>安装 hexo-cake-moon-menu 插件, 在 Hexo 目录打开 git bash 并输入命令：</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">script</span></span><br><span class="line">$ npm install hexo-cake-moon-menu <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
-
 <p>打开 站点配置文件 ，在最底部添加</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">script</span></span><br><span class="line"><span class="attr">moon_menu:</span></span><br><span class="line">  <span class="attr">back2top:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="string">ture</span></span><br><span class="line">    <span class="attr">icon:</span> <span class="string">fa</span> <span class="string">fa-chevron-up</span></span><br><span class="line">    <span class="attr">func:</span> <span class="string">back2top</span></span><br><span class="line">    <span class="attr">order:</span> <span class="number">-1</span></span><br><span class="line">  <span class="attr">back2bottom:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">icon:</span> <span class="string">fa</span> <span class="string">fa-chevron-down</span></span><br><span class="line">    <span class="attr">func:</span> <span class="string">back2bottom</span></span><br><span class="line">    <span class="attr">order:</span> <span class="number">-2</span></span><br></pre></td></tr></table></figure>
-
-
-<h1 id="Next-Valine-评论系统"><a href="#Next-Valine-评论系统" class="headerlink" title="Next Valine 评论系统"></a>Next Valine 评论系统</h1><p><strong>保证 next 版本最新</strong></p>
+<h1 id="next-valine-评论系统">Next Valine 评论系统</h1>
+<p><strong>保证 next 版本最新</strong></p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd hexo <span class="comment"># 进入你的blog文件根部</span></span><br><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/theme-next/</span>hexo-theme-<span class="keyword">next</span> themes/<span class="keyword">next</span></span><br><span class="line">sudo rm -rf .<span class="regexp">/themes/</span><span class="keyword">next</span>/.git <span class="comment"># 删除.git为了主题能同步到github</span></span><br><span class="line">sudo rm -rf .<span class="regexp">/themes/</span><span class="keyword">next</span>/.gitignore <span class="comment"># 删除.gitignore为了主题完整同步到github</span></span><br></pre></td></tr></table></figure>
-
-
-
 <p><strong>注册 LeanCloud</strong></p>
-<p><a target="_blank" rel="noopener" href="https://leancloud.cn/dashboard/login.html#/signin">LeanCloud官网登录入口</a> </p>
+<p><a target="_blank" rel="noopener" href="https://leancloud.cn/dashboard/login.html#/signin">LeanCloud官网登录入口</a></p>
 <p>创建应用，为了获取 AppID 和 AppKey</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221719.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221719.png" /></p>
 <p>填写 app 信息</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221726.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221726.png" /></p>
 <p>记录 AppID 和 AppKey</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221735.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221735.png" /></p>
 <p><strong>Next 主题配置 valine 的配置</strong></p>
 <p>打开 hexo/themes/next/_config.yml，找到comments栏目并开启valine。</p>
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">comments:</span></span><br><span class="line"><span class="symbol">  active:</span> valine</span><br></pre></td></tr></table></figure>
-
 <p>在 hexo/themes/next/_config.yml 搜索 valine，填入appid 和 appkey</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Valine.</span></span><br><span class="line"><span class="comment"># You can get your appid and appkey from https://leancloud.cn</span></span><br><span class="line"><span class="comment"># more info please open https://valine.js.org</span></span><br><span class="line"><span class="attr">valine:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span> <span class="comment"># 是否开启</span></span><br><span class="line">  <span class="attr">appid:</span> <span class="string">STLjflsxBIAFNnGAcBVgq6Vu-gzGzoHsz</span> <span class="comment"># 上一步获取的 App ID</span></span><br><span class="line">  <span class="attr">appkey:</span> <span class="string">6zO0wFSDgLF6LulPGcifgFOW</span> <span class="comment"># 上一步获取的 App Key</span></span><br><span class="line">  <span class="attr">notify:</span> <span class="literal">false</span> <span class="comment"># 新留言是否需要通知 https://github.com/xCss/Valine/wiki</span></span><br><span class="line">  <span class="attr">verify:</span> <span class="literal">false</span> <span class="comment"># 是否需要验证，验证比较反人类建议false关闭</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">请在此输入您的留言</span> <span class="comment"># 默认留言框内的文字</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span> <span class="comment"># 默认头像</span></span><br><span class="line">  <span class="attr">guest_info:</span> <span class="string">nick,mail</span> <span class="comment"># 默认留言框的头部需要访问者输入的信息</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span> <span class="comment"># pagination size #默认单页的留言条数</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>评论管理</strong></p>
 <p>进入 leancloud 官网，找到 <code>控制台</code>-&gt;<code>存储</code>-&gt;<code>commet</code> 中进行管理</p>
-<p><strong>评论时报错</strong> </p>
+<p><strong>评论时报错</strong></p>
 <p>在Leancloud -&gt; 设置 -&gt; 安全中心 -&gt; Web 安全域名 把你的域名 (就是你的博客主页地址) 加进去</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221809.png"></p>
-<h1 id="Hexo-Admin-使用"><a href="#Hexo-Admin-使用" class="headerlink" title="Hexo Admin 使用"></a>Hexo Admin 使用</h1><p><strong>安装 Hexo Admin</strong> </p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221809.png" /></p>
+<h1 id="hexo-admin-使用">Hexo Admin 使用</h1>
+<p><strong>安装 Hexo Admin</strong></p>
 <p>进入 Hexo 根目录</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br><span class="line">cd ~/</span><br><span class="line">hexo init <span class="keyword">my</span>-blog</span><br><span class="line">cd <span class="keyword">my</span>-blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-admin</span><br><span class="line">hexo server -d</span><br><span class="line">open http:<span class="regexp">//</span>localhost:<span class="number">4000</span><span class="regexp">/admin/</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>安装报错</strong></p>
 <figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">npm</span> install --save hexo-admin</span><br><span class="line"><span class="built_in">npm</span> WARN deprecated minimatch@<span class="number">2.0</span>.<span class="number">10</span>: Please update <span class="keyword">to</span> minimatch <span class="number">3.0</span>.<span class="number">2</span> <span class="keyword">or</span> higher <span class="keyword">to</span> avoid a <span class="built_in">RegExp</span> DoS issue</span><br><span class="line">hexo-site@<span class="number">0.0</span>.<span class="number">0</span> E:<span class="string">\git\linjin101.github.io</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">npm</span> WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@^<span class="number">1.0</span>.<span class="number">0</span> (node_modules<span class="string">\chokidar\node_modules\fsevents):</span></span><br><span class="line"><span class="built_in">npm</span> WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="keyword">for</span> fsevents@<span class="number">1.1</span>.<span class="number">1</span>: wanted &#123;<span class="string">&quot;os&quot;</span>:<span class="string">&quot;darwin&quot;</span>,<span class="string">&quot;arch&quot;</span>:<span class="string">&quot;any&quot;</span>&#125; (current: &#123;<span class="string">&quot;os&quot;</span>:<span class="string">&quot;win32&quot;</span>,<span class="string">&quot;arch&quot;</span>:<span class="string">&quot;x64&quot;</span>&#125;)</span><br></pre></td></tr></table></figure>
-
 <p><strong>解决方法</strong></p>
 <figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> install minimatch@<span class="string">&quot;3.0.2&quot;</span>  </span><br><span class="line"><span class="built_in">npm</span> update -d</span><br></pre></td></tr></table></figure>
-
 <p>升级后依旧报错,重装:</p>
 <figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> update minimatch</span><br><span class="line"><span class="built_in">npm</span> -v minimatch</span><br><span class="line"><span class="built_in">npm</span> install -g <span class="built_in">npm</span>@<span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>访问 Hexo Admin</strong> </p>
-<p> 访问 <a target="_blank" rel="noopener" href="http://localhost:4000/admin/">http://localhost:4000/admin/</a> </p>
-<p><strong>hexo deploy 按钮 报错解决</strong> <a target="_blank" rel="noopener" href="https://github.com/jaredly/hexo-admin/issues/70">issue</a> </p>
+<p><strong>访问 Hexo Admin</strong></p>
+<p>访问 http://localhost:4000/admin/</p>
+<p><strong>hexo deploy 按钮 报错解决</strong> <a target="_blank" rel="noopener" href="https://github.com/jaredly/hexo-admin/issues/70">issue</a></p>
 <ul>
 <li><p>打开 console，进入 hexo 目录，执行语句</p>
 <figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch hexo-deploy.sh<span class="comment">; chmod a+x hexo-deploy.sh</span></span><br></pre></td></tr></table></figure>
-
 <p>然后 hexo 下自动创建了一个文件 hexo-deploy.sh</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221827.png"></p>
-</li>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221827.png" /></p></li>
 <li><p>打开 hexo-deploy.sh，输入</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env sh</span></span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></li>
 <li><p>编辑 _config.yml，在文件末尾添加</p>
 <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">admin:</span><br><span class="line">  <span class="keyword">deploy</span>Command: &#x27;<span class="string">./hexo-deploy.sh</span>&#x27;</span><br></pre></td></tr></table></figure></li>
 <li><p>重新开启 server，进入 Hexo Admin</p>
 <figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo <span class="keyword">server</span> -d</span><br></pre></td></tr></table></figure></li>
-<li><p>然后可以😊的进行 deploy 了，✌️✌️✌️</p>
-</li>
+<li><p>然后可以😊的进行 deploy 了，✌️✌️✌️</p></li>
 </ul>
-<h1 id="Hexo博客搭建之SEO搜索优化"><a href="#Hexo博客搭建之SEO搜索优化" class="headerlink" title="Hexo博客搭建之SEO搜索优化"></a>Hexo博客搭建之SEO搜索优化</h1><p><strong>启用sitemap功能</strong></p>
+<h1 id="hexo博客搭建之seo搜索优化">Hexo博客搭建之SEO搜索优化</h1>
+<p><strong>启用sitemap功能</strong></p>
 <p>为了让博文被google或百度检索，需要使用hexo的sitemap功能。修改themes/next/_config.yml：</p>
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">menu:</span></span><br><span class="line"><span class="symbol">  home:</span> / || home</span><br><span class="line">  <span class="meta">#about: /about/ || user</span></span><br><span class="line"><span class="symbol">  tags:</span> <span class="meta-keyword">/tags/</span> || tags</span><br><span class="line"><span class="symbol">  categories:</span> <span class="meta-keyword">/categories/</span> || th</span><br><span class="line"><span class="symbol">  archives:</span> <span class="meta-keyword">/archives/</span> || archive</span><br><span class="line">  <span class="meta">#schedule: /schedule/ || calendar</span></span><br><span class="line"><span class="symbol">  sitemap:</span> /sitemap.xml || sitemap</span><br><span class="line">  <span class="meta">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>安装插件</strong></p>
 <p>切换到hexo根目录下，安装搜索引擎插件，插件根据自己的需要安装其中一个或者都安装：</p>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install </span>hexo-generator-sitemap --save</span><br><span class="line">npm <span class="keyword">install </span>hexo-generator-<span class="keyword">baidu-sitemap </span>--save</span><br></pre></td></tr></table></figure>
-
 <p>对于 next 主题，直接执行如下命令即可访问站点地图：</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo g</span></span><br></pre></td></tr></table></figure>
-
 <p>此时，在public的静态文件根目录中会多出一个sitemap.xml文件，表示谷歌检索的sitemap安装成功。</p>
-<h2 id="谷歌检索"><a href="#谷歌检索" class="headerlink" title="谷歌检索"></a><strong>谷歌检索</strong></h2><p>这块在<a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/third-party-services.html#google-webmaster-tools">官方文档</a>里面有提到（官方文档其实很容易上手，跟着官方走还是很容易的，有些地方可能不够详细，但是网上关于 next 的配置博客也不少，如<a target="_blank" rel="noopener" href="http://fionat.github.io/blog/2013/10/23/sitemap/">｜Hexo 优化｜如何向 google 提交 sitemap（详细）</a>），这里给出傻瓜式详细步骤：</p>
-<ol>
+<h2 id="谷歌检索"><strong>谷歌检索</strong></h2>
+<p>这块在<a target="_blank" rel="noopener" href="http://theme-next.iissnan.com/third-party-services.html#google-webmaster-tools">官方文档</a>里面有提到（官方文档其实很容易上手，跟着官方走还是很容易的，有些地方可能不够详细，但是网上关于 next 的配置博客也不少，如<a target="_blank" rel="noopener" href="http://fionat.github.io/blog/2013/10/23/sitemap/">｜Hexo 优化｜如何向 google 提交 sitemap（详细）</a>），这里给出傻瓜式详细步骤：</p>
+<ol type="1">
 <li>在谷歌搜索栏中输入如下信息进行检索：</li>
 </ol>
 <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">site:</span> xxx.github.io</span><br></pre></td></tr></table></figure>
-
 <p>xxx为你的GitHub账号，如果没有被检索，不会显示hexo中的任何博文，如果有下面的步骤就可以省略了。</p>
-<ol start="2">
-<li><strong>验证站点</strong> </li>
+<ol start="2" type="1">
+<li><strong>验证站点</strong></li>
 </ol>
 <p>需要谷歌账号，没有的可以申请一个。登录<a target="_blank" rel="noopener" href="https://www.google.com/webmasters/tools">GoogleSearchConsole</a>，点击立即使用，点击骚红色的”ADD A PROPERTY”，输入需要验证所有权的网站地址，例如本站地址</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>jason-huanghao.github.io</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
+<ol start="3" type="1">
 <li>对于hexo博客网站，最好使用<strong>HTML tag</strong>法验证网站所有权，在弹出来的小框中加入你的站点地址 <a target="_blank" rel="noopener" href="http://yoursite.com/">http://yoursite.com</a> ，然后点击”Continue”Tab 栏选择”Alternate methods”，选中 HTML tag 可以看见</li>
 </ol>
 <p><strong>千万不要采用修改head.swig文件的方法</strong>，不然在升级 NexT 版本时会遇到很多不必要的麻烦。修改themes/next/_config.yml文件，找到 google_site_verification 字段（找不到就新建）：</p>
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># Google Webmaster tools verification.</span></span><br><span class="line"><span class="symbol">google_site_verification:</span> verification=G5BgKB47rsdNz1abyiPJS9_1BIclYVpKGUsKVC7GxJg</span><br><span class="line"></span><br><span class="line"><span class="meta">#Sitemap</span></span><br><span class="line"><span class="symbol">Plugins:</span></span><br><span class="line">- hexo-generator-baidu-sitemap</span><br><span class="line">- hexo-generator-sitemap</span><br><span class="line"></span><br><span class="line"><span class="symbol">sitemap:</span> </span><br><span class="line"><span class="symbol">    path:</span> sitemap.xml</span><br><span class="line"><span class="symbol">baidusitemap:</span></span><br><span class="line"><span class="symbol">    path:</span> baidusitemap.xml</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
+<ol start="4" type="1">
 <li>然后生成静态文件并发布：</li>
 </ol>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo g</span></span><br><span class="line"><span class="attribute">hexo d</span></span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li><p>回到 Google Webmaster Central 页面，点击骚红色的”VERIFY”，done！</p>
-</li>
-<li><p><strong>添加 sitemap.xml</strong></p>
-</li>
+<ol start="5" type="1">
+<li><p>回到 Google Webmaster Central 页面，点击骚红色的”VERIFY”，done！</p></li>
+<li><p><strong>添加 sitemap.xml</strong></p></li>
 </ol>
 <p>打开谷歌控制台选择上一步添加的网站-&gt;<strong>索引</strong>-&gt;<strong>站点地图</strong>，在添加新的站点地图中填入”sitemap.xml”即可，添加成功会在<strong>已提交的站点地图</strong>中显示，过一段时间在<strong>概述</strong>中会显示被索引的情况。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221842.png"></p>
-<h2 id="百度检索"><a href="#百度检索" class="headerlink" title="百度检索"></a>百度检索</h2><p><strong>添加站点</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221842.png" /></p>
+<h2 id="百度检索">百度检索</h2>
+<p><strong>添加站点</strong></p>
 <p>登录<a target="_blank" rel="noopener" href="https://ziyuan.baidu.com/">百度资源管理平台</a>，依次点击<strong>用户中心</strong>-&gt;<strong>站点管理</strong>-&gt;<strong>添加网站</strong>（网站会随时更新，路径可能不同，只要找到添加网站的位置就可以）。</p>
-<ol>
+<ol type="1">
 <li><p>输入网址</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https<span class="regexp">//</span>eericzeng.github.io</span><br><span class="line"><span class="regexp">//</span>（注意协议头，gitpage在http基础上要加s）</span><br></pre></td></tr></table></figure></li>
-<li><p>站点属性<br>最多可以选择三项，建议相关的都选上，提高曝光度</p>
-</li>
-<li><p>验证网站<br>NexT主题选择<strong>HTML标签验证即可</strong>，复制标签中的content值，修改next配置文件_config.yml：</p>
+<li><p>站点属性 最多可以选择三项，建议相关的都选上，提高曝光度</p></li>
+<li><p>验证网站 NexT主题选择<strong>HTML标签验证即可</strong>，复制标签中的content值，修改next配置文件_config.yml：</p>
 <figure class="highlight ldif"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Baidu Webmaster tools verification.</span></span><br><span class="line"><span class="comment"># See: https://ziyuan.baidu.com/site</span></span><br><span class="line"><span class="attribute">baidu_site_verification</span>: code-SnIEO2eNeq</span><br><span class="line"><span class="comment"># &lt;meta name=&quot;baidu-site-verification&quot; content=&quot;code-SnIEO2eNeq&quot; /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO.</span></span><br><span class="line"><span class="attribute">baidu_push</span>: ture</span><br></pre></td></tr></table></figure>
-
-<p><strong>baidu 验证只能修改head.swig文件</strong> </p>
-<p>将 上面设置为 baidu_site_verification: true</p>
-</li>
+<p><strong>baidu 验证只能修改head.swig文件</strong></p>
+<p>将 上面设置为 baidu_site_verification: true</p></li>
 </ol>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221852.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221852.png" /></p>
 <p>百度资源页面先不要关闭，执行下面的步骤之后再点击<strong>完成验证</strong>。</p>
 <p><strong>发布+验证</strong></p>
 <p>hexo根目录下执行如下命令：</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hexo g</span></span><br><span class="line"><span class="attribute">hexo d</span></span><br></pre></td></tr></table></figure>
-
 <p>回到百度资源网站，点击<strong>完成验证</strong>。</p>
-<h1 id="置顶"><a href="#置顶" class="headerlink" title="置顶"></a>置顶</h1><p><strong>1 卸载原插件和安装置顶插件</strong></p>
+<h1 id="置顶">置顶</h1>
+<p><strong>1 卸载原插件和安装置顶插件</strong></p>
 <p>执行下面两行命令：</p>
 <figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-generator-<span class="built_in">index</span> --<span class="keyword">save</span></span><br><span class="line">npm install hexo-generator-<span class="built_in">index</span>-pin-top --<span class="keyword">save</span></span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
 <p>在新增文章的开头中加入<strong>top: true</strong>，比如：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Hexo</span> <span class="string">Next主题设置文章置顶</span></span><br><span class="line"><span class="attr">id:</span> <span class="string">a1</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2020-01-03 17:26:01</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">Hexo</span></span><br><span class="line"><span class="attr">tags:</span> <span class="string">Next主题</span></span><br><span class="line"><span class="attr">top:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="string">复制代码</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>2 设置置顶标志</strong></p>
-<p>打开<strong>\themes\your theme\layout_macro\post.swig</strong></p>
-<p>找到<div class="post-meta">下面插入一下代码：</p>
+<p>打开**theme_macro.swig**</p>
+找到
+<div class="post-meta">
+<p>下面插入一下代码：</p>
 <figure class="highlight django"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">if</span></span> post.top %&#125;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-thumb-tack&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;RED&quot;</span>&gt;</span>置顶<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;post-meta-divider&quot;</span>&gt;</span>|<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="template-tag">&#123;% <span class="name"><span class="name">endif</span></span> %&#125;</span></span><br><span class="line"><span class="xml">复制代码</span></span><br></pre></td></tr></table></figure>
-
 <p>至此，功能已完成。</p>
-<h1 id="Hexo接入Google-AdSense广告"><a href="#Hexo接入Google-AdSense广告" class="headerlink" title="Hexo接入Google AdSense广告"></a>Hexo接入Google AdSense广告</h1><p><strong>注册账号</strong></p>
+<h1 id="hexo接入google-adsense广告">Hexo接入Google AdSense广告</h1>
+<p><strong>注册账号</strong></p>
 <p>Google Adsense 注册账号流程，入口在这里：<a target="_blank" rel="noopener" href="https://www.google.com/adsense/">Google Adsense</a></p>
 <p><strong>添加 Google 广告代码</strong></p>
-<ol>
+<ol type="1">
 <li>注册账号完成之后，google会生成一段代码。</li>
 <li>需要将谷歌提供给你的一份代码添加到你网站的中，因为我目前是next主题，因此放到 <code>\themes\next\layout\partials\head.swig</code> 任意一个位置 (本人放在了最后) 即可。</li>
 </ol>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">data-ad-client</span>=<span class="string">&quot;ca-pub-2691877571661707&quot;</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="3">
+<ol start="3" type="1">
 <li>在你添加完成之后，<code>hexo gen &amp;&amp; hexo deploy</code> 更新你的网站，点击确认，谷歌会到你的网站上进行核查和验收，一般没问题的话几分钟就会出结果，有问题的话要等待一段时间。</li>
 </ol>
 <p><strong>Google 广告投放</strong></p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210509100945.png"></p>
-<ol>
-<li><p>自动广告 (by site)，会根据你的内容精准投放，投放概率低，不推荐</p>
-</li>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210509100945.png" /></p>
+<ol type="1">
+<li><p>自动广告 (by site)，会根据你的内容精准投放，投放概率低，不推荐</p></li>
 <li><p>广告单元 (by ad unit)，这种比较灵活，可以充分利用自己的博客广告位，推荐</p>
 <ul>
 <li>文字广告和展示广告 (即侧边栏，评论区之类的固定广告位)</li>
@@ -558,140 +524,139 @@
 </ul>
 <p>使用了第三种。具体的操作流程是:</p>
 <ul>
-<li><p>在网站上，选择广告单元-&gt;新建广告位-&gt;选择对应的广告类型-&gt;生成对应的广告代码。</p>
-</li>
-<li><p>在themes/next/layout/_custom 下新建 google_adsense.swig 文件，将代码复制过去。</p>
-</li>
-<li><p>google_adsense.swig 文件引用位置决定广告展示位置，位置自己决定。</p>
-</li>
-<li><p>插入评论区：将代码插入<em>\themes\next\layout_partials\comments.swig</em> 中的末尾即可</p>
+<li><p>在网站上，选择广告单元-&gt;新建广告位-&gt;选择对应的广告类型-&gt;生成对应的广告代码。</p></li>
+<li><p>在themes/next/layout/_custom 下新建 google_adsense.swig 文件，将代码复制过去。</p></li>
+<li><p>google_adsense.swig 文件引用位置决定广告展示位置，位置自己决定。</p></li>
+<li><p>插入评论区：将代码插入<em>_partials.swig</em> 中的末尾即可</p>
 <figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">ins</span> <span class="attr">class</span>=<span class="string">&quot;adsbygoogle&quot;</span></span></span></span><br><span class="line"><span class="xml">     style=&quot;display:block; text-align:center;&quot;</span></span><br><span class="line"><span class="xml">     data-ad-layout=&quot;in-article&quot;</span></span><br><span class="line"><span class="xml">     data-ad-format=&quot;fluid&quot;</span></span><br><span class="line"><span class="xml">     data-ad-client=&quot;ca-pub-9110130131408694&quot;</span></span><br><span class="line"><span class="xml">     data-ad-slot=&quot;6644558881&quot;&gt;<span class="tag">&lt;/<span class="name">ins</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml">     (adsbygoogle = window.adsbygoogle || []).push(</span><span class="template-variable">&#123;&#125;</span><span class="xml">);</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></li>
-<li><p>hexo deploy代码到github pages上，可能需要20-30分钟广告才会显示在网页上。我的很快，基本1-2分钟就显示了。</p>
-</li>
-</ul>
-</li>
+<li><p>hexo deploy代码到github pages上，可能需要20-30分钟广告才会显示在网页上。我的很快，基本1-2分钟就显示了。</p></li>
+</ul></li>
 </ol>
-<h1 id="音频"><a href="#音频" class="headerlink" title="音频"></a>音频</h1><p>参考 <a target="_blank" rel="noopener" href="https://leezhiy.github.io/">https://leezhiy.github.io</a></p>
-<h2 id="使用-hexo-tag-aplayer-插件"><a href="#使用-hexo-tag-aplayer-插件" class="headerlink" title="使用 hexo-tag-aplayer 插件"></a>使用 hexo-tag-aplayer 插件</h2><p><a target="_blank" rel="noopener" href="https://github.com/MoePlayer/hexo-tag-aplayer">hexo-tag-aplayer</a> 就是将 <a target="_blank" rel="noopener" href="https://github.com/DIYgod/APlayer">APlayer</a> 内嵌入博客页面的 Hexo 插件。</p>
+<h1 id="音频">音频</h1>
+<p>参考 https://leezhiy.github.io</p>
+<h2 id="使用-hexo-tag-aplayer-插件">使用 hexo-tag-aplayer 插件</h2>
+<p><a target="_blank" rel="noopener" href="https://github.com/MoePlayer/hexo-tag-aplayer">hexo-tag-aplayer</a> 就是将 <a target="_blank" rel="noopener" href="https://github.com/DIYgod/APlayer">APlayer</a> 内嵌入博客页面的 Hexo 插件。</p>
 <p>安装执行：</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install <span class="comment">--save hexo-tag-aplayer</span></span><br></pre></td></tr></table></figure>
-
 <p>原先 <code>hexo-tag-aplayer</code> 不支持 <code>MetingJS</code>，使得需要图片 url，音乐 url 等等参数，操作起来都很麻烦，需要去音乐网站扒音乐播放链接或者下载下来存储在七牛云或本地，要了解具体参数和使用可以查看其<a target="_blank" rel="noopener" href="https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md">中文文档</a>了解。</p>
-<h2 id="MeingJS-支持-3-0-新功能"><a href="#MeingJS-支持-3-0-新功能" class="headerlink" title="MeingJS 支持 (3.0 新功能)"></a>MeingJS 支持 (3.0 新功能)</h2><p><a target="_blank" rel="noopener" href="https://github.com/metowolf/MetingJS">MetingJS</a> 是基于 <a target="_blank" rel="noopener" href="https://github.com/metowolf/Meting">Meting API</a> 的 APlayer 衍生播放器，引入 MetingJS 后，播放器将支持对于 QQ 音乐、网易云音乐、虾米、酷狗、百度等平台的音乐播放。</p>
+<h2 id="meingjs-支持-3.0-新功能">MeingJS 支持 (3.0 新功能)</h2>
+<p><a target="_blank" rel="noopener" href="https://github.com/metowolf/MetingJS">MetingJS</a> 是基于 <a target="_blank" rel="noopener" href="https://github.com/metowolf/Meting">Meting API</a> 的 APlayer 衍生播放器，引入 MetingJS 后，播放器将支持对于 QQ 音乐、网易云音乐、虾米、酷狗、百度等平台的音乐播放。</p>
 <p>如果想在本插件中使用 MetingJS，请在 Hexo 配置文件 <code>_config.yml</code> 中设置：</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">aplayer:</span></span><br><span class="line">  <span class="attr">meting:</span> <span class="literal">true</span>                                  <span class="comment"># Meting support, default: false</span></span><br></pre></td></tr></table></figure>
-
-<p>接着就可以 在<strong>文章</strong>中使用 MetingJS 播放器了，例如打开网易云音乐网站找一个歌单，例如： <a target="_blank" rel="noopener" href="https://music.163.com/#/playlist?id=3136952023%EF%BC%8C">https://music.163.com/#/playlist?id=3136952023，</a> 这个歌单的 id 就是 3136952023，按下面格式即可使用：</p>
+<p>接着就可以 在<strong>文章</strong>中使用 MetingJS 播放器了，例如打开网易云音乐网站找一个歌单，例如： https://music.163.com/#/playlist?id=3136952023， 这个歌单的 id 就是 3136952023，按下面格式即可使用：</p>
 <figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% meting <span class="string">&quot;3136952023&quot;</span> <span class="string">&quot;netease&quot;</span> <span class="string">&quot;playlist&quot;</span> <span class="string">&quot;theme:#FF4081&quot;</span> <span class="string">&quot;mode:circulation&quot;</span> <span class="string">&quot;mutex:true&quot;</span> <span class="string">&quot;listmaxheight:340px&quot;</span> <span class="string">&quot;preload:auto&quot;</span> %&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="全局音乐插件"><a href="#全局音乐插件" class="headerlink" title="全局音乐插件"></a>全局音乐插件</h2><p>如果想在非 Post 页面使用插件功能，直接使用上面的方法修改 layout 的话会报以下错误</p>
+<h2 id="全局音乐插件">全局音乐插件</h2>
+<p>如果想在非 Post 页面使用插件功能，直接使用上面的方法修改 layout 的话会报以下错误</p>
 <figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Error: </span>Unexpected tag &quot;meting&quot;</span><br></pre></td></tr></table></figure>
-
 <p>所以我们只能使用另一种办法，创建 <code>Hexo/source/_data/APlayer.swig</code> 文件，添加以下内容。</p>
 <figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">&#123;% if aplayer.enabled %&#125;</span></span><br><span class="line"><span class="xml">  <span class="comment">&lt;!-- require APlayer --&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;</span></span></span><span class="template-variable">&#123;&#123;<span class="name">aplayer.cdn.css</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">&quot;</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;</span></span></span><span class="template-variable">&#123;&#123;<span class="name">aplayer.cdn.js</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="comment">&lt;!-- require MetingJS --&gt;</span></span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;</span></span></span><span class="template-variable">&#123;&#123;<span class="name">aplayer.cdn.meting</span>&#125;&#125;</span><span class="xml"><span class="tag"><span class="string">&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="xml">  &lt;meting-js</span></span><br><span class="line"><span class="xml">    server=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.server</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    type=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.type</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    fixed=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.fixed</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    id=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.id</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    auto=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.auto</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    mini=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.mini</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    autoplay=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.autoplay</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    theme=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.theme</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    loop=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.loop</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    order=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.order</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    preload=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.preload</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    volume=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.volume</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    mutex=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.mutex</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    list-folded=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.listfolded</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    list-max-height=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.listmaxheight</span>&#125;&#125;</span><span class="xml">&quot;</span></span><br><span class="line"><span class="xml">    storage-name=&quot;</span><span class="template-variable">&#123;&#123;<span class="name">aplayer.storagename</span>&#125;&#125;</span><span class="xml">&quot; &gt;</span></span><br><span class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">meting-js</span>&gt;</span></span></span><br><span class="line"><span class="xml">&#123;% endif %&#125;</span></span><br></pre></td></tr></table></figure>
-
 <p>接着打开 hexo/themes/next/_config.yml主题配置文件 ，在最底部添加</p>
 <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># --------------------------------------------------------------</span></span><br><span class="line"><span class="meta"># APlayer settings</span></span><br><span class="line"><span class="meta"># --------------------------------------------------------------</span></span><br><span class="line"><span class="meta"># enabled:  true/false   开启/关闭</span></span><br><span class="line"><span class="meta"># id: song id / playlist id / album id / search keyword   歌曲ID、歌单ID、关键字</span></span><br><span class="line"><span class="meta"># server: netease, tencent, kugou, xiami, baidu     音乐平台</span></span><br><span class="line"><span class="meta"># type: song, playlist, album, search, artist  类型</span></span><br><span class="line"><span class="meta"># auto: music link, support: netease, tencent, xiami</span></span><br><span class="line"><span class="meta"># fixed: true/false   吸底模式</span></span><br><span class="line"><span class="meta"># mini: true/false   迷你模式</span></span><br><span class="line"><span class="meta"># autoplay: true/false   自动播放</span></span><br><span class="line"><span class="meta"># theme: #eeeeee 主题颜色</span></span><br><span class="line"><span class="meta"># loop: values: &#x27;all&#x27;, &#x27;one&#x27;, &#x27;none&#x27; 循环播放</span></span><br><span class="line"><span class="meta"># order: values: &#x27;list&#x27;, &#x27;random&#x27; 是否随机播放</span></span><br><span class="line"><span class="meta"># preload: values: &#x27;none&#x27;, &#x27;metadata&#x27;, &#x27;auto&#x27; 预载入</span></span><br><span class="line"><span class="meta"># volume:	0.7	默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效</span></span><br><span class="line"><span class="meta"># mutex: true/false	互斥，阻止多个播放器同时播放，当前播放器播放时暂停其他播放器</span></span><br><span class="line"><span class="meta"># list-folded:	true/false	列表默认折叠</span></span><br><span class="line"><span class="meta"># list-max-height:	340px	列表最大高度</span></span><br><span class="line"><span class="meta"># storage-name:	metingjs	存储播放器设置的 localStorage key</span></span><br><span class="line">aplayer:</span><br><span class="line">  enabled: <span class="literal">true</span></span><br><span class="line">  id: <span class="number">3099335800</span></span><br><span class="line">  server: netease</span><br><span class="line">  type: playlist</span><br><span class="line">  auto:</span><br><span class="line">  fixed: <span class="literal">true</span></span><br><span class="line">  mini: <span class="literal">true</span></span><br><span class="line">  autoplay: <span class="literal">true</span></span><br><span class="line">  theme: #<span class="number">607</span>d8b</span><br><span class="line">  loop: <span class="string">&#x27;all&#x27;</span></span><br><span class="line">  order: <span class="string">&#x27;random&#x27;</span></span><br><span class="line">  preload: <span class="string">&#x27;auto&#x27;</span></span><br><span class="line">  volume: <span class="number">0.7</span></span><br><span class="line">  mutex: <span class="literal">true</span></span><br><span class="line">  listfolded: <span class="literal">true</span></span><br><span class="line">  listmaxheight: <span class="number">340</span>px</span><br><span class="line">  storagename: metingjs</span><br><span class="line">  cdn:</span><br><span class="line">    css: https:<span class="comment">//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css</span></span><br><span class="line">    js: https:<span class="comment">//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js</span></span><br><span class="line">    meting: https:<span class="comment">//cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js</span></span><br></pre></td></tr></table></figure>
-
 <p>打开 <code>hexo/scripts/plugins.js</code>, 在 head 注入点<a target="_blank" rel="noopener" href="https://theme-next.org/docs/advanced-settings">注入</a> APlayer</p>
 <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">hexo.extend.filter.register(<span class="string">&#x27;theme_inject&#x27;</span>, <span class="function"><span class="keyword">function</span> <span class="params">(injects)</span> </span>&#123;</span><br><span class="line">  .</span><br><span class="line">  .</span><br><span class="line">  .</span><br><span class="line">  <span class="comment">// 引入 APlayer</span></span><br><span class="line">  injects.head.file(<span class="string">&#x27;aplayer&#x27;</span>, <span class="string">&#x27;source/_data/APlayer.swig&#x27;</span>, &#123;aplayer: hexo.theme.config.aplayer&#125;);</span><br><span class="line">  .</span><br><span class="line">  .</span><br><span class="line">  .</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
 <p>最后是 MetingJs 的参数详情：</p>
 <table>
 <thead>
-<tr>
-<th align="left">参数名</th>
-<th align="left">默认</th>
-<th align="left">description</th>
+<tr class="header">
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">默认</th>
+<th style="text-align: left;">description</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">id</td>
-<td align="left">require</td>
-<td align="left">歌曲 ID / 播放列表 ID / 专辑 ID / 搜索关键字</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">require</td>
+<td style="text-align: left;">歌曲 ID / 播放列表 ID / 专辑 ID / 搜索关键字</td>
 </tr>
-<tr>
-<td align="left">server</td>
-<td align="left">require</td>
-<td align="left">音乐平台，可选值： ‘netease’，’tencent’，’kugou’，’xiami’，’baidu’</td>
+<tr class="even">
+<td style="text-align: left;">server</td>
+<td style="text-align: left;">require</td>
+<td style="text-align: left;">音乐平台，可选值： ‘netease’，’tencent’，’kugou’，’xiami’，’baidu’</td>
 </tr>
-<tr>
-<td align="left">type</td>
-<td align="left">require</td>
-<td align="left">类型，可选值：’song’, ‘playlist’, ‘album’, ‘search’, ‘artist’</td>
+<tr class="odd">
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">require</td>
+<td style="text-align: left;">类型，可选值：’song’, ‘playlist’, ‘album’, ‘search’, ‘artist’</td>
 </tr>
-<tr>
-<td align="left">auto</td>
-<td align="left">options</td>
-<td align="left">音乐链接，支持： ‘netease’, ‘tencent’, ‘xiami’</td>
+<tr class="even">
+<td style="text-align: left;">auto</td>
+<td style="text-align: left;">options</td>
+<td style="text-align: left;">音乐链接，支持： ‘netease’, ‘tencent’, ‘xiami’</td>
 </tr>
-<tr>
-<td align="left">fixed</td>
-<td align="left">false</td>
-<td align="left">开启吸底模式，<a target="_blank" rel="noopener" href="https://aplayer.js.org/#/home?id=fixed-mode">详情</a></td>
+<tr class="odd">
+<td style="text-align: left;">fixed</td>
+<td style="text-align: left;">false</td>
+<td style="text-align: left;">开启吸底模式，<a target="_blank" rel="noopener" href="https://aplayer.js.org/#/home?id=fixed-mode">详情</a></td>
 </tr>
-<tr>
-<td align="left">mini</td>
-<td align="left">false</td>
-<td align="left">开启迷你模式，<a target="_blank" rel="noopener" href="https://aplayer.js.org/#/home?id=mini-mode">详情</a></td>
+<tr class="even">
+<td style="text-align: left;">mini</td>
+<td style="text-align: left;">false</td>
+<td style="text-align: left;">开启迷你模式，<a target="_blank" rel="noopener" href="https://aplayer.js.org/#/home?id=mini-mode">详情</a></td>
 </tr>
-<tr>
-<td align="left">autoplay</td>
-<td align="left">false</td>
-<td align="left">音频自动播放</td>
+<tr class="odd">
+<td style="text-align: left;">autoplay</td>
+<td style="text-align: left;">false</td>
+<td style="text-align: left;">音频自动播放</td>
 </tr>
-<tr>
-<td align="left">theme</td>
-<td align="left">#2980b9</td>
-<td align="left">主题色</td>
+<tr class="even">
+<td style="text-align: left;">theme</td>
+<td style="text-align: left;">#2980b9</td>
+<td style="text-align: left;">主题色</td>
 </tr>
-<tr>
-<td align="left">loop</td>
-<td align="left">all</td>
-<td align="left">音频循环播放，可选值: ‘all’, ‘one’, ‘none’</td>
+<tr class="odd">
+<td style="text-align: left;">loop</td>
+<td style="text-align: left;">all</td>
+<td style="text-align: left;">音频循环播放，可选值: ‘all’, ‘one’, ‘none’</td>
 </tr>
-<tr>
-<td align="left">order</td>
-<td align="left">list</td>
-<td align="left">音频循环顺序，可选值: ‘list’, ‘random’</td>
+<tr class="even">
+<td style="text-align: left;">order</td>
+<td style="text-align: left;">list</td>
+<td style="text-align: left;">音频循环顺序，可选值: ‘list’, ‘random’</td>
 </tr>
-<tr>
-<td align="left">preload</td>
-<td align="left">auto</td>
-<td align="left">预加载，可选值: ‘none’, ‘metadata’, ‘auto’</td>
+<tr class="odd">
+<td style="text-align: left;">preload</td>
+<td style="text-align: left;">auto</td>
+<td style="text-align: left;">预加载，可选值: ‘none’, ‘metadata’, ‘auto’</td>
 </tr>
-<tr>
-<td align="left">volume</td>
-<td align="left">0.7</td>
-<td align="left">默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效</td>
+<tr class="even">
+<td style="text-align: left;">volume</td>
+<td style="text-align: left;">0.7</td>
+<td style="text-align: left;">默认音量，请注意播放器会记忆用户设置，用户手动设置音量后默认音量即失效</td>
 </tr>
-<tr>
-<td align="left">mutex</td>
-<td align="left">true</td>
-<td align="left">互斥，阻止多个播放器同时播放，当前播放器播放时暂停其他播放器</td>
+<tr class="odd">
+<td style="text-align: left;">mutex</td>
+<td style="text-align: left;">true</td>
+<td style="text-align: left;">互斥，阻止多个播放器同时播放，当前播放器播放时暂停其他播放器</td>
 </tr>
-<tr>
-<td align="left">lrc-type</td>
-<td align="left">0</td>
-<td align="left"><a target="_blank" rel="noopener" href="https://aplayer.js.org/#/home?id=lrc">详情</a></td>
+<tr class="even">
+<td style="text-align: left;">lrc-type</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;"><a target="_blank" rel="noopener" href="https://aplayer.js.org/#/home?id=lrc">详情</a></td>
 </tr>
-<tr>
-<td align="left">list-folded</td>
-<td align="left">false</td>
-<td align="left">列表默认折叠</td>
+<tr class="odd">
+<td style="text-align: left;">list-folded</td>
+<td style="text-align: left;">false</td>
+<td style="text-align: left;">列表默认折叠</td>
 </tr>
-<tr>
-<td align="left">list-max-height</td>
-<td align="left">340px</td>
-<td align="left">列表最大高度</td>
+<tr class="even">
+<td style="text-align: left;">list-max-height</td>
+<td style="text-align: left;">340px</td>
+<td style="text-align: left;">列表最大高度</td>
 </tr>
-<tr>
-<td align="left">storage-name</td>
-<td align="left">metingjs</td>
-<td align="left">存储播放器设置的 localStorage key</td>
+<tr class="odd">
+<td style="text-align: left;">storage-name</td>
+<td style="text-align: left;">metingjs</td>
+<td style="text-align: left;">存储播放器设置的 localStorage key</td>
 </tr>
-</tbody></table>
-<h1 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h1><h1 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h1><h1 id="打赏功能"><a href="#打赏功能" class="headerlink" title="打赏功能"></a>打赏功能</h1><h1 id="RSS-订阅设置"><a href="#RSS-订阅设置" class="headerlink" title="RSS 订阅设置"></a>RSS 订阅设置</h1><h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1>
+</tbody>
+</table>
+<h1 id="图片">图片</h1>
+<h1 id="视频">视频</h1>
+<h1 id="打赏功能">打赏功能</h1>
+<h1 id="rss-订阅设置">RSS 订阅设置</h1>
+<h1 id="参考-references">参考 (References)</h1>
+
     </div>
 
     
@@ -789,7 +754,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2"><span class="nav-number">1.</span> <span class="nav-text">站内搜索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Auto-category"><span class="nav-number">2.</span> <span class="nav-text">Auto category</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-Next-DaoVoice-%E5%AE%9E%E7%8E%B0%E5%9C%A8%E7%BA%BF%E8%81%94%E7%B3%BB-%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E6%9C%AA%E8%A7%A3%E5%86%B3%EF%BC%81%E6%9A%82%E6%97%B6%E4%B8%8D%E7%94%A8%E8%AF%A5%E5%8A%9F%E8%83%BD"><span class="nav-number">3.</span> <span class="nav-text">Hexo Next DaoVoice 实现在线联系 (页面不显示问题未解决！暂时不用该功能)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">3.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-number">3.2.</span> <span class="nav-text">方法二</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Next-Valine-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.</span> <span class="nav-text">Next Valine 评论系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-Admin-%E4%BD%BF%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">Hexo Admin 使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B9%8BSEO%E6%90%9C%E7%B4%A2%E4%BC%98%E5%8C%96"><span class="nav-number">6.</span> <span class="nav-text">Hexo博客搭建之SEO搜索优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%B7%E6%AD%8C%E6%A3%80%E7%B4%A2"><span class="nav-number">6.1.</span> <span class="nav-text">谷歌检索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BE%E5%BA%A6%E6%A3%80%E7%B4%A2"><span class="nav-number">6.2.</span> <span class="nav-text">百度检索</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%AE%E9%A1%B6"><span class="nav-number">7.</span> <span class="nav-text">置顶</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo%E6%8E%A5%E5%85%A5Google-AdSense%E5%B9%BF%E5%91%8A"><span class="nav-number">8.</span> <span class="nav-text">Hexo接入Google AdSense广告</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91"><span class="nav-number">9.</span> <span class="nav-text">音频</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-hexo-tag-aplayer-%E6%8F%92%E4%BB%B6"><span class="nav-number">9.1.</span> <span class="nav-text">使用 hexo-tag-aplayer 插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MeingJS-%E6%94%AF%E6%8C%81-3-0-%E6%96%B0%E5%8A%9F%E8%83%BD"><span class="nav-number">9.2.</span> <span class="nav-text">MeingJS 支持 (3.0 新功能)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E9%9F%B3%E4%B9%90%E6%8F%92%E4%BB%B6"><span class="nav-number">9.3.</span> <span class="nav-text">全局音乐插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%89%87"><span class="nav-number">10.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%86%E9%A2%91"><span class="nav-number">11.</span> <span class="nav-text">视频</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%93%E8%B5%8F%E5%8A%9F%E8%83%BD"><span class="nav-number">12.</span> <span class="nav-text">打赏功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RSS-%E8%AE%A2%E9%98%85%E8%AE%BE%E7%BD%AE"><span class="nav-number">13.</span> <span class="nav-text">RSS 订阅设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">14.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2"><span class="nav-number">1.</span> <span class="nav-text">站内搜索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#auto-category"><span class="nav-number">2.</span> <span class="nav-text">Auto category</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-next-daovoice-%E5%AE%9E%E7%8E%B0%E5%9C%A8%E7%BA%BF%E8%81%94%E7%B3%BB-%E9%A1%B5%E9%9D%A2%E4%B8%8D%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98%E6%9C%AA%E8%A7%A3%E5%86%B3%E6%9A%82%E6%97%B6%E4%B8%8D%E7%94%A8%E8%AF%A5%E5%8A%9F%E8%83%BD"><span class="nav-number">3.</span> <span class="nav-text">Hexo Next DaoVoice 实现在线联系 (页面不显示问题未解决！暂时不用该功能)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="nav-number">3.1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="nav-number">3.2.</span> <span class="nav-text">方法二</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next-valine-%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F"><span class="nav-number">4.</span> <span class="nav-text">Next Valine 评论系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-admin-%E4%BD%BF%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">Hexo Admin 使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E4%B9%8Bseo%E6%90%9C%E7%B4%A2%E4%BC%98%E5%8C%96"><span class="nav-number">6.</span> <span class="nav-text">Hexo博客搭建之SEO搜索优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%B7%E6%AD%8C%E6%A3%80%E7%B4%A2"><span class="nav-number">6.1.</span> <span class="nav-text">谷歌检索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BE%E5%BA%A6%E6%A3%80%E7%B4%A2"><span class="nav-number">6.2.</span> <span class="nav-text">百度检索</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%AE%E9%A1%B6"><span class="nav-number">7.</span> <span class="nav-text">置顶</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo%E6%8E%A5%E5%85%A5google-adsense%E5%B9%BF%E5%91%8A"><span class="nav-number">8.</span> <span class="nav-text">Hexo接入Google AdSense广告</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91"><span class="nav-number">9.</span> <span class="nav-text">音频</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-hexo-tag-aplayer-%E6%8F%92%E4%BB%B6"><span class="nav-number">9.1.</span> <span class="nav-text">使用 hexo-tag-aplayer 插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#meingjs-%E6%94%AF%E6%8C%81-3.0-%E6%96%B0%E5%8A%9F%E8%83%BD"><span class="nav-number">9.2.</span> <span class="nav-text">MeingJS 支持 (3.0 新功能)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E5%B1%80%E9%9F%B3%E4%B9%90%E6%8F%92%E4%BB%B6"><span class="nav-number">9.3.</span> <span class="nav-text">全局音乐插件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E7%89%87"><span class="nav-number">10.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%86%E9%A2%91"><span class="nav-number">11.</span> <span class="nav-text">视频</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%93%E8%B5%8F%E5%8A%9F%E8%83%BD"><span class="nav-number">12.</span> <span class="nav-text">打赏功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rss-%E8%AE%A2%E9%98%85%E8%AE%BE%E7%BD%AE"><span class="nav-number">13.</span> <span class="nav-text">RSS 订阅设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-references"><span class="nav-number">14.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -805,7 +770,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -818,7 +783,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -865,12 +830,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:33</span>
 </div>
 
 

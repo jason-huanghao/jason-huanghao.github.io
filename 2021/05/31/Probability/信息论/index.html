@@ -23,12 +23,12 @@
 
 
 
-  <meta name="description" content="自信息量化事件的信息量$I(X&#x3D;x)&#x3D;-log p(X&#x3D;x)$">
+  <meta name="description" content="自信息 量化事件的信息量 \(I(X&#x3D;x)&#x3D;-log p(X&#x3D;x)\)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="信息论">
 <meta property="og:url" content="https://jason-huanghao.github.io/2021/05/31/Probability/%E4%BF%A1%E6%81%AF%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Jason Hao&#39;s Blog">
-<meta property="og:description" content="自信息量化事件的信息量$I(X&#x3D;x)&#x3D;-log p(X&#x3D;x)$">
+<meta property="og:description" content="自信息 量化事件的信息量 \(I(X&#x3D;x)&#x3D;-log p(X&#x3D;x)\)">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210604172829.png">
 <meta property="article:published_time" content="2021-05-31T02:56:29.000Z">
@@ -307,7 +307,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>1.3k</span>
+              <span>1.4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -325,33 +325,41 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="自信息"><a href="#自信息" class="headerlink" title="自信息"></a>自信息</h1><p>量化事件的信息量<br>$I(X=x)=-log p(X=x)$</p>
-<span id="more"></span>
-<h1 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h1><p>对概率分布不确定性总量的量化（信息量的期望）：</p>
-<p>$H(X) = E_{X}(I(X))=-\sum_{x\in X}p(X=x)logp(X=x)$</p>
-<h1 id="条件熵"><a href="#条件熵" class="headerlink" title="条件熵"></a>条件熵</h1><p>表示在已知随机变量 X 的条件下，随机变量 Y 的不确定性（熵）</p>
-<p>$H(Y|X)=\sum_{x\in X} P(X=x)H(Y|X=x)$</p>
-<h1 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h1><p>某个随机变量的信息熵-该变量的条件熵</p>
-<p>$IG(Y,X)=H(Y)-H(Y|X)$</p>
+        <h1 id="自信息">自信息</h1>
+<p>量化事件的信息量 <span class="math inline">\(I(X=x)=-log p(X=x)\)</span> <span id="more"></span> # 信息熵 对概率分布不确定性总量的量化（信息量的期望）：</p>
+<p><span class="math inline">\(H(X) = E_{X}(I(X))=-\sum_{x\in X}p(X=x)logp(X=x)\)</span></p>
+<h1 id="条件熵">条件熵</h1>
+<p>表示在已知随机变量 X 的条件下，随机变量 Y 的不确定性（熵）</p>
+<p><span class="math inline">\(H(Y|X)=\sum_{x\in X} P(X=x)H(Y|X=x)\)</span></p>
+<h1 id="信息增益">信息增益</h1>
+<p>某个随机变量的信息熵-该变量的条件熵</p>
+<p><span class="math inline">\(IG(Y,X)=H(Y)-H(Y|X)\)</span></p>
 <p>该方法的决策树 ID3 所选择的特征会偏好于属性值较多的特征</p>
-<h1 id="Gini-系数"><a href="#Gini-系数" class="headerlink" title="Gini 系数"></a>Gini 系数</h1><p>将熵定义中的 $-log(p(x))$ 替换成 $1-p(x)$</p>
-<p>$Gini(X)= \sum_{x\in X}p(X=x) (1-p(X=x))=1-\sum_{x\in X}p(X=x)$<br>基于 Gini 系数的决策树同样具有偏好于属性值较多的特征的问题</p>
-<h1 id="信息增益率"><a href="#信息增益率" class="headerlink" title="信息增益率"></a>信息增益率</h1><p>$GainRatio(Y,X) = IG(Y,X)/H(X)$</p>
+<h1 id="gini-系数">Gini 系数</h1>
+<p>将熵定义中的 <span class="math inline">\(-log(p(x))\)</span> 替换成 <span class="math inline">\(1-p(x)\)</span></p>
+<p><span class="math inline">\(Gini(X)= \sum_{x\in X}p(X=x) (1-p(X=x))=1-\sum_{x\in X}p(X=x)\)</span> 基于 Gini 系数的决策树同样具有偏好于属性值较多的特征的问题</p>
+<h1 id="信息增益率">信息增益率</h1>
+<p><span class="math inline">\(GainRatio(Y,X) = IG(Y,X)/H(X)\)</span></p>
 <p>直接采样该方法的决策树又会偏好属性取值较少的特征。因此，决策树 C4.5 先通过一遍筛选，先把信息增益低于平均水平的属性剔除掉，之后从剩下的属性中选择信息增益率最高的.</p>
-<h1 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a>交叉熵</h1><p>P 为某样本真实分布，Q 为该样本的估计分布，如果用估计分布 Q 来表示真实分布 P 的平均编码长度就是交叉熵，当我们对分布估计不准确时，总会引入额外的不必要信息期望（可以理解为引入了额外的偏差）</p>
-<p>$H(P, Q)=-\sum_{x}P(x)log(Q(x))$</p>
-<h1 id="相对熵（KL散度）"><a href="#相对熵（KL散度）" class="headerlink" title="相对熵（KL散度）"></a>相对熵（KL散度）</h1><p>用估计的概率分布来表示真实分布多使用的信息量。估计分布表示真实分布所用的平均编码长度-用真实分布编码的平均长度=相对熵</p>
-<p>$D(P|Q)=KL(P,Q)=H(P,Q)-H(P)\=-\sum_{x}P(x)log(Q(x))+sum_{x}P(x)logP(x)\=\sum_{x}P(x)log\frac{P(x)}{Q(x)}$</p>
-<h1 id="互信息"><a href="#互信息" class="headerlink" title="互信息"></a>互信息</h1><p>两个随机变量的联合分布 (P) 与它们的独立分布的乘积 (Q) 之间的相对熵，<br>两事件的互信息为各自事件单独发生所代表的信息量之和减去两事件同时发生所代表的信息量之后剩余的信息量，这表明了两事件单独发生给出的信息量之和是有重复的，互信息度量了这种重复的信息量大小</p>
-<p>$I(X;Y)=\sum_{x\in X}\sum_{y \in Y} p(x,y)\frac{p(x,y)}{p(x)p(y)}$</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210604172829.png"></p>
-<h1 id="困惑度"><a href="#困惑度" class="headerlink" title="困惑度"></a>困惑度</h1><p>给定语言L的样本 $l_1^n=l_1,l_2,…,l_n$，模型对数据的困惑度为</p>
-<p>$2^{H(L,q)}\approx 2^{-\frac{1}{n}log q(l_1^n)}={[q(l_1^n)]}^{-\frac{1}{n}}$</p>
-<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
-<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%9B%B8%E5%AF%B9%E7%86%B5/4233536?fr=aladdin">https://baike.baidu.com/item/%E7%9B%B8%E5%AF%B9%E7%86%B5/4233536?fr=aladdin</a></li>
-<li><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BA%92%E4%BF%A1%E6%81%AF/7423853?fr=aladdin">https://baike.baidu.com/item/%E4%BA%92%E4%BF%A1%E6%81%AF/7423853?fr=aladdin</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/41252833">https://www.zhihu.com/question/41252833</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/136100996">https://zhuanlan.zhihu.com/p/136100996</a></li>
+<h1 id="交叉熵">交叉熵</h1>
+<p>P 为某样本真实分布，Q 为该样本的估计分布，如果用估计分布 Q 来表示真实分布 P 的平均编码长度就是交叉熵，当我们对分布估计不准确时，总会引入额外的不必要信息期望（可以理解为引入了额外的偏差）</p>
+<p><span class="math inline">\(H(P, Q)=-\sum_{x}P(x)log(Q(x))\)</span></p>
+<h1 id="相对熵kl散度">相对熵（KL散度）</h1>
+<p>用估计的概率分布来表示真实分布多使用的信息量。估计分布表示真实分布所用的平均编码长度-用真实分布编码的平均长度=相对熵</p>
+<p><span class="math inline">\(D(P|Q)=KL(P,Q)=H(P,Q)-H(P)\\=-\sum_{x}P(x)log(Q(x))+sum_{x}P(x)logP(x)\\=\sum_{x}P(x)log\frac{P(x)}{Q(x)}\)</span></p>
+<h1 id="互信息">互信息</h1>
+<p>两个随机变量的联合分布 (P) 与它们的独立分布的乘积 (Q) 之间的相对熵， 两事件的互信息为各自事件单独发生所代表的信息量之和减去两事件同时发生所代表的信息量之后剩余的信息量，这表明了两事件单独发生给出的信息量之和是有重复的，互信息度量了这种重复的信息量大小</p>
+<p><span class="math inline">\(I(X;Y)=\sum_{x\in X}\sum_{y \in Y} p(x,y)\frac{p(x,y)}{p(x)p(y)}\)</span></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210604172829.png" /></p>
+<h1 id="困惑度">困惑度</h1>
+<p>给定语言L的样本 <span class="math inline">\(l_1^n=l_1,l_2,...,l_n\)</span>，模型对数据的困惑度为</p>
+<p><span class="math inline">\(2^{H(L,q)}\approx 2^{-\frac{1}{n}log q(l_1^n)}={[q(l_1^n)]}^{-\frac{1}{n}}\)</span></p>
+<h1 id="参考-references">参考 (References)</h1>
+<ol type="1">
+<li>https://baike.baidu.com/item/%E7%9B%B8%E5%AF%B9%E7%86%B5/4233536?fr=aladdin</li>
+<li>https://baike.baidu.com/item/%E4%BA%92%E4%BF%A1%E6%81%AF/7423853?fr=aladdin</li>
+<li>https://www.zhihu.com/question/41252833</li>
+<li>https://zhuanlan.zhihu.com/p/136100996</li>
 </ol>
 
     </div>
@@ -456,7 +464,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E4%BF%A1%E6%81%AF"><span class="nav-number">1.</span> <span class="nav-text">自信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E7%86%B5"><span class="nav-number">2.</span> <span class="nav-text">信息熵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%86%B5"><span class="nav-number">3.</span> <span class="nav-text">条件熵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A"><span class="nav-number">4.</span> <span class="nav-text">信息增益</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gini-%E7%B3%BB%E6%95%B0"><span class="nav-number">5.</span> <span class="nav-text">Gini 系数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A%E7%8E%87"><span class="nav-number">6.</span> <span class="nav-text">信息增益率</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E7%86%B5"><span class="nav-number">7.</span> <span class="nav-text">交叉熵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E7%86%B5%EF%BC%88KL%E6%95%A3%E5%BA%A6%EF%BC%89"><span class="nav-number">8.</span> <span class="nav-text">相对熵（KL散度）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%92%E4%BF%A1%E6%81%AF"><span class="nav-number">9.</span> <span class="nav-text">互信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%B0%E6%83%91%E5%BA%A6"><span class="nav-number">10.</span> <span class="nav-text">困惑度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">11.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E4%BF%A1%E6%81%AF"><span class="nav-number">1.</span> <span class="nav-text">自信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%86%B5"><span class="nav-number">2.</span> <span class="nav-text">条件熵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A"><span class="nav-number">3.</span> <span class="nav-text">信息增益</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gini-%E7%B3%BB%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">Gini 系数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8A%E7%8E%87"><span class="nav-number">5.</span> <span class="nav-text">信息增益率</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E7%86%B5"><span class="nav-number">6.</span> <span class="nav-text">交叉熵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B8%E5%AF%B9%E7%86%B5kl%E6%95%A3%E5%BA%A6"><span class="nav-number">7.</span> <span class="nav-text">相对熵（KL散度）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%92%E4%BF%A1%E6%81%AF"><span class="nav-number">8.</span> <span class="nav-text">互信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%B0%E6%83%91%E5%BA%A6"><span class="nav-number">9.</span> <span class="nav-text">困惑度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-references"><span class="nav-number">10.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -472,7 +480,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -485,7 +493,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -532,12 +540,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:33</span>
 </div>
 
 

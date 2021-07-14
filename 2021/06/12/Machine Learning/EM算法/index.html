@@ -23,12 +23,12 @@
 
 
 
-  <meta name="description" content="EM 基本思想已知观察数据，未知隐含数据和模型参数。在E步，我们所做的事情是固定模型参数的值，优化隐含数据的分布（猜想隐变量的数据），而在M步，我们所做的事情是固定隐含数据分布，优化模型参数的值（基于观测数据和猜测的隐变量数据最大化对数似然函数）">
+  <meta name="description" content="EM 基本思想 已知观察数据，未知隐含数据和模型参数。在E步，我们所做的事情是固定模型参数的值，优化隐含数据的分布（猜想隐变量的数据），而在M步，我们所做的事情是固定隐含数据分布，优化模型参数的值（基于观测数据和猜测的隐变量数据最大化对数似然函数）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EM算法">
 <meta property="og:url" content="https://jason-huanghao.github.io/2021/06/12/Machine%20Learning/EM%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Jason Hao&#39;s Blog">
-<meta property="og:description" content="EM 基本思想已知观察数据，未知隐含数据和模型参数。在E步，我们所做的事情是固定模型参数的值，优化隐含数据的分布（猜想隐变量的数据），而在M步，我们所做的事情是固定隐含数据分布，优化模型参数的值（基于观测数据和猜测的隐变量数据最大化对数似然函数）">
+<meta property="og:description" content="EM 基本思想 已知观察数据，未知隐含数据和模型参数。在E步，我们所做的事情是固定模型参数的值，优化隐含数据的分布（猜想隐变量的数据），而在M步，我们所做的事情是固定隐含数据分布，优化模型参数的值（基于观测数据和猜测的隐变量数据最大化对数似然函数）">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210612104008.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210612110505.png">
@@ -325,42 +325,50 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="EM-基本思想"><a href="#EM-基本思想" class="headerlink" title="EM 基本思想"></a>EM 基本思想</h1><p>已知观察数据，未知隐含数据和模型参数。在E步，我们所做的事情是固定模型参数的值，优化隐含数据的分布（猜想隐变量的数据），而在M步，我们所做的事情是固定隐含数据分布，优化模型参数的值（基于观测数据和猜测的隐变量数据最大化对数似然函数）</p>
-<span id="more"></span>
-
-<p>这个算法与 MLE（maximum likelihood estimation）的差别是：MLE 针对无隐变量的模型，先收集所有变量的观测数据，然后根据完整的观测数据去估计参数；EM 针对含隐变量的模型，先根据可观测变量的数据猜测隐变量的数据，然后根据隐变量数据和观测数据来估计参数<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210612104008.png"></p>
-<h1 id="EM-推导"><a href="#EM-推导" class="headerlink" title="EM 推导"></a>EM 推导</h1><h2 id="Jensen’s-inequality"><a href="#Jensen’s-inequality" class="headerlink" title="Jensen’s inequality"></a>Jensen’s inequality</h2><p>如果函数 $g(x)$ 是凸函数，那么有 $g(E(x))\geq E(g(x))$</p>
-<p>证明如下，过点 $(x, g(E(x)))$ 所一条切线，假设切线公式为 $L(x)=a+bx$<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210612110505.png"></p>
-<h2 id="EM-算法"><a href="#EM-算法" class="headerlink" title="EM 算法"></a>EM 算法</h2><p><strong>整体思想</strong></p>
-<p>假设有 $n$ 个独立同分布的数据 ${x^{1}, x^{(2)},…,x^{(n)}}$，我们要估计一个包含隐变量 $z$ 和变量 $x$ 的模型的参数，改模型表示为 $p(x,z;\theta)$,</p>
-<p>那么，关于变量 $x$ 的概率密度为 $p(x;\theta)=\sum_{z} p(x,z;\theta)$</p>
-<p>模型的训练目标为极大对数似然函数 $l(\theta)=log(\sum_{i=1}^{n}p(x^{(i)};\theta))=\sum_{i=1}^{n}\sum_{z^{(i)}}p(x^{(i)}, z^{(i)};\theta)$。由于 $z$ 是隐变量，数据无法观测，优化这个目标是困难的</p>
-<p>EM 算法，通过构造 $l(\theta)$ 的下界函数，通过在 E 步根据参数和部分观测数据计算下界函数，在 M 步最大化下界函数来实现对参数 $\theta$ 的逐步优化</p>
+        <h1 id="em-基本思想">EM 基本思想</h1>
+<p>已知观察数据，未知隐含数据和模型参数。在E步，我们所做的事情是固定模型参数的值，优化隐含数据的分布（猜想隐变量的数据），而在M步，我们所做的事情是固定隐含数据分布，优化模型参数的值（基于观测数据和猜测的隐变量数据最大化对数似然函数） <span id="more"></span></p>
+<p>这个算法与 MLE（maximum likelihood estimation）的差别是：MLE 针对无隐变量的模型，先收集所有变量的观测数据，然后根据完整的观测数据去估计参数；EM 针对含隐变量的模型，先根据可观测变量的数据猜测隐变量的数据，然后根据隐变量数据和观测数据来估计参数 <img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210612104008.png" /></p>
+<h1 id="em-推导">EM 推导</h1>
+<h2 id="jensens-inequality">Jensen’s inequality</h2>
+<p>如果函数 <span class="math inline">\(g(x)\)</span> 是凸函数，那么有 <span class="math inline">\(g(E(x))\geq E(g(x))\)</span></p>
+<p>证明如下，过点 <span class="math inline">\((x, g(E(x)))\)</span> 所一条切线，假设切线公式为 <span class="math inline">\(L(x)=a+bx\)</span> <img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210612110505.png" /></p>
+<h2 id="em-算法">EM 算法</h2>
+<p><strong>整体思想</strong></p>
+<p>假设有 <span class="math inline">\(n\)</span> 个独立同分布的数据 <span class="math inline">\({x^{1}, x^{(2)},...,x^{(n)}}\)</span>，我们要估计一个包含隐变量 <span class="math inline">\(z\)</span> 和变量 <span class="math inline">\(x\)</span> 的模型的参数，改模型表示为 <span class="math inline">\(p(x,z;\theta)\)</span>,</p>
+<p>那么，关于变量 <span class="math inline">\(x\)</span> 的概率密度为 <span class="math inline">\(p(x;\theta)=\sum_{z} p(x,z;\theta)\)</span></p>
+<p>模型的训练目标为极大对数似然函数 <span class="math inline">\(l(\theta)=log(\sum_{i=1}^{n}p(x^{(i)};\theta))=\sum_{i=1}^{n}\sum_{z^{(i)}}p(x^{(i)}, z^{(i)};\theta)\)</span>。由于 <span class="math inline">\(z\)</span> 是隐变量，数据无法观测，优化这个目标是困难的</p>
+<p>EM 算法，通过构造 <span class="math inline">\(l(\theta)\)</span> 的下界函数，通过在 E 步根据参数和部分观测数据计算下界函数，在 M 步最大化下界函数来实现对参数 <span class="math inline">\(\theta\)</span> 的逐步优化</p>
 <p><strong>下界函数 ELBO 推导</strong></p>
-<p>先考虑对一个数据样例 $x$ 的优化过程，即针对目标 $log(p(x;\theta))=log(\sum_{z} p(x,z;\theta))$，令分布 $Q(z)$ 为隐变量 $z$ 的一个分布，$\sum_{z}Q(z)=1, Q(z)\geq 0$，此时重写目标</p>
-<p>$log(p(x;\theta))=log(\sum_{z} p(x,z;\theta))=log\sum_{z}Q(z)\frac{p(x,z;\theta)}{Q(z)} \geq \sum_{z}Q(z)log\frac{p(x,z;\theta)}{Q(z)}$</p>
-<p>上面不等式根据 Jensen 不等式可推导，因为 $log(\frac{p(x,z;\theta)}{Q(z)})$ 是一个关于 $z$ 的凸函数</p>
+<p>先考虑对一个数据样例 <span class="math inline">\(x\)</span> 的优化过程，即针对目标 <span class="math inline">\(log(p(x;\theta))=log(\sum_{z} p(x,z;\theta))\)</span>，令分布 <span class="math inline">\(Q(z)\)</span> 为隐变量 <span class="math inline">\(z\)</span> 的一个分布，<span class="math inline">\(\sum_{z}Q(z)=1, Q(z)\geq 0\)</span>，此时重写目标</p>
+<p><span class="math inline">\(log(p(x;\theta))=log(\sum_{z} p(x,z;\theta))=log\sum_{z}Q(z)\frac{p(x,z;\theta)}{Q(z)} \geq \sum_{z}Q(z)log\frac{p(x,z;\theta)}{Q(z)}\)</span></p>
+<p>上面不等式根据 Jensen 不等式可推导，因为 <span class="math inline">\(log(\frac{p(x,z;\theta)}{Q(z)})\)</span> 是一个关于 <span class="math inline">\(z\)</span> 的凸函数</p>
 <p><strong>Q 函数的确定</strong></p>
-<p>对于任意一个 $Q(z)$ 上面的不等式都成立，但是我们希望找到的下界函数跟目标函数足够接近（也就是令不等式的等式成立），此时必须满足条件 $\frac{p(x,z;\theta)}{Q(z)}=c$，这意味着 $Q(z)\sim p(x,z;\theta)$，而 $\sum_z Q(z)=1$（归一化概率分布），因此我们可以计算出 $Q(z)$ 为 </p>
-<p>$Q(z)=\frac{p(x,z;\theta)}{\sum_{z} p(x,z;\theta)}=\frac{p(x,z;\theta)}{p(x;\theta)}=p(z|x;\theta)$</p>
-<p>这样我们就唯一确定了 $Q(z)$ 函数为 $z$ 的给定观测数据 $x$ 和参数 $\theta$ 的后验概率，即给定了观测数据和参数，就可以猜测出 $z$ 的概率分布（隐数据），基于此就计算出了一个新的 ELBO</p>
+<p>对于任意一个 <span class="math inline">\(Q(z)\)</span> 上面的不等式都成立，但是我们希望找到的下界函数跟目标函数足够接近（也就是令不等式的等式成立），此时必须满足条件 <span class="math inline">\(\frac{p(x,z;\theta)}{Q(z)}=c\)</span>，这意味着 <span class="math inline">\(Q(z)\sim p(x,z;\theta)\)</span>，而 <span class="math inline">\(\sum_z Q(z)=1\)</span>（归一化概率分布），因此我们可以计算出 <span class="math inline">\(Q(z)\)</span> 为</p>
+<p><span class="math inline">\(Q(z)=\frac{p(x,z;\theta)}{\sum_{z} p(x,z;\theta)}=\frac{p(x,z;\theta)}{p(x;\theta)}=p(z|x;\theta)\)</span></p>
+<p>这样我们就唯一确定了 <span class="math inline">\(Q(z)\)</span> 函数为 <span class="math inline">\(z\)</span> 的给定观测数据 <span class="math inline">\(x\)</span> 和参数 <span class="math inline">\(\theta\)</span> 的后验概率，即给定了观测数据和参数，就可以猜测出 <span class="math inline">\(z\)</span> 的概率分布（隐数据），基于此就计算出了一个新的 ELBO</p>
 <p><strong>EM 算法</strong></p>
-<p>在此重写我们的目标函数和下界函数的关系 </p>
-<p>$l(\theta)=\sum_{i}log(p(x_i;\theta))\geq \sum_{i}ELBO(x^{(i)};Q_i(z^{(i)}),\theta)=\sum_{i}\sum_{z^{(i)}} Q_i(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}$，对于任意 $Q_i,i=1,2,…,n$ 必须满足 $Q_i(z^{(i)})=p(z^{(i)}|x^{(i)};\theta)$</p>
-<p>  <strong>Initialization</strong></p>
-<p>  随机初始化 $\theta$</p>
-<p>  <strong>E-step</strong></p>
-<p>  对于每一个 $i$，令</p>
-<p>  $Q_i(z^{(i)}):=p(z^{(i)}|x^{(i)};\theta)$</p>
-<p>  <strong>M-step</strong></p>
-<p>  $\theta:=\underset{\theta}{argmax}\sum_{i}^{n} ELBO(x^{(i)};Q_i,\theta) =\underset{\theta}{argmax}\sum_{i}^{n}\sum_{z^{(i)}}Q_i(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}$</p>
-<h1 id="收敛性证明"><a href="#收敛性证明" class="headerlink" title="收敛性证明"></a>收敛性证明</h1><p>$l(\theta^{(t+1)})\geq \sum_{i=1}^{n} ELBO(x^{(i)},Q_i^{(t)},\theta^{(t+1)}) \geq \sum_{i=1}^{n} ELBO(x^{(i)},Q_i^{(t)},\theta^{(t)}) =l(\theta^{(t)})$</p>
-<p>其中 $\theta^{(t+1)}$ 是通过 $\underset{\theta}{argmax} \sum_{i=1}^n ELBO(x^{(i)};Q_i^{(t)},\theta)$ 求出来的最优参数</p>
-<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><h2 id="K-means-算法"><a href="#K-means-算法" class="headerlink" title="K-means 算法"></a>K-means 算法</h2><p>K-means 算法开始给定随机的聚类簇的中心（簇的中心就是隐变量），根据聚类簇的中心划分数据。在 E 步中估计 K 个簇的中心位置。然后计算得到每个样本最近的质心，并把样本聚类到最近的这个质心，这个就是 M 步</p>
-<h2 id="GMM-混合高斯模型"><a href="#GMM-混合高斯模型" class="headerlink" title="GMM 混合高斯模型"></a>GMM 混合高斯模型</h2><h2 id="LDA-主题模型"><a href="#LDA-主题模型" class="headerlink" title="LDA 主题模型"></a>LDA 主题模型</h2><h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
+<p>在此重写我们的目标函数和下界函数的关系</p>
+<p><span class="math inline">\(l(\theta)=\sum_{i}log(p(x_i;\theta))\geq \sum_{i}ELBO(x^{(i)};Q_i(z^{(i)}),\theta)=\sum_{i}\sum_{z^{(i)}} Q_i(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}\)</span>，对于任意 <span class="math inline">\(Q_i,i=1,2,...,n\)</span> 必须满足 <span class="math inline">\(Q_i(z^{(i)})=p(z^{(i)}|x^{(i)};\theta)\)</span></p>
+<p><strong>Initialization</strong></p>
+<p>随机初始化 <span class="math inline">\(\theta\)</span></p>
+<p><strong>E-step</strong></p>
+<p>对于每一个 <span class="math inline">\(i\)</span>，令</p>
+<p><span class="math inline">\(Q_i(z^{(i)}):=p(z^{(i)}|x^{(i)};\theta)\)</span></p>
+<p><strong>M-step</strong></p>
+<p><span class="math inline">\(\theta:=\underset{\theta}{argmax}\sum_{i}^{n} ELBO(x^{(i)};Q_i,\theta) =\underset{\theta}{argmax}\sum_{i}^{n}\sum_{z^{(i)}}Q_i(z^{(i)})log\frac{p(x^{(i)},z^{(i)};\theta)}{Q_i(z^{(i)})}\)</span></p>
+<h1 id="收敛性证明">收敛性证明</h1>
+<p><span class="math inline">\(l(\theta^{(t+1)})\geq \sum_{i=1}^{n} ELBO(x^{(i)},Q_i^{(t)},\theta^{(t+1)}) \geq \sum_{i=1}^{n} ELBO(x^{(i)},Q_i^{(t)},\theta^{(t)}) =l(\theta^{(t)})\)</span></p>
+<p>其中 <span class="math inline">\(\theta^{(t+1)}\)</span> 是通过 <span class="math inline">\(\underset{\theta}{argmax} \sum_{i=1}^n ELBO(x^{(i)};Q_i^{(t)},\theta)\)</span> 求出来的最优参数</p>
+<h1 id="应用">应用</h1>
+<h2 id="k-means-算法">K-means 算法</h2>
+<p>K-means 算法开始给定随机的聚类簇的中心（簇的中心就是隐变量），根据聚类簇的中心划分数据。在 E 步中估计 K 个簇的中心位置。然后计算得到每个样本最近的质心，并把样本聚类到最近的这个质心，这个就是 M 步</p>
+<h2 id="gmm-混合高斯模型">GMM 混合高斯模型</h2>
+<h2 id="lda-主题模型">LDA 主题模型</h2>
+<h1 id="参考-references">参考 (References)</h1>
+<ol type="1">
 <li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinard/p/6912636.html">刘建平老师 Pinard EM 算法原理总结</a></li>
 <li><a target="_blank" rel="noopener" href="http://cs229.stanford.edu/notes2020spring/cs229-notes8.pdf">Tengyu Ma and Andrew Ng CS229 Lecture notes</a></li>
-<li><a href="https://link.zhihu.com/?target=http://ai.stanford.edu/~chuongdo/papers/em_tutorial.pdf">What is the expectation maximization algorithm?</a></li>
+<li><a href="https://link.zhihu.com/?target=http%3A//ai.stanford.edu/~chuongdo/papers/em_tutorial.pdf">What is the expectation maximization algorithm?</a></li>
 </ol>
 
     </div>
@@ -464,7 +472,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#EM-%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-number">1.</span> <span class="nav-text">EM 基本思想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EM-%E6%8E%A8%E5%AF%BC"><span class="nav-number">2.</span> <span class="nav-text">EM 推导</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jensen%E2%80%99s-inequality"><span class="nav-number">2.1.</span> <span class="nav-text">Jensen’s inequality</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EM-%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">EM 算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E6%80%A7%E8%AF%81%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">收敛性证明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#K-means-%E7%AE%97%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">K-means 算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GMM-%E6%B7%B7%E5%90%88%E9%AB%98%E6%96%AF%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.2.</span> <span class="nav-text">GMM 混合高斯模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LDA-%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.3.</span> <span class="nav-text">LDA 主题模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">5.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#em-%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3"><span class="nav-number">1.</span> <span class="nav-text">EM 基本思想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#em-%E6%8E%A8%E5%AF%BC"><span class="nav-number">2.</span> <span class="nav-text">EM 推导</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jensens-inequality"><span class="nav-number">2.1.</span> <span class="nav-text">Jensen’s inequality</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#em-%E7%AE%97%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">EM 算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E6%80%A7%E8%AF%81%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">收敛性证明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#k-means-%E7%AE%97%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">K-means 算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gmm-%E6%B7%B7%E5%90%88%E9%AB%98%E6%96%AF%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.2.</span> <span class="nav-text">GMM 混合高斯模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lda-%E4%B8%BB%E9%A2%98%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.3.</span> <span class="nav-text">LDA 主题模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-references"><span class="nav-number">5.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -480,7 +488,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -493,7 +501,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -540,12 +548,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:33</span>
 </div>
 
 

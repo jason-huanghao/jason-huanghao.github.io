@@ -23,12 +23,12 @@
 
 
 
-  <meta name="description" content="Word2vec的训练目标Word2vec都被认为是用于训练词向量表达的工具。但是词向量其实是一个完成了Word2vec网络模型的一个副产品。它的训练目标是训练一个三层神经网络，使得上下文相似的词汇的相似度变高。达到这个目标后，发现输入层到隐藏层的参数竟然奇迹般的能用于词的向量表示，并且还有些神奇的效果，比如 ”King“-“Men”+”Women”&#x3D;”Queen”、 ”日本“-”东京“+”中国”">
+  <meta name="description" content="Word2vec的训练目标 Word2vec都被认为是用于训练词向量表达的工具。但是词向量其实是一个完成了Word2vec网络模型的一个副产品。它的训练目标是训练一个三层神经网络，使得上下文相似的词汇的相似度变高。达到这个目标后，发现输入层到隐藏层的参数竟然奇迹般的能用于词的向量表示，并且还有些神奇的效果，比如 ”King“-&quot;Men&quot;+&quot;Women&quot;&#x3D;&quot;Queen&quot;、 ”日本“-”东京“+&quot;中国">
 <meta property="og:type" content="article">
 <meta property="og:title" content="word2vec详解">
 <meta property="og:url" content="https://jason-huanghao.github.io/2021/05/21/NLP/word2vec%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Jason Hao&#39;s Blog">
-<meta property="og:description" content="Word2vec的训练目标Word2vec都被认为是用于训练词向量表达的工具。但是词向量其实是一个完成了Word2vec网络模型的一个副产品。它的训练目标是训练一个三层神经网络，使得上下文相似的词汇的相似度变高。达到这个目标后，发现输入层到隐藏层的参数竟然奇迹般的能用于词的向量表示，并且还有些神奇的效果，比如 ”King“-“Men”+”Women”&#x3D;”Queen”、 ”日本“-”东京“+”中国”">
+<meta property="og:description" content="Word2vec的训练目标 Word2vec都被认为是用于训练词向量表达的工具。但是词向量其实是一个完成了Word2vec网络模型的一个副产品。它的训练目标是训练一个三层神经网络，使得上下文相似的词汇的相似度变高。达到这个目标后，发现输入层到隐藏层的参数竟然奇迹般的能用于词的向量表示，并且还有些神奇的效果，比如 ”King“-&quot;Men&quot;+&quot;Women&quot;&#x3D;&quot;Queen&quot;、 ”日本“-”东京“+&quot;中国">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210521220013.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210531085347.png">
@@ -311,7 +311,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>3.3k</span>
+              <span>3.6k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -329,43 +329,48 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Word2vec的训练目标"><a href="#Word2vec的训练目标" class="headerlink" title="Word2vec的训练目标"></a>Word2vec的训练目标</h1><p>Word2vec都被认为是用于训练词向量表达的工具。但是词向量其实是一个完成了Word2vec网络模型的一个副产品。它的训练目标是训练一个三层神经网络，使得上下文相似的词汇的相似度变高。达到这个目标后，发现输入层到隐藏层的参数竟然奇迹般的能用于词的向量表示，并且还有些神奇的效果，比如 ”King“-“Men”+”Women”=”Queen”、 ”日本“-”东京“+”中国”=”北京”；或者 “北京”和”烤鸭”的相似性 &gt; “北京”和”早茶”的相似性。</p>
-<span id="more"></span>
-<p>假设数据集为 $D$，数据集中的词汇表为 $C$。如果当前词为 $w_t$，上下文窗口大小为 5. 那么这个词的上下文 $Context(w_t)=[w_{t-2},w_{t-1},w_{t+1},w_{t+2}]$。对于下面的例子的第三个窗口而言，当前输入词为“brown”，它的上下文为 [“the”，“quick”，“fox”，“jumps”]</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210521220013.png"></p>
+        <h1 id="word2vec的训练目标">Word2vec的训练目标</h1>
+<p>Word2vec都被认为是用于训练词向量表达的工具。但是词向量其实是一个完成了Word2vec网络模型的一个副产品。它的训练目标是训练一个三层神经网络，使得上下文相似的词汇的相似度变高。达到这个目标后，发现输入层到隐藏层的参数竟然奇迹般的能用于词的向量表示，并且还有些神奇的效果，比如 ”King“-"Men"+"Women"="Queen"、 ”日本“-”东京“+"中国"="北京"；或者 "北京"和"烤鸭"的相似性 &gt; "北京"和"早茶"的相似性。 <span id="more"></span> 假设数据集为 <span class="math inline">\(D\)</span>，数据集中的词汇表为 <span class="math inline">\(C\)</span>。如果当前词为 <span class="math inline">\(w_t\)</span>，上下文窗口大小为 5. 那么这个词的上下文 <span class="math inline">\(Context(w_t)=[w_{t-2},w_{t-1},w_{t+1},w_{t+2}]\)</span>。对于下面的例子的第三个窗口而言，当前输入词为“brown”，它的上下文为 [“the”，“quick”，“fox”，“jumps”]</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210521220013.png" /></p>
 <p><strong>Skip-gram</strong></p>
 <p>Skip-gram 通过当前词汇来预测上下文，为此它的最大化目标函数为</p>
-<p>$L=\sum_{w\in D}logp(w|Context(w))$</p>
+<p><span class="math inline">\(L=\sum_{w\in D}logp(w|Context(w))\)</span></p>
 <p><strong>CBOW</strong></p>
 <p>CBOW 的思想则是通过上下文来预测当前词汇，为此它的最大化目标函数为</p>
-<p>$L=\sum_{w\in D}logp(Context(w)|w)$</p>
-<h1 id="Word2vec模型"><a href="#Word2vec模型" class="headerlink" title="Word2vec模型"></a>Word2vec模型</h1><p>Word2vedc 模型由输入层，隐藏层和输出层组成，它的模型参数包括了输入层到隐藏层的权重矩阵 $W$（最终保留的词向量矩阵），以及隐藏层到输出层的权重矩阵 $W’$，数据集的词汇表中一共包含 $V$ 个唯一的词汇，词向量的维度设置为 $N$。</p>
-<h2 id="CBOW-模型"><a href="#CBOW-模型" class="headerlink" title="CBOW 模型"></a>CBOW 模型</h2><p>对于当前词汇 $w_t$ 而言，它是词汇表中第 $v$ 个词汇。它的一个训练样本为 $(Context(w_t), w_t)$. 输入层是一个只包含 0 和 1 的向量，1 的位置代表词汇表中该位置的词汇在上下文 $Context(w_t)$ 中. 隐藏层的向量 $h=x^TW=\sum_{w’\in Context(w_t)}W_{w’}$. 其实隐藏层就是上下文词汇的词向量的和。输出层为向量 $o=hW’=x^TWW’$。对于向量 $o$ 而言，希望第 $v$ 个位置为 1，其他位置为 0.  对于这一个训练样本而言，我们希望最大化</p>
-<p>$L=\sum_{w_t\in C}log(\prod_{w\in C}p(w|Context(w_t)))$</p>
-<p>$g(w_t,w)=p(w|Context(w_t))={[\sigma(hW’<em>{w})]}^{L^{w_t}(w)}\times {[1-\sigma(hW’</em>{w})]}^{1-L^{w_t}(w)}$</p>
-<p>其中 $\sigma(x)=\frac{1}{1+e^{-x}}$，$L^{w_t}(w)=1$ if $w_t=w$，$L^{w_t}(w)=1$ if $w_t\neq w$. </p>
-<p>对 $W’_{w}$ 求导 $\frac{\partial g(w_t,w)}{\partial W’<em>w}=[L^{w_t}(w)-\sigma(hW’</em>{w})]h$</p>
-<p>对 $h$ 求导 $\frac{\partial g(w_t,w)}{\partial h}=[L^{w_t}(w)-\sigma(hW’<em>{w})]W’</em>{w}$</p>
-<p>更新 $W’<em>{w}=W’</em>{w}+\eta \frac{\partial g(w_t,w)}{\partial W’_w}$</p>
-<p>更新 $W_{w’} (w’\in Context(w_t))$， $W_{w’}=W_{w’} + \eta \sum_{w\in C} \frac{\partial g(w_t,w)}{\partial h}$</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210531085347.png"></p>
-<h2 id="SKip-gram-模型"><a href="#SKip-gram-模型" class="headerlink" title="SKip-gram 模型"></a>SKip-gram 模型</h2><p>对于当前词汇 $w_t$ 而言，它是词汇表中第 $v$ 个词汇。它的一个训练样本为 $(w_t,Context(w_t))$. 输入层是一个 one-hot 向量，其中第 $v$ 个位置为 1，其他位置为 0. 隐藏层的向量 $h=x^TW=\sum_{w\in Context(w_t)}W_{w}$. 其实隐藏层就是上下文词汇的词向量的和。输出层为向量 $o=hW’=x^TWW’$。对于向量 $o$ 而言，希望所有与 $Context(w_t)$ 中词汇对应的位置为 1，其他位置为 0. 对于这一个训练样本而言，我们希望最大化</p>
-<p>$L=\sum_{w_t\in C}log(\prod_{u\in Context(w_t)}\prod_{w\in C}p(w|w_t,u))$</p>
-<p>$g(w_t,u,w)=p(w|w_t,u)={[\sigma(W_{u}^T W’<em>{w})]}^{L^{w_t}(w)}\times{[1-\sigma(W</em>{u}^T W’_{w})]}^{1-L^{w_t}(w)}$</p>
-<p>其中 $\sigma(x)=\frac{1}{1+e^{-x}}$，$L^{w_t}(w)=1$ if $w_t=w$，$L^{w_t}(w)=1$ if $w_t\neq w$. </p>
-<p>对 $W’<em>{w}$ 求导 $\frac{\partial g(w_t,w,u)}{\partial W’<em>w}=[L^{w_t}(w)-\sigma(W</em>{u}W’</em>{w})]W_{u}$</p>
-<p>对 $W_u$ 求导 $\frac{\partial g(w_t,w)}{\partial W_{u}}=[L^{w_t}(w)-\sigma(W_{u}W’<em>{w})]W</em>{u}$</p>
-<p>更新 $W’<em>{w}=W’</em>{w}+\eta \frac{\partial g(w_t,w)}{\partial W’_w}$</p>
-<p>更新 $W_{u} (u\in Context(w_t))$， $W_{u}=W_{u} + \eta \sum_{w\in C} \frac{\partial g(w_t,w)}{\partial W_u}$</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210531085440.png"></p>
-<h1 id="负采样"><a href="#负采样" class="headerlink" title="负采样"></a>负采样</h1><p>从上面的模型可以看到，每个训练样本经过，都需要更新整个 $W’$，这样代价太大了，因此，负采样对于上面的 $w\in C$ 更改为 $w\in NEG(w_t)\cup w_t$. 这样每次只需要更新更少的参数. 对于 $w_t$ 而言，除了自己，其他词汇都是负样本词汇. 但是有那么多个负样本词汇，我们怎么去挑选呢，答案是根据负样本词汇的词频。为此 Word2vec 模型定义了一个概率计算公式用于挑选负样本词汇：$P(w)=\frac{tf(w)^{3/4}}{\sum_{w’}tf(w’)^{3/4}}$.公式中加了一个 $3/4$ 次方纯粹是一个经验值.</p>
-<h1 id="下采样"><a href="#下采样" class="headerlink" title="下采样"></a>下采样</h1><p>回到一个图中的例子中我们构建的训练样本。里面会存在大量的（”fox”, “the”）这样的词对，并且像（”the”, XXX）这样词对也会频繁出现在训练样本中。我们知道其实 “the” 并不能为 “fox” 这样的词提供多少语义含义，此外对于（”the”, XXX）这样的词对，XXX有很高的重复率。为此，Word2vec使用下采样来对付这样的情况。简单来说对于像 ”fox” 这样有意义的词语，我们去掉它的包含 “the” 的词对；对于 “the” 这样的词汇，我们采用更少的训练样本量。</p>
-<p>那么对于一个像 “the” 这样的高频词汇，我们按照怎样的方法来选择性的丢掉它的一些样本呢？Word2vec 采用了一个计算词汇被保留的概率公式 $P(w)=(\sqrt{\frac{z(w)}{0.001}}+1)\frac{0.001}{z(w)}$，其中 $z(w)=\frac{tf(w)}{corpus\ size}$。函数$f(x)=(\sqrt{\frac{x}{0.001}}+1)\frac{0.001}{x}$的图像如下图所示：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210522112249.png"></p>
-<p>从图中可以看出，高频词汇被保留的概率较少，低频词汇被保留的概率较高。当 $z(w)\leq 0.0026$ 时，$P(w)=1$，此时 $w$ 所有的词对样本都被保留；当  $z(w)= 0.00746$ 时，$P(w)=0.5$，此时 $w$ 的词对样本只保留一半。</p>
-<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
-<li><a target="_blank" rel="noopener" href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/</a></li>
-<li><a target="_blank" rel="noopener" href="http://mccormickml.com/2017/01/11/word2vec-tutorial-part-2-negative-sampling/">http://mccormickml.com/2017/01/11/word2vec-tutorial-part-2-negative-sampling/</a></li>
+<p><span class="math inline">\(L=\sum_{w\in D}logp(Context(w)|w)\)</span></p>
+<h1 id="word2vec模型">Word2vec模型</h1>
+<p>Word2vedc 模型由输入层，隐藏层和输出层组成，它的模型参数包括了输入层到隐藏层的权重矩阵 <span class="math inline">\(W\)</span>（最终保留的词向量矩阵），以及隐藏层到输出层的权重矩阵 <span class="math inline">\(W&#39;\)</span>，数据集的词汇表中一共包含 <span class="math inline">\(V\)</span> 个唯一的词汇，词向量的维度设置为 <span class="math inline">\(N\)</span>。</p>
+<h2 id="cbow-模型">CBOW 模型</h2>
+<p>对于当前词汇 <span class="math inline">\(w_t\)</span> 而言，它是词汇表中第 <span class="math inline">\(v\)</span> 个词汇。它的一个训练样本为 <span class="math inline">\((Context(w_t), w_t)\)</span>. 输入层是一个只包含 0 和 1 的向量，1 的位置代表词汇表中该位置的词汇在上下文 <span class="math inline">\(Context(w_t)\)</span> 中. 隐藏层的向量 <span class="math inline">\(h=x^TW=\sum_{w&#39;\in Context(w_t)}W_{w&#39;}\)</span>. 其实隐藏层就是上下文词汇的词向量的和。输出层为向量 <span class="math inline">\(o=hW&#39;=x^TWW&#39;\)</span>。对于向量 <span class="math inline">\(o\)</span> 而言，希望第 <span class="math inline">\(v\)</span> 个位置为 1，其他位置为 0. 对于这一个训练样本而言，我们希望最大化</p>
+<p><span class="math inline">\(L=\sum_{w_t\in C}log(\prod_{w\in C}p(w|Context(w_t)))\)</span></p>
+<p><span class="math inline">\(g(w_t,w)=p(w|Context(w_t))={[\sigma(hW&#39;_{w})]}^{L^{w_t}(w)}\times {[1-\sigma(hW&#39;_{w})]}^{1-L^{w_t}(w)}\)</span></p>
+<p>其中 <span class="math inline">\(\sigma(x)=\frac{1}{1+e^{-x}}\)</span>，<span class="math inline">\(L^{w_t}(w)=1\)</span> if <span class="math inline">\(w_t=w\)</span>，<span class="math inline">\(L^{w_t}(w)=1\)</span> if <span class="math inline">\(w_t\neq w\)</span>.</p>
+<p>对 <span class="math inline">\(W&#39;_{w}\)</span> 求导 <span class="math inline">\(\frac{\partial g(w_t,w)}{\partial W&#39;_w}=[L^{w_t}(w)-\sigma(hW&#39;_{w})]h\)</span></p>
+<p>对 <span class="math inline">\(h\)</span> 求导 <span class="math inline">\(\frac{\partial g(w_t,w)}{\partial h}=[L^{w_t}(w)-\sigma(hW&#39;_{w})]W&#39;_{w}\)</span></p>
+<p>更新 <span class="math inline">\(W&#39;_{w}=W&#39;_{w}+\eta \frac{\partial g(w_t,w)}{\partial W&#39;_w}\)</span></p>
+<p>更新 <span class="math inline">\(W_{w&#39;} (w&#39;\in Context(w_t))\)</span>， <span class="math inline">\(W_{w&#39;}=W_{w&#39;} + \eta \sum_{w\in C} \frac{\partial g(w_t,w)}{\partial h}\)</span></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210531085347.png" /></p>
+<h2 id="skip-gram-模型">SKip-gram 模型</h2>
+<p>对于当前词汇 <span class="math inline">\(w_t\)</span> 而言，它是词汇表中第 <span class="math inline">\(v\)</span> 个词汇。它的一个训练样本为 <span class="math inline">\((w_t,Context(w_t))\)</span>. 输入层是一个 one-hot 向量，其中第 <span class="math inline">\(v\)</span> 个位置为 1，其他位置为 0. 隐藏层的向量 <span class="math inline">\(h=x^TW=\sum_{w\in Context(w_t)}W_{w}\)</span>. 其实隐藏层就是上下文词汇的词向量的和。输出层为向量 <span class="math inline">\(o=hW&#39;=x^TWW&#39;\)</span>。对于向量 <span class="math inline">\(o\)</span> 而言，希望所有与 <span class="math inline">\(Context(w_t)\)</span> 中词汇对应的位置为 1，其他位置为 0. 对于这一个训练样本而言，我们希望最大化</p>
+<p><span class="math inline">\(L=\sum_{w_t\in C}log(\prod_{u\in Context(w_t)}\prod_{w\in C}p(w|w_t,u))\)</span></p>
+<p><span class="math inline">\(g(w_t,u,w)=p(w|w_t,u)={[\sigma(W_{u}^T W&#39;_{w})]}^{L^{w_t}(w)}\times{[1-\sigma(W_{u}^T W&#39;_{w})]}^{1-L^{w_t}(w)}\)</span></p>
+<p>其中 <span class="math inline">\(\sigma(x)=\frac{1}{1+e^{-x}}\)</span>，<span class="math inline">\(L^{w_t}(w)=1\)</span> if <span class="math inline">\(w_t=w\)</span>，<span class="math inline">\(L^{w_t}(w)=1\)</span> if <span class="math inline">\(w_t\neq w\)</span>.</p>
+<p>对 <span class="math inline">\(W&#39;_{w}\)</span> 求导 <span class="math inline">\(\frac{\partial g(w_t,w,u)}{\partial W&#39;_w}=[L^{w_t}(w)-\sigma(W_{u}W&#39;_{w})]W_{u}\)</span></p>
+<p>对 <span class="math inline">\(W_u\)</span> 求导 <span class="math inline">\(\frac{\partial g(w_t,w)}{\partial W_{u}}=[L^{w_t}(w)-\sigma(W_{u}W&#39;_{w})]W_{u}\)</span></p>
+<p>更新 <span class="math inline">\(W&#39;_{w}=W&#39;_{w}+\eta \frac{\partial g(w_t,w)}{\partial W&#39;_w}\)</span></p>
+<p>更新 <span class="math inline">\(W_{u} (u\in Context(w_t))\)</span>， <span class="math inline">\(W_{u}=W_{u} + \eta \sum_{w\in C} \frac{\partial g(w_t,w)}{\partial W_u}\)</span></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210531085440.png" /></p>
+<h1 id="负采样">负采样</h1>
+<p>从上面的模型可以看到，每个训练样本经过，都需要更新整个 <span class="math inline">\(W&#39;\)</span>，这样代价太大了，因此，负采样对于上面的 <span class="math inline">\(w\in C\)</span> 更改为 <span class="math inline">\(w\in NEG(w_t)\cup w_t\)</span>. 这样每次只需要更新更少的参数. 对于 <span class="math inline">\(w_t\)</span> 而言，除了自己，其他词汇都是负样本词汇. 但是有那么多个负样本词汇，我们怎么去挑选呢，答案是根据负样本词汇的词频。为此 Word2vec 模型定义了一个概率计算公式用于挑选负样本词汇：<span class="math inline">\(P(w)=\frac{tf(w)^{3/4}}{\sum_{w&#39;}tf(w&#39;)^{3/4}}\)</span>.公式中加了一个 <span class="math inline">\(3/4\)</span> 次方纯粹是一个经验值.</p>
+<h1 id="下采样">下采样</h1>
+<p>回到一个图中的例子中我们构建的训练样本。里面会存在大量的（"fox", "the"）这样的词对，并且像（"the", XXX）这样词对也会频繁出现在训练样本中。我们知道其实 "the" 并不能为 "fox" 这样的词提供多少语义含义，此外对于（"the", XXX）这样的词对，XXX有很高的重复率。为此，Word2vec使用下采样来对付这样的情况。简单来说对于像 ”fox" 这样有意义的词语，我们去掉它的包含 "the" 的词对；对于 "the" 这样的词汇，我们采用更少的训练样本量。</p>
+<p>那么对于一个像 "the" 这样的高频词汇，我们按照怎样的方法来选择性的丢掉它的一些样本呢？Word2vec 采用了一个计算词汇被保留的概率公式 <span class="math inline">\(P(w)=(\sqrt{\frac{z(w)}{0.001}}+1)\frac{0.001}{z(w)}\)</span>，其中 <span class="math inline">\(z(w)=\frac{tf(w)}{corpus\ size}\)</span>。函数<span class="math inline">\(f(x)=(\sqrt{\frac{x}{0.001}}+1)\frac{0.001}{x}\)</span>的图像如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210522112249.png" /></p>
+<p>从图中可以看出，高频词汇被保留的概率较少，低频词汇被保留的概率较高。当 <span class="math inline">\(z(w)\leq 0.0026\)</span> 时，<span class="math inline">\(P(w)=1\)</span>，此时 <span class="math inline">\(w\)</span> 所有的词对样本都被保留；当 <span class="math inline">\(z(w)= 0.00746\)</span> 时，<span class="math inline">\(P(w)=0.5\)</span>，此时 <span class="math inline">\(w\)</span> 的词对样本只保留一半。</p>
+<h1 id="参考-references">参考 (References)</h1>
+<ol type="1">
+<li>http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/</li>
+<li>http://mccormickml.com/2017/01/11/word2vec-tutorial-part-2-negative-sampling/</li>
 </ol>
 
     </div>
@@ -471,7 +476,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Word2vec%E7%9A%84%E8%AE%AD%E7%BB%83%E7%9B%AE%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">Word2vec的训练目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Word2vec%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">Word2vec模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CBOW-%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">CBOW 模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SKip-gram-%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">SKip-gram 模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%9F%E9%87%87%E6%A0%B7"><span class="nav-number">3.</span> <span class="nav-text">负采样</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E9%87%87%E6%A0%B7"><span class="nav-number">4.</span> <span class="nav-text">下采样</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">5.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#word2vec%E7%9A%84%E8%AE%AD%E7%BB%83%E7%9B%AE%E6%A0%87"><span class="nav-number">1.</span> <span class="nav-text">Word2vec的训练目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#word2vec%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">Word2vec模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cbow-%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">CBOW 模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skip-gram-%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">SKip-gram 模型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%9F%E9%87%87%E6%A0%B7"><span class="nav-number">3.</span> <span class="nav-text">负采样</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E9%87%87%E6%A0%B7"><span class="nav-number">4.</span> <span class="nav-text">下采样</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-references"><span class="nav-number">5.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -487,7 +492,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -500,7 +505,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -547,12 +552,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:33</span>
 </div>
 
 

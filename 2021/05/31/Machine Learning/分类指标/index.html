@@ -23,12 +23,12 @@
 
 
 
-  <meta name="description" content="PredifinitionSuppose that there is a set $s$ to be predicted as class $c$. A data point in $s$ is can be predicted as positive (P, means belonging to $c$), or negative (N, means belonging to other cla">
+  <meta name="description" content="Predifinition Suppose that there is a set \(s\) to be predicted as class \(c\). A data point in \(s\) is can be predicted as positive (P, means belonging to \(c\)), or negative (N, means belonging to">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分类指标">
 <meta property="og:url" content="https://jason-huanghao.github.io/2021/05/31/Machine%20Learning/%E5%88%86%E7%B1%BB%E6%8C%87%E6%A0%87/index.html">
 <meta property="og:site_name" content="Jason Hao&#39;s Blog">
-<meta property="og:description" content="PredifinitionSuppose that there is a set $s$ to be predicted as class $c$. A data point in $s$ is can be predicted as positive (P, means belonging to $c$), or negative (N, means belonging to other cla">
+<meta property="og:description" content="Predifinition Suppose that there is a set \(s\) to be predicted as class \(c\). A data point in \(s\) is can be predicted as positive (P, means belonging to \(c\)), or negative (N, means belonging to">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-05-31T03:46:06.000Z">
 <meta property="article:modified_time" content="2021-06-23T08:49:28.654Z">
@@ -323,48 +323,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Predifinition"><a href="#Predifinition" class="headerlink" title="Predifinition"></a>Predifinition</h1><p>Suppose that there is a set $s$ to be predicted as class $c$. A data point in $s$ is can be predicted as positive (P, means belonging to $c$), or negative (N, means belonging to other classes)</p>
+        <h1 id="predifinition">Predifinition</h1>
+<p>Suppose that there is a set <span class="math inline">\(s\)</span> to be predicted as class <span class="math inline">\(c\)</span>. A data point in <span class="math inline">\(s\)</span> is can be predicted as positive (P, means belonging to <span class="math inline">\(c\)</span>), or negative (N, means belonging to other classes)</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th></th>
 <th>Predicted P</th>
 <th>Predicgted N</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>P</td>
 <td>TP</td>
 <td>FN</td>
 </tr>
-<tr>
+<tr class="even">
 <td>N</td>
 <td>FP</td>
 <td>TN</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <span id="more"></span>
-<p>TP: Actual Positive, Predicted as Positive<br>FN: Actual Positive, Predicted as Negative<br>TN: Actual Negative, Predicted as Negative<br>FP: Actual Negative, Predicted as Positive</p>
-<h1 id="Standard-Criteria"><a href="#Standard-Criteria" class="headerlink" title="Standard Criteria"></a>Standard Criteria</h1><p>Precision</p>
-<p>$P(c)=\frac{TP_c}{TP_c + FP_c}$</p>
+<p>TP: Actual Positive, Predicted as Positive FN: Actual Positive, Predicted as Negative TN: Actual Negative, Predicted as Negative FP: Actual Negative, Predicted as Positive</p>
+<h1 id="standard-criteria">Standard Criteria</h1>
+<p>Precision</p>
+<p><span class="math inline">\(P(c)=\frac{TP_c}{TP_c + FP_c}\)</span></p>
 <p>Recall</p>
-<p>$R(c)=\frac{TP_c}{TP_c + FN_c}$</p>
+<p><span class="math inline">\(R(c)=\frac{TP_c}{TP_c + FN_c}\)</span></p>
 <p>F1</p>
-<p>$F1(c)=2× \frac{P(c)×R(c)}{P(c)+R(c)}$</p>
-<h1 id="Macro-Criteria"><a href="#Macro-Criteria" class="headerlink" title="Macro Criteria"></a>Macro Criteria</h1><p>Note that the Macro Criteria will highly influenced by the small classes. |C| is the number of classes.</p>
+<p><span class="math inline">\(F1(c)=2× \frac{P(c)×R(c)}{P(c)+R(c)}\)</span></p>
+<h1 id="macro-criteria">Macro Criteria</h1>
+<p>Note that the Macro Criteria will highly influenced by the small classes. |C| is the number of classes.</p>
 <p>Macro Precision</p>
-<p>$P_{macro}=\sum_{c}\frac{P(c)}{|C|}$</p>
+<p><span class="math inline">\(P_{macro}=\sum_{c}\frac{P(c)}{|C|}\)</span></p>
 <p>Macro Recall</p>
-<p>$R_{macro}=\sum_c\frac{R(c)}{|C|}$</p>
+<p><span class="math inline">\(R_{macro}=\sum_c\frac{R(c)}{|C|}\)</span></p>
 <p>Macro F1</p>
-<p>$F1_{macro}=\sum_c\frac{F1(c)}{|C|}$</p>
-<h1 id="Micro-Criteria"><a href="#Micro-Criteria" class="headerlink" title="Micro Criteria"></a>Micro Criteria</h1><p>$P_{micro}=R_{micro}=F1_{micro}=\sum_c\frac{TP(c)}{|D|}$<br>, where |D| is the size of data set.</p>
-<h1 id="Weighted-Criteria"><a href="#Weighted-Criteria" class="headerlink" title="Weighted Criteria"></a>Weighted Criteria</h1><p>Weighted Precision</p>
-<p>$P_{weighted}=\sum_c\frac{|c|}{|D|}P(c)$</p>
+<p><span class="math inline">\(F1_{macro}=\sum_c\frac{F1(c)}{|C|}\)</span></p>
+<h1 id="micro-criteria">Micro Criteria</h1>
+<p><span class="math inline">\(P_{micro}=R_{micro}=F1_{micro}=\sum_c\frac{TP(c)}{|D|}\)</span> , where |D| is the size of data set.</p>
+<h1 id="weighted-criteria">Weighted Criteria</h1>
+<p>Weighted Precision</p>
+<p><span class="math inline">\(P_{weighted}=\sum_c\frac{|c|}{|D|}P(c)\)</span></p>
 <p>Weighted Recall</p>
-<p>$R_{weighted}=\sum_c\frac{|c|}{|D|}R(c)$</p>
-<p>Weighted F1<br>$F1_{weighted}=\sum_c\frac{|c|}{|D|}F1(c)$</p>
-<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1>
+<p><span class="math inline">\(R_{weighted}=\sum_c\frac{|c|}{|D|}R(c)\)</span></p>
+<p>Weighted F1 <span class="math inline">\(F1_{weighted}=\sum_c\frac{|c|}{|D|}F1(c)\)</span></p>
+<h1 id="参考-references">参考 (References)</h1>
+
     </div>
 
     
@@ -467,7 +475,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Predifinition"><span class="nav-number">1.</span> <span class="nav-text">Predifinition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Standard-Criteria"><span class="nav-number">2.</span> <span class="nav-text">Standard Criteria</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Macro-Criteria"><span class="nav-number">3.</span> <span class="nav-text">Macro Criteria</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Micro-Criteria"><span class="nav-number">4.</span> <span class="nav-text">Micro Criteria</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Weighted-Criteria"><span class="nav-number">5.</span> <span class="nav-text">Weighted Criteria</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">6.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#predifinition"><span class="nav-number">1.</span> <span class="nav-text">Predifinition</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#standard-criteria"><span class="nav-number">2.</span> <span class="nav-text">Standard Criteria</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#macro-criteria"><span class="nav-number">3.</span> <span class="nav-text">Macro Criteria</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#micro-criteria"><span class="nav-number">4.</span> <span class="nav-text">Micro Criteria</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#weighted-criteria"><span class="nav-number">5.</span> <span class="nav-text">Weighted Criteria</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-references"><span class="nav-number">6.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -483,7 +491,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -496,7 +504,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -543,12 +551,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:33</span>
 </div>
 
 

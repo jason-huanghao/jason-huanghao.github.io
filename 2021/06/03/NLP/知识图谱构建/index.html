@@ -23,12 +23,12 @@
 
 
 
-  <meta name="description" content="知识图谱构建法 自顶向下  先定义好本体（Ontology 或称为 Schema），再基于输入数据完成信息抽取到图谱构建的过程，适用于专业知识（领域）方面图谱的构建">
+  <meta name="description" content="知识图谱构建法  自顶向下  先定义好本体（Ontology 或称为 Schema），再基于输入数据完成信息抽取到图谱构建的过程，适用于专业知识（领域）方面图谱的构建">
 <meta property="og:type" content="article">
 <meta property="og:title" content="知识图谱构建">
 <meta property="og:url" content="https://jason-huanghao.github.io/2021/06/03/NLP/%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA/index.html">
 <meta property="og:site_name" content="Jason Hao&#39;s Blog">
-<meta property="og:description" content="知识图谱构建法 自顶向下  先定义好本体（Ontology 或称为 Schema），再基于输入数据完成信息抽取到图谱构建的过程，适用于专业知识（领域）方面图谱的构建">
+<meta property="og:description" content="知识图谱构建法  自顶向下  先定义好本体（Ontology 或称为 Schema），再基于输入数据完成信息抽取到图谱构建的过程，适用于专业知识（领域）方面图谱的构建">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-06-03T03:27:45.000Z">
 <meta property="article:modified_time" content="2021-06-07T03:37:47.835Z">
@@ -304,7 +304,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>580</span>
+              <span>585</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -322,27 +322,30 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="知识图谱构建法"><a href="#知识图谱构建法" class="headerlink" title="知识图谱构建法"></a>知识图谱构建法</h1><ol>
+        <h1 id="知识图谱构建法">知识图谱构建法</h1>
+<ol type="1">
 <li>自顶向下</li>
 </ol>
-<p>先定义好本体（Ontology 或称为 Schema），再基于输入数据完成信息抽取到图谱构建的过程，适用于专业知识（领域）方面图谱的构建</p>
-<span id="more"></span>
-<ol start="2">
-<li>自底向上</li>
-</ol>
+<p>先定义好本体（Ontology 或称为 Schema），再基于输入数据完成信息抽取到图谱构建的过程，适用于专业知识（领域）方面图谱的构建 <span id="more"></span> 2. 自底向上</p>
 <p>从开放的 Open Linked Data 中抽取置信度高的知识，或从非结构化文本中抽取知识，完成知识图谱的构建，适合于常识性的知识，比如人名、机构名等通用知识图谱的构建，因为无法区分与领域无关的信息</p>
-<h1 id="自顶向下的知识图谱构建"><a href="#自顶向下的知识图谱构建" class="headerlink" title="自顶向下的知识图谱构建"></a>自顶向下的知识图谱构建</h1><p>本体构建 –&gt; 数据源配置 –&gt; 信息抽取 –&gt; 知识融合</p>
-<h1 id="本体构建"><a href="#本体构建" class="headerlink" title="本体构建"></a>本体构建</h1><p>本体是知识图谱的定义语言，就像是数据库中新建表时用的 schema 一样，定义了数据表的格式。通过梳理领域知识、术语词典、专家的人工经验等作为本体构建的基础，结合知识图谱的应用场景来完善图谱的构建，最终获得实体类别、类别之间的关系、实体包含的属性定义</p>
-<h1 id="数据源配置"><a href="#数据源配置" class="headerlink" title="数据源配置"></a>数据源配置</h1><ol>
+<h1 id="自顶向下的知识图谱构建">自顶向下的知识图谱构建</h1>
+<p>本体构建 --&gt; 数据源配置 --&gt; 信息抽取 --&gt; 知识融合</p>
+<h1 id="本体构建">本体构建</h1>
+<p>本体是知识图谱的定义语言，就像是数据库中新建表时用的 schema 一样，定义了数据表的格式。通过梳理领域知识、术语词典、专家的人工经验等作为本体构建的基础，结合知识图谱的应用场景来完善图谱的构建，最终获得实体类别、类别之间的关系、实体包含的属性定义</p>
+<h1 id="数据源配置">数据源配置</h1>
+<ol type="1">
 <li>非电子文档：扫描，OCR识别</li>
 <li>电子文档：根据类别整合成统一格式</li>
 <li>网络资源：爬虫技术</li>
 <li>第三方数据：接口获取</li>
 </ol>
-<h1 id="信息抽取"><a href="#信息抽取" class="headerlink" title="信息抽取"></a>信息抽取</h1><p>对实体，属性和关系的抽取，用（主语，谓语，宾语）三元组表示。</p>
-<h1 id="知识融合"><a href="#知识融合" class="headerlink" title="知识融合"></a>知识融合</h1><p>对上一步抽取的三元组进行融合。完成实体对齐和知识融合。实体对齐是一个技术难点，通常由基于实体属性相似度的框架、基于联合表征的深度学习框架着两种方法</p>
-<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
-<li><a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/eb0d3f2a5691bf3aabb73966f">https://xie.infoq.cn/article/eb0d3f2a5691bf3aabb73966f</a></li>
+<h1 id="信息抽取">信息抽取</h1>
+<p>对实体，属性和关系的抽取，用（主语，谓语，宾语）三元组表示。</p>
+<h1 id="知识融合">知识融合</h1>
+<p>对上一步抽取的三元组进行融合。完成实体对齐和知识融合。实体对齐是一个技术难点，通常由基于实体属性相似度的框架、基于联合表征的深度学习框架着两种方法</p>
+<h1 id="参考-references">参考 (References)</h1>
+<ol type="1">
+<li>https://xie.infoq.cn/article/eb0d3f2a5691bf3aabb73966f</li>
 <li></li>
 </ol>
 
@@ -443,7 +446,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">知识图谱构建法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">自顶向下的知识图谱构建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E4%BD%93%E6%9E%84%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">本体构建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">数据源配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96"><span class="nav-number">5.</span> <span class="nav-text">信息抽取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%9E%8D%E5%90%88"><span class="nav-number">6.</span> <span class="nav-text">知识融合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">7.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">知识图谱构建法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E7%9A%84%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E6%9E%84%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">自顶向下的知识图谱构建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E4%BD%93%E6%9E%84%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">本体构建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%BA%90%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">数据源配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%8A%BD%E5%8F%96"><span class="nav-number">5.</span> <span class="nav-text">信息抽取</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E8%9E%8D%E5%90%88"><span class="nav-number">6.</span> <span class="nav-text">知识融合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-references"><span class="nav-number">7.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -459,7 +462,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -472,7 +475,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -519,12 +522,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:33</span>
 </div>
 
 

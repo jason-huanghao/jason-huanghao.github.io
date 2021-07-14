@@ -23,18 +23,18 @@
 
 
 
-  <meta name="description" content="What’s the Problem?This paper is targeted to measure the domain relevance of terms.">
+  <meta name="description" content="What&#39;s the Problem? This paper is targeted to measure the domain relevance of terms.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Measuring Fine-Grained Domain Relevance of Terms ACL2021">
 <meta property="og:url" content="https://jason-huanghao.github.io/2021/07/09/Paper%20Reading/Term%20Weight/Measuring-Fine-Grained-Domain-Relevance-of-Terms-ACL2021/index.html">
 <meta property="og:site_name" content="Jason Hao&#39;s Blog">
-<meta property="og:description" content="What’s the Problem?This paper is targeted to measure the domain relevance of terms.">
+<meta property="og:description" content="What&#39;s the Problem? This paper is targeted to measure the domain relevance of terms.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210709111925.png">
 <meta property="article:published_time" content="2021-07-09T03:15:17.000Z">
-<meta property="article:modified_time" content="2021-07-10T02:42:23.358Z">
+<meta property="article:modified_time" content="2021-07-12T01:44:59.628Z">
 <meta property="article:author" content="Jason Hao">
-<meta property="article:tag" content="researcher,NLP,topic model,ontology,graph model,主题模型,自然语言处理,图模型,科研,计算机">
+<meta property="article:tag" content="paper">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210709111925.png">
 
@@ -261,7 +261,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-10 10:42:23" itemprop="dateModified" datetime="2021-07-10T10:42:23+08:00">2021-07-10</time>
+                <time title="Modified: 2021-07-12 09:44:59" itemprop="dateModified" datetime="2021-07-12T09:44:59+08:00">2021-07-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -328,57 +328,68 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="What’s-the-Problem"><a href="#What’s-the-Problem" class="headerlink" title="What’s the Problem?"></a>What’s the Problem?</h1><p>This paper is targeted to measure the domain relevance of terms. </p>
-<span id="more"></span>
-
-<h1 id="Why-they-do-this-Work"><a href="#Why-they-do-this-Work" class="headerlink" title="Why they do this Work?"></a>Why they do this Work?</h1><p>The author mentioned <font color=red>3 challenges</font>: </p>
-<ol>
+        <h1 id="whats-the-problem">What's the Problem?</h1>
+<p>This paper is targeted to measure the domain relevance of terms. <span id="more"></span></p>
+<h1 id="why-they-do-this-work">Why they do this Work?</h1>
+<p>The author mentioned <font color=red>3 challenges</font>:</p>
+<ol type="1">
 <li>How to measure the domain relevance of a long-tail terms (not frequently used, and lake of descirptive information).</li>
 <li>How to measure domain relevance of a term without using domain-specific corpus.</li>
 <li>How to reduce human efforts.</li>
 </ol>
-<h1 id="How-they-deal-with-the-problem-amp-solve-the-challenges"><a href="#How-they-deal-with-the-problem-amp-solve-the-challenges" class="headerlink" title="How they deal with the problem &amp; solve the challenges?"></a>How they deal with the problem &amp; solve the challenges?</h1><p>The overview of the framework is described in following picture. They assume that if a term is highly relevant to a target domain, this term should also be highly relevant to some other terms with high domain relevance.<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210709111925.png"></p>
-<h2 id="1-Core-Anchored-Semantic-Graph-for-challenge-1"><a href="#1-Core-Anchored-Semantic-Graph-for-challenge-1" class="headerlink" title="1. Core-Anchored Semantic Graph (for challenge 1)"></a>1. Core-Anchored Semantic Graph (for challenge <strong>1</strong>)</h2><p>(1) First, the seed terms are provided by a term/phrase extraction method. </p>
-<p>(2) the seed terms can be divided into <em>core terms</em> (which is descibed by a Wikipedia article page) and <em>fringe terms</em> (which can not retrieve any description page from Wikipedia)</p>
-<p>(3) For each query term (a seed term), search it form <a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search">Wikipedia search engine</a> by extract match. Link those <em>core terms</em> to the query term by checking the top 2k (k=5) returned Wiki pages (build up links with top k <em>core terms</em>). If the number of returned pages is no more k, than use relevance search to get return pages and build up links.</p>
-<p>(4) By searching each seed term from Wikipage search engine and building up links between them, we construct a term graph.</p>
-<p>The idea is using the term relevance between <em>core terms</em> and query term, thereofre, helping identifying the domain relevance of a query term. </p>
-<h2 id="2-Hierarchical-Core-Fringe-Learning-for-challenge-2"><a href="#2-Hierarchical-Core-Fringe-Learning-for-challenge-2" class="headerlink" title="2. Hierarchical Core-Fringe Learning (for challenge 2)"></a>2. Hierarchical Core-Fringe Learning (for challenge <strong>2</strong>)</h2><p>(1) For meansuring the doamin relevance with a broad domain, they proposed a Core-Fringe Domain Relevance Learniing (CFL) framework. </p>
-<p>The graph convolution operation (GCNConv) at $l$th layer is formulated as:</p>
-<p>$h_i^{(l+1)}=\phi(\sum_{j\in \mathcal{N}<em>I\cup {i}}\frac{1}{c</em>{ij}}W_c^{(l)}b_c^{(l)}+b_c^{(l)})$</p>
+<h1 id="how-they-deal-with-the-problem-solve-the-challenges">How they deal with the problem &amp; solve the challenges?</h1>
+<p>The overview of the framework is described in following picture. They assume that if a term is highly relevant to a target domain, this term should also be highly relevant to some other terms with high domain relevance. <img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210709111925.png" /></p>
+<h2 id="core-anchored-semantic-graph-for-challenge-1">1. Core-Anchored Semantic Graph (for challenge <strong>1</strong>)</h2>
+<ol type="1">
+<li><p>First, the seed terms are provided by a term/phrase extraction method.</p></li>
+<li><p>the seed terms can be divided into <em>core terms</em> (which is descibed by a Wikipedia article page) and <em>fringe terms</em> (which can not retrieve any description page from Wikipedia)</p></li>
+<li><p>For each query term (a seed term), search it form <a target="_blank" rel="noopener" href="https://en.wikipedia.org/w/index.php?search">Wikipedia search engine</a> by extract match. Link those <em>core terms</em> to the query term by checking the top 2k (k=5) returned Wiki pages (build up links with top k <em>core terms</em>). If the number of returned pages is no more k, than use relevance search to get return pages and build up links.</p></li>
+<li><p>By searching each seed term from Wikipage search engine and building up links between them, we construct a term graph.</p></li>
+</ol>
+<p>The idea is using the term relevance between <em>core terms</em> and query term, thereofre, helping identifying the domain relevance of a query term.</p>
+<h2 id="hierarchical-core-fringe-learning-for-challenge-2">2. Hierarchical Core-Fringe Learning (for challenge <strong>2</strong>)</h2>
+<ol type="1">
+<li>For meansuring the doamin relevance with a broad domain, they proposed a Core-Fringe Domain Relevance Learniing (CFL) framework.</li>
+</ol>
+<p>The graph convolution operation (GCNConv) at <span class="math inline">\(l\)</span>th layer is formulated as:</p>
+<p><span class="math inline">\(h_i^{(l+1)}=\phi(\sum_{j\in \mathcal{N}_I\cup \{i\}}\frac{1}{c_{ij}}W_c^{(l)}b_c^{(l)}+b_c^{(l)})\)</span></p>
 <p>The loss function is defined as:</p>
-<p>$\mathcal{L}=-\sum_{i\in \mathcal{V}_{core}}(y_ilog(z_i)+(1-y_i)log(1-z_i))$</p>
-<p>where $\mathcal{V}_{core}$ is the nodes of <em>core terms</em>, $y_i$ is the label of node $i$ regarding the target domain (can be obtained in next step 3). The domain relevance is obtained from $z$.</p>
-<p>(2) For a narrow domain, they proposed a Hierarchical CFL (HiCFL) framework.</p>
+<p><span class="math inline">\(\mathcal{L}=-\sum_{i\in \mathcal{V}_{core}}(y_ilog(z_i)+(1-y_i)log(1-z_i))\)</span></p>
+<p>where <span class="math inline">\(\mathcal{V}_{core}\)</span> is the nodes of <em>core terms</em>, <span class="math inline">\(y_i\)</span> is the label of node <span class="math inline">\(i\)</span> regarding the target domain (can be obtained in next step 3). The domain relevance is obtained from <span class="math inline">\(z\)</span>.</p>
+<ol start="2" type="1">
+<li>For a narrow domain, they proposed a Hierarchical CFL (HiCFL) framework.</li>
+</ol>
 <ul>
-<li><p>Get the last GCNConv layer $h_i^{(l_c)}$, where $l_c<br>$ is the total layer of GCN. </p>
-</li>
-<li><p>Obtain the hierarchical global hidden state $a_p$ by </p>
-<p>$a_p^{(l+1)}=\phi(W_p^{(l)}[a_p^{(i)};h^{(l_c)}]+b_p^{(l)})$, and $a_p^{(0)}=\phi(W_p^{(0)}h^{l_c}+b_{p}^{(0)})$, where $l_p$ is the total number of hierarchical level.</p>
-<p>The global information is produced by<br>$z_p = \sigma(W_p^{(l_p)}a_p^{(l_p)}+b_p^{(l)})$</p>
-</li>
-<li><p>Obtain local hidden state $a_q^{(l)}$ for each level of hierarchy</p>
-<p>$a_q^{(l)}=\phi(W_t^{(l)}a_p^{(l)}+b_t^{(l)})$, note this formula has related to global hidden state.</p>
-<p>The local information of $l$th level of hierarchy is $z_q^{(l)}=\sigma(W_q^{(l)}a_q^{(l)}+b_q^{(l)})$</p>
-</li>
-<li><p>The loss function is defined as<br>$\mathcal{L}<em>h=\epsilon(z_p,y^{(l_p)})+\sum</em>{l=1}^{l_p}\epsilon(z_q^{(l)}, y^{(l)})$, where the $\epsilon(z,y) = -\sum_{i\in \mathcal{V_{core}}}(y_ilog(z_i)+(1-y_i)log(1-z_i))$</p>
-</li>
-<li><p>The final domain relevance can be calculated by<br>$s = \alpha \cdot z_p+(1-\alpha\cdot(z_q^{(1)}\circ z_q^{(2)},..,z_q^{(l_p)})$</p>
-</li>
+<li><p>Get the last GCNConv layer <span class="math inline">\(h_i^{(l_c)}\)</span>, where $l_c $ is the total layer of GCN.</p></li>
+<li><p>Obtain the hierarchical global hidden state <span class="math inline">\(a_p\)</span> by</p>
+<p><span class="math inline">\(a_p^{(l+1)}=\phi(W_p^{(l)}[a_p^{(i)};h^{(l_c)}]+b_p^{(l)})\)</span>, and <span class="math inline">\(a_p^{(0)}=\phi(W_p^{(0)}h^{l_c}+b_{p}^{(0)})\)</span>, where <span class="math inline">\(l_p\)</span> is the total number of hierarchical level.</p>
+<p>The global information is produced by <span class="math inline">\(z_p = \sigma(W_p^{(l_p)}a_p^{(l_p)}+b_p^{(l)})\)</span></p></li>
+<li><p>Obtain local hidden state <span class="math inline">\(a_q^{(l)}\)</span> for each level of hierarchy</p>
+<p><span class="math inline">\(a_q^{(l)}=\phi(W_t^{(l)}a_p^{(l)}+b_t^{(l)})\)</span>, note this formula has related to global hidden state.</p>
+<p>The local information of <span class="math inline">\(l\)</span>th level of hierarchy is <span class="math inline">\(z_q^{(l)}=\sigma(W_q^{(l)}a_q^{(l)}+b_q^{(l)})\)</span></p></li>
+<li><p>The loss function is defined as <span class="math inline">\(\mathcal{L}_h=\epsilon(z_p,y^{(l_p)})+\sum_{l=1}^{l_p}\epsilon(z_q^{(l)}, y^{(l)})\)</span>, where the <span class="math inline">\(\epsilon(z,y) = -\sum_{i\in \mathcal{V_{core}}}(y_ilog(z_i)+(1-y_i)log(1-z_i))\)</span></p></li>
+<li><p>The final domain relevance can be calculated by <span class="math inline">\(s = \alpha \cdot z_p+(1-\alpha\cdot(z_q^{(1)}\circ z_q^{(2)},..,z_q^{(l_p)})\)</span></p></li>
 </ul>
-<h2 id="3-Automatic-Annotation-and-Hierarchical-Positive-Unlabeled-Leraning-for-challenge-3"><a href="#3-Automatic-Annotation-and-Hierarchical-Positive-Unlabeled-Leraning-for-challenge-3" class="headerlink" title="3. Automatic Annotation and Hierarchical Positive-Unlabeled Leraning (for challenge 3)"></a>3. Automatic Annotation and Hierarchical Positive-Unlabeled Leraning (for challenge <strong>3</strong>)</h2><p>(1) If the target domain is general enough to get its sub fields (sub-categories) form wikipedia or other existing domain taxonomies. Then get those sub-categories as the <em>gold subcategories</em> $GSC$ of this domain. Then label those <em>core terms</em> whose Wiki page has a category in $GSC$ with positive label. Otherwise, label it as non-domain terms.</p>
-<p>(2) If the target domain is a low-level category in a domain taxonomy. Then let user offer some terms of this domain and label them as positive. And label other terms which not belong to the parent of this domain to negatives. For example, For a hierarchy CS $\rightarrow$ AI $\rightarrow$ ML $\rightarrow$ DL. The user can offer some terms to be positives. Then other terms in CS but non-ML terms to be automatically labeled as negatives. </p>
-<h1 id="Why-this-method-works-better-amp-Any-evidence"><a href="#Why-this-method-works-better-amp-Any-evidence" class="headerlink" title="Why this method works better &amp; Any evidence?"></a>Why this method works better &amp; Any evidence?</h1><h1 id="Any-shortcoming"><a href="#Any-shortcoming" class="headerlink" title="Any shortcoming?"></a>Any shortcoming?</h1><ol>
+<h2 id="automatic-annotation-and-hierarchical-positive-unlabeled-leraning-for-challenge-3">3. Automatic Annotation and Hierarchical Positive-Unlabeled Leraning (for challenge <strong>3</strong>)</h2>
+<ol type="1">
+<li><p>If the target domain is general enough to get its sub fields (sub-categories) form wikipedia or other existing domain taxonomies. Then get those sub-categories as the <em>gold subcategories</em> <span class="math inline">\(GSC\)</span> of this domain. Then label those <em>core terms</em> whose Wiki page has a category in <span class="math inline">\(GSC\)</span> with positive label. Otherwise, label it as non-domain terms.</p></li>
+<li><p>If the target domain is a low-level category in a domain taxonomy. Then let user offer some terms of this domain and label them as positive. And label other terms which not belong to the parent of this domain to negatives. For example, For a hierarchy CS <span class="math inline">\(\rightarrow\)</span> AI <span class="math inline">\(\rightarrow\)</span> ML <span class="math inline">\(\rightarrow\)</span> DL. The user can offer some terms to be positives. Then other terms in CS but non-ML terms to be automatically labeled as negatives.</p></li>
+</ol>
+<h1 id="why-this-method-works-better-any-evidence">Why this method works better &amp; Any evidence?</h1>
+<h1 id="any-shortcoming">Any shortcoming?</h1>
+<ol type="1">
 <li>The representation for each node may not elaborate enough, we may provide some embeddings learning form the Wiki page so that representing nodes with more semantic information.</li>
 </ol>
-<h1 id="Further-Readings"><a href="#Further-Readings" class="headerlink" title="Further Readings"></a>Further Readings</h1><p>About term extraction</p>
-<ol>
+<h1 id="further-readings">Further Readings</h1>
+<p>About term extraction</p>
+<ol type="1">
 <li>Bag of what? simple noun phrase extraction for text analysis</li>
-<li>Automated phrase mining from massive text corpora </li>
+<li>Automated phrase mining from massive text corpora</li>
 </ol>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
-<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2105.13255.pdf">https://arxiv.org/pdf/2105.13255.pdf</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/jeffhj/domain-relevance">https://github.com/jeffhj/domain-relevance</a></li>
+<h1 id="references">References</h1>
+<ol type="1">
+<li>https://arxiv.org/pdf/2105.13255.pdf</li>
+<li>https://github.com/jeffhj/domain-relevance</li>
 </ol>
 
     </div>
@@ -405,6 +416,10 @@
 
 
       <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/paper/" rel="tag"><i class="fa fa-tag"></i> paper</a>
+          </div>
 
         
 
@@ -415,7 +430,10 @@
     <a href="/2021/07/05/Research%20Method/How-to-write-a-quilified-academic-paper/" rel="prev" title="How to write a quilified academic paper?">
       <i class="fa fa-chevron-left"></i> How to write a quilified academic paper?
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/07/10/NLP/NLP-Tools/" rel="next" title="[object Object]">
+      [object Object] <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -475,7 +493,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#What%E2%80%99s-the-Problem"><span class="nav-number">1.</span> <span class="nav-text">What’s the Problem?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Why-they-do-this-Work"><span class="nav-number">2.</span> <span class="nav-text">Why they do this Work?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#How-they-deal-with-the-problem-amp-solve-the-challenges"><span class="nav-number">3.</span> <span class="nav-text">How they deal with the problem &amp; solve the challenges?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Core-Anchored-Semantic-Graph-for-challenge-1"><span class="nav-number">3.1.</span> <span class="nav-text">1. Core-Anchored Semantic Graph (for challenge 1)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Hierarchical-Core-Fringe-Learning-for-challenge-2"><span class="nav-number">3.2.</span> <span class="nav-text">2. Hierarchical Core-Fringe Learning (for challenge 2)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Automatic-Annotation-and-Hierarchical-Positive-Unlabeled-Leraning-for-challenge-3"><span class="nav-number">3.3.</span> <span class="nav-text">3. Automatic Annotation and Hierarchical Positive-Unlabeled Leraning (for challenge 3)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Why-this-method-works-better-amp-Any-evidence"><span class="nav-number">4.</span> <span class="nav-text">Why this method works better &amp; Any evidence?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Any-shortcoming"><span class="nav-number">5.</span> <span class="nav-text">Any shortcoming?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Further-Readings"><span class="nav-number">6.</span> <span class="nav-text">Further Readings</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#whats-the-problem"><span class="nav-number">1.</span> <span class="nav-text">What&#39;s the Problem?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#why-they-do-this-work"><span class="nav-number">2.</span> <span class="nav-text">Why they do this Work?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#how-they-deal-with-the-problem-solve-the-challenges"><span class="nav-number">3.</span> <span class="nav-text">How they deal with the problem &amp; solve the challenges?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#core-anchored-semantic-graph-for-challenge-1"><span class="nav-number">3.1.</span> <span class="nav-text">1. Core-Anchored Semantic Graph (for challenge 1)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hierarchical-core-fringe-learning-for-challenge-2"><span class="nav-number">3.2.</span> <span class="nav-text">2. Hierarchical Core-Fringe Learning (for challenge 2)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#automatic-annotation-and-hierarchical-positive-unlabeled-leraning-for-challenge-3"><span class="nav-number">3.3.</span> <span class="nav-text">3. Automatic Annotation and Hierarchical Positive-Unlabeled Leraning (for challenge 3)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#why-this-method-works-better-any-evidence"><span class="nav-number">4.</span> <span class="nav-text">Why this method works better &amp; Any evidence?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#any-shortcoming"><span class="nav-number">5.</span> <span class="nav-text">Any shortcoming?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#further-readings"><span class="nav-number">6.</span> <span class="nav-text">Further Readings</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -491,7 +509,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -504,7 +522,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -551,12 +569,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:33</span>
 </div>
 
 

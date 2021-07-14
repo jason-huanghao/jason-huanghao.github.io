@@ -23,12 +23,12 @@
 
 
 
-  <meta name="description" content="配置 Github Repository创建仓库 (Repository)，注意选择为 public，设置为 private，可以上传，但是图片链接没办法访问。 注意如果你的Picgo中配置的分支是 “master“，你一定把新建的分支改名为 ”master”。否则，会报错： 1StatusCodeError: 404 - &amp;#123;&quot;message&quot;:&quot;Branc">
+  <meta name="description" content="配置 Github Repository 创建仓库 (Repository)，注意选择为 public，设置为 private，可以上传，但是图片链接没办法访问。 注意如果你的Picgo中配置的分支是 “master“，你一定把新建的分支改名为 ”master”。否则，会报错： 1StatusCodeError: 404 - &amp;#123;&quot;message&quot;:&quot;Bran">
 <meta property="og:type" content="article">
 <meta property="og:title" content="github 图床 + typora 自动上传">
 <meta property="og:url" content="https://jason-huanghao.github.io/2021/05/03/Blog%20Building/github%20%E5%9B%BE%E5%BA%8A%20typora%20%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0/index.html">
 <meta property="og:site_name" content="Jason Hao&#39;s Blog">
-<meta property="og:description" content="配置 Github Repository创建仓库 (Repository)，注意选择为 public，设置为 private，可以上传，但是图片链接没办法访问。 注意如果你的Picgo中配置的分支是 “master“，你一定把新建的分支改名为 ”master”。否则，会报错： 1StatusCodeError: 404 - &amp;#123;&quot;message&quot;:&quot;Branc">
+<meta property="og:description" content="配置 Github Repository 创建仓库 (Repository)，注意选择为 public，设置为 private，可以上传，但是图片链接没办法访问。 注意如果你的Picgo中配置的分支是 “master“，你一定把新建的分支改名为 ”master”。否则，会报错： 1StatusCodeError: 404 - &amp;#123;&quot;message&quot;:&quot;Bran">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508220511.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508214232.png">
@@ -327,19 +327,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="配置-Github-Repository"><a href="#配置-Github-Repository" class="headerlink" title="配置 Github Repository"></a>配置 Github Repository</h1><p>创建仓库 (Repository)，注意选择为 public，设置为 private，可以上传，但是图片链接没办法访问。</p>
-<p>注意如果你的Picgo中配置的分支是 “master“，你一定把新建的分支改名为 ”master”。否则，会报错：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">StatusCodeError</span>: <span class="number">404</span> - &#123;<span class="string">&quot;message&quot;</span>:<span class="string">&quot;Branch master not found&quot;</span>,<span class="string">&quot;documentation_url&quot;</span>:<span class="string">&quot;https://docs.github.com/rest/reference/repos#create-or-update-file-contents&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508220511.png"></p>
-<h1 id="配置-Picgo"><a href="#配置-Picgo" class="headerlink" title="配置 Picgo"></a>配置 Picgo</h1><p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508214232.png"></p>
-<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">说明</span><br><span class="line"><span class="number">1</span>. 设置仓库名：你的 Github 账号名/你的放图片的仓库名称</span><br><span class="line"><span class="number">2</span>. 设置分支名：这里填的是 <span class="function"><span class="title">master</span>，一定要检查你的仓库新建之后一定要更改你原有的分支名称 main -&gt;</span> master. 也可以直接用 main 分支填在这里</span><br><span class="line"><span class="number">3</span>. 设置T<span class="function"><span class="title">oken</span>：进入你的 GitHub 账号 -&gt;</span> <span class="function"><span class="title">settting</span> -&gt;</span> D<span class="function"><span class="title">eveloper</span> settings -&gt;</span> P<span class="function"><span class="title">ersonal</span> access tokens -&gt;</span> <span class="function"><span class="title">generate</span> new token -&gt;</span> Generate token 绿色按钮</span><br><span class="line"><span class="number">4</span>. 指定存储路径：在你的仓库中放图片的文件夹（会自动新建）</span><br><span class="line"><span class="number">5</span>. 设置自定义域名：一个免费的CDN服务器，用于加速你的 Github 访问速度。设置地址为：https:<span class="comment">//cdn.jsdelivr.net/gh/你的 Github 账号名/你的放图片的仓库名称</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>第 3 步中的截图<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508214915.png"></p>
-<h1 id="为-typora-设置-PicGo-自动上传"><a href="#为-typora-设置-PicGo-自动上传" class="headerlink" title="为 typora 设置 PicGo 自动上传"></a>为 typora 设置 PicGo 自动上传</h1><p>typora 使用 Picgo 要先设置语言为中文，才能有 Picgo 选项，否则只有 Picgo-Core (commend line) 选项。<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508220617.png"></p>
-<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
-<li>typora 官方图片上传 PicGo.app (Chinese Language Only) <a target="_blank" rel="noopener" href="https://support.typora.io/Upload-Image/#option-2-config-via-cli">https://support.typora.io/Upload-Image/#option-2-config-via-cli</a></li>
-<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1651601">https://cloud.tencent.com/developer/article/1651601</a></li>
+        <h1 id="配置-github-repository">配置 Github Repository</h1>
+<p>创建仓库 (Repository)，注意选择为 public，设置为 private，可以上传，但是图片链接没办法访问。</p>
+<p>注意如果你的Picgo中配置的分支是 “master“，你一定把新建的分支改名为 ”master”。否则，会报错： <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">StatusCodeError</span>: <span class="number">404</span> - &#123;<span class="string">&quot;message&quot;</span>:<span class="string">&quot;Branch master not found&quot;</span>,<span class="string">&quot;documentation_url&quot;</span>:<span class="string">&quot;https://docs.github.com/rest/reference/repos#create-or-update-file-contents&quot;</span>&#125;</span><br></pre></td></tr></table></figure> <span id="more"></span></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508220511.png" /></p>
+<h1 id="配置-picgo">配置 Picgo</h1>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508214232.png" /> <figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">说明</span><br><span class="line"><span class="number">1</span>. 设置仓库名：你的 Github 账号名/你的放图片的仓库名称</span><br><span class="line"><span class="number">2</span>. 设置分支名：这里填的是 <span class="function"><span class="title">master</span>，一定要检查你的仓库新建之后一定要更改你原有的分支名称 main -&gt;</span> master. 也可以直接用 main 分支填在这里</span><br><span class="line"><span class="number">3</span>. 设置T<span class="function"><span class="title">oken</span>：进入你的 GitHub 账号 -&gt;</span> <span class="function"><span class="title">settting</span> -&gt;</span> D<span class="function"><span class="title">eveloper</span> settings -&gt;</span> P<span class="function"><span class="title">ersonal</span> access tokens -&gt;</span> <span class="function"><span class="title">generate</span> new token -&gt;</span> Generate token 绿色按钮</span><br><span class="line"><span class="number">4</span>. 指定存储路径：在你的仓库中放图片的文件夹（会自动新建）</span><br><span class="line"><span class="number">5</span>. 设置自定义域名：一个免费的CDN服务器，用于加速你的 Github 访问速度。设置地址为：https:<span class="comment">//cdn.jsdelivr.net/gh/你的 Github 账号名/你的放图片的仓库名称</span></span><br><span class="line"></span><br></pre></td></tr></table></figure> 第 3 步中的截图 <img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508214915.png" /></p>
+<h1 id="为-typora-设置-picgo-自动上传">为 typora 设置 PicGo 自动上传</h1>
+<p>typora 使用 Picgo 要先设置语言为中文，才能有 Picgo 选项，否则只有 Picgo-Core (commend line) 选项。 <img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508220617.png" /></p>
+<h1 id="参考-references">参考 (References)</h1>
+<ol type="1">
+<li>typora 官方图片上传 PicGo.app (Chinese Language Only) https://support.typora.io/Upload-Image/#option-2-config-via-cli</li>
+<li>https://cloud.tencent.com/developer/article/1651601</li>
 </ol>
 
     </div>
@@ -440,7 +439,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-Github-Repository"><span class="nav-number">1.</span> <span class="nav-text">配置 Github Repository</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-Picgo"><span class="nav-number">2.</span> <span class="nav-text">配置 Picgo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA-typora-%E8%AE%BE%E7%BD%AE-PicGo-%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0"><span class="nav-number">3.</span> <span class="nav-text">为 typora 设置 PicGo 自动上传</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">4.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-github-repository"><span class="nav-number">1.</span> <span class="nav-text">配置 Github Repository</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-picgo"><span class="nav-number">2.</span> <span class="nav-text">配置 Picgo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA-typora-%E8%AE%BE%E7%BD%AE-picgo-%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0"><span class="nav-number">3.</span> <span class="nav-text">为 typora 设置 PicGo 自动上传</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-references"><span class="nav-number">4.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -456,7 +455,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -469,7 +468,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -516,12 +515,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:33</span>
 </div>
 
 

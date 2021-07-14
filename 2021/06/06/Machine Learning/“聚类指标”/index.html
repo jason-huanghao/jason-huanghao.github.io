@@ -305,7 +305,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>2.8k</span>
+              <span>2.9k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -325,94 +325,103 @@
       
         <p>compactness：同一个簇内对象间的距离</p>
 <p>separation：度量一个簇和其他簇的分离程度</p>
-<p>connectivity：空间距离相近的对象放在同一聚类的程度</p>
-<span id="more"></span>
-<h1 id="Silhouette-Coefficient"><a href="#Silhouette-Coefficient" class="headerlink" title="Silhouette Coefficient"></a>Silhouette Coefficient</h1><p>衡量一个对象与同簇的对象的相似性对比它与其他簇的对象的相似性的程度</p>
-<p>假设 $C_i$ 是一个包含了数据 $i$ 的簇，对于数据点 $i, i\in C_i$ 而言，有</p>
-<p>$a(i)=\frac{1}{C_i|-1}\sum_{j\in C_i, i\neq j}d(i,j)$</p>
-<p>$b(i)=\underset{k\neq i}{min}\frac{1}{C_k|}\sum_{j\in C_k}d(i,j)$</p>
-<p>数据 $i$ 的 Silhouette 值定义为 $s(i)\frac{b(i)-a(i)}{max{a(i), b(i)}},\ if\ |C_i|&gt;1$; $s(i)=0,\ if \ |C_i|=1$，而 $-1\leq s(i)\leq 1$。当 $s(i)$ 越靠近 1，说明数据 $i$ 被聚类在越适合的簇中，若 $s(i)=0$，说明数据 $i$ 处在两个簇中间，若 $s(i)$ 越靠近 -1，说明数据 $i$ 很可能被错分了</p>
-<p>对一个 $K$ 个簇的集合，整体的 Silhouette Coefficient 定义为</p>
-<p>$SC=\underset{k}{max} \frac{1}{|C_k|}\sum_{i\in C_k} s(i)$</p>
-<h1 id="Dunn-Index"><a href="#Dunn-Index" class="headerlink" title="Dunn Index"></a>Dunn Index</h1><p>对于一个具有 $K$ 个簇的集合，它的 Dunn Index 定义如下：</p>
-<p>$DI=\frac{\underset{1\leq i&lt;j \leq K}{min}\delta(C_i, C_j)}{\underset{1\leq k \leq K}{max} \Delta_k}$</p>
-<p>其中 $\delta(C_i, C_j)$ 指代簇间距离，$\Delta_k$ 指代簇内聚类（直径），这个值越小越好</p>
-<h2 id="簇间距离的各种定义"><a href="#簇间距离的各种定义" class="headerlink" title="簇间距离的各种定义"></a>簇间距离的各种定义</h2><ol>
-<li>两个簇之间最近的两个数据点之间的距离 $\delta(C_i, C_j)=\underset{x\in C_i, y\in C_j}{min}d(x,y)$</li>
-<li>两个簇之间最远的两个数据点之间的距离 $\delta(C_i, C_j)=\underset{x\in C_i, y\in C_j}{max}d(x,y)$</li>
-<li>两个簇中心的距离 $\delta(C_i, C_j)=d(\mu_i, \mu_j), \mu_k=\frac{\sum_{x\in C_k} x}{|C_k|}$</li>
+<p>connectivity：空间距离相近的对象放在同一聚类的程度 <span id="more"></span> # Silhouette Coefficient 衡量一个对象与同簇的对象的相似性对比它与其他簇的对象的相似性的程度</p>
+<p>假设 <span class="math inline">\(C_i\)</span> 是一个包含了数据 <span class="math inline">\(i\)</span> 的簇，对于数据点 <span class="math inline">\(i, i\in C_i\)</span> 而言，有</p>
+<p><span class="math inline">\(a(i)=\frac{1}{C_i|-1}\sum_{j\in C_i, i\neq j}d(i,j)\)</span></p>
+<p><span class="math inline">\(b(i)=\underset{k\neq i}{min}\frac{1}{C_k|}\sum_{j\in C_k}d(i,j)\)</span></p>
+<p>数据 <span class="math inline">\(i\)</span> 的 Silhouette 值定义为 <span class="math inline">\(s(i)\frac{b(i)-a(i)}{max\{a(i), b(i)\}},\ if\ |C_i|&gt;1\)</span>; <span class="math inline">\(s(i)=0,\ if \ |C_i|=1\)</span>，而 <span class="math inline">\(-1\leq s(i)\leq 1\)</span>。当 <span class="math inline">\(s(i)\)</span> 越靠近 1，说明数据 <span class="math inline">\(i\)</span> 被聚类在越适合的簇中，若 <span class="math inline">\(s(i)=0\)</span>，说明数据 <span class="math inline">\(i\)</span> 处在两个簇中间，若 <span class="math inline">\(s(i)\)</span> 越靠近 -1，说明数据 <span class="math inline">\(i\)</span> 很可能被错分了</p>
+<p>对一个 <span class="math inline">\(K\)</span> 个簇的集合，整体的 Silhouette Coefficient 定义为</p>
+<p><span class="math inline">\(SC=\underset{k}{max} \frac{1}{|C_k|}\sum_{i\in C_k} s(i)\)</span></p>
+<h1 id="dunn-index">Dunn Index</h1>
+<p>对于一个具有 <span class="math inline">\(K\)</span> 个簇的集合，它的 Dunn Index 定义如下：</p>
+<p><span class="math inline">\(DI=\frac{\underset{1\leq i&lt;j \leq K}{min}\delta(C_i, C_j)}{\underset{1\leq k \leq K}{max} \Delta_k}\)</span></p>
+<p>其中 <span class="math inline">\(\delta(C_i, C_j)\)</span> 指代簇间距离，<span class="math inline">\(\Delta_k\)</span> 指代簇内聚类（直径），这个值越小越好</p>
+<h2 id="簇间距离的各种定义">簇间距离的各种定义</h2>
+<ol type="1">
+<li>两个簇之间最近的两个数据点之间的距离 <span class="math inline">\(\delta(C_i, C_j)=\underset{x\in C_i, y\in C_j}{min}d(x,y)\)</span></li>
+<li>两个簇之间最远的两个数据点之间的距离 <span class="math inline">\(\delta(C_i, C_j)=\underset{x\in C_i, y\in C_j}{max}d(x,y)\)</span></li>
+<li>两个簇中心的距离 <span class="math inline">\(\delta(C_i, C_j)=d(\mu_i, \mu_j), \mu_k=\frac{\sum_{x\in C_k} x}{|C_k|}\)</span></li>
 </ol>
-<h2 id="簇内聚类（直径）的各种定义"><a href="#簇内聚类（直径）的各种定义" class="headerlink" title="簇内聚类（直径）的各种定义"></a>簇内聚类（直径）的各种定义</h2><ol>
-<li>簇内距离最大的数据对的聚类 $\Delta_k = \underset{x,y\in C_k}{max} d(x,y)$ </li>
-<li>簇内所有词对的平均距离 $\Delta_k = \frac{2}{|C_k|(|C_k|-1)}\sum_{x,y\in C_k,x\neq y}d(x,y)$</li>
-<li>簇内所有点到簇中心的聚类 $\Delta_k = \frac{\sum_{x\in C_k} d(x,\mu_k)}{|C_k|}$</li>
+<h2 id="簇内聚类直径的各种定义">簇内聚类（直径）的各种定义</h2>
+<ol type="1">
+<li>簇内距离最大的数据对的聚类 <span class="math inline">\(\Delta_k = \underset{x,y\in C_k}{max} d(x,y)\)</span></li>
+<li>簇内所有词对的平均距离 <span class="math inline">\(\Delta_k = \frac{2}{|C_k|(|C_k|-1)}\sum_{x,y\in C_k,x\neq y}d(x,y)\)</span></li>
+<li>簇内所有点到簇中心的聚类 <span class="math inline">\(\Delta_k = \frac{\sum_{x\in C_k} d(x,\mu_k)}{|C_k|}\)</span></li>
 </ol>
-<h1 id="Rand-Index-需要-Gold-Standard：一个人工分好的簇集合"><a href="#Rand-Index-需要-Gold-Standard：一个人工分好的簇集合" class="headerlink" title="Rand Index (需要 Gold Standard：一个人工分好的簇集合)"></a>Rand Index (需要 Gold Standard：一个人工分好的簇集合)</h1><p>假设一个集合 $S={o_1, o_2,…,o_n}$ 包含 $n$ 个元素。对它有一个划分 $X={X_1,X_2,…,X_r}$，包含了 $r$ 个子集；一个划分 $Y={Y_1,Y_2,…,Y_s}$，包含了 $s$ 个子集，定义如下几个符号：</p>
-<h2 id="Rand-Index"><a href="#Rand-Index" class="headerlink" title="Rand Index"></a>Rand Index</h2><p>$a$: 出现在 $X$ 中相同子集，并且出现在 $Y$ 中相同子集的元素对的个数 $(x,y), x\in X_i, y\in X_i, x\in Y_j, y\in Y_j$ </p>
-<p>$b$: 出现在 $X$ 中不同子集，并且出现在 $Y$ 中不同子集的元素对的个数 $(x,y), x\in X_i, y\notin X_i, x\notin Y_j, y\in Y_j$ </p>
-<p>$c$: 出现在 $X$ 中相同子集，并且出现在 $Y$ 中不同子集的元素对的个数 $(x,y), x\in X_i, y\in X_i, x\notin Y_j, y\in Y_j$ </p>
-<p>$d$: 出现在 $X$ 中不同子集，并且出现在 $Y$ 中相同子集的元素对的个数 $(x,y), x\notin X_i, y\in X_i, x\in Y_j, y\in Y_j$ </p>
-<p>Rand Index 的定义为 $RI=\frac{a+b}{a+b+c+d}=\frac{a+b}{\tbinom{n}{2}}=\frac{TP+TN}{TP+TN+FP+FN}$，它衡量了两个划分的相似程度</p>
-<h2 id="Adjusted-Rand-Index"><a href="#Adjusted-Rand-Index" class="headerlink" title="Adjusted Rand Index"></a>Adjusted Rand Index</h2><table>
+<h1 id="rand-index-需要-gold-standard一个人工分好的簇集合">Rand Index (需要 Gold Standard：一个人工分好的簇集合)</h1>
+<p>假设一个集合 <span class="math inline">\(S=\{o_1, o_2,...,o_n\}\)</span> 包含 <span class="math inline">\(n\)</span> 个元素。对它有一个划分 <span class="math inline">\(X=\{X_1,X_2,...,X_r\}\)</span>，包含了 <span class="math inline">\(r\)</span> 个子集；一个划分 <span class="math inline">\(Y={Y_1,Y_2,...,Y_s}\)</span>，包含了 <span class="math inline">\(s\)</span> 个子集，定义如下几个符号：</p>
+<h2 id="rand-index">Rand Index</h2>
+<p><span class="math inline">\(a\)</span>: 出现在 <span class="math inline">\(X\)</span> 中相同子集，并且出现在 <span class="math inline">\(Y\)</span> 中相同子集的元素对的个数 <span class="math inline">\((x,y), x\in X_i, y\in X_i, x\in Y_j, y\in Y_j\)</span></p>
+<p><span class="math inline">\(b\)</span>: 出现在 <span class="math inline">\(X\)</span> 中不同子集，并且出现在 <span class="math inline">\(Y\)</span> 中不同子集的元素对的个数 <span class="math inline">\((x,y), x\in X_i, y\notin X_i, x\notin Y_j, y\in Y_j\)</span></p>
+<p><span class="math inline">\(c\)</span>: 出现在 <span class="math inline">\(X\)</span> 中相同子集，并且出现在 <span class="math inline">\(Y\)</span> 中不同子集的元素对的个数 <span class="math inline">\((x,y), x\in X_i, y\in X_i, x\notin Y_j, y\in Y_j\)</span></p>
+<p><span class="math inline">\(d\)</span>: 出现在 <span class="math inline">\(X\)</span> 中不同子集，并且出现在 <span class="math inline">\(Y\)</span> 中相同子集的元素对的个数 <span class="math inline">\((x,y), x\notin X_i, y\in X_i, x\in Y_j, y\in Y_j\)</span></p>
+<p>Rand Index 的定义为 <span class="math inline">\(RI=\frac{a+b}{a+b+c+d}=\frac{a+b}{\tbinom{n}{2}}=\frac{TP+TN}{TP+TN+FP+FN}\)</span>，它衡量了两个划分的相似程度</p>
+<h2 id="adjusted-rand-index">Adjusted Rand Index</h2>
+<table>
 <thead>
-<tr>
+<tr class="header">
 <th></th>
-<th>$Y_1$</th>
-<th>$Y_2$</th>
-<th>…</th>
-<th>$Y_s$</th>
+<th><span class="math inline">\(Y_1\)</span></th>
+<th><span class="math inline">\(Y_2\)</span></th>
+<th>...</th>
+<th><span class="math inline">\(Y_s\)</span></th>
 <th>sum</th>
 </tr>
 </thead>
-<tbody><tr>
-<td><strong>$X_1$</strong></td>
-<td>$n_{11}$</td>
-<td>$n_{2}$</td>
-<td>…</td>
-<td>$n_{1s}$</td>
-<td>$a_{1}$</td>
+<tbody>
+<tr class="odd">
+<td><strong><span class="math inline">\(X_1\)</span></strong></td>
+<td><span class="math inline">\(n_{11}\)</span></td>
+<td><span class="math inline">\(n_{2}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(n_{1s}\)</span></td>
+<td><span class="math inline">\(a_{1}\)</span></td>
 </tr>
-<tr>
-<td><strong>$X_2$</strong></td>
-<td>$n_{21}$</td>
-<td>$n_{22}$</td>
-<td>…</td>
-<td>$n_{2s}$</td>
-<td>$a_{2}$</td>
+<tr class="even">
+<td><strong><span class="math inline">\(X_2\)</span></strong></td>
+<td><span class="math inline">\(n_{21}\)</span></td>
+<td><span class="math inline">\(n_{22}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(n_{2s}\)</span></td>
+<td><span class="math inline">\(a_{2}\)</span></td>
 </tr>
-<tr>
-<td><strong>…</strong></td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
-<td>…</td>
+<tr class="odd">
+<td><strong>...</strong></td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
 </tr>
-<tr>
-<td><strong>$X_r$</strong></td>
-<td>$n_{r1}$</td>
-<td>$n_{r2}$</td>
-<td>…</td>
-<td>$n_{rs}$</td>
-<td>$a_{r}$</td>
+<tr class="even">
+<td><strong><span class="math inline">\(X_r\)</span></strong></td>
+<td><span class="math inline">\(n_{r1}\)</span></td>
+<td><span class="math inline">\(n_{r2}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(n_{rs}\)</span></td>
+<td><span class="math inline">\(a_{r}\)</span></td>
 </tr>
-<tr>
+<tr class="odd">
 <td><strong>sum</strong></td>
-<td>$b_{1}$</td>
-<td>$b_{2}$</td>
-<td>…</td>
-<td>$b_{s}$</td>
+<td><span class="math inline">\(b_{1}\)</span></td>
+<td><span class="math inline">\(b_{2}\)</span></td>
+<td>...</td>
+<td><span class="math inline">\(b_{s}\)</span></td>
 <td></td>
 </tr>
-</tbody></table>
-<p>Adjusted Rand Index 的定义为 $ARI=\frac{\sum_{ij}\tbinom{n_{ij}}{2}-\left[\sum_i \tbinom{a_i}{2} \sum_j \tbinom{b_j}{2}\right]/\tbinom{n}{2}}{\frac{1}{2}\left[\sum_i \tbinom{a_i}{2} \sum_j \tbinom{b_j}{2}\right]-\left[\sum_i \tbinom{a_i}{2} \sum_j \tbinom{b_j}{2}\right]/\tbinom{n}{2}}$，它是基于 Rand Index 的改进，用于应对当 $r\neq s$ 的情况</p>
-<h1 id="Micro-Precision-Recall-F1-需要-Gold-Standard：一个人工分好的簇集合"><a href="#Micro-Precision-Recall-F1-需要-Gold-Standard：一个人工分好的簇集合" class="headerlink" title="Micro Precision, Recall, F1 (需要 Gold Standard：一个人工分好的簇集合)"></a>Micro Precision, Recall, F1 (需要 Gold Standard：一个人工分好的簇集合)</h1><p>这个评判指标完全和分类中的一样，<a target="_blank" rel="noopener" href="https://jason-hao.cyou/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%88%86%E7%B1%BB%E6%8C%87%E6%A0%87.html">链接在这里</a> 唯一不同的是如何决定 cluster 跟 Gold Standard 中的哪个 class 去计算指标，相对于先要给出 cluster 的class 标签。大致有两种方式：（1）由人工决定，这在一些词聚类上可以使用；（2）用 majority voting $\underset{1\leq k\leq K}{argmax}|Cluster_i \cap Class_k|$ 来决定 cluster $i$ 的 class 标签</p>
-<h1 id="Topic-Coherence"><a href="#Topic-Coherence" class="headerlink" title="Topic Coherence"></a>Topic Coherence</h1><p><a target="_blank" rel="noopener" href="https://jason-hao.cyou/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%B8%BB%E9%A2%98%E6%8C%87%E6%A0%87.html">Reference Page</a></p>
-<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Silhouette_(clustering)">https://en.wikipedia.org/wiki/Silhouette_(clustering)</a></li>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Dunn_index">https://en.wikipedia.org/wiki/Dunn_index</a></li>
-<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Rand_index">https://en.wikipedia.org/wiki/Rand_index</a></li>
-<li><a target="_blank" rel="noopener" href="http://qpleple.com/topic-coherence-to-evaluate-topic-models/">http://qpleple.com/topic-coherence-to-evaluate-topic-models/</a></li>
+</tbody>
+</table>
+<p>Adjusted Rand Index 的定义为 <span class="math inline">\(ARI=\frac{\sum_{ij}\tbinom{n_{ij}}{2}-\left[\sum_i \tbinom{a_i}{2} \sum_j \tbinom{b_j}{2}\right]/\tbinom{n}{2}}{\frac{1}{2}\left[\sum_i \tbinom{a_i}{2} \sum_j \tbinom{b_j}{2}\right]-\left[\sum_i \tbinom{a_i}{2} \sum_j \tbinom{b_j}{2}\right]/\tbinom{n}{2}}\)</span>，它是基于 Rand Index 的改进，用于应对当 <span class="math inline">\(r\neq s\)</span> 的情况</p>
+<h1 id="micro-precision-recall-f1-需要-gold-standard一个人工分好的簇集合">Micro Precision, Recall, F1 (需要 Gold Standard：一个人工分好的簇集合)</h1>
+<p>这个评判指标完全和分类中的一样，<a target="_blank" rel="noopener" href="https://jason-hao.cyou/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E5%88%86%E7%B1%BB%E6%8C%87%E6%A0%87.html">链接在这里</a> 唯一不同的是如何决定 cluster 跟 Gold Standard 中的哪个 class 去计算指标，相对于先要给出 cluster 的class 标签。大致有两种方式：（1）由人工决定，这在一些词聚类上可以使用；（2）用 majority voting <span class="math inline">\(\underset{1\leq k\leq K}{argmax}|Cluster_i \cap Class_k|\)</span> 来决定 cluster <span class="math inline">\(i\)</span> 的 class 标签</p>
+<h1 id="topic-coherence">Topic Coherence</h1>
+<p><a target="_blank" rel="noopener" href="https://jason-hao.cyou/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%B8%BB%E9%A2%98%E6%8C%87%E6%A0%87.html">Reference Page</a></p>
+<h1 id="参考-references">参考 (References)</h1>
+<ol type="1">
+<li>https://en.wikipedia.org/wiki/Silhouette_(clustering)</li>
+<li>https://en.wikipedia.org/wiki/Dunn_index</li>
+<li>https://en.wikipedia.org/wiki/Rand_index</li>
+<li>http://qpleple.com/topic-coherence-to-evaluate-topic-models/</li>
 </ol>
 
     </div>
@@ -517,7 +526,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Silhouette-Coefficient"><span class="nav-number">1.</span> <span class="nav-text">Silhouette Coefficient</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Dunn-Index"><span class="nav-number">2.</span> <span class="nav-text">Dunn Index</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%87%E9%97%B4%E8%B7%9D%E7%A6%BB%E7%9A%84%E5%90%84%E7%A7%8D%E5%AE%9A%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">簇间距离的各种定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%87%E5%86%85%E8%81%9A%E7%B1%BB%EF%BC%88%E7%9B%B4%E5%BE%84%EF%BC%89%E7%9A%84%E5%90%84%E7%A7%8D%E5%AE%9A%E4%B9%89"><span class="nav-number">2.2.</span> <span class="nav-text">簇内聚类（直径）的各种定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Rand-Index-%E9%9C%80%E8%A6%81-Gold-Standard%EF%BC%9A%E4%B8%80%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%88%86%E5%A5%BD%E7%9A%84%E7%B0%87%E9%9B%86%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">Rand Index (需要 Gold Standard：一个人工分好的簇集合)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Rand-Index"><span class="nav-number">3.1.</span> <span class="nav-text">Rand Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adjusted-Rand-Index"><span class="nav-number">3.2.</span> <span class="nav-text">Adjusted Rand Index</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Micro-Precision-Recall-F1-%E9%9C%80%E8%A6%81-Gold-Standard%EF%BC%9A%E4%B8%80%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%88%86%E5%A5%BD%E7%9A%84%E7%B0%87%E9%9B%86%E5%90%88"><span class="nav-number">4.</span> <span class="nav-text">Micro Precision, Recall, F1 (需要 Gold Standard：一个人工分好的簇集合)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Topic-Coherence"><span class="nav-number">5.</span> <span class="nav-text">Topic Coherence</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">6.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dunn-index"><span class="nav-number">1.</span> <span class="nav-text">Dunn Index</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%87%E9%97%B4%E8%B7%9D%E7%A6%BB%E7%9A%84%E5%90%84%E7%A7%8D%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">簇间距离的各种定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%87%E5%86%85%E8%81%9A%E7%B1%BB%E7%9B%B4%E5%BE%84%E7%9A%84%E5%90%84%E7%A7%8D%E5%AE%9A%E4%B9%89"><span class="nav-number">1.2.</span> <span class="nav-text">簇内聚类（直径）的各种定义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rand-index-%E9%9C%80%E8%A6%81-gold-standard%E4%B8%80%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%88%86%E5%A5%BD%E7%9A%84%E7%B0%87%E9%9B%86%E5%90%88"><span class="nav-number">2.</span> <span class="nav-text">Rand Index (需要 Gold Standard：一个人工分好的簇集合)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#rand-index"><span class="nav-number">2.1.</span> <span class="nav-text">Rand Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adjusted-rand-index"><span class="nav-number">2.2.</span> <span class="nav-text">Adjusted Rand Index</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#micro-precision-recall-f1-%E9%9C%80%E8%A6%81-gold-standard%E4%B8%80%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%88%86%E5%A5%BD%E7%9A%84%E7%B0%87%E9%9B%86%E5%90%88"><span class="nav-number">3.</span> <span class="nav-text">Micro Precision, Recall, F1 (需要 Gold Standard：一个人工分好的簇集合)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#topic-coherence"><span class="nav-number">4.</span> <span class="nav-text">Topic Coherence</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-references"><span class="nav-number">5.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -533,7 +542,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -546,7 +555,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -593,12 +602,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:33</span>
 </div>
 
 

@@ -23,12 +23,12 @@
 
 
 
-  <meta name="description" content="简单介绍LSTM 是一类循环神经网络，它的提出是为了化解传统循环神经网络（RNN）在 back propagation 中梯度弥散问题，这导致了 RNN 的短期记忆问题，使得 RNN 不能学习长距离的依赖关系。LSTM 通过引入 $sigmoid$ 控制门来控制信息的保留和丢弃，使得它能够记住重要的信息，遗忘不重要的信息">
+  <meta name="description" content="简单介绍 LSTM 是一类循环神经网络，它的提出是为了化解传统循环神经网络（RNN）在 back propagation 中梯度弥散问题，这导致了 RNN 的短期记忆问题，使得 RNN 不能学习长距离的依赖关系。LSTM 通过引入 \(sigmoid\) 控制门来控制信息的保留和丢弃，使得它能够记住重要的信息，遗忘不重要的信息">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LSTM详解">
 <meta property="og:url" content="https://jason-huanghao.github.io/2021/06/06/Deep%20Learning/LSTM%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Jason Hao&#39;s Blog">
-<meta property="og:description" content="简单介绍LSTM 是一类循环神经网络，它的提出是为了化解传统循环神经网络（RNN）在 back propagation 中梯度弥散问题，这导致了 RNN 的短期记忆问题，使得 RNN 不能学习长距离的依赖关系。LSTM 通过引入 $sigmoid$ 控制门来控制信息的保留和丢弃，使得它能够记住重要的信息，遗忘不重要的信息">
+<meta property="og:description" content="简单介绍 LSTM 是一类循环神经网络，它的提出是为了化解传统循环神经网络（RNN）在 back propagation 中梯度弥散问题，这导致了 RNN 的短期记忆问题，使得 RNN 不能学习长距离的依赖关系。LSTM 通过引入 \(sigmoid\) 控制门来控制信息的保留和丢弃，使得它能够记住重要的信息，遗忘不重要的信息">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210606173408.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210606174445.png">
@@ -310,7 +310,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>1.1k</span>
+              <span>1.2k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -328,23 +328,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h1><p>LSTM 是一类循环神经网络，它的提出是为了化解传统循环神经网络（RNN）在 back propagation 中梯度弥散问题，这导致了 RNN 的短期记忆问题，使得 RNN 不能学习长距离的依赖关系。LSTM 通过引入 $sigmoid$ 控制门来控制信息的保留和丢弃，使得它能够记住重要的信息，遗忘不重要的信息</p>
+        <h1 id="简单介绍">简单介绍</h1>
+<p>LSTM 是一类循环神经网络，它的提出是为了化解传统循环神经网络（RNN）在 back propagation 中梯度弥散问题，这导致了 RNN 的短期记忆问题，使得 RNN 不能学习长距离的依赖关系。LSTM 通过引入 <span class="math inline">\(sigmoid\)</span> 控制门来控制信息的保留和丢弃，使得它能够记住重要的信息，遗忘不重要的信息</p>
 <span id="more"></span>
-
-<h1 id="LSTM-几个重要的门介绍"><a href="#LSTM-几个重要的门介绍" class="headerlink" title="LSTM 几个重要的门介绍"></a>LSTM 几个重要的门介绍</h1><p>从 <a target="_blank" rel="noopener" href="https://blog.mlreview.com/understanding-lstm-and-its-diagrams-37e2f46f1714">Understanding LSTM and its diagrams</a> 这个博客中，我找到了一个最佳的描述 LSTM 细节的图。这是 LSTM 的一个胞元结构，它有两条主要的水平方向的数据流，上面的是胞元状态（$C_{t-1}$ 包含了 $t-1$ 时刻及以前序列的信息），下面的是输出或者隐状态（$h_t$ 包含了当前输入 $x_t$ 的重要信息）。下面我们介绍下 LSTM 的三个控制门<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210606173408.png"></p>
-<h2 id="遗忘门"><a href="#遗忘门" class="headerlink" title="遗忘门"></a>遗忘门</h2><p>遗忘门根据隐状态 $h_t$ 和当前输入 $x_t$ 来决定遗忘 $C_{t-1}$ 中的哪些信息，其中 $\sigma(x)=\frac{1}{1+e^{-x}}$ 是一个将输入向量的每一位映射到 $(0,1)$ 的函数，映射后的值越大，$C_{t-1}$ 的信息保留越多，反之则遗忘越多</p>
-<p>$f_t=\sigma(W_f \cdot [h_{t-1}, x_t] + b_f)$<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210606174445.png"></p>
-<h2 id="输入门"><a href="#输入门" class="headerlink" title="输入门"></a>输入门</h2><p>输入门根据输入 $x_t$，前一时刻输出 $h_{t-1}$ 和前一时刻胞元状态 $C_{t-1}$ 来计算 $t$ 时刻下的胞元状态 $C_t$，其中 $f_t\otimes C_{t-1}$ 是 $t-1$ 时刻遗忘过后剩余的胞元信息，$i_t \otimes \tilde{C_{t}}$ 是 $t$ 时刻新增的胞元状态信息</p>
-<p>$i_t=\sigma(W_i\cdot [h_{t-1}, x_t] + b_i)$</p>
-<p>$\tilde{C_t}=tanh(W_c\cdot [h_{t-1}, x_t] + b_C)$</p>
-<p>$C_t=f_t\otimes C_{t-1}+i_t \otimes \tilde{C_t}$</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210606174539.png"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210606174746.png"></p>
-<h2 id="输出门"><a href="#输出门" class="headerlink" title="输出门"></a>输出门</h2><p>输出门根据 $t-1$ 时刻的输出，$t$ 时刻的输入 $x_t$ 和 $t$ 时刻的胞元信息来计算 $t$ 时刻的输出信息</p>
-<p>$o_t=\sigma(W_o\cdot [h_{t-1}, x_t] + b_o)$</p>
-<p>$h_t=o_t\otimes tanh(C_t)$</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210606174906.png"></p>
-<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
+<h1 id="lstm-几个重要的门介绍">LSTM 几个重要的门介绍</h1>
+<p>从 <a target="_blank" rel="noopener" href="https://blog.mlreview.com/understanding-lstm-and-its-diagrams-37e2f46f1714">Understanding LSTM and its diagrams</a> 这个博客中，我找到了一个最佳的描述 LSTM 细节的图。这是 LSTM 的一个胞元结构，它有两条主要的水平方向的数据流，上面的是胞元状态（<span class="math inline">\(C_{t-1}\)</span> 包含了 <span class="math inline">\(t-1\)</span> 时刻及以前序列的信息），下面的是输出或者隐状态（<span class="math inline">\(h_t\)</span> 包含了当前输入 <span class="math inline">\(x_t\)</span> 的重要信息）。下面我们介绍下 LSTM 的三个控制门 <img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210606173408.png" /></p>
+<h2 id="遗忘门">遗忘门</h2>
+<p>遗忘门根据隐状态 <span class="math inline">\(h_t\)</span> 和当前输入 <span class="math inline">\(x_t\)</span> 来决定遗忘 <span class="math inline">\(C_{t-1}\)</span> 中的哪些信息，其中 <span class="math inline">\(\sigma(x)=\frac{1}{1+e^{-x}}\)</span> 是一个将输入向量的每一位映射到 <span class="math inline">\((0,1)\)</span> 的函数，映射后的值越大，<span class="math inline">\(C_{t-1}\)</span> 的信息保留越多，反之则遗忘越多</p>
+<p><span class="math inline">\(f_t=\sigma(W_f \cdot [h_{t-1}, x_t] + b_f)\)</span> <img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210606174445.png" /></p>
+<h2 id="输入门">输入门</h2>
+<p>输入门根据输入 <span class="math inline">\(x_t\)</span>，前一时刻输出 <span class="math inline">\(h_{t-1}\)</span> 和前一时刻胞元状态 <span class="math inline">\(C_{t-1}\)</span> 来计算 <span class="math inline">\(t\)</span> 时刻下的胞元状态 <span class="math inline">\(C_t\)</span>，其中 <span class="math inline">\(f_t\otimes C_{t-1}\)</span> 是 <span class="math inline">\(t-1\)</span> 时刻遗忘过后剩余的胞元信息，<span class="math inline">\(i_t \otimes \tilde{C_{t}}\)</span> 是 <span class="math inline">\(t\)</span> 时刻新增的胞元状态信息</p>
+<p><span class="math inline">\(i_t=\sigma(W_i\cdot [h_{t-1}, x_t] + b_i)\)</span></p>
+<p><span class="math inline">\(\tilde{C_t}=tanh(W_c\cdot [h_{t-1}, x_t] + b_C)\)</span></p>
+<p><span class="math inline">\(C_t=f_t\otimes C_{t-1}+i_t \otimes \tilde{C_t}\)</span></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210606174539.png" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210606174746.png" /></p>
+<h2 id="输出门">输出门</h2>
+<p>输出门根据 <span class="math inline">\(t-1\)</span> 时刻的输出，<span class="math inline">\(t\)</span> 时刻的输入 <span class="math inline">\(x_t\)</span> 和 <span class="math inline">\(t\)</span> 时刻的胞元信息来计算 <span class="math inline">\(t\)</span> 时刻的输出信息</p>
+<p><span class="math inline">\(o_t=\sigma(W_o\cdot [h_{t-1}, x_t] + b_o)\)</span></p>
+<p><span class="math inline">\(h_t=o_t\otimes tanh(C_t)\)</span></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210606174906.png" /></p>
+<h1 id="参考-references">参考 (References)</h1>
+<ol type="1">
 <li><a target="_blank" rel="noopener" href="https://blog.mlreview.com/understanding-lstm-and-its-diagrams-37e2f46f1714">Understanding LSTM and its diagrams</a></li>
 <li><a target="_blank" rel="noopener" href="https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21">Illustrated Guide to LSTM’s and GRU’s: A step by step explanation</a></li>
 <li><a target="_blank" rel="noopener" href="http://colah.github.io/posts/2015-08-Understanding-LSTMs/">Understanding LSTM Networks</a></li>
@@ -452,7 +457,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">简单介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LSTM-%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E9%97%A8%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">LSTM 几个重要的门介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%97%E5%BF%98%E9%97%A8"><span class="nav-number">2.1.</span> <span class="nav-text">遗忘门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E9%97%A8"><span class="nav-number">2.2.</span> <span class="nav-text">输入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E9%97%A8"><span class="nav-number">2.3.</span> <span class="nav-text">输出门</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">3.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">简单介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lstm-%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E9%97%A8%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">LSTM 几个重要的门介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%97%E5%BF%98%E9%97%A8"><span class="nav-number">2.1.</span> <span class="nav-text">遗忘门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E9%97%A8"><span class="nav-number">2.2.</span> <span class="nav-text">输入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E9%97%A8"><span class="nav-number">2.3.</span> <span class="nav-text">输出门</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-references"><span class="nav-number">3.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -468,7 +473,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -481,7 +486,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -528,12 +533,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:33</span>
 </div>
 
 

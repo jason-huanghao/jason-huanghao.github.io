@@ -23,12 +23,12 @@
 
 
 
-  <meta name="description" content="空间几何基础点到平面距离公式 如图，有一个平面 $\alpha: $ax+by+cz+d&#x3D;0$，它的法向量 $\vec n&#x3D;(a,b,c)$（平面内任意一个向量与 $\vec n$ 的点积为 0），求平面外一点 $B&#x3D;(x_1,y_1,z_1)$ 到平面 $\alpha$ 的距离">
+  <meta name="description" content="空间几何基础 点到平面距离公式  如图，有一个平面 $: \(ax+by+cz+d&#x3D;0\)，它的法向量 \(\vec n&#x3D;(a,b,c)\)（平面内任意一个向量与 \(\vec n\) 的点积为 0），求平面外一点 \(B&#x3D;(x_1,y_1,z_1)\) 到平面 \(\alpha\) 的距离">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SVM模型">
 <meta property="og:url" content="https://jason-huanghao.github.io/2021/06/16/Machine%20Learning/SVM%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Jason Hao&#39;s Blog">
-<meta property="og:description" content="空间几何基础点到平面距离公式 如图，有一个平面 $\alpha: $ax+by+cz+d&#x3D;0$，它的法向量 $\vec n&#x3D;(a,b,c)$（平面内任意一个向量与 $\vec n$ 的点积为 0），求平面外一点 $B&#x3D;(x_1,y_1,z_1)$ 到平面 $\alpha$ 的距离">
+<meta property="og:description" content="空间几何基础 点到平面距离公式  如图，有一个平面 $: \(ax+by+cz+d&#x3D;0\)，它的法向量 \(\vec n&#x3D;(a,b,c)\)（平面内任意一个向量与 \(\vec n\) 的点积为 0），求平面外一点 \(B&#x3D;(x_1,y_1,z_1)\) 到平面 \(\alpha\) 的距离">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210616164127.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210616205916.png">
@@ -308,13 +308,13 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>5.7k</span>
+              <span>6.3k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
-              <span>5 mins.</span>
+              <span>6 mins.</span>
             </span>
 
         </div>
@@ -326,99 +326,107 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="空间几何基础"><a href="#空间几何基础" class="headerlink" title="空间几何基础"></a>空间几何基础</h1><h2 id="点到平面距离公式"><a href="#点到平面距离公式" class="headerlink" title="点到平面距离公式"></a>点到平面距离公式</h2><p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210616164127.png"></p>
-<p>如图，有一个平面 $\alpha: $ax+by+cz+d=0$，它的法向量 $\vec n=(a,b,c)$（平面内任意一个向量与 $\vec n$ 的点积为 0），求平面外一点 $B=(x_1,y_1,z_1)$ 到平面 $\alpha$ 的距离</p>
-<span id="more"></span>
-<p>取平面内任意一点 $A=(x_0,y_0,z_0)$，则向量 $\overrightarrow{AB}=(x_1-x_0,y_1-y_0,z_1-z_0)$ ，点 $B$ 到平面 $\alpha$ 的距离等于 $|\overrightarrow{AB}|cos\theta$，而 $cos\theta=\frac{\vec n \cdot \overrightarrow{AB}}{|\vec n|| \overrightarrow{AB}|}$，</p>
-<p>因此点 $B$ 到平面的距离 $h=\overrightarrow{AB}\cdot \frac{\vec n}{|\vec n|}=\left|(x_1-x_0,y_1-y_0,z_1-z_0)\cdot \frac{(a,b,c)}{\sqrt{a^2+b^2+c^2}} \right|=\frac{|a(x_1-x_0)+b(y_1-y_0)+c(z_1-z_0))|}{\sqrt{a^2+b^2+c^2}}$，</p>
-<p>又 $ax_0+by_0+cz_0+d=0$，所以最终点 $B$ 到平面的距离为 $h=\frac{|ax_1+by_1+cz_1+d|}{\sqrt{a^2+b^2+c^2}}$,</p>
-<p>推广到 n 维空间中点 $A=(x_1,x_2,…,x_n)$，超平面 $\pi$: $a_1y_1+a_2y_2+…+a_ny_n+d=0$，则点 $A$ 到平面 $\pi$ 的距离为 $\frac{|a_1x_1+a_2x_2+…+a_nx_n+d|}{\sqrt{ {a_1}^2+{a_2}^{2}+…+{a_n}^2}}$</p>
-<h2 id="两个平面之间的距离"><a href="#两个平面之间的距离" class="headerlink" title="两个平面之间的距离"></a>两个平面之间的距离</h2><p>已知两个超平面 ${\pi}_1$: $a_1x_1+a_2x_2+…+a_nx_n+d_1=0$ 和超平面 ${\pi}_2: $a_1y_1+a_2y_2+…+a_ny_n+d_2=0$。<br>取 ${\pi}_1$ 中任意一点 $P(x_1,x_2,…,x_n)$，则 $P$ 到 $\pi_2$ 的距离为 $h=\frac{|a_1x_1+a_2x_2+…+a_nx_n+d_2|}{\sqrt{ {a_1}^2+{a_2}^2+…+{a_n}^2 }}$。由于 $P$ 在平面 $\pi_1$ 上，所以有 $a_1x_1+a_2x_2+…+a_nx_n+d_1=0$，最后 $h=\frac{|d_2-d_1|}{\sqrt{ {a_1}^2+{a_2}^2+…+{a_n}^2}}$</p>
-<h1 id="SVM-间隔"><a href="#SVM-间隔" class="headerlink" title="SVM 间隔"></a>SVM 间隔</h1><h2 id="函数间隔"><a href="#函数间隔" class="headerlink" title="函数间隔"></a>函数间隔</h2><p>令 $w^Tx+b=0$ 为我们的划分超平面，对于任何一个数据点 $x$，它的标签为 $y\in [-1,1]$，我们规定，当 $w^Tx+b&gt;0$，$x$ 被划分为正例，当 $w^Tx+b&lt;0$，$x$ 被划分为反例。定义函数间隔为 </p>
-<p>$\gamma(x) = y(w^Tx+b)=yf(x)$</p>
-<p>当 $\gamma &gt; 0$，那么说明数据点 $x$ 被正确分类</p>
-<p>那么 SVM 训练的目标为 $\hat \gamma = min\ \gamma(x_i), i = 1,2,…,n$</p>
-<h2 id="几何间隔"><a href="#几何间隔" class="headerlink" title="几何间隔"></a>几何间隔</h2><p>由于函数间隔 $\hat\gamma$ 的值会随着参数 $w$ 和 $b$ 的缩放（超平面不变）而变化，比如 $w$ 和 $b$ 变成 $2w$ 和 $2b$，$f(x)$ 会变成 $2f(x)$，如果按照最小化函数间隔，永远求不出个最优的参数 $w$ 和 $b$。为此将目标给为最小化几何间隔</p>
-<p>$\tilde \gamma=\frac{y(w^Tx+b)}{||w||}=\frac{yf(x)}{||w||}=\frac{\gamma(x)}{||w||}$</p>
-<p>其中 $\frac{f(x)}{||w||}$ 其实就是点 $x$ 到超平面 $w^Tx+b=0$ 的几何距离</p>
-<h2 id="最大间隔分类器"><a href="#最大间隔分类器" class="headerlink" title="最大间隔分类器"></a>最大间隔分类器</h2><p>对于我们的分类器，希望最大化 $max\ \tilde{\gamma}$，并且对所有的数据点要满足 $y_i(w^Tx_i)+b=\gamma(x_i)\geq \hat \gamma, i=1,2,…,n$。</p>
-<p>这里我们可以取 $\hat \gamma=1$（这个值可以随意取一个大于 0 的数，参数 $b$ 可以在训练过程中调整），如此 SVM 的优化目标为 </p>
-<p>$max\frac{1}{||w||},\ s.t.,\ y_i(w^Tx_i+b)\geq 1,i=1,2,…,n$</p>
+        <h1 id="空间几何基础">空间几何基础</h1>
+<h2 id="点到平面距离公式">点到平面距离公式</h2>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210616164127.png" /></p>
+<p>如图，有一个平面 $: <span class="math inline">\(ax+by+cz+d=0\)</span>，它的法向量 <span class="math inline">\(\vec n=(a,b,c)\)</span>（平面内任意一个向量与 <span class="math inline">\(\vec n\)</span> 的点积为 0），求平面外一点 <span class="math inline">\(B=(x_1,y_1,z_1)\)</span> 到平面 <span class="math inline">\(\alpha\)</span> 的距离 <span id="more"></span> 取平面内任意一点 <span class="math inline">\(A=(x_0,y_0,z_0)\)</span>，则向量 <span class="math inline">\(\overrightarrow{AB}=(x_1-x_0,y_1-y_0,z_1-z_0)\)</span> ，点 <span class="math inline">\(B\)</span> 到平面 <span class="math inline">\(\alpha\)</span> 的距离等于 <span class="math inline">\(|\overrightarrow{AB}|cos\theta\)</span>，而 <span class="math inline">\(cos\theta=\frac{\vec n \cdot \overrightarrow{AB}}{|\vec n|| \overrightarrow{AB}|}\)</span>，</p>
+<p>因此点 <span class="math inline">\(B\)</span> 到平面的距离 <span class="math inline">\(h=\overrightarrow{AB}\cdot \frac{\vec n}{|\vec n|}=\left|(x_1-x_0,y_1-y_0,z_1-z_0)\cdot \frac{(a,b,c)}{\sqrt{a^2+b^2+c^2}} \right|=\frac{|a(x_1-x_0)+b(y_1-y_0)+c(z_1-z_0))|}{\sqrt{a^2+b^2+c^2}}\)</span>，</p>
+<p>又 <span class="math inline">\(ax_0+by_0+cz_0+d=0\)</span>，所以最终点 <span class="math inline">\(B\)</span> 到平面的距离为 <span class="math inline">\(h=\frac{|ax_1+by_1+cz_1+d|}{\sqrt{a^2+b^2+c^2}}\)</span>,</p>
+<p>推广到 n 维空间中点 <span class="math inline">\(A=(x_1,x_2,...,x_n)\)</span>，超平面 <span class="math inline">\(\pi\)</span>: <span class="math inline">\(a_1y_1+a_2y_2+...+a_ny_n+d=0\)</span>，则点 <span class="math inline">\(A\)</span> 到平面 <span class="math inline">\(\pi\)</span> 的距离为 <span class="math inline">\(\frac{|a_1x_1+a_2x_2+...+a_nx_n+d|}{\sqrt{ {a_1}^2+{a_2}^{2}+...+{a_n}^2}}\)</span></p>
+<h2 id="两个平面之间的距离">两个平面之间的距离</h2>
+<p>已知两个超平面 <span class="math inline">\({\pi}_1\)</span>: <span class="math inline">\(a_1x_1+a_2x_2+...+a_nx_n+d_1=0\)</span> 和超平面 ${}_2: <span class="math inline">\(a_1y_1+a_2y_2+...+a_ny_n+d_2=0\)</span>。 取 <span class="math inline">\({\pi}_1\)</span> 中任意一点 <span class="math inline">\(P(x_1,x_2,...,x_n)\)</span>，则 <span class="math inline">\(P\)</span> 到 <span class="math inline">\(\pi_2\)</span> 的距离为 <span class="math inline">\(h=\frac{|a_1x_1+a_2x_2+...+a_nx_n+d_2|}{\sqrt{ {a_1}^2+{a_2}^2+...+{a_n}^2 }}\)</span>。由于 <span class="math inline">\(P\)</span> 在平面 <span class="math inline">\(\pi_1\)</span> 上，所以有 <span class="math inline">\(a_1x_1+a_2x_2+...+a_nx_n+d_1=0\)</span>，最后 <span class="math inline">\(h=\frac{|d_2-d_1|}{\sqrt{ {a_1}^2+{a_2}^2+...+{a_n}^2}}\)</span></p>
+<h1 id="svm-间隔">SVM 间隔</h1>
+<h2 id="函数间隔">函数间隔</h2>
+<p>令 <span class="math inline">\(w^Tx+b=0\)</span> 为我们的划分超平面，对于任何一个数据点 <span class="math inline">\(x\)</span>，它的标签为 <span class="math inline">\(y\in [-1,1]\)</span>，我们规定，当 <span class="math inline">\(w^Tx+b&gt;0\)</span>，<span class="math inline">\(x\)</span> 被划分为正例，当 <span class="math inline">\(w^Tx+b&lt;0\)</span>，<span class="math inline">\(x\)</span> 被划分为反例。定义函数间隔为</p>
+<p><span class="math inline">\(\gamma(x) = y(w^Tx+b)=yf(x)\)</span></p>
+<p>当 <span class="math inline">\(\gamma &gt; 0\)</span>，那么说明数据点 <span class="math inline">\(x\)</span> 被正确分类</p>
+<p>那么 SVM 训练的目标为 <span class="math inline">\(\hat \gamma = min\ \gamma(x_i), i = 1,2,...,n\)</span></p>
+<h2 id="几何间隔">几何间隔</h2>
+<p>由于函数间隔 <span class="math inline">\(\hat\gamma\)</span> 的值会随着参数 <span class="math inline">\(w\)</span> 和 <span class="math inline">\(b\)</span> 的缩放（超平面不变）而变化，比如 <span class="math inline">\(w\)</span> 和 <span class="math inline">\(b\)</span> 变成 <span class="math inline">\(2w\)</span> 和 <span class="math inline">\(2b\)</span>，<span class="math inline">\(f(x)\)</span> 会变成 <span class="math inline">\(2f(x)\)</span>，如果按照最小化函数间隔，永远求不出个最优的参数 <span class="math inline">\(w\)</span> 和 <span class="math inline">\(b\)</span>。为此将目标给为最小化几何间隔</p>
+<p><span class="math inline">\(\tilde \gamma=\frac{y(w^Tx+b)}{||w||}=\frac{yf(x)}{||w||}=\frac{\gamma(x)}{||w||}\)</span></p>
+<p>其中 <span class="math inline">\(\frac{f(x)}{||w||}\)</span> 其实就是点 <span class="math inline">\(x\)</span> 到超平面 <span class="math inline">\(w^Tx+b=0\)</span> 的几何距离</p>
+<h2 id="最大间隔分类器">最大间隔分类器</h2>
+<p>对于我们的分类器，希望最大化 <span class="math inline">\(max\ \tilde{\gamma}\)</span>，并且对所有的数据点要满足 <span class="math inline">\(y_i(w^Tx_i)+b=\gamma(x_i)\geq \hat \gamma, i=1,2,...,n\)</span>。</p>
+<p>这里我们可以取 <span class="math inline">\(\hat \gamma=1\)</span>（这个值可以随意取一个大于 0 的数，参数 <span class="math inline">\(b\)</span> 可以在训练过程中调整），如此 SVM 的优化目标为</p>
+<p><span class="math inline">\(max\frac{1}{||w||},\ s.t.,\ y_i(w^Tx_i+b)\geq 1,i=1,2,...,n\)</span></p>
 <p>这个问题的优化目标就如下图所示</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210616205916.png"></p>
-<h1 id="深入推导"><a href="#深入推导" class="headerlink" title="深入推导"></a>深入推导</h1><h2 id="线性可分问题"><a href="#线性可分问题" class="headerlink" title="线性可分问题"></a>线性可分问题</h2><p><strong>Max 问题变为 Min 问题</strong></p>
-<p>$min\frac{1}{2}||w||^2,\ s.t.,\ y_i(w^Tx_i+b)\geq 1,i=1,2,…,n$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210616205916.png" /></p>
+<h1 id="深入推导">深入推导</h1>
+<h2 id="线性可分问题">线性可分问题</h2>
+<p><strong>Max 问题变为 Min 问题</strong></p>
+<p><span class="math inline">\(min\frac{1}{2}||w||^2,\ s.t.,\ y_i(w^Tx_i+b)\geq 1,i=1,2,...,n\)</span></p>
 <p><strong>对偶问题转化</strong></p>
 <p>上面的问题是一个凸二次规划问题，可以直接用现成优化方法。还可以用朗格朗日对偶性，将原问题变化成它的对偶问题来求解。这样做的好处：（1）对偶问题更容易求解；（2）方便引入核函数</p>
 <p>定义拉格朗日函数</p>
-<p>$L(w,b,\alpha)=\frac{1}{2}||w||^2-\sum_{i=1}^n \alpha_i(y_i(w^Tx_i+b)-1)$</p>
-<p>现在来看，我们的目标为 $\underset{w,b}{min}\ \underset{\alpha_i\geq 0}{max}\ L(w,b,\alpha)=p^*$</p>
-<p>其中 $p^*$ 为问题的最优值。容易验证，如果有那个条件 $y_i(w^Tx_i+b)&lt;1$ 不满足，那么里面的 $max$ 问题就会趋向 $\infty$，只有当所有的条件都满足时，才能求出外面的 $min$ 问题，最小值为 $\frac{1}{2}||w||^2$</p>
-<p>此时对换 $min$ 和 $max$ 就得到了原问题的对偶问题</p>
-<p>$\underset{\alpha_i\geq 0}{max}\ \underset{w,b}{min}\ L(w,b,\alpha)=d^*$</p>
-<p>其中 $d^*$ 为问题的最优值，并且满足 $d^<em>\leq p^</em>$。由这个对偶问题，从而实现先对 $w$ 和 $b$ 极小化，然后对 $\alpha_i$ 极大化</p>
-<p><strong>注：</strong> 只有原问题能满足 KTT 条件才能转化为它的对偶问题来求解。<br>KTT 条件定义如下：</p>
-<p>对于一个凸函数 $f(x)$，求解 $min\ f(x)$</p>
-<p>$s.t. h_j(x)=0,j=1,…,p;\ g_k(x)\leq 0,k=1,…,q$</p>
-<p>KTT 条件如下：</p>
-<ol>
-<li>$h_j(x)=0,j=1,…,p;\ g_k(x)\leq 0,k=1,…,q$</li>
-<li>$\bigtriangledown f(x)+\sum_{j=1}^p \lambda_j\bigtriangledown h_j(x) + \sum_{k=1}^q \mu_k\bigtriangledown g_k(x) = 0, \lambda_j\neq 0,\mu_k\geq 0, \mu_kg_k(x)=0$</li>
+<p><span class="math inline">\(L(w,b,\alpha)=\frac{1}{2}||w||^2-\sum_{i=1}^n \alpha_i(y_i(w^Tx_i+b)-1)\)</span></p>
+<p>现在来看，我们的目标为 <span class="math inline">\(\underset{w,b}{min}\ \underset{\alpha_i\geq 0}{max}\ L(w,b,\alpha)=p^*\)</span></p>
+<p>其中 <span class="math inline">\(p^*\)</span> 为问题的最优值。容易验证，如果有那个条件 <span class="math inline">\(y_i(w^Tx_i+b)&lt;1\)</span> 不满足，那么里面的 <span class="math inline">\(max\)</span> 问题就会趋向 <span class="math inline">\(\infty\)</span>，只有当所有的条件都满足时，才能求出外面的 <span class="math inline">\(min\)</span> 问题，最小值为 <span class="math inline">\(\frac{1}{2}||w||^2\)</span></p>
+<p>此时对换 <span class="math inline">\(min\)</span> 和 <span class="math inline">\(max\)</span> 就得到了原问题的对偶问题</p>
+<p><span class="math inline">\(\underset{\alpha_i\geq 0}{max}\ \underset{w,b}{min}\ L(w,b,\alpha)=d^*\)</span></p>
+<p>其中 <span class="math inline">\(d^*\)</span> 为问题的最优值，并且满足 <span class="math inline">\(d^*\leq p^*\)</span>。由这个对偶问题，从而实现先对 <span class="math inline">\(w\)</span> 和 <span class="math inline">\(b\)</span> 极小化，然后对 <span class="math inline">\(\alpha_i\)</span> 极大化</p>
+<p><strong>注：</strong> 只有原问题能满足 KTT 条件才能转化为它的对偶问题来求解。 KTT 条件定义如下：</p>
+<p>对于一个凸函数 <span class="math inline">\(f(x)\)</span>，求解 <span class="math inline">\(min\ f(x)\)</span></p>
+<p><span class="math inline">\(s.t. h_j(x)=0,j=1,...,p;\ g_k(x)\leq 0,k=1,...,q\)</span></p>
+<p>KTT 条件如下： 1. <span class="math inline">\(h_j(x)=0,j=1,...,p;\ g_k(x)\leq 0,k=1,...,q\)</span> 2. <span class="math inline">\(\bigtriangledown f(x)+\sum_{j=1}^p \lambda_j\bigtriangledown h_j(x) + \sum_{k=1}^q \mu_k\bigtriangledown g_k(x) = 0, \lambda_j\neq 0,\mu_k\geq 0, \mu_kg_k(x)=0\)</span></p>
+<p><strong>问题求解</strong> 1. 固定 <span class="math inline">\(\alpha_i\)</span>，最小化 <span class="math inline">\(w\)</span> 和 <span class="math inline">\(b\)</span></p>
+<pre><code>$\frac&#123;\partial L&#125;&#123;\partial w&#125;=0 \Rightarrow w=\sum_&#123;i=1&#125;^n \alpha_i y_i x_i$ 
+
+$\frac&#123;\partial L&#125;&#123;\partial b&#125;=0 \Rightarrow b=\sum_&#123;i=1&#125;^n \alpha_i y_i=0$
+
+代入 $L(w,b,\alpha)=\frac&#123;1&#125;&#123;2&#125;||w||^2-\sum_&#123;i=1&#125;^n \alpha_i(y_i(w^Tx_i+b)-1)$ 得到
+
+$L(w,b,\alpha)$
+
+$=\frac&#123;1&#125;&#123;2&#125;\sum_&#123;i,j=1&#125;^n \alpha_i\alpha_jy_iy_jx_i^Tx_j-\sum_&#123;i,j=1&#125;^n\alpha_i\alpha_jy_iy_jx_i^Tx_j-b\sum_&#123;i=1&#125;^n \alpha_i y_i+\sum_&#123;i=1&#125;^n \alpha_i$ 
+
+$=\sum_&#123;i=1&#125;^n \alpha_i-\frac&#123;1&#125;&#123;2&#125;\sum_&#123;i,j=1&#125;^n\alpha_i\alpha_jy_iy_jx_i^Tx_j$</code></pre>
+<ol start="2" type="1">
+<li><p>代入上一步求解的最优 <span class="math inline">\(w^*\)</span> 和 <span class="math inline">\(b^*\)</span>，然后对 <span class="math inline">\(\alpha\)</span> 最大化</p>
+<p>由上一步求出了新的朗格朗日函数不包含 <span class="math inline">\(w\)</span> 和 <span class="math inline">\(b\)</span>，得到：</p>
+<p><span class="math inline">\(\underset{\alpha}{max}\sum_{i=1}^n \alpha_i-\frac{1}{2}\sum_{i,j=1}^n\alpha_i\alpha_jy_iy_jx_i^Tx_j\)</span></p>
+<p><span class="math inline">\(s.t.,\ \alpha_i\geq 0,i=1,...,n\)</span></p>
+<p><span class="math inline">\(\sum_{i=1}^n \alpha_i y_i=0\)</span></p>
+<p>求得 <span class="math inline">\(L(w,b,\alpha)\)</span> 关于 <span class="math inline">\(w\)</span> 和 <span class="math inline">\(b\)</span> 最小化，以及对 <span class="math inline">\(\alpha\)</span> 的极大化之后，最后使用 SMO 算法求解对偶问题中的拉格朗日乘子 <span class="math inline">\(\alpha\)</span>，由此可以求出 <span class="math inline">\(\alpha_i\)</span></p>
+<p>根据 <span class="math inline">\(w=\sum_{i=1}^n \alpha_i y_i x_i\)</span> 可求出 <span class="math inline">\(w\)</span>, 然后通过 <span class="math inline">\(b^*=y_j-\sum_{i=1}^n\alpha_i y_i(x_i^Tx_j),\alpha_j&gt;0\)</span> 求出 <span class="math inline">\(b\)</span>。而分类函数 <span class="math inline">\(f(x)=w^Tx+b\)</span>，其中 <span class="math inline">\(w=\sum_{i=1}^n \alpha_iy_ix_i\)</span>，代入得到分类函数 <span class="math inline">\(f(x)=\sum_{i=1}^n \alpha_iy_i\langle x_i,x\rangle+b\)</span></p></li>
 </ol>
-<p><strong>问题求解</strong></p>
-<ol>
-<li><p>固定 $\alpha_i$，最小化 $w$ 和 $b$</p>
-<p> $\frac{\partial L}{\partial w}=0 \Rightarrow w=\sum_{i=1}^n \alpha_i y_i x_i$ </p>
-<p> $\frac{\partial L}{\partial b}=0 \Rightarrow b=\sum_{i=1}^n \alpha_i y_i=0$</p>
-<p> 代入 $L(w,b,\alpha)=\frac{1}{2}||w||^2-\sum_{i=1}^n \alpha_i(y_i(w^Tx_i+b)-1)$ 得到</p>
-<p> $L(w,b,\alpha)$</p>
-<p> $=\frac{1}{2}\sum_{i,j=1}^n \alpha_i\alpha_jy_iy_jx_i^Tx_j-\sum_{i,j=1}^n\alpha_i\alpha_jy_iy_jx_i^Tx_j-b\sum_{i=1}^n \alpha_i y_i+\sum_{i=1}^n \alpha_i$ </p>
-<p> $=\sum_{i=1}^n \alpha_i-\frac{1}{2}\sum_{i,j=1}^n\alpha_i\alpha_jy_iy_jx_i^Tx_j$</p>
-</li>
-</ol>
-<ol start="2">
-<li><p>代入上一步求解的最优 $w^*$ 和 $b^*$，然后对 $\alpha$ 最大化</p>
-<p> 由上一步求出了新的朗格朗日函数不包含 $w$ 和 $b$，得到：</p>
-<p> $\underset{\alpha}{max}\sum_{i=1}^n \alpha_i-\frac{1}{2}\sum_{i,j=1}^n\alpha_i\alpha_jy_iy_jx_i^Tx_j$</p>
-<p> $s.t.,\ \alpha_i\geq 0,i=1,…,n$</p>
-<p> $\sum_{i=1}^n \alpha_i y_i=0$</p>
-<p> 求得 $L(w,b,\alpha)$ 关于 $w$ 和 $b$ 最小化，以及对 $\alpha$ 的极大化之后，最后使用 SMO 算法求解对偶问题中的拉格朗日乘子 $\alpha$，由此可以求出 $\alpha_i$</p>
-<p> 根据 $w=\sum_{i=1}^n \alpha_i y_i x_i$ 可求出 $w$, 然后通过 $b^*=y_j-\sum_{i=1}^n\alpha_i y_i(x_i^Tx_j),\alpha_j&gt;0$ 求出 $b$。而分类函数 $f(x)=w^Tx+b$，其中 $w=\sum_{i=1}^n \alpha_iy_ix_i$，代入得到分类函数 $f(x)=\sum_{i=1}^n \alpha_iy_i\langle x_i,x\rangle+b$</p>
-</li>
-</ol>
-<h2 id="线性不可分问题"><a href="#线性不可分问题" class="headerlink" title="线性不可分问题"></a>线性不可分问题</h2><p>由上面的分类函数可以看出，新的数据点 $x^*$ 的分类，只需要计算它与训练数据点的内积即可（可用于推广 Kernel）。而 SVM 中的支持向量（supporting vectors）是对应 $\alpha_i\neq 0$ 的训练数据点。</p>
-<p>感性理解就是，$x^*$ 分类其实只与分类超平面有关，而这个超平面只受支持向量的影响，所以其他的训练数据点不需要参与决策</p>
-<p>理性理解，回到我们的拉格朗日乘式子，$\underset{\alpha_i\geq 0}{max}\ \frac{1}{2}||w||^2-\sum_{i=1}^n \alpha_i(y_i(w^Tx_i+b)-1)$</p>
-<p>对于一个支持向量来说，$y_i(w^Tx_i+b)-1=0$，$\alpha_i$ 可以不为 0；对于非支持向量的数据点来说$y_i(w^Tx_i+b)-1&gt;0$， 为了求极大，必须满足 $\alpha_i=0$（$\alpha_i\geq 0$）</p>
-<h2 id="松弛变量使用"><a href="#松弛变量使用" class="headerlink" title="松弛变量使用"></a>松弛变量使用</h2><p>加入松弛变量是为了解决离群点的问题，因为当训练数据中存在函数间隔大于 1 时，采用一个松弛变量来实现对一些数据点的软间隔</p>
+<h2 id="线性不可分问题">线性不可分问题</h2>
+<p>由上面的分类函数可以看出，新的数据点 <span class="math inline">\(x^*\)</span> 的分类，只需要计算它与训练数据点的内积即可（可用于推广 Kernel）。而 SVM 中的支持向量（supporting vectors）是对应 <span class="math inline">\(\alpha_i\neq 0\)</span> 的训练数据点。</p>
+<p>感性理解就是，<span class="math inline">\(x^*\)</span> 分类其实只与分类超平面有关，而这个超平面只受支持向量的影响，所以其他的训练数据点不需要参与决策</p>
+<p>理性理解，回到我们的拉格朗日乘式子，<span class="math inline">\(\underset{\alpha_i\geq 0}{max}\ \frac{1}{2}||w||^2-\sum_{i=1}^n \alpha_i(y_i(w^Tx_i+b)-1)\)</span></p>
+<p>对于一个支持向量来说，<span class="math inline">\(y_i(w^Tx_i+b)-1=0\)</span>，<span class="math inline">\(\alpha_i\)</span> 可以不为 0；对于非支持向量的数据点来说<span class="math inline">\(y_i(w^Tx_i+b)-1&gt;0\)</span>， 为了求极大，必须满足 <span class="math inline">\(\alpha_i=0\)</span>（<span class="math inline">\(\alpha_i\geq 0\)</span>）</p>
+<h2 id="松弛变量使用">松弛变量使用</h2>
+<p>加入松弛变量是为了解决离群点的问题，因为当训练数据中存在函数间隔大于 1 时，采用一个松弛变量来实现对一些数据点的软间隔</p>
 <p>由此，原目标函数：</p>
-<p>$max\ \frac{1}{2}||w||^2;\ y_i(w^Tx_i+b)\geq 1,i=1,…,n$</p>
+<p><span class="math inline">\(max\ \frac{1}{2}||w||^2;\ y_i(w^Tx_i+b)\geq 1,i=1,...,n\)</span></p>
 <p>就变成了新的目标函数：</p>
-<p>$max\ \frac{1}{2}||w||^2+C\sum_{i=1}^n \xi_i;\ y_i(w^Tx_i)-b\geq 1- \xi_i, \xi_i\geq 0,i=1,…,n$ </p>
-<p>其中 $C&gt;0$ 用于平衡对两个目标：（1）最大化几何间隔；（2）使误分点尽量少。当 $C$ 很大时，对误分类的惩罚大（着重考虑减少误分点）；相反，就更重视最大化几何间隔</p>
+<p><span class="math inline">\(max\ \frac{1}{2}||w||^2+C\sum_{i=1}^n \xi_i;\ y_i(w^Tx_i)-b\geq 1- \xi_i, \xi_i\geq 0,i=1,...,n\)</span></p>
+<p>其中 <span class="math inline">\(C&gt;0\)</span> 用于平衡对两个目标：（1）最大化几何间隔；（2）使误分点尽量少。当 <span class="math inline">\(C\)</span> 很大时，对误分类的惩罚大（着重考虑减少误分点）；相反，就更重视最大化几何间隔</p>
 <p>用拉格朗日乘数法对上面的新目标求对偶问题得</p>
-<ol>
+<ol type="1">
 <li>拉格朗日函数</li>
 </ol>
-<p>$L(w,b,\alpha,\xi,\mu)=\frac{1}{2}||w||^2+C\sum_{i=1}^n \xi_i$</p>
-<p>$-\sum_{i=1}^n\alpha_i(y_i(w^Tx_i+b)-1+\xi_i)-\sum_{i=1}^n\mu_i\xi_i$</p>
-<ol start="2">
+<p><span class="math inline">\(L(w,b,\alpha,\xi,\mu)=\frac{1}{2}||w||^2+C\sum_{i=1}^n \xi_i\)</span></p>
+<p><span class="math inline">\(-\sum_{i=1}^n\alpha_i(y_i(w^Tx_i+b)-1+\xi_i)-\sum_{i=1}^n\mu_i\xi_i\)</span></p>
+<ol start="2" type="1">
 <li>对偶问题</li>
 </ol>
-<p>$\underset{\alpha}{min}\frac{1}{2}\sum_{i,j=1}^n \alpha_i\alpha_jy_iy_j(x_i^Tx_j)-\sum_{i=1}^n\alpha_i$</p>
-<p>$s.t.\ \sum_{i=1}^n \alpha_i y_i=0,0 \leq \alpha_i\leq C,i=1,…,n$</p>
-<ol start="3">
-<li>求解<br>（1）求解得到最优 $\alpha^*=(\alpha_1^*,\alpha_2^*,…,\alpha_n^*)^T$</li>
+<p><span class="math inline">\(\underset{\alpha}{min}\frac{1}{2}\sum_{i,j=1}^n \alpha_i\alpha_jy_iy_j(x_i^Tx_j)-\sum_{i=1}^n\alpha_i\)</span></p>
+<p><span class="math inline">\(s.t.\ \sum_{i=1}^n \alpha_i y_i=0,0 \leq \alpha_i\leq C,i=1,...,n\)</span></p>
+<ol start="3" type="1">
+<li>求解 （1）求解得到最优 <span class="math inline">\(\alpha^*=(\alpha_1^*,\alpha_2^*,...,\alpha_n^*)^T\)</span></li>
 </ol>
-<p>（2）计算 $w^*=\sum_{i=1}^n\alpha_i^* y_ix_i$</p>
-<p>（3）选择一个数据 $j,0&lt;\alpha_j^*&lt;C$，计算 $b^*=y_j-\sum_{i=1}^n y_i\alpha_i^*(x_i^Tx_j)$</p>
-<p>（4）得到决策函数 $f(x)=sign({w^*}^Tx+b)$</p>
-<p>软间隔支持向量<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210617113314.png"><br>软间隔支持向量可以在三个位置（1）间隔边界上；（2）间隔边界与分离超平面之间；（3）分离超平面误分的那一侧。<br>若 $a_i^*&lt;C$，则 $\xi_i=0$，支持向量 $x_i$ 恰好落在间隔边界上；若 $a_i^*=C, 0&lt;\xi_i&lt;1$，则分类正确，$x_i$ 在间隔边界与分离超平面之间；若 $a_i^*=C,\xi_i=1$，则 $x_i$ 在分离超平面上；若 $a_i^*=C,\xi_i &gt; 1$，则 $x_i$ 位于分离超平面误分一侧</p>
-<h2 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h2><p>之前讲到对原问题求偶问题，第二优点就是方便引入核函数。核函数的作用主要是为了解决线性不可分的数据。它的思想是通过<strong>隐式</strong>地将低维空间的数据隐式到高维空间，然后对数据进行线性分割，但是只需要通过低维非线性计算既可以实现。</p>
+<p>（2）计算 <span class="math inline">\(w^*=\sum_{i=1}^n\alpha_i^* y_ix_i\)</span></p>
+<p>（3）选择一个数据 <span class="math inline">\(j,0&lt;\alpha_j^*&lt;C\)</span>，计算 <span class="math inline">\(b^*=y_j-\sum_{i=1}^n y_i\alpha_i^*(x_i^Tx_j)\)</span></p>
+<p>（4）得到决策函数 <span class="math inline">\(f(x)=sign({w^*}^Tx+b)\)</span></p>
+<p>软间隔支持向量 <img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210617113314.png" /> 软间隔支持向量可以在三个位置（1）间隔边界上；（2）间隔边界与分离超平面之间；（3）分离超平面误分的那一侧。 若 <span class="math inline">\(a_i^*&lt;C\)</span>，则 <span class="math inline">\(\xi_i=0\)</span>，支持向量 <span class="math inline">\(x_i\)</span> 恰好落在间隔边界上；若 <span class="math inline">\(a_i^*=C, 0&lt;\xi_i&lt;1\)</span>，则分类正确，<span class="math inline">\(x_i\)</span> 在间隔边界与分离超平面之间；若 <span class="math inline">\(a_i^*=C,\xi_i=1\)</span>，则 <span class="math inline">\(x_i\)</span> 在分离超平面上；若 <span class="math inline">\(a_i^*=C,\xi_i &gt; 1\)</span>，则 <span class="math inline">\(x_i\)</span> 位于分离超平面误分一侧</p>
+<h2 id="核函数">核函数</h2>
+<p>之前讲到对原问题求偶问题，第二优点就是方便引入核函数。核函数的作用主要是为了解决线性不可分的数据。它的思想是通过<strong>隐式</strong>地将低维空间的数据隐式到高维空间，然后对数据进行线性分割，但是只需要通过低维非线性计算既可以实现。</p>
 <p>引入核函数后的目标函数</p>
-<p>$\underset{\alpha}{min}\frac{1}{2}\sum_{i,j=1}^n \alpha_i\alpha_jy_iy_j\kappa(x_i^,x_j)-\sum_{i=1}^n\alpha_i$<br>$s.t.\ \sum_{i=1}^n \alpha_i y_i=0,0 \leq \alpha_i\leq C,i=1,…,n$</p>
-<h2 id="SMO-Sequential-Minimal-Optimization-算法"><a href="#SMO-Sequential-Minimal-Optimization-算法" class="headerlink" title="SMO (Sequential Minimal Optimization) 算法"></a>SMO (Sequential Minimal Optimization) 算法</h2><p>SVM 推导过程：分类函数，最大化分类间隔，max1/||w||，min1/2||w||^2，凸二次规划，拉格朗日函数，转化为对偶问题，SMO算法，都为寻找一个最优解，一个最优分类平面</p>
-<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
+<p><span class="math inline">\(\underset{\alpha}{min}\frac{1}{2}\sum_{i,j=1}^n \alpha_i\alpha_jy_iy_j\kappa(x_i^,x_j)-\sum_{i=1}^n\alpha_i\)</span> <span class="math inline">\(s.t.\ \sum_{i=1}^n \alpha_i y_i=0,0 \leq \alpha_i\leq C,i=1,...,n\)</span></p>
+<h2 id="smo-sequential-minimal-optimization-算法">SMO (Sequential Minimal Optimization) 算法</h2>
+<p>SVM 推导过程：分类函数，最大化分类间隔，max1/||w||，min1/2||w||^2，凸二次规划，拉格朗日函数，转化为对偶问题，SMO算法，都为寻找一个最优解，一个最优分类平面</p>
+<h1 id="参考-references">参考 (References)</h1>
+<ol type="1">
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/v_JULY_v/article/details/7624837">支持向量机通俗导论</a></li>
 <li>李航老师统计机器学习第2版</li>
 </ol>
@@ -462,7 +470,7 @@
       <i class="fa fa-chevron-left"></i> 估计方法
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/06/18/NLP/Concept-Formation/" rel="next" title="Concept Formation">
+    <a href="/2021/06/18/NLP/Ontology-Learning/" rel="next" title="Concept Formation">
       Concept Formation <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -524,7 +532,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E5%87%A0%E4%BD%95%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">空间几何基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%82%B9%E5%88%B0%E5%B9%B3%E9%9D%A2%E8%B7%9D%E7%A6%BB%E5%85%AC%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">点到平面距离公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E5%B9%B3%E9%9D%A2%E4%B9%8B%E9%97%B4%E7%9A%84%E8%B7%9D%E7%A6%BB"><span class="nav-number">1.2.</span> <span class="nav-text">两个平面之间的距离</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVM-%E9%97%B4%E9%9A%94"><span class="nav-number">2.</span> <span class="nav-text">SVM 间隔</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E9%97%B4%E9%9A%94"><span class="nav-number">2.1.</span> <span class="nav-text">函数间隔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E9%97%B4%E9%9A%94"><span class="nav-number">2.2.</span> <span class="nav-text">几何间隔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E9%97%B4%E9%9A%94%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">2.3.</span> <span class="nav-text">最大间隔分类器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B1%E5%85%A5%E6%8E%A8%E5%AF%BC"><span class="nav-number">3.</span> <span class="nav-text">深入推导</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%AF%E5%88%86%E9%97%AE%E9%A2%98"><span class="nav-number">3.1.</span> <span class="nav-text">线性可分问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E4%B8%8D%E5%8F%AF%E5%88%86%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">线性不可分问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%BE%E5%BC%9B%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8"><span class="nav-number">3.3.</span> <span class="nav-text">松弛变量使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%87%BD%E6%95%B0"><span class="nav-number">3.4.</span> <span class="nav-text">核函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMO-Sequential-Minimal-Optimization-%E7%AE%97%E6%B3%95"><span class="nav-number">3.5.</span> <span class="nav-text">SMO (Sequential Minimal Optimization) 算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">4.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A9%BA%E9%97%B4%E5%87%A0%E4%BD%95%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">空间几何基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%82%B9%E5%88%B0%E5%B9%B3%E9%9D%A2%E8%B7%9D%E7%A6%BB%E5%85%AC%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">点到平面距离公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E4%B8%AA%E5%B9%B3%E9%9D%A2%E4%B9%8B%E9%97%B4%E7%9A%84%E8%B7%9D%E7%A6%BB"><span class="nav-number">1.2.</span> <span class="nav-text">两个平面之间的距离</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#svm-%E9%97%B4%E9%9A%94"><span class="nav-number">2.</span> <span class="nav-text">SVM 间隔</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E9%97%B4%E9%9A%94"><span class="nav-number">2.1.</span> <span class="nav-text">函数间隔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%A0%E4%BD%95%E9%97%B4%E9%9A%94"><span class="nav-number">2.2.</span> <span class="nav-text">几何间隔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E9%97%B4%E9%9A%94%E5%88%86%E7%B1%BB%E5%99%A8"><span class="nav-number">2.3.</span> <span class="nav-text">最大间隔分类器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B1%E5%85%A5%E6%8E%A8%E5%AF%BC"><span class="nav-number">3.</span> <span class="nav-text">深入推导</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%AF%E5%88%86%E9%97%AE%E9%A2%98"><span class="nav-number">3.1.</span> <span class="nav-text">线性可分问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E4%B8%8D%E5%8F%AF%E5%88%86%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">线性不可分问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%BE%E5%BC%9B%E5%8F%98%E9%87%8F%E4%BD%BF%E7%94%A8"><span class="nav-number">3.3.</span> <span class="nav-text">松弛变量使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%87%BD%E6%95%B0"><span class="nav-number">3.4.</span> <span class="nav-text">核函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#smo-sequential-minimal-optimization-%E7%AE%97%E6%B3%95"><span class="nav-number">3.5.</span> <span class="nav-text">SMO (Sequential Minimal Optimization) 算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-references"><span class="nav-number">4.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -540,7 +548,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -553,7 +561,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -600,12 +608,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:33</span>
 </div>
 
 

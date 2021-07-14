@@ -23,12 +23,12 @@
 
 
 
-  <meta name="description" content="Install hexo安装完成后，需要安装hexo： 123sudo su# input passwordnpm install -g hexo-cli">
+  <meta name="description" content="Install hexo 安装完成后，需要安装hexo： 123sudo su# input passwordnpm install -g hexo-cli">
 <meta property="og:type" content="article">
 <meta property="og:title" content="next博客入门设置">
 <meta property="og:url" content="https://jason-huanghao.github.io/2021/05/09/Blog%20Building/next%E5%8D%9A%E5%AE%A2%E5%85%A5%E9%97%A8%E8%AE%BE%E7%BD%AE/index.html">
 <meta property="og:site_name" content="Jason Hao&#39;s Blog">
-<meta property="og:description" content="Install hexo安装完成后，需要安装hexo： 123sudo su# input passwordnpm install -g hexo-cli">
+<meta property="og:description" content="Install hexo 安装完成后，需要安装hexo： 123sudo su# input passwordnpm install -g hexo-cli">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221258.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210509111020.png">
@@ -309,7 +309,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>3.4k</span>
+              <span>3.3k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -327,123 +327,100 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Install-hexo"><a href="#Install-hexo" class="headerlink" title="Install hexo"></a>Install hexo</h1><p>安装完成后，需要安装hexo：</p>
+        <h1 id="install-hexo">Install hexo</h1>
+<p>安装完成后，需要安装hexo：</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">su</span></span><br><span class="line"># <span class="keyword">input</span> password</span><br><span class="line">npm install -<span class="keyword">g</span> hexo-<span class="keyword">cli</span></span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo <span class="comment">--save</span></span><br><span class="line">npm install hexo-deployer-git <span class="comment">--save</span></span><br><span class="line">npm install hexo-renderer-marked <span class="comment">--save</span></span><br><span class="line">npm install hexo-renderer-pandoc <span class="comment">--save</span></span><br><span class="line"></span><br><span class="line">如果出问题的话，可以尝试更换渲染工具为 hexo-renderer-pandoc：</span><br><span class="line">npm uninstall hexo-renderer-marked <span class="comment">--save</span></span><br><span class="line">npm install hexo-renderer-pandoc <span class="comment">--save</span></span><br></pre></td></tr></table></figure>
-
 <p>建站</p>
 <figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">init</span></span><br></pre></td></tr></table></figure>
-
 <p>安装依赖包：</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
-
 <p>安装一下hexo-deployer-git</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git <span class="comment">--save</span></span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
-
-<h1 id="Hexo-使用自定义模板"><a href="#Hexo-使用自定义模板" class="headerlink" title="Hexo 使用自定义模板"></a>Hexo 使用自定义模板</h1><ol>
+<h1 id="hexo-使用自定义模板">Hexo 使用自定义模板</h1>
+<ol type="1">
 <li>新建命令行</li>
 </ol>
 <figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> [layout] &lt;<span class="built_in">title</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<ol>
+<ol type="1">
 <li><p>Layout 介绍</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221258.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221258.png" /></p>
 <ul>
-<li>post:  saved in source/_posts (public)</li>
+<li>post: saved in source/_posts (public)</li>
 <li>page: saved in source</li>
 <li>draft: saved in source/_drafts (private)</li>
 <li>self-defined layout: saved in source/_posts (public)</li>
-</ul>
-</li>
+</ul></li>
 <li><p>自定义模板</p>
 <ul>
-<li><p>用户自定义模板在 scaffolds 文件夹中，比如 “self-module.md”</p>
-</li>
-<li><p>命令行如下</p>
-<figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="built_in">self</span>-<span class="keyword">module</span> 【<span class="keyword">module</span> name】</span><br></pre></td></tr></table></figure></li>
-<li><p>模板内容，以后可以通过 <code>next new self-module [blog name]</code> 就可以以这个模板初始你的博文内容如下<br><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210509111020.png"></p>
-</li>
-</ul>
-</li>
+<li><p>用户自定义模板在 scaffolds 文件夹中，比如 “self-module.md”</p></li>
+<li><p>命令行如下 <figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="built_in">self</span>-<span class="keyword">module</span> 【<span class="keyword">module</span> name】</span><br></pre></td></tr></table></figure></p></li>
+<li><p>模板内容，以后可以通过 <code>next new self-module [blog name]</code> 就可以以这个模板初始你的博文内容如下 <img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210509111020.png" /></p></li>
+</ul></li>
 </ol>
-<h1 id="Hexo-免密部署-hexo-deploy"><a href="#Hexo-免密部署-hexo-deploy" class="headerlink" title="Hexo 免密部署 (hexo deploy)"></a>Hexo 免密部署 (hexo deploy)</h1><p><strong>生成 SSH 秘钥</strong></p>
+<h1 id="hexo-免密部署-hexo-deploy">Hexo 免密部署 (hexo deploy)</h1>
+<p><strong>生成 SSH 秘钥</strong></p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/.ssh</span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;[your_email@example.com]&quot;</span></span><br><span class="line"># Creates a <span class="keyword">new</span> ssh key using the provided email</span><br><span class="line">Generating <span class="keyword">public</span>/<span class="keyword">private</span> rsa key pair.</span><br><span class="line">Enter <span class="keyword">file</span> in which to save the key (<span class="regexp">/home/y</span>ou<span class="regexp">/.ssh/i</span>d_rsa):</span><br></pre></td></tr></table></figure>
-
-<p>将整个 [<a href="mailto:&#x79;&#111;&#117;&#114;&#x5f;&#101;&#109;&#x61;&#105;&#x6c;&#64;&#x65;&#120;&#97;&#109;&#x70;&#108;&#101;&#x2e;&#x63;&#111;&#109;">&#x79;&#111;&#117;&#114;&#x5f;&#101;&#109;&#x61;&#105;&#x6c;&#64;&#x65;&#120;&#97;&#109;&#x70;&#108;&#101;&#x2e;&#x63;&#111;&#109;</a>] 替换成你们的 github 账户注册邮箱</p>
+<p>将整个 [your_email@example.com] 替换成你们的 github 账户注册邮箱</p>
 <p><strong>提示输入密码</strong></p>
 <p>直接 enter 键，也可以设置 ssh 的密码，以后 deploy 的时候每次也需要使用这个密码，建议直接 enter (用enter 替代 [Type a passphrase])</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase): [<span class="keyword">Type</span> <span class="type">a </span>passphrase]Enter same passphrase again: [<span class="keyword">Type</span> <span class="type">passphrase </span>again]</span><br></pre></td></tr></table></figure>
-
 <p><strong>秘钥生成成功</strong></p>
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Your identification has been saved in <span class="regexp">/home/y</span>ou<span class="regexp">/.ssh/i</span>d_rsa.Your <span class="keyword">public</span> key has been saved in <span class="regexp">/home/y</span>ou<span class="regexp">/.ssh/i</span>d_rsa.pub.The key fingerprint is:…………………此处是密钥内容…………………… your_email@example.com</span><br></pre></td></tr></table></figure>
-
 <p><strong>复制秘钥至你的 GitHub 账户</strong></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="selector-tag">i</span></span><br></pre></td></tr></table></figure>
-
 <p>将文件 “id_rsa.pub” 所有的内容复制出来粘贴到</p>
-<p>在 <code>jason-huanghao.github.io</code> 的首页菜单栏中点击 Settings –&gt; Deploy keys –&gt; Add deploy key，然后将生成的 <code>id_rsa.pub</code> 中的内容全选复制到 key 输入框中，然后点击 Add key 完成添加公钥</p>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221421.png"></p>
+<p>在 <code>jason-huanghao.github.io</code> 的首页菜单栏中点击 Settings --&gt; Deploy keys --&gt; Add deploy key，然后将生成的 <code>id_rsa.pub</code> 中的内容全选复制到 key 输入框中，然后点击 Add key 完成添加公钥</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210508221421.png" /></p>
 <p><strong>测试是否成功</strong></p>
 <figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T <span class="symbol">git@</span>github.com</span><br></pre></td></tr></table></figure>
-
 <p>收到下面提示，则配置成功</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi username! You<span class="symbol">&#x27;ve</span> successfully authenticated, but GitHub does <span class="keyword">not</span> provide shell <span class="keyword">access</span>.</span><br></pre></td></tr></table></figure>
-
-<p><strong>配置hexo/_config.yml</strong></p>
+<p>**配置hexo/_config.yml**</p>
 <p>打开 <code>Hexo</code> 的配置文件 <code>_config.yml</code> ，把 <code>deploy</code> 下的 <code>repo</code> 改为</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># Deployment## Doc<span class="variable">s:</span> http<span class="variable">s:</span>//hexo.io/docs/one-<span class="keyword">command</span>-deploymentdeploy:  <span class="built_in">type</span>: git  repo: git@github.<span class="keyword">com</span>:jason-huanghao/jason-huanghao.github.io.git  branch: master</span><br></pre></td></tr></table></figure>
-
-<h1 id="Hexo-命令详解"><a href="#Hexo-命令详解" class="headerlink" title="Hexo 命令详解"></a>Hexo 命令详解</h1><ol>
-<li><p>hexo init [folder]<br>这个命令是 Hexo 初始化命令。[folder] 表示你要初始化的文件夹。如果你要初始化本地，直接 hexo init . 。</p>
-</li>
-<li><p>hexo new [layout]<br>这个命令是新建文章或页面用的命令。其中 [layout] 表示他的模板（即页面或者文章），表示标题。</p>
+<h1 id="hexo-命令详解">Hexo 命令详解</h1>
+<ol type="1">
+<li><p>hexo init [folder] 这个命令是 Hexo 初始化命令。[folder] 表示你要初始化的文件夹。如果你要初始化本地，直接 hexo init . 。</p></li>
+<li><p>hexo new [layout] 这个命令是新建文章或页面用的命令。其中 [layout] 表示他的模板（即页面或者文章），表示标题。</p>
 <p>用法：</p>
-<p>hexo new post 001 ，表示新建了一个标题为 001 的文章。<br>hexo new page 001 ，表示新建了一个标题为 001 的页面。<br>如果你不想在终端中新建文章或页面，可以直接在 博客根目录/source/_post/ 目录下创建 Markdown 文件写文章。或者在 博客根目录/source/ 目录下创建一个文件夹，然后在新文件夹里创建 index.md 写页面即可。</p>
+<p>hexo new post 001 ，表示新建了一个标题为 001 的文章。 hexo new page 001 ，表示新建了一个标题为 001 的页面。 如果你不想在终端中新建文章或页面，可以直接在 博客根目录/source/_post/ 目录下创建 Markdown 文件写文章。或者在 博客根目录/source/ 目录下创建一个文件夹，然后在新文件夹里创建 index.md 写页面即可。</p>
 <p>:::tip 提醒</p>
 <p>当你新建页面后，页面的链接就是你页面所在的文件夹的名字。</p>
-<p>例如：我在 博客根目录/source/ 下新建了一个名为 test 的文件夹，然后在 test 文件夹下写 Markdown 文件，那么这个页面的链接就是 网址/test。</p>
-</li>
-<li><p>hexo server<br>当你要在本地查看网站的时候，就可以用这个命令。</p>
-<p>默认在 <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a> 这里，可能会不同，注意提示信息即可。</p>
+<p>例如：我在 博客根目录/source/ 下新建了一个名为 test 的文件夹，然后在 test 文件夹下写 Markdown 文件，那么这个页面的链接就是 网址/test。</p></li>
+<li><p>hexo server 当你要在本地查看网站的时候，就可以用这个命令。</p>
+<p>默认在 http://localhost:8080/ 这里，可能会不同，注意提示信息即可。</p>
 <p>:::tip 提醒</p>
 <p>如果你想要换端口号（上面的 8080 就是端口号），可以在终端里输入 hexo s -p 端口号。</p>
 <p>如果遇到端口占用，在hexo/_config.yml 中添加下面语句修改 hexo 启动端口号</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">server</span>:  port: <span class="number">4001</span>  compress: <span class="keyword">true</span>  <span class="keyword">header</span>: <span class="keyword">true</span></span><br></pre></td></tr></table></figure></li>
-<li><p>hexo generate<br>这个命令是生成网站静态文件的时候用的，生成后网页将会放在根目录下面的 public 文件夹里。</p>
-</li>
-<li><p>hexo deploy<br>这个命令用来部署网站，使用此命令将会把生成好的页面（即 public 文件夹里的内容）部署到指定的地方上。</p>
-</li>
-<li><p>hexo clean<br>这个命令用来清空 public 文件夹。</p>
-</li>
-<li><p>hexo version<br>这个命令用来输出你所使用的 Hexo 目前的版本号。</p>
-</li>
+<li><p>hexo generate 这个命令是生成网站静态文件的时候用的，生成后网页将会放在根目录下面的 public 文件夹里。</p></li>
+<li><p>hexo deploy 这个命令用来部署网站，使用此命令将会把生成好的页面（即 public 文件夹里的内容）部署到指定的地方上。</p></li>
+<li><p>hexo clean 这个命令用来清空 public 文件夹。</p></li>
+<li><p>hexo version 这个命令用来输出你所使用的 Hexo 目前的版本号。</p></li>
 <li><p>部署本地文件到GitHub上</p>
 <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean <span class="meta">&amp;&amp; hexo d -g</span></span><br></pre></td></tr></table></figure></li>
-<li><p>Hexo -v 查看 hexo 版本</p>
-</li>
+<li><p>Hexo -v 查看 hexo 版本</p></li>
 </ol>
-<h1 id="Next-主题使用"><a href="#Next-主题使用" class="headerlink" title="Next 主题使用"></a>Next 主题使用</h1><p><strong>下载 Next 主题</strong></p>
+<h1 id="next-主题使用">Next 主题使用</h1>
+<p><strong>下载 Next 主题</strong></p>
 <p>cd themes 文件夹</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/iissnan/</span>hexo-theme-<span class="keyword">next</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>修改 theme</strong></p>
 <p>编辑 hexo/_config.yml，找到 theme 那一行配置，修改为 next</p>
 <p><strong>添加“分类”，“关于”和“标签”菜单</strong></p>
 <p><strong>打开 tags，about，categories</strong></p>
-<p>在主题配置文件 next/_config.yml 在 menu 下去掉 tags，about，categories 注释。<br>注意这里“主题配置文件”指的是 themes/next 目录的下的 _config.yml。</p>
+<p>在主题配置文件 next/_config.yml 在 menu 下去掉 tags，about，categories 注释。 注意这里“主题配置文件”指的是 themes/next 目录的下的 _config.yml。</p>
 <p><strong>创建 tags，about，categories</strong></p>
 <p>在 hexo 文件夹</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="type">page</span> tags</span><br></pre></td></tr></table></figure>
-
 <p>会在 source 文件夹生成 tags 文件夹，编辑里面的 index.md ，添加</p>
 <figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span>: <span class="string">&quot;tags&quot;</span>comments: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<p>同样的方法添加 categories；<br>添加 about 不需要修改 md 文件的 type，因为 tags，categories 是特殊目录类型，about 只是简单的一个 md。</p>
-<h1 id="参考-References"><a href="#参考-References" class="headerlink" title="参考 (References)"></a>参考 (References)</h1><ol>
-<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=erKYtw4Rfhk">https://www.youtube.com/watch?v=erKYtw4Rfhk</a></li>
+<p>同样的方法添加 categories； 添加 about 不需要修改 md 文件的 type，因为 tags，categories 是特殊目录类型，about 只是简单的一个 md。</p>
+<h1 id="参考-references">参考 (References)</h1>
+<ol type="1">
+<li>https://www.youtube.com/watch?v=erKYtw4Rfhk</li>
 </ol>
 
     </div>
@@ -548,7 +525,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-hexo"><span class="nav-number">1.</span> <span class="nav-text">Install hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.</span> <span class="nav-text">Hexo 使用自定义模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-%E5%85%8D%E5%AF%86%E9%83%A8%E7%BD%B2-hexo-deploy"><span class="nav-number">3.</span> <span class="nav-text">Hexo 免密部署 (hexo deploy)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo-%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">Hexo 命令详解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Next-%E4%B8%BB%E9%A2%98%E4%BD%BF%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">Next 主题使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-References"><span class="nav-number">6.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#install-hexo"><span class="nav-number">1.</span> <span class="nav-text">Install hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF"><span class="nav-number">2.</span> <span class="nav-text">Hexo 使用自定义模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-%E5%85%8D%E5%AF%86%E9%83%A8%E7%BD%B2-hexo-deploy"><span class="nav-number">3.</span> <span class="nav-text">Hexo 免密部署 (hexo deploy)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo-%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">Hexo 命令详解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next-%E4%B8%BB%E9%A2%98%E4%BD%BF%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">Next 主题使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83-references"><span class="nav-number">6.</span> <span class="nav-text">参考 (References)</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -564,7 +541,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -577,7 +554,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -624,12 +601,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">90k</span>
+    <span title="Symbols count total">103k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:22</span>
+    <span title="Reading time total">1:33</span>
 </div>
 
 
