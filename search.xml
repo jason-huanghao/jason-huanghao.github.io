@@ -741,6 +741,9 @@
 <li>http://galaxy.agh.edu.pl/~vlsi/AI/backp_t_en/backprop.html</li>
 </ol>
 ]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
       <tags>
         <tag>Deep Learning</tag>
       </tags>
@@ -966,9 +969,25 @@
   <entry>
     <title>Gated Recurrent Unit (GRU)</title>
     <url>/2021/07/13/Deep%20Learning/Gated-Recurrent-Unit-GRU/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><span id="more"></span>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Gated Reccurent Unit (GRU) is a simplified from the architecture of LSTM. It has fewer parameters than LSTM, therefore, it takes less compution resource and run faster than LSTM.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210713105052.png" /></p>
+<span id="more"></span>
+<p>To be detailed, GRU combines forget and input (update) gates into a single <em>update</em> gate, and merges cell and hidden states. The comparison between LSTM (left hand side) and GRU (right hand side) is described in following picture.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210713105732.png" /></p>
+<p>where <span class="math inline">\(z_t\)</span> and <span class="math inline">\(r_t\)</span> are repective activation vecotrs for the update and reset gates.</p>
 <h1 id="references">References</h1>
+<ol type="1">
+<li>Chung, Junyoung, et al. "Empirical evaluation of gated recurrent neural networks on sequence modeling." arXiv preprint arXiv:1412.3555 (2014).</li>
+<li>Pilehvar, Mohammad Taher, and Jose Camacho-Collados. "Embeddings in natural language processing: Theory and advances in vector representations of meaning." Synthesis Lectures on Human Language Technologies 13.4 (2020): 1-175.</li>
+</ol>
 ]]></content>
+      <categories>
+        <category>Deep Learning</category>
+      </categories>
+      <tags>
+        <tag>RNN</tag>
+        <tag>GRU</tag>
+      </tags>
   </entry>
   <entry>
     <title>LSTM详解</title>
@@ -1006,6 +1025,7 @@
       </categories>
       <tags>
         <tag>LSTM</tag>
+        <tag>RNN</tag>
       </tags>
   </entry>
   <entry>
@@ -1803,6 +1823,9 @@ $=\sum_&#123;i=1&#125;^n \alpha_i-\frac&#123;1&#125;&#123;2&#125;\sum_&#123;i,j=
 <li>Automated Phrase Mining from Massive Text Corpora</li>
 </ol>
 ]]></content>
+      <categories>
+        <category>NLP</category>
+      </categories>
       <tags>
         <tag>NLP</tag>
       </tags>
@@ -2077,8 +2100,92 @@ Cases of conceptual clustering:
     <title>Paper Reading List</title>
     <url>/2021/07/10/Paper%20Reading/Paper-Reading-List/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><span id="more"></span>
+<h1 id="gnn">GNN</h1>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+Graph Neural Networks for Natural Language Processing: A Survey, 2021</li>
+</ul>
+<h1 id="term-weight">Term Weight</h1>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" checked="" />
+Measuring Fine-Grained Domain Relevance of Terms, ACL2021</li>
+</ul>
+<h1 id="knowledge-graph">Knowledge Graph</h1>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+Robust Knowledge Graph Completion with Stacked Convolutions and a Student Re-Ranking Network</li>
+</ul>
+<h1 id="information-extraction">Information Extraction</h1>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+OntoED: Low-resource Event Detection with Ontology Embedding, ACL2021</li>
+<li><input type="checkbox" disabled="" />
+Position Bias Mitigation: A Knowledge-Aware Graph Model for Emotion Cause Extraction</li>
+<li><input type="checkbox" disabled="" />
+PRGC: Potential Relation and Global Correspondence Based Joint Relational Triple Extraction</li>
+<li><input type="checkbox" disabled="" />
+PairRE: Knowledge Graph Embeddings via Paired Relation Vectors</li>
+<li><input type="checkbox" disabled="" />
+How Knowledge Graph and Attention Help? A Qualitative Analysis into Bag-level Relation Extraction, 2021ACL :smiley: ❤</li>
+<li><input type="checkbox" disabled="" />
+Fine-grained Information Extraction from Biomedical Literature based on Knowledge-enriched Abstract Meaning Representation ❤</li>
+<li><input type="checkbox" disabled="" />
+Dependency-driven Relation Extraction with Attentive Graph Convolutional Networks ❤</li>
+<li><input type="checkbox" disabled="" />
+Word Sense Disambiguation: Towards Interactive Context Exploitation from Both Word and Sense Perspectives</li>
+<li><input type="checkbox" disabled="" />
+PairRE: Knowledge Graph Embeddings via Paired Relation Vectors</li>
+<li><input type="checkbox" disabled="" />
+Are Missing Links Predictable? An Inferential Benchmark for Knowledge Graph Completion</li>
+</ul>
+<h1 id="text-generation">Text Generation</h1>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+Data Augmentation for Text Generation Without Any Augmented Data, ACL2021</li>
+<li><input type="checkbox" disabled="" />
+Capturing Relations between Scientific Papers: An Abstractive Model for Related Work Section Generation, 2021ACL</li>
+<li><input type="checkbox" disabled="" />
+Employing Argumentation Knowledge Graphs for Neural Argument Generation</li>
+<li><input type="checkbox" disabled="" />
+Metaphor Generation with Conceptual Mappings, 2021ACL</li>
+<li><input type="checkbox" disabled="" />
+AugNLG: Few-shot Natural Language Generation using Self-trained Data Augmentation, 2021ACL</li>
+</ul>
+<h1 id="nlp-machine-learning">NLP Machine Learning</h1>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+DeCLUTR: Deep Contrastive Learning for Unsupervised Textual Representations</li>
+<li><input type="checkbox" disabled="" />
+Dynamic Contextualized Word Embeddings</li>
+<li><input type="checkbox" disabled="" />
+Unsupervised Out-of-Domain Detection via Pre-trained Transformers ❤</li>
+<li><input type="checkbox" disabled="" />
+Tree-Structured Topic Modeling with Nonparametric Neural Variational Inference</li>
+<li><input type="checkbox" disabled="" />
+Obtaining Better Static Word Embeddings Using Contextual Embedding Models</li>
+<li><input type="checkbox" disabled="" />
+TAN-NTM: Topic Attention Networks for Neural Topic Modeling ❤</li>
+<li><input type="checkbox" disabled="" />
+Learning Dense Representations of Phrases at Scale</li>
+</ul>
+<h1 id="chat-box">Chat-box</h1>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+Topic-Driven and Knowledge-Aware Transformer for Dialogue Emotion Detection</li>
+</ul>
+<h1 id="多模态">多模态</h1>
+<ul class="task-list">
+<li><input type="checkbox" disabled="" />
+Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
+</ul>
 <h1 id="references">References</h1>
 ]]></content>
+      <categories>
+        <category>Paper Reading</category>
+      </categories>
+      <tags>
+        <tag>paper</tag>
+      </tags>
   </entry>
   <entry>
     <title>信息论</title>
@@ -2131,9 +2238,192 @@ Cases of conceptual clustering:
   <entry>
     <title>Academic Information Sources</title>
     <url>/2021/07/13/Research%20Method/Academic-Information-Sources/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><span id="more"></span>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>As a scholar, we should build up our own information resource to save our life. Here are some suggestions: 1. Information is not knowledge. A easy rule to distinguish information from knowledge. Information make you happy and give you the feeling of learning a lot, while knowledge take you efforts to understanding and take you time to practice. 2. Video and blog is one of way to get knowledge. But they can not offer you deeper understanding and a systematic overview. And most of the vedios and blogs are digested by the authors which prevent you from thinking. 3. Books and Papers are the golden resources. Reading and Coding make your every step count! 4. Following well-known professors and labs in your research domain. This will give a overrall understanding about what they are doing. And conntact them directly when you have some problems. 5. <a href="https://github.com/shengyp/doing_the_PhD">Tips Doing the PhD, Chinese</a></p>
+<span id="more"></span>
+<h1 id="paper-collections-and-paper-recommendation">Paper Collections and Paper Recommendation</h1>
+<ol type="1">
+<li><p><a href="https://www.jiqizhixin.com/columns/paperweekly">Paperweekly 机器之心</a>, <a href="https://www.paperweekly.site">Paperweekly Official Site</a></p></li>
+<li><p><a href="https://www.jiqizhixin.com/columns">机器之心专栏</a> 各个组织的分享文章. <a href="https://www.jiqizhixin.com/sota">SOTA models</a></p></li>
+<li><p><a href="https://github.com/mengliu1998/awesome-deep-gnn">awesome-deep-gnn papers</a></p></li>
+<li><p><a href="https://github.com/shaoxiongji/knowledge-graphs">Knowledge Graphs papers</a></p></li>
+<li><p><a href="https://github.com/xinguoxia/KGE">Knowledge Graph Embedding papers</a></p></li>
+<li><p><a href="https://github.com/thunlp/KRLPapers">KRL: knowledge representation learning &amp; KE: knowledge embedding must read papers</a></p></li>
+<li><p><a href="https://github.com/THU-KEG/Knowledge_Graph_Reasoning_Papers">Knowledge Graph Reasoning Papers</a></p></li>
+<li><p><a href="https://github.com/heathersherry/Knowledge-Graph-Tutorials-and-Papers">Knowledge Graph Tutorials and Papers &amp; Data</a> ❤️</p></li>
+<li><p><a href="https://github.com/haipinglu/awesome-knowledge-graph">Awesome Knowledge Graph papers &amp; Data</a> ❤️ <a href="https://www.sheffield.ac.uk/dcs/people/academic/haiping-lu">吕海平 The University of Sheffield</a> machine learning, brain imaging, and tensor analysis</p></li>
+<li><p><a href="https://github.com/dkmfbk/dket">Ontology Learning as Machine Translation</a> Expressive ontology learning as neural machine translation,2018 把OL当做MT来做 ❤️</p></li>
+<li><p><a href="https://github.com/edowson/ai-ontology">AI/RL Ontology</a> 一个强化学习领域的Ontology by <a href="https://webprotege.stanford.edu">WebProtege</a></p></li>
+<li><p><a href="https://github.com/vieyra/KnOWLearn-Tool">KnOWLearn-Tool</a> 一个ontology learning 工具，包含 term extraction, <a href="https://github.com/vieyra/KnOWLearn-Tool/tree/master/KnOWLearn-Tool/data">data from different domain</a> Author<a href="https://github.com/vieyra">Samuel Vieyra</a> ❤️</p></li>
+<li><p><a href="https://github.com/SmartDataAnalytics/Knowledge-Graph-Analysis-Programming-Exercises">Programming Exercises for the Analysis of Knowledge Graphs</a> allows interested students and researchers to perform hands-on analysis of knowledge graphs <a href="https://github.com/SmartDataAnalytics">Smart Data Analytics Github</a> from <a href="https://sda.tech">Smart Data Analytics of University of Bonn, German</a> ❤️ # Knowledge Graph or Ontology</p></li>
+<li><p><a href="http://yuhao.im/">张宇浩 Stanford, 清华</a>, Relation Extraction, GCN, NLP in medicine</p></li>
+<li><p>KAUST Bio-Ontology Research Group (韩国科技大学生物本体研究小组). <a href="http://borg.kaust.edu.sa">Main Page</a>, <a href="https://github.com/bio-ontology-research-group">Github Page</a>, <a href="https://github.com/bio-ontology-research-group/ontology-tutorial">Ontology Tutorial</a>, <a href="https://github.com/bio-ontology-research-group/machine-learning-with-ontologies">Machine Learning with Ontology</a>, <a href="https://github.com/bio-ontology-research-group/semisupCR">Simi-supervised Concept Recognition with pytorch BIRT</a></p></li>
+<li><p><a href="http://net.pku.edu.cn/dlib">北京大学张铭老师团队</a>. 知识图谱辅助及其对话, 知识图谱协同推理</p></li>
+<li><p><a href="http://ir.hit.edu.cn/2045.html">哈工大 刘铭 知识挖掘</a>. 主要研究方向为文本挖掘和阅读理解。研究重点包括知识图谱、阅读理解、篇章表示等</p></li>
+<li><p><a href="http://keg.cs.tsinghua.edu.cn/persons/ljz/">清华 李涓子</a>. Representative Work <a href="https://xlore.org">Xlore</a>. <a href="https://xlore.org/results.html">Papers of thier teamwork</a></p></li>
+<li><p><a href="https://www.cs.tsinghua.edu.cn/info/1113/3938.htm">侯磊, 李涓子弟子</a> 知识图谱, 系统研究知识表示、获取、融合和推理技术 <a href="https://www.bilibili.com/video/BV18z4y1X7dx?from=search&amp;seid=6786099118092957220">fine-grained entity classifiction</a></p></li>
+<li><p><a href="https://datascience.fudan.edu.cn/5a/ab/c13398a154283/page.htm">肖仰华</a> <a href="https://scholar.google.com/citations?user=odFW4FoAAAAJ&amp;hl=zh-CN">Google Schoolar</a> Knowledge Graph ❤️❤️</p></li>
+<li><p><a href="http://kw.fudan.edu.cn/people/liangjiaqing/">梁家卿，肖仰华弟子</a> Hypernym-Hyponym Relations, Knowledge Graph Completion❤️</p></li>
+<li><p><a href="https://person.zju.edu.cn/huajun">陈华均</a> 知识图谱， OpenKG 公众号， 《知识图谱导论》，电子工业出版社，2021</p></li>
+<li><p><a href="https://zxlzr.github.io">张宁豫 陈华均弟子</a> Relation Extraction, Knowledge Graph</p></li>
+<li><p><a href="https://www.cs.ox.ac.uk/isg/people/jiaoyan.chen/">Jiaoyan Chen cooperate with 陈华均</a>, <a href="https://scholar.google.com/citations?user=5Cy4z8wAAAAJ&amp;hl=en&amp;oi=sra">Google Scholar</a>. Knowledge Graph,Semantic Web❤️❤️</p></li>
+<li><p><a href="https://cse.seu.edu.cn/_s191/2019/0103/c23024a257135/page.psp">东南大学 漆桂林</a> Semantic Web, Knowledge Graph 漆老师人非常好, 很少见到把研究生要求和规划写得这么细的导师 ❤️ ❤️</p></li>
+<li><p><a href="http://nlg.csie.ntu.edu.tw/~azyen/">台大 An-Zi Yen 顏安孜</a> <a href="https://scholar.google.com/citations?hl=en&amp;user=W2BAw3sAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Google Schoolar</a> Knowledge Graph</p></li>
+<li><p><a href="https://scholar.google.com/citations?hl=en&amp;user=FKoKAwIAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">UMass Rajarshi Das</a> Knowledge Graph</p></li>
+<li><p><a href="https://scholar.google.com/citations?hl=en&amp;user=H4GYRx8AAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Yuanzhe Zhang</a> QA by KG</p></li>
+<li><p><a href="https://usc-isi-i2.github.io/home/">Center on Knowledge Graphs Information Sciences Institute</a> University of South Canifornia ❤️❤️❤️</p></li>
+</ol>
+<ul>
+<li><a href="https://usc-isi-i2.github.io/ISWC20/">Tutorial of Common Sense Knowledge Graphs</a> ❤️</li>
+<li><a href="Mining%20Knowledge%20Graphs%20from%20Text">Tutorial of Mining Knowledge Graphs from Text</a> ❤️</li>
+<li><a href="https://usc-isi-i2.github.io/ISWC17/">Tutorial of Constructing Domain-specific Knowledge Graphs</a> ❤️</li>
+</ul>
+<ol start="18" type="1">
+<li><a href="https://sda.tech">Smart Data Analytics of University of Bonn</a> from German. Distributed Semantic Analysis, KG Analysis, Semantic Data Management, Semantic QA</li>
+</ol>
+<h1 id="graph-neural-network">Graph Neural Network</h1>
+<p>waiting for updating...</p>
+<h1 id="topic-modeling">Topic Modeling</h1>
+<ol type="1">
+<li><p><a href="http://www.cs.columbia.edu/~blei/">David M.Blei</a> <a href="https://github.com/Blei-Lab">Github</a> :star: Topic Modeling (LDA) Probabilistic Model, Approximate Bayesian Inference</p></li>
+<li><p><strong>He Zhao</strong> <a href="https://scholar.google.com/citations?hl=en&amp;user=pkn0NPsAAAAJ&amp;view_op=list_works&amp;citft=1&amp;email_for_op=ifyougetadream@gmail.com&amp;sortby=pubdate">Google Scholar</a>, <a href="https://ethanhezhao.github.io">Github-Main-Page</a>. Topic Modeling, Bayesian (nonparametric) probabilistic models</p></li>
+<li><p><a href="http://www.david-andrzejewski.com">David M.Andrzejewski</a> Topic Modeling (Seeded LDA). partially supervised probabilistic modeling</p></li>
+<li><p><a href="https://scholar.google.com/citations?user=HhyfdQYAAAAJ&amp;hl=en&amp;authuser=1&amp;oi=sra">Guangxu Xun</a>.</p>
+<ul>
+<li>A Correlated Topic Model Using Word Embeddings</li>
+<li>Topic discovery for short texts using word embeddings</li>
+</ul></li>
+</ol>
+<h1 id="representation-learning">Representation Learning</h1>
+<ol type="1">
+<li><a href="http://nlp.csai.tsinghua.edu.cn/~lzy/index_cn.html">刘知远</a> :star: 清华NLP mainly in representation learning. Knowledge Representation Learning, Network Representation Learning, Neural Relation Extraction, Machine Reading Comprehension, Graph Neural Networks</li>
+</ol>
+<h1 id="machine-learning-deep-learning">Machine Learning &amp; Deep Learning</h1>
+<ol type="1">
+<li><p><a href="https://xpqiu.github.io/">邱锡鹏</a>. 复旦大学NLP Deep Learning <a href="https://github.com/FudanNLP/nlp-beginner">NLP beginer Github</a>,<a href="https://github.com/FudanNLP">FudanNLP Github</a> <a href="https://github.com/fastnlp/style-transformer">style transfer text</a></p></li>
+<li><p><a href="https://speech.ee.ntu.edu.tw/~hylee/">李宏毅</a>.Machine Learning, Deep Learning, Meta Learning, Reinforement Learning. <a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLSD15_2.html">Course Lists</a>, <a href="https://www.youtube.com/channel/UC2ggjtuuWvxrHHHiaDH1dlQ/playlists">Youtube Page</a></p></li>
+<li><p><a href="https://github.com/hal3">Hal Daumé III</a> :star: Statistical Machine Learning &amp; NLP <a href="http://users.umiacs.umd.edu/~hal/students.html#prospective">List of suggestions</a> <a href="http://users.umiacs.umd.edu/~hal/teaching.html">Courses List</a></p></li>
+<li><p><a href="http://www.cs.cmu.edu/~epxing/">Eric Xing</a>, <a href="http://www.cs.cmu.edu/~epxing/Class/10708-20/lectures.html">概率图模型2020</a></p></li>
+<li><p><a href="https://rlchina.org">汪军</a> 强化学习</p></li>
+<li><p><a href="https://zhangmeishan.github.io/chn.html">张梅山</a> 天津大学NLP. Opinion Mining, Sentiment Analysis</p></li>
+<li><p><a href="http://cic.tju.edu.cn/faculty/xiongdeyi/index.html">熊德意</a> 天津大学NLP. machine translation, dialogue, natural language generation, question answering and information extraction</p></li>
+<li><p><a href="http://www.pris.net.cn/introduction/teacher/chenguang">陈光</a> 北邮 NLP 信息检索，文本挖掘</p></li>
+<li><p><a href="http://coai.cs.tsinghua.edu.cn/hml">黄烈民</a>. 清华大学交互式人工智能（CoAI）课题组组长. Conversational AI (QA, reading comprehension), Language Generation, Sentiment Understanding</p></li>
+<li><p><a href="https://wanxiaojun.github.io">万小军</a> Text Mining, document summarization, text generation, sentiment analysis, semantic parsing, multilingual and multimodal NLP</p></li>
+</ol>
+<h1 id="academic-research-group">Academic Research Group</h1>
+<ol type="1">
+<li><a href="http://ir.hit.edu.cn/teams">哈工大社会计算与信息检索研究中心</a> 刘挺教授，秦兵教授，教师包括张宇、车万翔、陈毅恒、张伟男</li>
+</ol>
+<ul>
+<li>句子级的语言分析：句法分析、语义分析、命令解析、文本顺滑；</li>
+<li>人机对话：营销/客服机器人、深度问答、用户画像与机器人画像、话题推荐；</li>
+<li>篇章级的自然语言处理：阅读理解、篇章语义、信息抽取、语言知识图谱、作文生成、新闻自动写作；</li>
+<li>社会计算：倾向性分析、观点分析、情绪分析、消费意图识别、 事理图谱、社会预测。</li>
+</ul>
+<ol start="2" type="1">
+<li><a href="http://icrc.hitsz.edu.cn/szdw/qzjs.htm">哈工大深圳智能计算研究中心</a></li>
+</ol>
+<ul>
+<li>基于深度学习的自然语言处理、自动问答、手写交互；</li>
+<li>基于自然语言处理技术，为健康医疗大数据处理提供支撑工具；</li>
+<li>基于自然语言处理技术，为生物信息处理提供核心算法和工具。</li>
+</ul>
+<ol start="3" type="1">
+<li><a href="">清华大学自然语言处理与社会人文计算实验室</a></li>
+</ol>
+<ul>
+<li>Relation Extraction</li>
+<li>Social Tagging and Keyword Extraction (<font color=blblue>Keyword extraction by clustering to find exemplar terms, Keyword extraction via topic decomposition</font>)</li>
+<li>Multilingual Analysis</li>
+<li>Text Classification</li>
+</ul>
+<ol start="4" type="1">
+<li><p><a href="http://coai.cs.tsinghua.edu.cn">清华大学交互式人工智能（CoAI）课题组</a> 对话系统，自然语言生成. <a href="https://github.com/thu-coai">Github Repository</a></p></li>
+<li><p><a href="http://nlp.ict.ac.cn/ictnlp_website/team/">中科院计算所自然语言处理研究组</a> 刘群、冯洋: 研究方向包括机器翻译、人机对话、多语言词法分析、句法分析和网络信息挖掘等</p></li>
+<li><p><a href="https://nlp.fudan.edu.cn/28695/list.htm">复旦大学自然语言处理组</a> 邱锡鹏: 机器翻译、人机对话 <a href="https://nlp.fudan.edu.cn/28699/list.htm">开源项目</a> ; <a href="https://faculty.fudan.edu.cn/xjhuang/zh_CN/index/444671/list/index.htm">黄萱菁</a>: 自然语言处理、非规范化文本分析、语义计算、信息抽取、倾向性分析、文本挖掘. 张奇、魏忠钰、​郑骁庆、周雅倩</p></li>
+<li><p><a href="http://kw.fudan.edu.cn">复旦大学知识工场</a> 肖仰华老师: 知识图谱做的非常好 <a href="http://www.openkg.cn/home">OpenKG</a>, <a href="http://kw.fudan.edu.cn/people/researchers/">All researchers</a></p></li>
+<li><p><a href="https://klcl.pku.edu.cn">北京大学计算语言学教育部重点实验室</a> 穗志方</p></li>
+<li><p><a href="http://www.nlpr.ia.ac.cn/cn/column/22.html">中科院模式识别国家重点实验室</a> 赵军 宗成庆 周玉: 自然语言处理基础、机器翻译、信息抽取和问答系统</p></li>
+<li><p><a href="http://www.csai.tsinghua.edu.cn">清华大学智能技术与系统国家重点实验室</a> 朱小燕: 智能信息处理、机器学习、自动问答系统</p></li>
+<li><p><a href="http://nlp.nju.edu.cn/homepage/people.html">南京大学自然语言处理研究组</a> 陈家俊、戴新宇、黄书剑: 机器翻译，问答系统，情感分析</p></li>
+<li><p><a href="http://nlp.xmu.edu.cn/group.html">厦门大学智能科学与技术系自然语言处理实验室</a> 史晓东: 机器翻译，隐喻计算</p></li>
+<li><p><a href="http://nlg3.csie.ntu.edu.tw">台湾大学自然语言处理实验室</a> 知识图谱、机器翻译、问答、自动摘要、信息检索. <a href="http://nlg3.csie.ntu.edu.tw/achievements.php">Papers</a></p></li>
+<li><p><a href="https://www1.se.cuhk.edu.hk/~textmine/">香港中文大学文本挖掘组</a> information retrieval, text mining, knowledge-based systems <a href="https://scholar.google.com/citations?user=ewA4NAcAAAAJ&amp;hl=en">Google Scholar</a></p></li>
+<li><p><a href="http://nlp2ct.cis.umac.mo/views/people.html">澳门大学自然语言处理与中葡翻译实验室</a>：主要做机器翻译</p></li>
+<li><p><a href="https://usc-isi-i2.github.io/home/">Center on Knowledge Graphs Information Sciences Institute</a> University of South Canifornia ❤️❤️</p></li>
+</ol>
+<h1 id="industrial-researchers-and-groups">Industrial Researchers and Groups</h1>
+<ol type="1">
+<li><p><a href="https://www.52nlp.cn">52nlp 我爱自然语言处理</a></p></li>
+<li><p><a href="https://scholar.google.com/citations?hl=en&amp;user=CCPBcdYAAAAJ&amp;sortby=pubdate&amp;view_op=list_works&amp;citft=1&amp;email_for_op=ifyougetadream@gmail.com&amp;gmla=AJsN-F7DpBduXnYN7gecB4q8cTRAuD-7aYts4tSDAElTOFZv2kHd1Ix3TdPyZ462UFrUoX5mHm1VyEjQZMEZy_0AYpBUFR9DQ-Zh1WJM0ECrqSDOEKxvi9hsrNWROEFWBLe8XLdIWUOs4l4J7L3jRlJzbDxVqb6vtlje_Z2pTsmMSVsA665HiJ8aoSa0iOsT0IEbPj_6TtMNHnYrA4ZH4-xZmmr0s0_pvASZk0jnQ9WLaPFJD1UMwBpSMgntomsBY5xSSBXPhmr9">Yaliang Li</a> <a href="https://sites.google.com/site/yaliangli/">HomePage</a> Email: yaliangl.ub@gmail (Alibaba Group). Knowledge Graph, Data Mining</p>
+<ul>
+<li>A Correlated Topic Model Using Word Embeddings</li>
+<li>Topic discovery for short texts using word embeddings</li>
+</ul></li>
+<li><p>腾讯人工智能实验室（<a href="http://ai.tencent.com/ailab/index.html">Tencent AI Lab</a>）</p></li>
+<li><p>百度自然语言处理（<a href="https://nlp.baidu.com/">Baidu NLP</a>）：对外提供了<a href="http://ai.baidu.com/">百度AI开放平台</a>，王海峰（现任百度副总裁，AI技术平台体系AIG总负责人）</p></li>
+<li><p>微软亚洲研究院自然语言计算组（<a href="https://www.microsoft.com/en-us/research/group/natural-language-computing/">Natural Language Computing - Microsoft Research</a>）、在NLP方向与哈工大、清华有<a href="https://www.msra.cn/zh-cn/connections/academic-programs/jointlab">联合实验室</a></p></li>
+<li><p>科大讯飞（<a href="http://ir.hit.edu.cn/1348.html">与哈工大的语言认知计算联合实验室</a>）</p></li>
+<li><p>搜狗实验室（<a href="http://www.sogou.com/labs/">Sogou Labs</a>）</p></li>
+<li><p>头条人工智能实验室（<a href="http://lab.toutiao.com/">Toutiao AI Lab</a>）</p></li>
+<li><p>华为诺亚方舟实验室（<a href="http://www.noahlab.com.hk/">Noah's Ark Lab</a>）<a href="https://liuquncn.github.io/">刘群（LiuQun）</a></p></li>
+<li><p><a href="https://hfl-rc.com/about/">哈工大讯飞联合实验室</a> 刘挺老师</p></li>
+<li><p><a href="https://www.microsoft.com/en-us/research/group/natural-language-computing/">微软亚洲研究院自然语言计算组NLC</a> machine translation, question-answering, chat-bot and language gaming. <a href="https://nanduan.github.io/">Nan Duan</a>, Pretraining, Knowledge-NLG</p></li>
+<li><p><a href="https://damo.alibaba.com/labs/language-technology">阿里巴巴达摩院语言技术实验室</a> 黄非团队做对话，Pretraining, NLG</p></li>
+<li><p><a href="https://ai.tencent.com/ailab/nlp/en/index.html">腾讯 AI Lab</a> Areas: NLG, Dialog, Data-to-text, Constrained NLG</p></li>
+<li><h3 id="微信模式识别中心---nlp"><a href="https://ai.weixin.qq.com/#research">微信模式识别中心</a> - NLP</h3>
+<p>Areas: NLG, Dialog, controlled NLG</p></li>
+<li><p><a href="https://ailab.bytedance.com/">字节跳动 AI Lab</a> - <a href="https://lileicc.github.io/">Lei Li</a> Group</p></li>
+<li><p><a href="https://tech.meituan.com/2019/03/14/information-flow-creative-optimization-practices.html">美团NLG</a> （信息流推荐系统涉及内容挖掘、召回、精排、重排、<strong>创意</strong>等多层机制和排序）</p></li>
+<li><p><a href="https://air.jd.com/#index">京东 NLP Group</a> 1. <a href="https://scholar.google.com/citations?hl=zh-CN&amp;user=JFg9QC4AAAAJ">Haoran Li (李浩然)</a>: Summarization, Multi-model; <a href="https://scholar.google.com/citations?user=fWrjVnQAAAAJ&amp;hl=zh-CN">Youzheng Wu (吴友正)</a>: Dialog</p></li>
+</ol>
+<figure>
+<img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210604172027.jpg" alt="img" /><figcaption aria-hidden="true">img</figcaption>
+</figure>
+<h1 id="international-scholars-国外学术界">International Scholars (国外学术界)</h1>
+<p>麻省理工学院：Regina Barzilay, Tommi S. Jaakkola。</p>
+<p>卡内基梅隆大学：Jaime Carbonell, Justine Cassell, William Cohen（主要做信息抽取）, Chris Dyer（主要做机器翻译）, Scott Fahlman,（主要做只是表示和知识推理），Robert Frederking, Eduard Hovy, Alon Lavie, Lori Levin, Brian MacWhinney,（做的比较杂），Teruko Mitamura,（主要做QA），Tom Mitchell, Eric Nyberg，Kemal Oflazer, Carolyn Penstein Rosé,（主要做聊天），Roni Rosenfeld, Noah Smith, Eric Xing。</p>
+<p>约翰·霍普金斯大学：Andreas Andreou，Raman Arora，Jason Eisner, Sanjeev Khudanpur, David Yarowsky, Hynek Hermansky，Mark Dredze, Tom Lippincott，Philipp Koehn，Najim Dehak，Ben van Durme。绝对的NLP领域顶级牛校，研究几乎涵盖所有NLP任务，而且做的都非常好，如果非要说主要研究内容的话：句法分析、机器翻译。</p>
+<p>普林斯顿大学：Sanjeev Arora，Karthik Narasimhan。</p>
+<p>斯坦福大学： Christopher Manning, Daniel Jurafsky, Percy Liang，这几个人不用赘述了吧，实验室做的很广泛，句法分析和词性标注的工具很有名。</p>
+<p>哈弗大学：Stuart Shieber，Alexander Rush，主要做MT、自动摘要和文本生成。</p>
+<p>剑桥大学：Edward J. Briscoe，Ann Copestake，Simone Teufel，Paula Buttery，Andreas Vlachos，摘要、文本生成、NLU、句法分析、IR做的都不错。</p>
+<p>牛津大学：Stephen Pulman，Phil Blunsom（MT非常非常厉害）。</p>
+<p>加州大学伯克利分校：Dan Klein（主要做IE和MT）。</p>
+<p>伊利诺伊大学香槟分校：Margaret M. Fleck (CS)，Roxana Girju (Linguistics)，Mark Hasegawa-Johnson (ECE)，Julia Hockenmaier (CS)， Dan Roth (CS)，ChengXiang Zhai (CS)。</p>
+<p>宾夕法尼亚大学：Mitch Marcus，Dan Roth，Lyle Ungar，Ani Nenkova，Chris Callison-Burch，句法分析做的非常屌，LTAG、Penn Treebank不用过多解释了吧。</p>
+<p>芝加哥大学：John Lafferty（CRF发明人，机器翻译做的也不错）, John Goldsmith</p>
+<p>哥伦比亚大学：Kathy McKeown, Julia Hirschberg，Owen Rambow。</p>
+<p>康奈尔大学：Lillian Lee（主要做SA（情感分析））, Thorsten Joachims（深入学习SVM的话应该知道他）, Claire Cardie, Yoav Artzi。</p>
+<p>俄亥俄州立大学（OSU）：Eric Fosler-Lussier(我是因为做对话知道的他), Michael White（主要做NLG）, William Schuler（主要做句法分析和MT）, Micha Elsner, Alan Ritter, Wei Xu（社交媒体）。</p>
+<p>匹兹堡大学：Ashley Kevin， Brusilovsky Peter, Lewis Michael。</p>
+<p>多伦多大学：Graeme Hirst, Gerald Penn，Frank Rudzic，Suzanne Stevenson，主要做句法分析、语义分析。</p>
+<p>麦吉尔大学：Doina Precup，Jackie Chi Kit Cheung，Joelle Pineau， Prakash Panangaden</p>
+<p>蒙特利尔大学：Yoshua Bengio，不过多解释。</p>
+<p>佐治亚理工：Eric Gilbert（社会计算领域很有名）。</p>
+<p>南加州大学：Jerry Hobbs，Ron Artstein，David DeVault，Kallirroi Georgila，Panayiotis (Panos) Georgiou， Andrew Gordon，Jerry Hobbs，Khalil Iskarous，Kevin Knight，Sungbok Lee， Anton Leuski，Jonathan May，Prem Natarajan，MT、IE、关系挖掘、对话做的都不错。</p>
+<p>华盛顿大学：Tim Althoff，Jeffrey Bilmes，Yejin Choi，Pedro Domingos，Oren Etzioni， Hannaneh Hajishirzi，Noah Smith，Daniel S. Weld，Luke Zettlemoyer，主要做句法分析、MT、对话、IR等。</p>
+<p>爱丁堡大学：Shay Cohen（句法分析），Sharon Goldwater，Kenneth Heafield（MT），Frank Keller（句法分析），Mirella Lapata（NLU、NLG），Adam Lopez，Walid Magdy（IR、DM、社会计算），Rico Sennrich（句法分析、MT），Mark Steedman（对话），Ivan Titov（句法分析、NLU），Bonnie Webber（QA）。</p>
+<p>新加坡国立大学：NG Hwee Tou（主要做MT和句法纠错）。</p>
+<p>马里兰大学：Philip Resnik, Naomi Feldman，Marine Carpuat,Hal Daumé, 主要做MT和IR。</p>
+<p>东北大学：David A. Smith, Byron Wallace, Lu Wang。</p>
+<p>加州大学伯克利分校：Dan Klein，主要做NLP和ML交叉研究。</p>
+<p>加州大学圣巴巴拉分校：William Wang, 主要做IE（信息抽取）和ML。</p>
+<p>加州大学圣克鲁兹分校：Marilyn Walker，主要做dialogue。</p>
+<p>纽约市立学院（CUNY）：Martin Chodorow，Liang huang，Andrew Rosenberg，William Sakas，Virginia Teller。</p>
+<p>University of Massachusetts Amherst：Andrew McCallum（CRF、主题模型）、Bruce Croft、James Allan（IR做的非常屌）。</p>
+<p>纽约大学：Sam Bowman, Kyunghyun Cho，NLU做的非常好。</p>
+<p>北卡罗来纳大学教堂山分校（UNC）：Mohit Bansal, Tamara Berg,主要做句法分析、多模态对话。</p>
+<p>罗切斯特大学：Len Schubert, James Allen（篇章分析、对话做的很好），Dan Gildea（句法分析、MT）。</p>
+<p>谢菲尔德大学：Rob Gaizauskas (Head of Group），Mark Hepple，Lucia Specia（MT很厉害），Mark Stevenson（主要做IR和IE），Yorick Wilks（ACL终身成就奖）。</p>
 <h1 id="references">References</h1>
+<ol type="1">
+<li>https://www.jiqizhixin.com/articles/2018-12-27-16</li>
+</ol>
 ]]></content>
+      <categories>
+        <category>Research Method</category>
+      </categories>
       <tags>
         <tag>Research</tag>
       </tags>
@@ -2208,30 +2498,38 @@ Cases of conceptual clustering:
 <span id="more"></span>
 <h1 id="paper-searching">Paper Searching</h1>
 <ol type="1">
+<li><a href="www.aclweb.org/anthology/">ACL Anthology</a> for ACL top NLP conference paper free download! ❤️</li>
 <li><a href="https://www.connectedpapers.com">Connected Papers</a> to find papers that connect with the query paper. The results will be shown in a graph, awesomoe!</li>
 <li><a href="https://www.semanticscholar.org">Semantic Scholar</a> search paper by different filters (fileds of study, date, has pdf, publication type, famous authors, journal &amp; conference), could be a super search tool</li>
 <li><a href="">CiteSpace</a>, <a href="">HistCite Pro</a> (both are software) are used for analyze the citation network</li>
-<li><a href="https://paperswithcode.com">Paper with Code</a> is a community where every work will be attached by their code link</li>
 <li><a href="https://libgen.is">Library Genesis</a> facilitate you to download every pdf book</li>
 <li><a href="http://www.4243.net">大木虫学术导航</a> is a comprehensive nevigation for scholars, 有空多逛逛</li>
 <li><a href="https://www.chongbuluo.com/">虫部落</a> very good collection of search tools and methods</li>
 </ol>
+<h1 id="note-taking">Note Taking</h1>
+<ol type="1">
+<li><a href="">Hexo-Next</a> A self deployed blog for personal notes and blogs</li>
+<li><a href="https://tiddlywiki.com">TiddlyWiki</a> A personal knowledge system, also a unique non-linear notebook for capturing, organising and sharing complex information. They have a <a href="https://groups.google.com/g/tiddlywiki">TiddlyWiki Forum</a> for problem solving. There is the <a href="https://github.com/Jermolene/TiddlyWiki5">TyddlyWiki5 Github Repository</a> and a <a href="https://github.com/tiddly-gittly/TiddlyGit-Desktop">Desktop Tool</a>.</li>
+<li><a href="">Typora</a> (software) The best markdown edit tool</li>
+<li><a href="">VScode</a> (software) The best editor for code and for multiple use, many plugins</li>
+</ol>
 <h1 id="code-search">Code Search</h1>
 <ol type="1">
-<li><a href="https://about.sourcegraph.com">Source Graph</a></li>
+<li><a href="https://sourcegraph.com/search?">Source Graph</a> is a tool for searching code through all github repositories</li>
+<li><a href="https://paperswithcode.com">Paper with Code</a> is a community where every work will be attached by their code link</li>
 </ol>
 <h1 id="paper-writing">Paper Writing</h1>
 <ol type="1">
-<li>Environment:
+<li><p>Environment:</p>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=5qap5aO4i9A">Focus Music</a></li>
-<li>Quite Place</li>
+<li><a href="https://www.youtube.com/watch?v=5qap5aO4i9A">Focus Music</a> for writing</li>
+<li>Quite Place with coffee or tea</li>
 </ul></li>
-<li>Writing Tool
+<li><p>Writing Tool</p>
 <ul>
-<li><a href="https://www.overleaf.com/">Overleaf with latex</a></li>
+<li><a href="https://www.overleaf.com/">Overleaf with latex</a> colaborate with others by using latex</li>
 </ul></li>
-<li>English Writing
+<li><p>English Writing</p>
 <ul>
 <li><a href="https://www.thesaurus.com">Thesaurus.com</a> enrich your lexical resource</li>
 <li><a href="http://www.uefap.com/vocab/select/awl.htm">Academic Word List</a> most frequent words used in academic paper</li>
@@ -2240,21 +2538,35 @@ Cases of conceptual clustering:
 <li><a href="https://www.grammarly.com">Grammarly</a> check your spell errors and grammar errors.</li>
 <li><a href="https://www.deepl.com/translator">DeepL</a> for translation</li>
 </ul></li>
-<li>Formating
+<li><p>Formating</p>
+<p><strong>Color</strong></p>
 <ul>
 <li><a href="https://coolors.co/">Colors.co</a> for color choosing</li>
+</ul>
+<p><strong>Latex Formula</strong></p>
+<ul>
 <li><a href="">Snip</a> for hand writing formula and table recognization. I would highly recommand for generating the latex code of complex table, which is quite convinient.</li>
+</ul>
+<p><strong>Figures</strong></p>
+<ul>
+<li><a href="https://app.diagrams.net">Draw.io</a> is the best tool to draw a framework or procedure</li>
+<li><a href="https://github.com/HarisIqbal88/PlotNeuralNet">PlotNeuralNet</a> or for plotting neural network</li>
+<li><a href="">Omnigraffle</a> (software on MacOS or PadOS) a excellent tool for drawing</li>
+<li><a href="http://www.texample.net/tikz/">TikZ</a> supports latex for drawing</li>
+<li><a href="">Keynote</a> or <a href="">PPT</a> (software) is also good</li>
 </ul></li>
 </ol>
 <h1 id="journal-or-conference">Journal or Conference</h1>
-<h2 id="choosing">Choosing</h2>
+<h2 id="publication-choosing">Publication Choosing</h2>
+<p><strong>Journal</strong> - <a href="https://www.scimagojr.com/">SJR</a> helps you to choose a suitable Journal in your area. Ranking Journal - <a href="https://www.letpub.com/index.php">LetPub</a> is also a good platform ranking Journal - <strong>Conference</strong> - <a href="http://www.conferenceranks.com">Conference Ranks</a> for conferences - <a href="http://cic.tju.edu.cn/faculty/zhileiliu/doc/COREComputerScienceConferenceRankings.html">CORE Computer Science Conference Rankings</a> helps you to estimate the rank of conferences</p>
+<h2 id="traking-deadlines">Traking Deadlines</h2>
 <ul>
-<li>[SJR]（https://www.scimagojr.com/）help you to choose a suitable Journal in your area</li>
-<li><a href="https://www.letpub.com/index.php">LetPub</a> is also a good platform ranking Journal</li>
-<li><a href="http://cic.tju.edu.cn/faculty/zhileiliu/doc/COREComputerScienceConferenceRankings.html">CORE Computer Science Conference Rankings</a> help you to estimate the rank of conferences</li>
-<li><a href="http://www.conferenceranks.com">Conference Ranks</a> for conferences ## Deadlines</li>
-<li><a href="https://aideadlin.es/?sub=ML,NLP">AI Conference Deadlines</a> informs and track the deadlines of all AI conferences</li>
-<li></li>
+<li><a href="https://aideadlin.es/?sub=ML,NLP">AI Conference Deadlines</a> informs and tracks the deadlines of all AI conferences</li>
+</ul>
+<h1 id="presentation">Presentation</h1>
+<ul>
+<li><a href="">PPT</a></li>
+<li><a href="">Keynote</a></li>
 </ul>
 <h1 id="free-book-download">Free book download</h1>
 <ol type="1">
@@ -2272,6 +2584,9 @@ Cases of conceptual clustering:
 </ol>
 <h1 id="references">References</h1>
 ]]></content>
+      <categories>
+        <category>Research Method</category>
+      </categories>
       <tags>
         <tag>Research</tag>
       </tags>
@@ -2319,6 +2634,9 @@ Cases of conceptual clustering:
 <li><a href="https://www.zhihu.com/question/32210068/answer/264273093">王晋东不在家，中国科学院博士</a></li>
 </ol>
 ]]></content>
+      <categories>
+        <category>Research Method</category>
+      </categories>
       <tags>
         <tag>Research</tag>
       </tags>
@@ -2326,8 +2644,15 @@ Cases of conceptual clustering:
   <entry>
     <title>GNN Survey</title>
     <url>/2021/06/23/Paper%20Reading/GNN/GNN-Survey/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><span id="more"></span>
-<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210620095515.png" /></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210620095515.png" /> <span id="more"></span></p>
+<p>This survey cover serveral topics related to GNN: include graph-based algorithms for NLP, graph neural network, graph construction, graph representation learning, graph-based encoder-decoder models, and the application of GNN in NLP.</p>
+<p>Here is the overview of this survey <img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210711164118.png" /></p>
+<h1 id="graph-based-algorithm-for-nlp">Graph-based Algorithm for NLP</h1>
+<h1 id="graph-neural-networks">Graph Neural Networks</h1>
+<h1 id="graph-construction">Graph Construction</h1>
+<h1 id="graph-representation-learning">Graph Representation Learning</h1>
+<h1 id="graph-based-encoder-decoder-models">Graph-based Encoder-decoder Models</h1>
+<h1 id="application-of-gnns">Application of GNNs</h1>
 <h1 id="参考-references">参考 (References)</h1>
 <ol type="1">
 <li><a href="">Graph Neural Networks for Natural Language Processing: A Survey, 2021</a></li>
@@ -2339,14 +2664,32 @@ Cases of conceptual clustering:
       </categories>
       <tags>
         <tag>GNN</tag>
+        <tag>paper</tag>
       </tags>
   </entry>
   <entry>
     <title>Ontology Learning Review Papers</title>
     <url>/2021/07/13/Paper%20Reading/Ontology/Ontology-Learning-Review-Papers/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><span id="more"></span>
+<h1 id="similar-terms">Similar Terms</h1>
+<ol type="1">
+<li>concept formation</li>
+<li>fine-grained entity classification</li>
+<li>topic mining</li>
+<li>keywords extraction by cluster</li>
+<li>community discovery</li>
+<li>graph decomposition</li>
+</ol>
+<h1 id="dictionary-based-construction-method">Dictionary-based construction method</h1>
 <h1 id="references">References</h1>
 ]]></content>
+      <categories>
+        <category>Paper Reading</category>
+        <category>Ontology</category>
+      </categories>
+      <tags>
+        <tag>Ontology</tag>
+      </tags>
   </entry>
   <entry>
     <title>Ontology construction for information classification</title>
@@ -2357,9 +2700,18 @@ Cases of conceptual clustering:
 <h1 id="how-they-deal-with-the-problem-solve-the-challenges">How they deal with the problem &amp; solve the challenges?</h1>
 <h1 id="why-this-method-works-better-any-evidence">Why this method works better &amp; Any evidence?</h1>
 <h1 id="any-shortcoming">Any shortcoming?</h1>
+<h1 id="backgrounds">Backgrounds</h1>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">Pantel, P., Lin, D.: Discovering <span class="built_in">word</span> senses <span class="built_in">from</span> <span class="keyword">text</span>. In: Proceedings <span class="keyword">of</span> <span class="keyword">the</span> <span class="keyword">eighth</span> ACM SIGKDD international conference <span class="keyword">on</span> <span class="title">Knowledge</span> <span class="title">discovery</span></span><br><span class="line"><span class="keyword">and</span> data mining, ACM (<span class="number">2002</span>) <span class="number">613</span>–<span class="number">619</span></span><br></pre></td></tr></table></figure>
+<p>provides a soft clustering algorithm called Clustering by Committee (CBC) which can assign words to differents clusters. This method only creates clusters of terms but it not create a hierarchical structure.</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">[<span class="number">21</span>] Beil, Florian, Martin Ester, <span class="keyword">and</span> Xiaowei Xu. <span class="string">&quot;Frequent term-based text clustering.&quot;</span> Proceedings <span class="keyword">of</span> <span class="keyword">the</span> <span class="keyword">eighth</span> ACM SIGKDD international conference <span class="keyword">on</span> Knowledge discovery <span class="keyword">and</span> data mining. <span class="number">2002.</span></span><br><span class="line">[<span class="number">22</span>] Karoui, Lobna, Marie-aude Aufaure, <span class="keyword">and</span> Nacera Bennacer. <span class="string">&quot;Context-based hierarchical clustering for the ontology learning.&quot;</span> <span class="number">2006</span> IEEE/WIC/ACM International Conference <span class="keyword">on</span> Web Intelligence (WI <span class="number">2006</span> Main Conference Proceedings)(WI&#x27;<span class="number">06</span>). IEEE, <span class="number">2006.</span></span><br><span class="line">[<span class="number">23</span>] Sung, Sangsoo, Seokkyung Chung, <span class="keyword">and</span> Dennis McLeod. <span class="string">&quot;Efficient concept clustering for ontology learning using an event life cycle on the web.&quot;</span> Proceedings <span class="keyword">of</span> <span class="keyword">the</span> <span class="number">2008</span> ACM symposium <span class="keyword">on</span> Applied computing. <span class="number">2008.</span></span><br><span class="line">[<span class="number">24</span>] Yeh, Jian-hua, <span class="keyword">and</span> Naomi Yang. <span class="string">&quot;Ontology construction based on latent topic extraction in a digital library.&quot;</span> International Conference <span class="keyword">on</span> Asian Digital Libraries. Springer, Berlin, Heidelberg, <span class="number">2008.</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210713123201.png" /> Text clustering algorithms have been used in ontology learning [21, 22, 23, 24] but such works do not consider the ambiguous words or their semantic relationships.</p>
 <h1 id="further-readings">Further Readings</h1>
 <h1 id="references">References</h1>
 ]]></content>
+      <categories>
+        <category>Paper Reading</category>
+        <category>Ontology</category>
+      </categories>
   </entry>
   <entry>
     <title>[object Object]</title>
@@ -2398,6 +2750,10 @@ Cases of conceptual clustering:
 <li><a href="https://www.datajango.com/topic-modeling-and-singular-value-decomposition-svd/">Topic Modeling – Latent Semantic Analysis (LSA) and Singular Value Decomposition (SVD)</a></li>
 </ol>
 ]]></content>
+      <categories>
+        <category>Paper Reading</category>
+        <category>Ontology</category>
+      </categories>
       <tags>
         <tag>Ontology</tag>
       </tags>

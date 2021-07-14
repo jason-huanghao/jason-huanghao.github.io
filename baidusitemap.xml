@@ -1,36 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://jason-huanghao.github.io/2021/07/13/Research%20Method/Academic-Information-Sources/</loc>
+    <lastmod>2021-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://jason-huanghao.github.io/2021/06/23/Paper%20Reading/GNN/GNN-Survey/</loc>
+    <lastmod>2021-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://jason-huanghao.github.io/2021/07/13/Deep%20Learning/Gated-Recurrent-Unit-GRU/</loc>
+    <lastmod>2021-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://jason-huanghao.github.io/2021/07/13/Paper%20Reading/Ontology/Ontology-Learning-Review-Papers/</loc>
+    <lastmod>2021-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://jason-huanghao.github.io/2021/07/10/Paper%20Reading/Paper-Reading-List/</loc>
+    <lastmod>2021-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://jason-huanghao.github.io/2021/06/06/Deep%20Learning/LSTM%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2021-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://jason-huanghao.github.io/2021/07/13/Paper%20Reading/Ontology/Ontology-construction-for-information-classification/</loc>
+    <lastmod>2021-07-14</lastmod>
+  </url>
+  <url>
     <loc>https://jason-huanghao.github.io/2021/07/13/Research%20Method/Research-Pipeline/</loc>
     <lastmod>2021-07-14</lastmod>
   </url>
   <url>
-    <loc>https://jason-huanghao.github.io/2021/07/13/Research%20Method/Academic-Information-Sources/</loc>
-    <lastmod>2021-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://jason-huanghao.github.io/2021/07/13/Paper%20Reading/Ontology/Ontology-construction-for-information-classification/</loc>
-    <lastmod>2021-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://jason-huanghao.github.io/2021/07/13/Paper%20Reading/Ontology/Ontology-Learning-Review-Papers/</loc>
-    <lastmod>2021-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://jason-huanghao.github.io/2021/07/13/Deep%20Learning/Back-Propagation/</loc>
-    <lastmod>2021-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://jason-huanghao.github.io/2021/07/13/Deep%20Learning/Gated-Recurrent-Unit-GRU/</loc>
-    <lastmod>2021-07-13</lastmod>
-  </url>
-  <url>
-    <loc>https://jason-huanghao.github.io/2021/07/12/Research%20Method/Tips-for-first-year-PhD/</loc>
-    <lastmod>2021-07-12</lastmod>
+    <loc>https://jason-huanghao.github.io/2021/07/10/NLP/NLP-Tools/</loc>
+    <lastmod>2021-07-14</lastmod>
   </url>
   <url>
     <loc>https://jason-huanghao.github.io/2021/07/12/Paper%20Reading/Ontology/Simple-Method-for-Ontology-Automatic-Extraction-from-Documents-2012/</loc>
-    <lastmod>2021-07-12</lastmod>
+    <lastmod>2021-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://jason-huanghao.github.io/2021/07/13/Deep%20Learning/Back-Propagation/</loc>
+    <lastmod>2021-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://jason-huanghao.github.io/2021/07/12/Research%20Method/Tips-for-first-year-PhD/</loc>
+    <lastmod>2021-07-14</lastmod>
   </url>
   <url>
     <loc>https://jason-huanghao.github.io/2021/07/09/Paper%20Reading/Term%20Weight/Measuring-Fine-Grained-Domain-Relevance-of-Terms-ACL2021/</loc>
@@ -39,18 +55,6 @@
   <url>
     <loc>https://jason-huanghao.github.io/2021/06/18/NLP/Ontology-Learning/</loc>
     <lastmod>2021-07-12</lastmod>
-  </url>
-  <url>
-    <loc>https://jason-huanghao.github.io/2021/07/10/Paper%20Reading/Paper-Reading-List/</loc>
-    <lastmod>2021-07-10</lastmod>
-  </url>
-  <url>
-    <loc>https://jason-huanghao.github.io/2021/07/10/NLP/NLP-Tools/</loc>
-    <lastmod>2021-07-10</lastmod>
-  </url>
-  <url>
-    <loc>https://jason-huanghao.github.io/2021/06/23/Paper%20Reading/GNN/GNN-Survey/</loc>
-    <lastmod>2021-07-09</lastmod>
   </url>
   <url>
     <loc>https://jason-huanghao.github.io/2021/06/02/Life/%E5%AD%A6%E6%A0%A1%E7%94%B3%E8%AF%B7/</loc>
@@ -94,10 +98,6 @@
   </url>
   <url>
     <loc>https://jason-huanghao.github.io/2021/05/16/Blog%20Building/%E5%8D%9A%E5%AE%A2%E5%9F%9F%E5%90%8D%E7%BB%91%E5%AE%9A/</loc>
-    <lastmod>2021-06-23</lastmod>
-  </url>
-  <url>
-    <loc>https://jason-huanghao.github.io/2021/06/06/Deep%20Learning/LSTM%E8%AF%A6%E8%A7%A3/</loc>
     <lastmod>2021-06-23</lastmod>
   </url>
   <url>

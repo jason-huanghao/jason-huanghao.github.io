@@ -23,18 +23,22 @@
 
 
 
-  <meta name="description" content="References">
+  <meta name="description" content="Gated Reccurent Unit (GRU) is a simplified from the architecture of LSTM. It has fewer parameters than LSTM, therefore, it takes less compution resource and run faster than LSTM.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gated Recurrent Unit (GRU)">
 <meta property="og:url" content="https://jason-huanghao.github.io/2021/07/13/Deep%20Learning/Gated-Recurrent-Unit-GRU/index.html">
 <meta property="og:site_name" content="Jason Hao&#39;s Blog">
-<meta property="og:description" content="References">
+<meta property="og:description" content="Gated Reccurent Unit (GRU) is a simplified from the architecture of LSTM. It has fewer parameters than LSTM, therefore, it takes less compution resource and run faster than LSTM.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210713105052.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210713105732.png">
 <meta property="article:published_time" content="2021-07-13T02:52:21.000Z">
-<meta property="article:modified_time" content="2021-07-13T02:52:27.068Z">
+<meta property="article:modified_time" content="2021-07-14T12:32:12.450Z">
 <meta property="article:author" content="Jason Hao">
-<meta property="article:tag" content="researcher,NLP,topic model,ontology,graph model,主题模型,自然语言处理,图模型,科研,计算机">
+<meta property="article:tag" content="RNN">
+<meta property="article:tag" content="GRU">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210713105052.png">
 
 <link rel="canonical" href="https://jason-huanghao.github.io/2021/07/13/Deep%20Learning/Gated-Recurrent-Unit-GRU/">
 
@@ -251,9 +255,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-07-13 10:52:21 / Modified: 10:52:27" itemprop="dateCreated datePublished" datetime="2021-07-13T10:52:21+08:00">2021-07-13</time>
+              <time title="Created: 2021-07-13 10:52:21" itemprop="dateCreated datePublished" datetime="2021-07-13T10:52:21+08:00">2021-07-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-14 20:32:12" itemprop="dateModified" datetime="2021-07-14T20:32:12+08:00">2021-07-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index"><span itemprop="name">Deep Learning</span></a>
+                </span>
             </span>
 
           
@@ -289,7 +308,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>10</span>
+              <span>751</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -307,8 +326,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <span id="more"></span>
+        <p>Gated Reccurent Unit (GRU) is a simplified from the architecture of LSTM. It has fewer parameters than LSTM, therefore, it takes less compution resource and run faster than LSTM.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210713105052.png" /></p>
+<span id="more"></span>
+<p>To be detailed, GRU combines forget and input (update) gates into a single <em>update</em> gate, and merges cell and hidden states. The comparison between LSTM (left hand side) and GRU (right hand side) is described in following picture.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210713105732.png" /></p>
+<p>where <span class="math inline">\(z_t\)</span> and <span class="math inline">\(r_t\)</span> are repective activation vecotrs for the update and reset gates.</p>
 <h1 id="references">References</h1>
+<ol type="1">
+<li>Chung, Junyoung, et al. "Empirical evaluation of gated recurrent neural networks on sequence modeling." arXiv preprint arXiv:1412.3555 (2014).</li>
+<li>Pilehvar, Mohammad Taher, and Jose Camacho-Collados. "Embeddings in natural language processing: Theory and advances in vector representations of meaning." Synthesis Lectures on Human Language Technologies 13.4 (2020): 1-175.</li>
+</ol>
 
     </div>
 
@@ -334,6 +362,11 @@
 
 
       <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/RNN/" rel="tag"><i class="fa fa-tag"></i> RNN</a>
+              <a href="/tags/GRU/" rel="tag"><i class="fa fa-tag"></i> GRU</a>
+          </div>
 
         
 
@@ -430,13 +463,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -483,12 +516,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">103k</span>
+    <span title="Symbols count total">117k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:33</span>
+    <span title="Reading time total">1:46</span>
 </div>
 
 
