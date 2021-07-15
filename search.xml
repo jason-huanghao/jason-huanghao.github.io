@@ -2238,7 +2238,7 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
   <entry>
     <title>Academic Information Sources</title>
     <url>/2021/07/13/Research%20Method/Academic-Information-Sources/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>As a scholar, we should build up our own information resource to save our life. Here are some suggestions: 1. Information is not knowledge. A easy rule to distinguish information from knowledge. Information make you happy and give you the feeling of learning a lot, while knowledge take you efforts to understanding and take you time to practice. 2. Video and blog is one of way to get knowledge. But they can not offer you deeper understanding and a systematic overview. And most of the vedios and blogs are digested by the authors which prevent you from thinking. 3. Books and Papers are the golden resources. Reading and Coding make your every step count! 4. Following well-known professors and labs in your research domain. This will give a overrall understanding about what they are doing. And conntact them directly when you have some problems. 5. <a href="https://github.com/shengyp/doing_the_PhD">Tips Doing the PhD, Chinese</a></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>As a scholar, we should build up our own information resource to save our life. Here are some suggestions: 1. Information is not knowledge. A easy rule to distinguish information from knowledge. Information make you happy and give you the feeling of learning a lot, while knowledge take you efforts to understanding and take you time to practice. 2. Video and blog is one of way to get knowledge. But they can not offer you deeper understanding and a systematic overview. And most of the vedios and blogs are digested by the authors which prevent you from thinking. 3. Books and Papers are the golden resources. Reading and Coding make your every step count! 4. Following well-known professors and labs in your research domain. This will give a overrall understanding about what they are doing. And conntact them directly when you have some problems. 5. <a href="https://github.com/shengyp/doing_the_PhD">Tips Doing the PhD, Chinese</a> 6. <a href="https://github.com/zibuyu/research_tao">NLP 科研之道</a></p>
 <span id="more"></span>
 <h1 id="paper-collections-and-paper-recommendation">Paper Collections and Paper Recommendation</h1>
 <ol type="1">
@@ -2508,6 +2508,12 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
 <li><a href="http://www.4243.net">大木虫学术导航</a> is a comprehensive nevigation for scholars, 有空多逛逛</li>
 <li><a href="https://www.chongbuluo.com/">虫部落</a> very good collection of search tools and methods</li>
 </ol>
+<h1 id="paper-download">Paper Download</h1>
+<ol type="1">
+<li><a href="www.aclweb.org/anthology/">ACL Anthology</a> ❤️</li>
+<li><a href="https://scholar.chongbuluo.com">虫部落学术搜索板块</a></li>
+<li>Google Search with filetype:pdf</li>
+</ol>
 <h1 id="note-taking">Note Taking</h1>
 <ol type="1">
 <li><a href="">Hexo-Next</a> A self deployed blog for personal notes and blogs</li>
@@ -2515,10 +2521,11 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
 <li><a href="">Typora</a> (software) The best markdown edit tool</li>
 <li><a href="">VScode</a> (software) The best editor for code and for multiple use, many plugins</li>
 </ol>
-<h1 id="code-search">Code Search</h1>
+<h1 id="coding">Coding</h1>
 <ol type="1">
 <li><a href="https://sourcegraph.com/search?">Source Graph</a> is a tool for searching code through all github repositories</li>
 <li><a href="https://paperswithcode.com">Paper with Code</a> is a community where every work will be attached by their code link</li>
+<li><a href="">Jupyter Notebook</a>, <a href="">Jupyter Lab</a>, <a href="">Pycharm</a> (software) for python writing</li>
 </ol>
 <h1 id="paper-writing">Paper Writing</h1>
 <ol type="1">
@@ -2559,8 +2566,9 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
 </ul></li>
 </ol>
 <h1 id="journal-or-conference">Journal or Conference</h1>
-<h2 id="publication-choosing">Publication Choosing</h2>
-<p><strong>Journal</strong> - <a href="https://www.scimagojr.com/">SJR</a> helps you to choose a suitable Journal in your area. Ranking Journal - <a href="https://www.letpub.com/index.php">LetPub</a> is also a good platform ranking Journal - <strong>Conference</strong> - <a href="http://www.conferenceranks.com">Conference Ranks</a> for conferences - <a href="http://cic.tju.edu.cn/faculty/zhileiliu/doc/COREComputerScienceConferenceRankings.html">CORE Computer Science Conference Rankings</a> helps you to estimate the rank of conferences</p>
+<h2 id="publication-ranking">Publication Ranking</h2>
+<p><strong>Journals</strong> - <a href="https://www.scimagojr.com/">SJR</a> helps you to choose a suitable Journal in your area. Ranking Journal - <a href="https://www.letpub.com/journal-selector">LetPub</a> is also a good platform ranking Journal</p>
+<p><strong>Conference</strong> - <a href="http://www.conferenceranks.com">Conference Ranks</a> for conferences - <a href="http://cic.tju.edu.cn/faculty/zhileiliu/doc/COREComputerScienceConferenceRankings.html">CORE Computer Science Conference Rankings</a> helps you to estimate the rank of conferences</p>
 <h2 id="traking-deadlines">Traking Deadlines</h2>
 <ul>
 <li><a href="https://aideadlin.es/?sub=ML,NLP">AI Conference Deadlines</a> informs and tracks the deadlines of all AI conferences</li>
@@ -2878,5 +2886,358 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
         <tag>pybind</tag>
         <tag>python</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>NLP Conferences and Journals</title>
+    <url>/2021/07/15/Research%20Method/NLP-Conferences-and-Journals/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="publication-ranking">Publication Ranking</h2>
+<p><strong>Journals</strong> - <a href="https://www.scimagojr.com/">SJR</a> - <a href="https://www.letpub.com/journal-selector">LetPub</a></p>
+<p><strong>Conference</strong> - <a href="http://www.conferenceranks.com">Conference Ranks</a> - <a href="http://cic.tju.edu.cn/faculty/zhileiliu/doc/COREComputerScienceConferenceRankings.html">CORE Computer Science Conference Rankings</a></p>
+<h2 id="deadline-of-conferences">Deadline of Conferences</h2>
+<ul>
+<li><a href="https://aideadlin.es/?sub=ML,NLP">AI Conference Deadlines</a></li>
+</ul>
+<h2 id="paper-download-acl-top">Paper Download ACL top</h2>
+<ul>
+<li><a href="https://aclanthology.org">ACL Anthology</a></li>
+<li><a href="https://blog.csdn.net/nuoline/article/details/8610774">ACL 详细方向</a> ACL&gt;=EMNLP&gt;=NAACL&gt;&gt;COLING</li>
+<li><a href="https://aclweb.org/aclwiki/Conference_acceptance_rates">ACL Accept Rates History</a> <span id="more"></span> # Journals</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 15%" />
+<col style="width: 9%" />
+<col style="width: 3%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Journal Name</th>
+<th>Ranking</th>
+<th>Review Time</th>
+<th>AC</th>
+<th>Publication</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/journals/tkde/">TKDE</a> Ieee Transactions On Knowledge And Data Engineering (<strong>OL</strong>) ❤️❤️</td>
+<td>A类 | Q1 | 2区</td>
+<td>10 Months</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Information Sciences <a href="http://dblp.uni-trier.de/db/journals/is/">Link1</a>, <a href="http://dblp.uni-trier.de/db/journals/isci/">Link2</a> (<strong>OL</strong>) ❤️❤️</td>
+<td>B类 | Q1 | 1区</td>
+<td>10 Months</td>
+<td>22%</td>
+<td>Elsevier</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/journals/tkde/">TKDE</a> IEEE Transactions on Knowledge and Data Engineering</td>
+<td>A类 | Q1 | 2区</td>
+<td>6 Months</td>
+<td>较易</td>
+<td>IEEE</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/journals/jmlr/">JMLR</a> Journal of Machine Learning Research</td>
+<td>A类 | Q2 | 3区</td>
+<td>5-8 Months</td>
+<td>较难</td>
+<td>MIT Press</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/journals/dke/index.html">DKE</a> Data and Knowledge Engineering (<strong>OL</strong>)</td>
+<td>B类 | Q3 | 3.5区</td>
+<td>12 Months</td>
+<td>较易</td>
+<td>Elsevier</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/journals/coling/">CL</a> Computational Linguistics</td>
+<td>B类 | Q1 | 3区</td>
+<td>-</td>
+<td>-</td>
+<td>MIT Press</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/journals/ws/">JWS</a> Journal of Web Semantics (<strong>OL</strong>) ❤️</td>
+<td>B类 | Q3 | 2区</td>
+<td>4 Months</td>
+<td>较易</td>
+<td>Elsevier</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/journals/tkdd/">TKDD</a> ACM Transactions on Knowledge Discovery from Data</td>
+<td>B类 | Q2.5 | 3区</td>
+<td>4 Months</td>
+<td>较易</td>
+<td>ACM</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/journals/dke/">DKE</a> Data and Knowledge Engineering</td>
+<td>B类 | Q3 | 4区</td>
+<td>12 Months</td>
+<td>较易</td>
+<td>Elsevier</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/journals/datamine/">DMKD</a> Data Mining and Knowledge Discovery</td>
+<td>B类 | Q2 | 3区</td>
+<td>6 Months</td>
+<td>较易</td>
+<td>Elsevier</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/journals/kais/">KAIS</a> Knowledge and Information Systems</td>
+<td>B类 | Q2 | 3区</td>
+<td>5 Months</td>
+<td>25%</td>
+<td>Elsevier</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/journals/tkdd/">TKDD</a> ACM Transactions on Knowledge Discovery from Data</td>
+<td>B类 | Q2.5 | 3区</td>
+<td>4 Months</td>
+<td>较易</td>
+<td>ACM</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/journals/datamine/">DMKD</a> Data Mining and Knowledge Discovery</td>
+<td>B类 | Q2 |3区</td>
+<td>6 Months</td>
+<td>较易</td>
+<td>Springer</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/journals/kais/">KAIS</a> Knowledge and Information Systems</td>
+<td>B类 | Q2 | 3区</td>
+<td>5 Months</td>
+<td>25%</td>
+<td>Springer</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/journals/kbs/">KBS</a> Knowledge-Based Systems (<strong>SW</strong>, <strong>OL</strong>) ❤️</td>
+<td>C类 | Q1 | 1区</td>
+<td>7.8 Months</td>
+<td>85%</td>
+<td>Elsevier</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/journals/eswa/">ESWA</a> Expert Systems with Applications (<strong>OL</strong>)</td>
+<td>C类 | Q1 | 1.5 区</td>
+<td>8 Months</td>
+<td>44%</td>
+<td>Elsevier</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/journals/ijkm/">IJKM</a> International Journal of Knowledge Management</td>
+<td>C类 |</td>
+<td>-</td>
+<td>-</td>
+<td>IGI</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/journals/ijswis/">IJSWIS</a> International Journal on Semantic Web and Information Systems (<strong>OL</strong>)</td>
+<td>C类 | Q4 | 4区</td>
+<td>-</td>
+<td>容易</td>
+<td>IGI</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/journals/eaai/">EAAI</a> Engineering Applications of Artificial Intelligence (<strong>OL</strong>) ❤️</td>
+<td>C类 | Q1 | 2区</td>
+<td>9 Months</td>
+<td>较易</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/journals/nle/">NLE</a> Natural Language Engineering</td>
+<td>C类 |Q3 | 4区</td>
+<td>-</td>
+<td>-</td>
+<td>Cambridge University Press</td>
+</tr>
+<tr class="odd">
+<td><a href="https://www.iospress.nl/journal/journal-of-intelligent-fuzzy-systems/">Journal of Intelligent &amp; Fuzzy Systems</a></td>
+<td>4区</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="conferences">Conferences</h1>
+<table>
+<colgroup>
+<col style="width: 53%" />
+<col style="width: 6%" />
+<col style="width: 3%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Conference Name</th>
+<th>Ranking</th>
+<th>AC</th>
+<th>Publication</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/conf/kdd/">KDD</a> ACM Knowledge Discovery and Data Mining</td>
+<td>A类 |</td>
+<td>16%</td>
+<td>ACM</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/conf/acl/">ACL</a> Annual Meeting of the Association for Computational Linguistics</td>
+<td>A类 |</td>
+<td>25%</td>
+<td>ACL</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/conf/icml/">ICML</a> International Conference on Machine Learning</td>
+<td>A类 |</td>
+<td>21%</td>
+<td>ACM</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/conf/aaai/">AAAI</a> The Association for the Advancement of Artificial Intelligence</td>
+<td>A类 |</td>
+<td>21%</td>
+<td>AAAI</td>
+</tr>
+<tr class="odd">
+<td><a href="">NIPS (NeurIPS)</a> Annual Conference on Neural Information Processing Systems</td>
+<td>A类 |</td>
+<td>21%</td>
+<td>MIT Press</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/conf/emnlp/">EMNLP</a> Conference on Empirical Methods in Natural Language Processing</td>
+<td>B类 |</td>
+<td>24%</td>
+<td>ACL</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/conf/cikm/">CIKM</a> ACM International Conference on Information and Knowledge Management</td>
+<td>B类 |</td>
+<td>21%</td>
+<td>ACM</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/conf/pkdd/">ECML-PKDD1</a> <a href="http://dblp.uni-trier.de/db/conf/ecml/">ECML-PKDD2</a> European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases</td>
+<td>B类 |</td>
+<td>24%</td>
+<td>Springer</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/conf/coling/">COLING</a> International Conference on Computational Linguistics</td>
+<td>B类 |</td>
+<td>32%</td>
+<td>ACM</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/conf/semweb/">ISWC</a> IEEE International Semantic Web Conference (<strong>OL</strong>) ❤️</td>
+<td>B类 |</td>
+<td>30%</td>
+<td>IEEE</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/conf/kr/">KR</a> International Conference on Principles of Knowledge Representation and Reasoning</td>
+<td>B类 |</td>
+<td>28%</td>
+<td>Morgan Kaufmann</td>
+</tr>
+<tr class="even">
+<td><a href="">AACL</a> The Asia-Pacific Chapter of Association for Computational Linguistics</td>
+<td></td>
+<td>28%</td>
+<td>ACL</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/conf/naacl/">NACAL</a> The Annual Conference of the North American Chapter of the Association for Computational Linguistics</td>
+<td>C类 |</td>
+<td>25%</td>
+<td>ACL</td>
+</tr>
+<tr class="even">
+<td><a href="https://iclr.cc">ICLR</a> International Conference on Learning Representations</td>
+<td></td>
+<td>26%</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><a href="https://dblp.uni-trier.de/db/conf/nlpcc/">NLPCC</a> CCF International Conference on Natural Language Processing and Chinese Computing</td>
+<td>C类 |</td>
+<td>21%</td>
+<td>Springer</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/conf/conll">CoNLL</a> Conference on Computational Natural Language Learning</td>
+<td>C类 |</td>
+<td>23%</td>
+<td>Association for Computational Linguistics</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/conf/naacl/">NAACL</a> The Annual Conference of the North American Chapter of the Association for Computational Linguistics</td>
+<td>C类 |</td>
+<td>22%</td>
+<td>NAACL</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/conf/esws/">ESWC</a> Extended Semantic Web Conference (<strong>OL</strong>)</td>
+<td>C类 |</td>
+<td>28%</td>
+<td>Springer</td>
+</tr>
+<tr class="odd">
+<td><a href="Pacific-Asia%20Conference%20on%20Knowledge%20Discovery%20and%20Data%20Mining">PAKDD</a> Pacific-Asia Conference on Knowledge Discovery and Data Mining</td>
+<td>C类 |</td>
+<td>24%</td>
+<td>Springer</td>
+</tr>
+<tr class="even">
+<td><a href="http://dblp.uni-trier.de/db/conf/ksem/">KSEM</a> International conference on Knowledge Science, Engineering and Management</td>
+<td>C类 |</td>
+<td>20%</td>
+<td>Springer</td>
+</tr>
+<tr class="odd">
+<td><a href="http://dblp.uni-trier.de/db/conf/seke/">SEKS</a> International Conference on Software Engineering and Knowledge Engineering</td>
+<td>C类 |</td>
+<td>29%</td>
+<td>KSI</td>
+</tr>
+<tr class="even">
+<td><a href="">KES</a> International Conference on Knowledge-Based and Intelligent Information and Engineering Systems (<strong>OL</strong>)</td>
+<td>(b)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><a href="">EKAW</a> International Conference on Knowledge Engineering and Knowledge Management (<strong>OL</strong>)</td>
+<td>(a)</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><a href="">KES</a> nternational Conference on Knowledge-Based and Intelligent Information and Engineering Systems (<strong>OL</strong>)</td>
+<td>(b)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="references">References</h1>
+<ol type="1">
+<li>https://blog.csdn.net/nuoline/article/details/8610774</li>
+<li>https://zhuanlan.zhihu.com/p/140491821</li>
+</ol>
+]]></content>
   </entry>
 </search>
