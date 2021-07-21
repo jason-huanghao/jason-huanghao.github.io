@@ -2245,11 +2245,14 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
 <li><a href="https://www.jiqizhixin.com/columns/paperweekly">Paperweekly 机器之心</a>, <a href="https://www.paperweekly.site">Paperweekly Official Site</a></li>
 <li><a href="https://www.jiqizhixin.com/columns">机器之心专栏</a> 各个组织的分享文章. <a href="https://www.jiqizhixin.com/sota">SOTA models</a></li>
 <li><a href="https://paper.yanxishe.com">AI研习社</a></li>
-<li><a href="https://github.com/mengliu1998/awesome-deep-gnn">awesome-deep-gnn papers</a></li>
-<li><a href="https://github.com/shaoxiongji/knowledge-graphs">Knowledge Graphs papers</a></li>
-<li><a href="https://github.com/xinguoxia/KGE">Knowledge Graph Embedding papers</a></li>
-<li><a href="https://github.com/thunlp/KRLPapers">KRL: knowledge representation learning &amp; KE: knowledge embedding must read papers</a></li>
-<li><a href="https://github.com/THU-KEG/Knowledge_Graph_Reasoning_Papers">Knowledge Graph Reasoning Papers</a></li>
+<li><a href="https://github.com/mengliu1998/awesome-deep-gnn">awesome-deep-gnn papers</a> 📚</li>
+<li><a href="https://github.com/KaiyuanGao/awesome-deeplearning-nlp-papers">Awesome-Deeplearning-NLP-Papers</a> 📚</li>
+<li><a href="https://github.com/shaoxiongji/knowledge-graphs">Knowledge Graphs papers</a> 📚</li>
+<li><a href="https://github.com/xinguoxia/KGE">Knowledge Graph Embedding papers</a> 📚</li>
+<li><a href="https://github.com/thunlp/KRLPapers">KRL: knowledge representation learning &amp; KE: knowledge embedding must read papers</a> 📚</li>
+<li><a href="https://github.com/THU-KEG/Knowledge_Graph_Reasoning_Papers">Knowledge Graph Reasoning Papers</a> 📚</li>
+<li><a href="https://github.com/eugeneyan/ml-surveys">ML survey</a> 📚</li>
+<li><a href="https://github.com/KaiyuanGao/AI-Surveys">AI survey</a> 📚</li>
 <li><a href="https://github.com/heathersherry/Knowledge-Graph-Tutorials-and-Papers">Knowledge Graph Tutorials and Papers &amp; Data</a> ❤️</li>
 <li><a href="https://github.com/haipinglu/awesome-knowledge-graph">Awesome Knowledge Graph papers &amp; Data</a> ❤️ <a href="https://www.sheffield.ac.uk/dcs/people/academic/haiping-lu">吕海平 The University of Sheffield</a> machine learning, brain imaging, and tensor analysis</li>
 <li><a href="https://github.com/dkmfbk/dket">Ontology Learning as Machine Translation</a> Expressive ontology learning as neural machine translation,2018 把OL当做MT来做 ❤️</li>
@@ -2291,6 +2294,8 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
 <li><p><a href="https://scholar.google.com/citations?hl=en&amp;user=phmVl4EAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Gerhard Wohlgenannt</a>, <a href="https://www.researchgate.net/profile/Gerhard-Wohlgenannt">ResearchGate</a> ITMO Universityn, Russia. Semantic Web, Ontology Learning ❤️</p></li>
 <li><p><a href="https://scholar.google.com/citations?hl=en&amp;user=bl4JuZgAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Albert Weichselbraun</a>, University of Applied Sciences of the Grisons, Switzerland. Ontology Learning, text mining</p></li>
 <li><p><a href="https://scholar.google.com/citations?user=o_u17HMAAAAJ&amp;hl=en&amp;oi=sra">Wei Liu</a> University of Western Australia. Knowledge Discovery, Knowledge Graph Construction. ❤️</p></li>
+<li><p><a href="https://scholar.google.com/citations?hl=en&amp;user=VOkaVCMAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Hassina Aliane</a> Semantic Web, Ontology Learing ❤️</p></li>
+<li><p><a href="https://scholar.google.com/citations?user=F8aiCgkAAAAJ&amp;hl=en&amp;oi=sra">Khadir Ahlem Chérifa</a> Université des Sciences et de la Technologie de Houari Boumediene, (corporate with 27) 阿尔及利亚 ❤️</p></li>
 </ol>
 <h1 id="graph-neural-network">Graph Neural Network</h1>
 <p>waiting for updating...</p>
@@ -2510,11 +2515,21 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
     <url>/2021/07/13/Research%20Method/Research-Pipeline/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Things become easy if you arrange it into industrial production procedure. Publishing a paper can also be treated like a pipeline work procedure.</p>
 <span id="more"></span>
+<h1 id="non-paper-source">Non-paper Source</h1>
+<ol type="1">
+<li><a href="https://www.slideshare.net">slide share</a> sharing all public slides</li>
+<li><a href="http://videolectures.net">videolectures</a> a large conference video and ppt collection covering huge spectrum of areas</li>
+<li></li>
+</ol>
+<h1 id="communities">Communities</h1>
+<ol type="1">
+<li><a href="http://www.researchgate.net">ReserachGate</a></li>
+</ol>
 <h1 id="paper-searching">Paper Searching</h1>
 <ol type="1">
 <li><a href="www.aclweb.org/anthology/">ACL Anthology</a> for ACL top NLP conference paper free download! ❤️</li>
-<li><a href="https://www.connectedpapers.com">Connected Papers</a> to find papers that connect with the query paper. The results will be shown in a graph, awesomoe!</li>
-<li><a href="https://www.semanticscholar.org">Semantic Scholar</a> search paper by different filters (fileds of study, date, has pdf, publication type, famous authors, journal &amp; conference), could be a super search tool</li>
+<li><a href="https://www.connectedpapers.com">Connected Papers</a> to find papers that connect with the query paper. The results will be shown in a graph, awesomoe! ❤️</li>
+<li><a href="https://www.semanticscholar.org">Semantic Scholar</a> search paper by different filters (fileds of study, date, has pdf, publication type, famous authors, journal &amp; conference), could be a super search tool ❤️</li>
 <li><a href="">CiteSpace</a>, <a href="">HistCite Pro</a> (both are software) are used for analyze the citation network</li>
 <li><a href="https://libgen.is">Library Genesis</a> facilitate you to download every pdf book</li>
 <li><a href="http://www.4243.net">大木虫学术导航</a> is a comprehensive nevigation for scholars, 有空多逛逛</li>
@@ -2579,8 +2594,8 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
 </ol>
 <h1 id="journal-or-conference">Journal or Conference</h1>
 <h2 id="publication-ranking">Publication Ranking</h2>
-<p><strong>Journals</strong> - <a href="https://www.scimagojr.com/">SJR</a> helps you to choose a suitable Journal in your area. Ranking Journal - <a href="https://www.letpub.com/journal-selector">LetPub</a> is also a good platform ranking Journal</p>
-<p><strong>Conference</strong> - <a href="http://www.conferenceranks.com">Conference Ranks</a> for conferences - <a href="http://cic.tju.edu.cn/faculty/zhileiliu/doc/COREComputerScienceConferenceRankings.html">CORE Computer Science Conference Rankings</a> helps you to estimate the rank of conferences</p>
+<p><strong>Journals</strong> - <a href="https://www.letpub.com.cn/index.php?page=journalapp">LetPub</a> is also a good platform ranking Journal - <a href="https://www.scimagojr.com/">SJR</a> helps you to choose a suitable Journal in your area. Ranking Journal</p>
+<p><strong>Conference</strong> - <a href="http://cic.tju.edu.cn/faculty/zhileiliu/doc/COREComputerScienceConferenceRankings.html">CORE Computer Science Conference Rankings</a> helps you to estimate the rank of conferences - <a href="http://www.conferenceranks.com">Conference Ranks</a> for conferences</p>
 <h2 id="traking-deadlines">Traking Deadlines</h2>
 <ul>
 <li><a href="https://aideadlin.es/?sub=ML,NLP">AI Conference Deadlines</a> informs and tracks the deadlines of all AI conferences</li>
@@ -2610,7 +2625,7 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
         <category>Research Method</category>
       </categories>
       <tags>
-        <tag>Research</tag>
+        <tag>Research Method</tag>
       </tags>
   </entry>
   <entry>
@@ -3257,6 +3272,164 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
       </categories>
       <tags>
         <tag>Research Method</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>词汇积累</title>
+    <url>/2021/07/19/Life/%E8%AF%8D%E6%B1%87%E7%A7%AF%E7%B4%AF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><span id="more"></span>
+<ol type="1">
+<li>all walks of life 各行各业: we have witnessed a wide spread of artificial intelligence technologies to all walks of life.</li>
+</ol>
+<h1 id="references">References</h1>
+]]></content>
+      <tags>
+        <tag>Research Method</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Entity Recognition Papers</title>
+    <url>/2021/07/20/Paper%20Reading/Ontology/Entity-Recognition-Papers/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><span id="more"></span>
+<p>Entity Recognition A related blog with interpretion of these papers <a href="https://blog.csdn.net/Kaiyuan_sjtu/article/details/89143573">HERE</a></p>
+<p>A related code implementations of these papers <a href="https://github.com/KaiyuanGao/name_entity_recognition">HERE</a></p>
+<ul class="task-list">
+<li><p><input type="checkbox" disabled="" />
+A Survey on Deep Learning for Named Entity Recognition(2018) [paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+A Survey on Recent Advances in Named Entity Recognition from Deep Learning models(2018)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+BLSTM+CRF Bidirectional LSTM-CRF Models for Sequence Tagging(2015) [paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Char+BLSTM+CRF Attending to Characters in Neural Sequence Labeling Models(2016)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+BLSTM+CNN Named Entity Recognition with Bidirectional LSTM-CNNs (2016) [paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Char+Radical Character-Based LSTM-CRF with Radical-Level Features for Chinese Named Entity Recognition(2016)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+BLSTM+CRF Neural Architectures for Named Entity Recognition (2016) [paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+BLSTM+CNN+CRF End-to-end Sequence Labeling via Bi-directional LSTM-CNNs-CRF(2016) [paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+FOFE A FOFE-based Local Detection Approach for Named Entity Recognition and Mention Detection(2016)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+IDCNN Fast and Accurate Entity Recognition with Iterated Dilated Convolutions(2017) [paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+DAL Deep Active Learning for Named Entity Recognition(2017)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Neural Architectures for Fine-grained Entity Type Classification (2017)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+TagLM Semi-supervised sequence tagging with bidirectional language models(2017)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+LatticeNER Chinese NER Using Lattice LSTM(2018)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+AutoNER Learning Named Entity Tagger using Domain-Specific Dictionary(2018)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+ATLNER Adversarial Transfer Learning for Chinese Named Entity Recognition with Self-Attention Mechanism(2018)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+ALCrowd Adversarial Learning for Chinese NER from Crowd Annotations(2018)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+ACN Adaptive Co-Attention Network for Named Entity Recognition in Tweets(2018)[paper]</p></li>
+</ul>
+<h1 id="references">References</h1>
+<p><a href="https://github.com/KaiyuanGao/awesome-deeplearning-nlp-papers/blob/master/doc/entity-recognition.md">Kaiyuang Gao's github</a></p>
+]]></content>
+      <tags>
+        <tag>KG</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Relation Extraction Papers</title>
+    <url>/2021/07/20/Paper%20Reading/Ontology/Relation-Extraction-Papers/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><span id="more"></span>
+<p>Relation Classification and Extraction</p>
+<p>A related blog with interpretion of these papers <a href="https://blog.csdn.net/Kaiyuan_sjtu/article/details/89877420">HERE</a></p>
+<p>A related code implementations of these papers <a href="https://github.com/KaiyuanGao/relation_extraction">HERE</a></p>
+<ul class="task-list">
+<li><p><input type="checkbox" disabled="" />
+NLP-progress in Relation Extraction</p></li>
+<li><p><input type="checkbox" disabled="" />
+Relation Extraction : A Survey(2017)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+DSRE Distant supervision for relation extraction without labeled data(2009) [paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+CNN Convolution Neural Network for Relation Extraction(2013)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+CNN Relation Classification via Convolutional Deep Neural Network(2014)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+CR-CNN Classifying Relations by Ranking with Convolutional Neural Networks(2015)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+RNN Relation Classification via Recurrent Neural Network(2015)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+CNN Relation Extraction: Perspective from Convolutional Neural Networks(2015)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+PCNN Distant Supervision for Relation Extraction via Piecewise Convolutional Neural Networks(2015)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+SATT Neural Relation Extraction with Selective Attention over Instances(2016)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+MIMLCNN Relation Extraction with Multi-instance Multi-label Convolutional Neural Networks(2016)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+MLACNN Relation Classification via Multi-Level Attention CNNs(2016)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+BILSTM Bidirectional Long Short-Term Memory Networks for Relation Classification(2016)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+TRLSTM End-to-End Relation Extraction using LSTMs on Sequences and Tree Structure(2016)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+ABLSTM Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Classification(2016)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+HRNN+ATT Semantic Relation Classification via Hierarchical Recurrent Neural Network with Attention(2016) [paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+CoType CoType: Joint Extraction of Typed Entities and Relations with Knowledge Bases(2016)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Weakly-supervised Relation Extraction by Pattern-enhanced Embedding Learning(2016)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+BRCNN Bidirectional Recurrent Convolutional Neural Network for Relation Classification(2016) [paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+APCNN Distant Supervision for Relation Extraction with Sentence-Level Attention and Entity Descriptions(2017)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+CNN MIT at SemEval-2017 Task 10: Relation Extraction with Convolutional Neural Networks(2017)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+MNRE Neural Relation Extraction with Multi-lingual Attention(2017)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+DRCNN Deep Residual Learning for Weakly-Supervised Relation Extraction(2017)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Learning with Noise: Enhance Distantly Supervised Relation Extraction with Dynamic Transition Matrix(2017)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Joint Extraction of Entities and Relations Based on a Novel Tagging Scheme(2017)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Joint Entity and Relation Extraction Based on A Hybrid Neural Network(2017)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Extracting Entities and Relations with Joint Minimum Risk Training(2018)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Effectively Combining Recurrent and Convolutional Neural Networks for Relation Classification and Extraction(2018)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Joint Extraction of Entities and Relations Based on a Novel Graph Scheme(2018)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Ranking-Based Automatic Seed Selection and Noise Reduction for Weakly Supervised Relation Extraction(2018)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Hierarchical Relation Extraction with Coarse-to-Fine Grained Attention(2018)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+RESIDE: Improving Distantly-Supervised Neural Relation Extraction using Side Information(2018)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+A Walk-based Model on Entity Graphs for Relation Extraction(2018)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+FewRel: A Large-Scale Supervised Few-Shot Relation Classification Dataset with State-of-the-Art Evaluation(2018)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Semantic Relation Classification via Bidirectional LSTM Networks with Entity-aware Attention using Latent Entity Typing (2019)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Large Scaled Relation Extraction with Reinforcement Learning(2018)[paper]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Robust Distant Supervision Relation Extraction via Deep Reinforcement Learning(2018)[[paper]]</p></li>
+<li><p><input type="checkbox" disabled="" />
+Reinforcement Learning for Relation Classification from Noisy Data(2018)[paper]</p></li>
+</ul>
+<h1 id="references">References</h1>
+<ol type="1">
+<li><a href="https://github.com/KaiyuanGao/awesome-deeplearning-nlp-papers/blob/master/doc/relation-extraction.md">KaiyuanGao's Github</a></li>
+</ol>
+]]></content>
+      <tags>
+        <tag>KG</tag>
       </tags>
   </entry>
 </search>
