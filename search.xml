@@ -2882,7 +2882,8 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
 <li><p>Windows 软件 Visual Studio 2017 (VS2017), Python3.6</p></li>
 <li><p>Python中安装：pip install pybind11</p></li>
 <li><p>VS2017 配置:</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>）设置编译输出类型 </span><br><span class="line">      配置属性--常规--常规--目标文件扩展名：.pyd</span><br><span class="line">      配置属性--常规--项目默认值-配置类型：动态库.dll</span><br><span class="line">  </span><br><span class="line"> <span class="number">2</span>）添加include包含： </span><br><span class="line">      配置属性--VC++目录--常规--包含目录：</span><br><span class="line">      C:\pybind11-master\include  <span class="comment">// 这个是pybind的include目录</span></span><br><span class="line">      C:\ProgramData\Anaconda3\envs\python36\indclude  <span class="comment">//这个是python环境的include目录，你也可以用anaconda自带的环境</span></span><br><span class="line"> </span><br><span class="line"> <span class="number">3</span>）链接器配置：</span><br><span class="line">      链接器-常规-附加库目录：C:\ProgramData\envs\python36\indclude\libs  <span class="comment">//这个是python环境的libs目录，你也可以用anaconda自带的环境</span></span><br><span class="line">      链接器-输入-附加依赖项：python3.lib</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>）设置编译输出类型 </span><br><span class="line">      配置属性--常规--常规--目标文件扩展名：.pyd</span><br><span class="line">      配置属性--常规--项目默认值-配置类型：动态库.dll</span><br><span class="line">  </span><br><span class="line"> <span class="number">2</span>）添加include包含： </span><br><span class="line">      配置属性--VC++目录--常规--包含目录：</span><br><span class="line">        C:\pybind11-master\include  <span class="comment">// 这个是pybind的include目录</span></span><br><span class="line">        C:\ProgramData\Anaconda3\envs\python36\indclude  <span class="comment">//这个是python环境的include目录，你也可以用anaconda自带的环境</span></span><br><span class="line">      </span><br><span class="line"> <span class="number">3</span>) lib 路径：</span><br><span class="line">      配置属性--VC++目录-库目录:</span><br><span class="line">        C:\ProgramData\Anaconda3\envs\python36\libs <span class="comment">//这个是python环境的libs目录，你也可以用anaconda自带的环境</span></span><br><span class="line"></span><br><span class="line"> <span class="number">4</span>）链接器配置：</span><br><span class="line">      链接器-输入-附加依赖项：</span><br><span class="line">        python3.lib</span><br><span class="line">        python36.lib</span><br></pre></td></tr></table></figure></li>
+<li><p>Pycharm 配置： <figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">1</span>) 注意配置的 Python 解释器的版本 (比如这里是 <span class="number">3</span>.<span class="number">6</span>)</span><br><span class="line"><span class="attribute">2</span>) 注意配置的 Python 解释器是否安装了 pybind<span class="number">11</span></span><br></pre></td></tr></table></figure></p></li>
 </ol>
 <h1 id="pybind11-python-调用-c">Pybind11 Python 调用 C++</h1>
 <ol type="1">
@@ -2904,7 +2905,13 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
 <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">from</span> <span class="string">setuptools import setup, Extension</span></span><br><span class="line"></span><br><span class="line"><span class="attr">functions_module</span> = <span class="string">Extension(</span></span><br><span class="line">    <span class="attr">name</span> =<span class="string">&#x27;example&#x27;,</span></span><br><span class="line">    <span class="attr">sources</span> = <span class="string">[&#x27;first_pybind.cpp&#x27;],</span></span><br><span class="line">    <span class="attr">include_dirs</span> = <span class="string">[&#x27;F:\\Anaconda\\Anaconda3_201910\\envs\\env_pybind11\\lib\\site-packages\\pybind11\\include&#x27;,</span></span><br><span class="line">                   <span class="meta">&#x27;F</span>:<span class="string">\\Anaconda\\Anaconda3_201910\\envs\\env_pybind11\\include&#x27;]</span></span><br><span class="line"><span class="comment"># include_dirs 中的路径 更改为自己虚拟环境下相应 pybind11的路径 和 python的include路径</span></span><br><span class="line"><span class="attr">)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">setup(ext_modules</span> = <span class="string">[functions_module])</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">cd dir of (.cpp <span class="keyword">file</span> <span class="keyword">and</span> setup.py <span class="keyword">file</span>)</span><br><span class="line">python setup.py build_ext --inplace</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> example</span><br><span class="line"><span class="built_in">print</span>(example.add(<span class="number">1</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li><font color=red>注意：</font> 在 C++ 中使用的 module name 也就是上面代码中的 <code>example</code> 要和 Python 代码中 import 的 module name 一样，否则会报错 “DLL load failed”</li>
+</ol>
 <h1 id="参考-references">参考 (References)</h1>
+<ol type="1">
+<li><a href="www.jianshu.com/p/fcded412d0bb">使用 pybind11 包装 C++ 类</a></li>
+</ol>
 ]]></content>
       <categories>
         <category>Programming</category>
@@ -3283,6 +3290,9 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
 </ol>
 <h1 id="references">References</h1>
 ]]></content>
+      <categories>
+        <category>Life</category>
+      </categories>
       <tags>
         <tag>Research Method</tag>
       </tags>
@@ -3334,6 +3344,10 @@ ACN Adaptive Co-Attention Network for Named Entity Recognition in Tweets(2018)[p
 <h1 id="references">References</h1>
 <p><a href="https://github.com/KaiyuanGao/awesome-deeplearning-nlp-papers/blob/master/doc/entity-recognition.md">Kaiyuang Gao's github</a></p>
 ]]></content>
+      <categories>
+        <category>Paper Reading</category>
+        <category>Ontology</category>
+      </categories>
       <tags>
         <tag>KG</tag>
       </tags>
@@ -3428,6 +3442,10 @@ Reinforcement Learning for Relation Classification from Noisy Data(2018)[paper]<
 <li><a href="https://github.com/KaiyuanGao/awesome-deeplearning-nlp-papers/blob/master/doc/relation-extraction.md">KaiyuanGao's Github</a></li>
 </ol>
 ]]></content>
+      <categories>
+        <category>Paper Reading</category>
+        <category>Ontology</category>
+      </categories>
       <tags>
         <tag>KG</tag>
       </tags>
