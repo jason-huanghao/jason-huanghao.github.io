@@ -2296,6 +2296,7 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
 <li><p><a href="https://scholar.google.com/citations?user=o_u17HMAAAAJ&amp;hl=en&amp;oi=sra">Wei Liu</a> University of Western Australia. Knowledge Discovery, Knowledge Graph Construction. ❤️</p></li>
 <li><p><a href="https://scholar.google.com/citations?hl=en&amp;user=VOkaVCMAAAAJ&amp;view_op=list_works&amp;sortby=pubdate">Hassina Aliane</a> Semantic Web, Ontology Learing ❤️</p></li>
 <li><p><a href="https://scholar.google.com/citations?user=F8aiCgkAAAAJ&amp;hl=en&amp;oi=sra">Khadir Ahlem Chérifa</a> Université des Sciences et de la Technologie de Houari Boumediene, (corporate with 27) 阿尔及利亚 ❤️</p></li>
+<li><p><a href="https://scholar.google.com/citations?hl=en&amp;user=WR3U5SkAAAAJ&amp;view_op=list_works&amp;citft=1&amp;email_for_op=jason.hao.academic%40gmail.com&amp;sortby=pubdate">Stefan Dietze</a> Knowledge Graph, Information retrieval</p></li>
 </ol>
 <h1 id="graph-neural-network">Graph Neural Network</h1>
 <p>waiting for updating...</p>
@@ -2936,8 +2937,10 @@ Multimodal Sentiment Detection Based on Multi-channel Graph Neural Networks</li>
 <ul>
 <li><a href="https://aclanthology.org">ACL Anthology</a></li>
 <li><a href="https://blog.csdn.net/nuoline/article/details/8610774">ACL 详细方向</a> ACL&gt;=EMNLP&gt;=NAACL&gt;&gt;COLING</li>
-<li><a href="https://aclweb.org/aclwiki/Conference_acceptance_rates">ACL Accept Rates History</a> <span id="more"></span> # Journals</li>
+<li><a href="https://aclweb.org/aclwiki/Conference_acceptance_rates">ACL Accept Rates History</a> <span id="more"></span></li>
 </ul>
+<p>The ranking | "CCF" | "SCI" | “中科院” |</p>
+<h1 id="journals">Journals</h1>
 <table>
 <colgroup>
 <col style="width: 50%" />
@@ -3448,6 +3451,30 @@ Reinforcement Learning for Relation Classification from Noisy Data(2018)[paper]<
       </categories>
       <tags>
         <tag>KG</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SEO 工具</title>
+    <url>/2021/07/22/Blog%20Building/SEO-%E5%B7%A5%E5%85%B7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>SEO 用于帮助个人或者企业快速推广信息是一个重要的技能。今天就分享一些常用的 0 成本 SEO 工具吧 <span id="more"></span></p>
+<ol type="1">
+<li><a href="https://trends.google.com/trends/">Google Trends</a>; (谷歌趋势)</li>
+<li><a href="http://keywordshitter.com/">Keyword Shitter</a> 挖掘 Goolge 搜索框中的关键词;</li>
+<li><a href="http://seo.danzambonini.com/">AdWord &amp; SEO Keyword Permutation Generator</a> 将多个关键词组合成关键词表，还可以使用 <a href="https://ahrefs.com/blog/zh/local-seo/">Local SEO</a> 地域词搜索引擎优化来根据地域不同进行优化;</li>
+<li><a href="https://answerthepublic.com/">Answer the Public</a> 帮助大家提供 问题、介词、比较、字母和相关关键词搜索;</li>
+<li><a href="https://www.google.com/trends/correlate">Google Correlate</a> 可以帮你找到与目前趋势相对应的词汇。即，趋势相关性。; (谷歌关联工具)</li>
+<li><a href="https://keywordseverywhere.com/">Keywords Everywhere</a> 可将搜索量、每次点击费用 和竞争数据添加到网站上; Keywords Everywhere + Keyword Shitter = 限制较少的谷歌关键词规划师</li>
+<li><a href="https://www.wordtracker.com/scout">Wordtracker Scout</a> 在浏览任何网页时点击扩展程序，它将从该页面中挑选出最相关的关键字（它就像一个关键字密度检查器，但更好用）,它将数据显示为文字云，您还可以根据 相关性 和 单词数量 进行细化操作;</li>
+<li><a href="https://www.google.com/webmasters/tools/home?hl=en">Google Search Console</a> （谷歌站长工具）; 转到 Search Console &gt; Search Traffic &gt; Search Analytics &gt; Queries. 搜索控制台 &gt; 搜索流量 &gt;搜索分析 &gt;查询. 然后点击impressions（展示次数），CTR（点击率）和position（平均排名）的复选框。每个关键词的impressions（展示次数），CTR（点击率）和 position（平均排名）</li>
+<li>Google (谷歌) 查看 “People also ask”（用户经常问）板块</li>
+</ol>
+<h1 id="references">References</h1>
+<ol type="1">
+<li>https://ahrefs.com/blog/zh/free-keyword-research-tools/#2_Keyword_Shitter</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>博客</tag>
       </tags>
   </entry>
 </search>
