@@ -226,7 +226,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/07/22/Blog%20Building/SEO-%E5%B7%A5%E5%85%B7/">
+    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/08/24/Deep%20Learning/Normalization-%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -240,7 +240,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/22/Blog%20Building/SEO-%E5%B7%A5%E5%85%B7/" class="post-title-link" itemprop="url">SEO 工具</a>
+            <a href="/2021/08/24/Deep%20Learning/Normalization-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Normalization 笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -251,11 +251,20 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-07-22 21:12:30 / Modified: 21:30:26" itemprop="dateCreated datePublished" datetime="2021-07-22T21:12:30+08:00">2021-07-22</time>
+              <time title="Created: 2021-08-24 19:14:09 / Modified: 21:08:40" itemprop="dateCreated datePublished" datetime="2021-08-24T19:14:09+08:00">2021-08-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Deep-Learning/" itemprop="url" rel="index"><span itemprop="name">Deep Learning</span></a>
+                </span>
             </span>
 
           
-            <span id="/2021/07/22/Blog%20Building/SEO-%E5%B7%A5%E5%85%B7/" class="post-meta-item leancloud_visitors" data-flag-title="SEO 工具" title="Views">
+            <span id="/2021/08/24/Deep%20Learning/Normalization-%E7%AC%94%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="Normalization 笔记" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -270,8 +279,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2021/07/22/Blog%20Building/SEO-%E5%B7%A5%E5%85%B7/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/22/Blog%20Building/SEO-%E5%B7%A5%E5%85%B7/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/08/24/Deep%20Learning/Normalization-%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/24/Deep%20Learning/Normalization-%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -280,7 +289,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>802</span>
+              <span>1.4k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -298,10 +307,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>SEO 用于帮助个人或者企业快速推广信息是一个重要的技能。今天就分享一些常用的 0 成本 SEO 工具吧
+          <p>当数据 X 源域与目标域的数据分布不一致时，会导致对于任意 <span class="math inline">\(x\in X\)</span>, <span class="math inline">\(P_s(Y|X=x)=P_t(Y|X=x)\)</span>，但是 <span class="math inline">\(P_s(X)\neq P_t(X)\)</span>。这样导致每个神经元的输入数据不是“独立同分布”，带来的问题：</p>
+<p>(1)上层参数需要不断适应新的输入数据分布，降低学习速度; (2)下层输入的变化可能趋向于变大或者变小，导致上层落入饱和区，使得学习过早停止; (3)每层的更新都会影响到其它层，因此每层的参数更新策略需要尽可能的谨慎。</p>
+<p>为此提出了各种 Normalization 方案：
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/07/22/Blog%20Building/SEO-%E5%B7%A5%E5%85%B7/#more" rel="contents">
+              <a class="btn" href="/2021/08/24/Deep%20Learning/Normalization-%E7%AC%94%E8%AE%B0/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -325,7 +336,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/07/20/Paper%20Reading/Ontology/Entity-Recognition-Papers/">
+    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/08/20/Programming/python/Numpy-%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -339,344 +350,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/07/20/Paper%20Reading/Ontology/Entity-Recognition-Papers/" class="post-title-link" itemprop="url">Entity Recognition Papers</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-20 16:40:52 / Modified: 16:48:10" itemprop="dateCreated datePublished" datetime="2021-07-20T16:40:52+08:00">2021-07-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Paper-Reading/" itemprop="url" rel="index"><span itemprop="name">Paper Reading</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Paper-Reading/Ontology/" itemprop="url" rel="index"><span itemprop="name">Ontology</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/07/20/Paper%20Reading/Ontology/Entity-Recognition-Papers/" class="post-meta-item leancloud_visitors" data-flag-title="Entity Recognition Papers" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/07/20/Paper%20Reading/Ontology/Entity-Recognition-Papers/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/Paper%20Reading/Ontology/Entity-Recognition-Papers/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              <span>1.5k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-<p>Entity Recognition A related blog with interpretion of these papers <a target="_blank" rel="noopener" href="https://blog.csdn.net/Kaiyuan_sjtu/article/details/89143573">HERE</a></p>
-<p>A related code implementations of these papers <a target="_blank" rel="noopener" href="https://github.com/KaiyuanGao/name_entity_recognition">HERE</a></p>
-<ul class="task-list">
-<li><p><input type="checkbox" disabled="" />
-A Survey on Deep Learning for Named Entity Recognition(2018) [paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-A Survey on Recent Advances in Named Entity Recognition from Deep Learning models(2018)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-BLSTM+CRF Bidirectional LSTM-CRF Models for Sequence Tagging(2015) [paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Char+BLSTM+CRF Attending to Characters in Neural Sequence Labeling Models(2016)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-BLSTM+CNN Named Entity Recognition with Bidirectional LSTM-CNNs (2016) [paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Char+Radical Character-Based LSTM-CRF with Radical-Level Features for Chinese Named Entity Recognition(2016)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-BLSTM+CRF Neural Architectures for Named Entity Recognition (2016) [paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-BLSTM+CNN+CRF End-to-end Sequence Labeling via Bi-directional LSTM-CNNs-CRF(2016) [paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-FOFE A FOFE-based Local Detection Approach for Named Entity Recognition and Mention Detection(2016)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-IDCNN Fast and Accurate Entity Recognition with Iterated Dilated Convolutions(2017) [paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-DAL Deep Active Learning for Named Entity Recognition(2017)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Neural Architectures for Fine-grained Entity Type Classification (2017)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-TagLM Semi-supervised sequence tagging with bidirectional language models(2017)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-LatticeNER Chinese NER Using Lattice LSTM(2018)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-AutoNER Learning Named Entity Tagger using Domain-Specific Dictionary(2018)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-ATLNER Adversarial Transfer Learning for Chinese Named Entity Recognition with Self-Attention Mechanism(2018)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-ALCrowd Adversarial Learning for Chinese NER from Crowd Annotations(2018)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-ACN Adaptive Co-Attention Network for Named Entity Recognition in Tweets(2018)[paper]</p></li>
-</ul>
-<h1 id="references">References</h1>
-<p><a target="_blank" rel="noopener" href="https://github.com/KaiyuanGao/awesome-deeplearning-nlp-papers/blob/master/doc/entity-recognition.md">Kaiyuang Gao's github</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/07/20/Paper%20Reading/Ontology/Relation-Extraction-Papers/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Jason Hao">
-      <meta itemprop="description" content="If you get a dream, You gonna protect it!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jason Hao's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/20/Paper%20Reading/Ontology/Relation-Extraction-Papers/" class="post-title-link" itemprop="url">Relation Extraction Papers</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-07-20 16:35:34 / Modified: 16:48:10" itemprop="dateCreated datePublished" datetime="2021-07-20T16:35:34+08:00">2021-07-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Paper-Reading/" itemprop="url" rel="index"><span itemprop="name">Paper Reading</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Paper-Reading/Ontology/" itemprop="url" rel="index"><span itemprop="name">Ontology</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/07/20/Paper%20Reading/Ontology/Relation-Extraction-Papers/" class="post-meta-item leancloud_visitors" data-flag-title="Relation Extraction Papers" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/2021/07/20/Paper%20Reading/Ontology/Relation-Extraction-Papers/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/20/Paper%20Reading/Ontology/Relation-Extraction-Papers/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-              <span>3.2k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-              <span>3 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <span id="more"></span>
-<p>Relation Classification and Extraction</p>
-<p>A related blog with interpretion of these papers <a target="_blank" rel="noopener" href="https://blog.csdn.net/Kaiyuan_sjtu/article/details/89877420">HERE</a></p>
-<p>A related code implementations of these papers <a target="_blank" rel="noopener" href="https://github.com/KaiyuanGao/relation_extraction">HERE</a></p>
-<ul class="task-list">
-<li><p><input type="checkbox" disabled="" />
-NLP-progress in Relation Extraction</p></li>
-<li><p><input type="checkbox" disabled="" />
-Relation Extraction : A Survey(2017)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-DSRE Distant supervision for relation extraction without labeled data(2009) [paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-CNN Convolution Neural Network for Relation Extraction(2013)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-CNN Relation Classification via Convolutional Deep Neural Network(2014)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-CR-CNN Classifying Relations by Ranking with Convolutional Neural Networks(2015)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-RNN Relation Classification via Recurrent Neural Network(2015)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-CNN Relation Extraction: Perspective from Convolutional Neural Networks(2015)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-PCNN Distant Supervision for Relation Extraction via Piecewise Convolutional Neural Networks(2015)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-SATT Neural Relation Extraction with Selective Attention over Instances(2016)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-MIMLCNN Relation Extraction with Multi-instance Multi-label Convolutional Neural Networks(2016)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-MLACNN Relation Classification via Multi-Level Attention CNNs(2016)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-BILSTM Bidirectional Long Short-Term Memory Networks for Relation Classification(2016)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-TRLSTM End-to-End Relation Extraction using LSTMs on Sequences and Tree Structure(2016)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-ABLSTM Attention-Based Bidirectional Long Short-Term Memory Networks for Relation Classification(2016)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-HRNN+ATT Semantic Relation Classification via Hierarchical Recurrent Neural Network with Attention(2016) [paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-CoType CoType: Joint Extraction of Typed Entities and Relations with Knowledge Bases(2016)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Weakly-supervised Relation Extraction by Pattern-enhanced Embedding Learning(2016)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-BRCNN Bidirectional Recurrent Convolutional Neural Network for Relation Classification(2016) [paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-APCNN Distant Supervision for Relation Extraction with Sentence-Level Attention and Entity Descriptions(2017)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-CNN MIT at SemEval-2017 Task 10: Relation Extraction with Convolutional Neural Networks(2017)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-MNRE Neural Relation Extraction with Multi-lingual Attention(2017)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-DRCNN Deep Residual Learning for Weakly-Supervised Relation Extraction(2017)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Learning with Noise: Enhance Distantly Supervised Relation Extraction with Dynamic Transition Matrix(2017)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Joint Extraction of Entities and Relations Based on a Novel Tagging Scheme(2017)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Joint Entity and Relation Extraction Based on A Hybrid Neural Network(2017)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Extracting Entities and Relations with Joint Minimum Risk Training(2018)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Effectively Combining Recurrent and Convolutional Neural Networks for Relation Classification and Extraction(2018)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Joint Extraction of Entities and Relations Based on a Novel Graph Scheme(2018)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Ranking-Based Automatic Seed Selection and Noise Reduction for Weakly Supervised Relation Extraction(2018)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Hierarchical Relation Extraction with Coarse-to-Fine Grained Attention(2018)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-RESIDE: Improving Distantly-Supervised Neural Relation Extraction using Side Information(2018)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-A Walk-based Model on Entity Graphs for Relation Extraction(2018)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-FewRel: A Large-Scale Supervised Few-Shot Relation Classification Dataset with State-of-the-Art Evaluation(2018)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Semantic Relation Classification via Bidirectional LSTM Networks with Entity-aware Attention using Latent Entity Typing (2019)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Large Scaled Relation Extraction with Reinforcement Learning(2018)[paper]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Robust Distant Supervision Relation Extraction via Deep Reinforcement Learning(2018)[[paper]]</p></li>
-<li><p><input type="checkbox" disabled="" />
-Reinforcement Learning for Relation Classification from Noisy Data(2018)[paper]</p></li>
-</ul>
-<h1 id="references">References</h1>
-<ol type="1">
-<li><a target="_blank" rel="noopener" href="https://github.com/KaiyuanGao/awesome-deeplearning-nlp-papers/blob/master/doc/relation-extraction.md">KaiyuanGao's Github</a></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/07/19/Life/%E8%AF%8D%E6%B1%87%E7%A7%AF%E7%B4%AF/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Jason Hao">
-      <meta itemprop="description" content="If you get a dream, You gonna protect it!">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jason Hao's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/07/19/Life/%E8%AF%8D%E6%B1%87%E7%A7%AF%E7%B4%AF/" class="post-title-link" itemprop="url">词汇积累</a>
+            <a href="/2021/08/20/Programming/python/Numpy-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Numpy 笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -686,14 +360,14 @@ Reinforcement Learning for Relation Classification from Noisy Data(2018)[paper]<
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2021-07-19 20:33:50" itemprop="dateCreated datePublished" datetime="2021-07-19T20:33:50+08:00">2021-07-19</time>
+              <time title="Created: 2021-08-20 21:25:29" itemprop="dateCreated datePublished" datetime="2021-08-20T21:25:29+08:00">2021-08-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-07-20 16:48:10" itemprop="dateModified" datetime="2021-07-20T16:48:10+08:00">2021-07-20</time>
+                <time title="Modified: 2021-08-24 21:08:40" itemprop="dateModified" datetime="2021-08-24T21:08:40+08:00">2021-08-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -701,12 +375,16 @@ Reinforcement Learning for Relation Classification from Noisy Data(2018)[paper]<
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index"><span itemprop="name">Life</span></a>
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
                 </span>
             </span>
 
           
-            <span id="/2021/07/19/Life/%E8%AF%8D%E6%B1%87%E7%A7%AF%E7%B4%AF/" class="post-meta-item leancloud_visitors" data-flag-title="词汇积累" title="Views">
+            <span id="/2021/08/20/Programming/python/Numpy-%E7%AC%94%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="Numpy 笔记" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -721,8 +399,8 @@ Reinforcement Learning for Relation Classification from Noisy Data(2018)[paper]<
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2021/07/19/Life/%E8%AF%8D%E6%B1%87%E7%A7%AF%E7%B4%AF/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/19/Life/%E8%AF%8D%E6%B1%87%E7%A7%AF%E7%B4%AF/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/08/20/Programming/python/Numpy-%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/20/Programming/python/Numpy-%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -731,7 +409,7 @@ Reinforcement Learning for Relation Classification from Noisy Data(2018)[paper]<
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>108</span>
+              <span>315</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -750,11 +428,308 @@ Reinforcement Learning for Relation Classification from Noisy Data(2018)[paper]<
 
       
           <span id="more"></span>
-<ol type="1">
-<li>all walks of life 各行各业: we have witnessed a wide spread of artificial intelligence technologies to all walks of life.</li>
-</ol>
+<h1 id="numpy.transpose">numpy.transpose</h1>
+<p>假设 <code>x=np.arange(2,2,3).reshape(2,2,3)</code></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">array(<span class="string">[[[ 0,  1,  2],</span></span><br><span class="line"><span class="string">        [ 3,  4,  5]]</span>,</span><br><span class="line"></span><br><span class="line">       <span class="string">[[ 6,  7,  8],</span></span><br><span class="line"><span class="string">        [ 9, 10, 11]]</span>])</span><br></pre></td></tr></table></figure>
+<p>此时的数组的形状 (2,2,3) 定义为：</p>
+<p>索引： 0 1 2</p>
+<p>形状： 2 2 3</p>
+<p><code>x = np.transpose(x, axes=(1,0,2))</code> 执行之后的数组如下</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">array(<span class="string">[[[ 0,  1,  2],</span></span><br><span class="line"><span class="string">        [ 6,  7,  8]]</span>,</span><br><span class="line"> </span><br><span class="line">       <span class="string">[[ 3,  4,  5],</span></span><br><span class="line"><span class="string">        [ 9, 10, 11]]</span>])</span><br></pre></td></tr></table></figure>
+<p>其实就是把元素的索引交换了，比如元素 <code>6</code>，它之前的索引为 (1, 0, 0)，根据 transpose 的要求，把第 0 个索引与第 1 个索引交换，因此变化后的的索引为 (0, 1, 0).</p>
 <h1 id="references">References</h1>
 
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/08/20/Programming/python/Pytorch-%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jason Hao">
+      <meta itemprop="description" content="If you get a dream, You gonna protect it!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jason Hao's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/20/Programming/python/Pytorch-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Pytorch 笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-20 21:19:49" itemprop="dateCreated datePublished" datetime="2021-08-20T21:19:49+08:00">2021-08-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-08-24 21:08:40" itemprop="dateModified" datetime="2021-08-24T21:08:40+08:00">2021-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/08/20/Programming/python/Pytorch-%E7%AC%94%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="Pytorch 笔记" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/08/20/Programming/python/Pytorch-%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/20/Programming/python/Pytorch-%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>4.4k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>4 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <span id="more"></span>
+<h1 id="torch.reshape">torch.reshape()</h1>
+<p><code>y = x.reshape([batchsize, -1, sentsize, wordsize])</code> 意思是把 x 的形状改为 (batch, -1, sentsize, wordsize)，其中 -1 这个维度的大小根据其他维计算的，也就是 total_size/batch/sentsize/wordsize</p>
+<h1 id="torch.view">torch.view()</h1>
+<ol type="1">
+<li>该方法与 reshape 功能相同，都是重组张量。但是它只能用于改变连续(contiguous)张量，否则要调用 contiguous() 方法，reshape() 不受影响</li>
+<li>view() 返回的张量与原张量共享基础数据（不是共享内存地址）,而 reshape() 如果可以返回 view 就返回，否则返回 copy</li>
+</ol>
+<p>指导： 如果需要<strong>原张量的拷贝</strong>(copy)，就使用.clone()方法； 而如果需要<strong>原张量的视图</strong>(view)，就使用.view()方法； 如果想要原张量的视图(view)，但是<strong>原张量不连续</strong>(contiguous)，不过原张量拥有兼容的步长(strides)，此时可以考虑使用.reshape()函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">a = torch.randint(<span class="number">0</span>, <span class="number">10</span>, (<span class="number">3</span>, <span class="number">4</span>))</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[3, 7, 1, 3],</span></span><br><span class="line"><span class="string">        [6, 4, 1, 3],</span></span><br><span class="line"><span class="string">        [8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">b = a.view(<span class="number">2</span>, <span class="number">6</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[3, 7, 1, 3, 6, 4],</span></span><br><span class="line"><span class="string">        [1, 3, 8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">c = a.reshape(<span class="number">2</span>, <span class="number">6</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[3, 7, 1, 3, 6, 4],</span></span><br><span class="line"><span class="string">        [1, 3, 8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 非严格意义上讲，id可以认为是对象的内存地址</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(a)==<span class="built_in">id</span>(b), <span class="built_in">id</span>(a)==<span class="built_in">id</span>(c), <span class="built_in">id</span>(b)==<span class="built_in">id</span>(c))</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">前提：python的变量和数据是保存在不同的内存空间中的，PyTorch中的Tensor的存储也是类似的机制，tensor相当于python变量，保存了tensor的形状(size)、步长(stride)、数据类型(type)等信息(或其引用)，当然也保存了对其对应的存储器Storage的引用，存储器Storage就是对数据data的封装。</span></span><br><span class="line"><span class="string">viewed对象和reshaped对象都存储在与原始对象不同的地址内存中，但是它们共享存储器Storage，也就意味着它们共享基础数据。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(a.storage())==<span class="built_in">id</span>(b.storage()), </span><br><span class="line">	  <span class="built_in">id</span>(a.storage())==<span class="built_in">id</span>(c.storage()),</span><br><span class="line">	  <span class="built_in">id</span>(b.storage())==<span class="built_in">id</span>(c.storage()))</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">False False False</span></span><br><span class="line"><span class="string">True True True</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>]=<span class="number">0</span></span><br><span class="line"><span class="built_in">print</span>(a, b, c)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[0, 0, 0, 0],</span></span><br><span class="line"><span class="string">        [6, 4, 1, 3],</span></span><br><span class="line"><span class="string">        [8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">tensor([[0, 0, 0, 0, 6, 4],</span></span><br><span class="line"><span class="string">        [1, 3, 8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">tensor([[0, 0, 0, 0, 6, 4],</span></span><br><span class="line"><span class="string">        [1, 3, 8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">c[<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(a, b, c)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[1, 1, 1, 1],</span></span><br><span class="line"><span class="string">        [1, 1, 1, 3],</span></span><br><span class="line"><span class="string">        [8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">tensor([[1, 1, 1, 1, 1, 1],</span></span><br><span class="line"><span class="string">        [1, 3, 8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">tensor([[1, 1, 1, 1, 1, 1],</span></span><br><span class="line"><span class="string">        [1, 3, 8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="torch.resize">torch.resize()</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">a = torch.arange(<span class="number">24</span>).view(<span class="number">4</span>, <span class="number">6</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[ 0,  1,  2,  3,  4,  5],</span></span><br><span class="line"><span class="string">        [ 6,  7,  8,  9, 10, 11],</span></span><br><span class="line"><span class="string">        [12, 13, 14, 15, 16, 17],</span></span><br><span class="line"><span class="string">        [18, 19, 20, 21, 22, 23]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">a.resize_(<span class="number">6</span>, <span class="number">4</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[ 0,  1,  2,  3],</span></span><br><span class="line"><span class="string">        [ 4,  5,  6,  7],</span></span><br><span class="line"><span class="string">        [ 8,  9, 10, 11],</span></span><br><span class="line"><span class="string">        [12, 13, 14, 15],</span></span><br><span class="line"><span class="string">        [16, 17, 18, 19],</span></span><br><span class="line"><span class="string">        [20, 21, 22, 23]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">a.resize_(<span class="number">3</span>, <span class="number">3</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[0, 1, 2],</span></span><br><span class="line"><span class="string">        [3, 4, 5],</span></span><br><span class="line"><span class="string">        [6, 7, 8]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">a.resize_(<span class="number">7</span>, <span class="number">4</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[              0,               1,               2,               3],</span></span><br><span class="line"><span class="string">        [              4,               5,               6,               7],</span></span><br><span class="line"><span class="string">        [              8,               9,              10,              11],</span></span><br><span class="line"><span class="string">        [             12,              13,              14,              15],</span></span><br><span class="line"><span class="string">        [             16,              17,              18,              19],</span></span><br><span class="line"><span class="string">        [             20,              21,              22,              23],</span></span><br><span class="line"><span class="string">        [140720147688480, 140720141167152,               1,               0]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="torch.nn.conv2d">torch.nn.Conv2d()</h1>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210821101344.png" /></p>
+<p><code>torch.nn.Conv2d(1, 10, kernel_size=3,stride=2,bias=False)</code></p>
+<ul>
+<li>1 是指输入的 Channel (channel in)，即图像层数（灰度图 1 层，RGB图 3 层）</li>
+<li>10 是指输出的 Channel (channel out)，也可以指这一层中卷积核的个数</li>
+<li>3 是指卷积核的边长，参数大小为 3*3</li>
+<li>2 是指步长，即卷积核平移时要跨多少个位置</li>
+<li>卷积后每个 channel 的边长 = (原始边长 - (kernel_size-1) + 2<em>padding) / stride. e.g. (6- (3-1) + 2</em>0) / 1 = 4 <img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210821103814.png" /></li>
+</ul>
+<h1 id="torch.nn.lstm">torch.nn.LSTM()</h1>
+<ol type="1">
+<li>input_size: 输入的维度</li>
+<li>hidden_size: 隐藏层向量维度</li>
+<li>num_layers: LSTM 堆叠的层数。注意双向的 Bi-LSTM 也只能算一层</li>
+<li>bias: 是否加入偏置</li>
+<li>batch_first: 若为 True，输入格式按照 [batch_size, seq_len, input_size]，原始格式为 [seq_len, batch_size, input_size]</li>
+<li>dropout: 对网络参数 dropout 的比例</li>
+<li>bidirectional: 是否双向传播</li>
+</ol>
+<p>输入 - input (seq_len, batch, input_size) - h_0 (num_layers * num_directions, batch, hidden_size) - c_0 (num_layers * num_directions, batch, hidden_size)</p>
+<p>输出 - output (seq_len, batch, num_directions * hidden_size) - h_n (num_layers * num_directions, batch, hidden_size) - c_n (num_layers * num_directions, batch, hidden_size)</p>
+<p>举例子：假设词向量维度为 100，句子包含 24 个词，一次训练 10 个句子。那么 batch_size=10, seq_len=24, input_size=100。隐藏层的输出的维度为 hidden_size，它主要用于设置隐藏层向量表示和参数 W，b 的维度。</p>
+<p>如果 hidden_size=16，则 <span class="math inline">\(W_{i}\)</span> 的 shape 为 16×100，<span class="math inline">\(x_t\)</span> 的 shape 为 100×1，<span class="math inline">\(W_{g}\)</span> 的 shape 为 16×16， <span class="math inline">\(h_{t-1}\)</span> 的 shape 为 16×1。</p>
+<p>输入门：</p>
+<p><span class="math inline">\(i_t=\sigma(W_{ii}x_t + b_{ii} + W_{hi}h_{t_1}+b_{hi})\)</span></p>
+<p>遗忘门：</p>
+<p><span class="math inline">\(f_t=\sigma(W_{if}x_t+b_{if}+W_{hf}h_{t-1}+b_{hf})\)</span></p>
+<p><span class="math inline">\(g_t=tanh(W_{ig}x_t+b_{ig}+W_{hg}h_{t-1}+b_{hg})\)</span></p>
+<p>输出门：</p>
+<p><span class="math inline">\(o_t=\sigma(W_{io}x_t+b_{io}+W_{ho}h_{t-1}+b_{ho})\)</span></p>
+<p>两种记忆：</p>
+<p>长期记忆：<span class="math inline">\(c_t=f_t*c_{t-1}+i_t*g_t\)</span></p>
+<p>短期记忆：<span class="math inline">\(h_t=o_t*tanh(c_t)\)</span></p>
+<h1 id="tensor.detach-vs-tensor.detach_">tensor.detach() vs tensor.detach_()</h1>
+<p>这两个方法都会分离模型中的某些参数（通过 <code>self.grad_fn=None</code>）。detach_() 除了冻结节点，还会更改变量的依赖关系有向无环图。这种机制可以实现模型的微调，比如一些语言模型在某个具体分类问题上的微调，其实只需要重新训练分类器就好了，不需要再去学习向量表达 <a target="_blank" rel="noopener" href="https://pytorch.apachecn.org/docs/1.7/04.html">参考</a>。</p>
+<p>detach() 从当前图分离的新变量，该变量永远不会用梯度。返回了一个复制了的变量与原变量指向同一个 tensor.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detach</span>(<span class="params">self</span>):</span></span><br><span class="line">  result = NoGrad()(self)</span><br><span class="line">  result._grad_fn = <span class="literal">None</span></span><br><span class="line">  <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<p>detach_() 直接将变量从创建它的图中分离出来，把它作为叶子节点</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detach_</span>(<span class="params">self</span>):</span></span><br><span class="line">  self.grad_fn = <span class="literal">None</span></span><br><span class="line">  self.requires_grad = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>比如存在这样一个变量依赖链 <span class="math inline">\(x\rightarrow y \rightarrow z\)</span>，然后执行 <code>y._detach()</code>，此时整个变量的依赖关系也变化了 <span class="math inline">\(x, y\rightarrow z\)</span>。如果是执行了 <code>y.detach()</code> 可以达到相同效果，但是保留了原有的图结构。</p>
+<p>假设有两个 layer: <span class="math inline">\(y = A(x), z=B(y)\)</span>，我们想用 z.backward() 为 B 的参数梯度，但是不想求 A 的参数梯度。可以这样实现： <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一种方法 x -&gt; y -&gt; z</span></span><br><span class="line">y = A(x)</span><br><span class="line">z = B(y.detach())</span><br><span class="line">z.backward()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二种方法  x, y -&gt; z</span></span><br><span class="line">y = A(x)</span><br><span class="line">y.detach_()</span><br><span class="line">z = B(y)</span><br><span class="line">z.backward()</span><br></pre></td></tr></table></figure> 第一种方法中，你还可以 <code>y.backward()</code>，但是第二种方法不能 <code>y.backward()</code>，因为 x 与 y 已经在原图中断开了。</p>
+<h1 id="references">References</h1>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/08/20/Programming/python/Pytorch-Environment-Setting-Up/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jason Hao">
+      <meta itemprop="description" content="If you get a dream, You gonna protect it!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jason Hao's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/08/20/Programming/python/Pytorch-Environment-Setting-Up/" class="post-title-link" itemprop="url">Pytorch Environment Setting Up</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-20 09:32:29" itemprop="dateCreated datePublished" datetime="2021-08-20T09:32:29+08:00">2021-08-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-08-24 21:08:40" itemprop="dateModified" datetime="2021-08-24T21:08:40+08:00">2021-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/08/20/Programming/python/Pytorch-Environment-Setting-Up/" class="post-meta-item leancloud_visitors" data-flag-title="Pytorch Environment Setting Up" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/08/20/Programming/python/Pytorch-Environment-Setting-Up/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/20/Programming/python/Pytorch-Environment-Setting-Up/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>314</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>DNN used in many areas nowadays, and Pytorch would be a very friendly tool for beginers for its clear programming logic and high level wrappers.</p>
+<p>Version Information:</p>
+<ol type="1">
+<li>Python 3.7</li>
+<li>Pytorch 1.9</li>
+<li>Cuda 10.2</li>
+<li>Cudnn 8.2</li>
+<li>Anaconda</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/20/Programming/python/Pytorch-Environment-Setting-Up/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -772,7 +747,7 @@ Reinforcement Learning for Relation Classification from Noisy Data(2018)[paper]<
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -840,7 +815,7 @@ Reinforcement Learning for Relation Classification from Noisy Data(2018)[paper]<
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -853,7 +828,7 @@ Reinforcement Learning for Relation Classification from Noisy Data(2018)[paper]<
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -900,12 +875,12 @@ Reinforcement Learning for Relation Classification from Noisy Data(2018)[paper]<
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">128k</span>
+    <span title="Symbols count total">147k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:56</span>
+    <span title="Reading time total">2:14</span>
 </div>
 
 

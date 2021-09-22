@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="code-SnIEO2eNeq">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jason-huanghao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+
+  <meta name="description" content="torch.reshape() y &#x3D; x.reshape([batchsize, -1, sentsize, wordsize]) 意思是把 x 的形状改为 (batch, -1, sentsize, wordsize)，其中 -1 这个维度的大小根据其他维计算的，也就是 total_size&#x2F;batch&#x2F;sentsize&#x2F;wordsize torch.view()  该方法与 reshape">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pytorch 笔记">
+<meta property="og:url" content="https://jason-huanghao.github.io/2021/08/20/Programming/python/Pytorch-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Jason Hao&#39;s Blog">
+<meta property="og:description" content="torch.reshape() y &#x3D; x.reshape([batchsize, -1, sentsize, wordsize]) 意思是把 x 的形状改为 (batch, -1, sentsize, wordsize)，其中 -1 这个维度的大小根据其他维计算的，也就是 total_size&#x2F;batch&#x2F;sentsize&#x2F;wordsize torch.view()  该方法与 reshape">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210821101344.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210821103814.png">
+<meta property="article:published_time" content="2021-08-20T13:19:49.000Z">
+<meta property="article:modified_time" content="2021-08-24T13:08:40.927Z">
+<meta property="article:author" content="Jason Hao">
+<meta property="article:tag" content="Pytorch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210821101344.png">
+
+<link rel="canonical" href="https://jason-huanghao.github.io/2021/08/20/Programming/python/Pytorch-%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <!-- require APlayer -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+  <!-- require MetingJS -->
+  <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+  <meting-js
+    server="netease"
+    type="playlist"
+    fixed="true"
+    id="430657150"
+    auto=""
+    mini="true"
+    autoplay="true"
+    theme=""
+    loop="all"
+    order="random"
+    preload="auto"
+    volume="0.5"
+    mutex="true"
+    list-folded="true"
+    list-max-height="340px"
+    storage-name="metingjs" >
+  </meting-js>
+
+  <title>Pytorch 笔记 | Jason Hao's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jason Hao's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>Sitemap</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/jason-huanghao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/08/20/Programming/python/Pytorch-%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jason Hao">
+      <meta itemprop="description" content="If you get a dream, You gonna protect it!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jason Hao's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Pytorch 笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-08-20 21:19:49" itemprop="dateCreated datePublished" datetime="2021-08-20T21:19:49+08:00">2021-08-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-08-24 21:08:40" itemprop="dateModified" datetime="2021-08-24T21:08:40+08:00">2021-08-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programming/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/08/20/Programming/python/Pytorch-%E7%AC%94%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="Pytorch 笔记" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/08/20/Programming/python/Pytorch-%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/08/20/Programming/python/Pytorch-%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>4.4k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>4 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <span id="more"></span>
+<h1 id="torch.reshape">torch.reshape()</h1>
+<p><code>y = x.reshape([batchsize, -1, sentsize, wordsize])</code> 意思是把 x 的形状改为 (batch, -1, sentsize, wordsize)，其中 -1 这个维度的大小根据其他维计算的，也就是 total_size/batch/sentsize/wordsize</p>
+<h1 id="torch.view">torch.view()</h1>
+<ol type="1">
+<li>该方法与 reshape 功能相同，都是重组张量。但是它只能用于改变连续(contiguous)张量，否则要调用 contiguous() 方法，reshape() 不受影响</li>
+<li>view() 返回的张量与原张量共享基础数据（不是共享内存地址）,而 reshape() 如果可以返回 view 就返回，否则返回 copy</li>
+</ol>
+<p>指导： 如果需要<strong>原张量的拷贝</strong>(copy)，就使用.clone()方法； 而如果需要<strong>原张量的视图</strong>(view)，就使用.view()方法； 如果想要原张量的视图(view)，但是<strong>原张量不连续</strong>(contiguous)，不过原张量拥有兼容的步长(strides)，此时可以考虑使用.reshape()函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">a = torch.randint(<span class="number">0</span>, <span class="number">10</span>, (<span class="number">3</span>, <span class="number">4</span>))</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[3, 7, 1, 3],</span></span><br><span class="line"><span class="string">        [6, 4, 1, 3],</span></span><br><span class="line"><span class="string">        [8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">b = a.view(<span class="number">2</span>, <span class="number">6</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[3, 7, 1, 3, 6, 4],</span></span><br><span class="line"><span class="string">        [1, 3, 8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">c = a.reshape(<span class="number">2</span>, <span class="number">6</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[3, 7, 1, 3, 6, 4],</span></span><br><span class="line"><span class="string">        [1, 3, 8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 非严格意义上讲，id可以认为是对象的内存地址</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(a)==<span class="built_in">id</span>(b), <span class="built_in">id</span>(a)==<span class="built_in">id</span>(c), <span class="built_in">id</span>(b)==<span class="built_in">id</span>(c))</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">前提：python的变量和数据是保存在不同的内存空间中的，PyTorch中的Tensor的存储也是类似的机制，tensor相当于python变量，保存了tensor的形状(size)、步长(stride)、数据类型(type)等信息(或其引用)，当然也保存了对其对应的存储器Storage的引用，存储器Storage就是对数据data的封装。</span></span><br><span class="line"><span class="string">viewed对象和reshaped对象都存储在与原始对象不同的地址内存中，但是它们共享存储器Storage，也就意味着它们共享基础数据。</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">id</span>(a.storage())==<span class="built_in">id</span>(b.storage()), </span><br><span class="line">	  <span class="built_in">id</span>(a.storage())==<span class="built_in">id</span>(c.storage()),</span><br><span class="line">	  <span class="built_in">id</span>(b.storage())==<span class="built_in">id</span>(c.storage()))</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">False False False</span></span><br><span class="line"><span class="string">True True True</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">a[<span class="number">0</span>]=<span class="number">0</span></span><br><span class="line"><span class="built_in">print</span>(a, b, c)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[0, 0, 0, 0],</span></span><br><span class="line"><span class="string">        [6, 4, 1, 3],</span></span><br><span class="line"><span class="string">        [8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">tensor([[0, 0, 0, 0, 6, 4],</span></span><br><span class="line"><span class="string">        [1, 3, 8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">tensor([[0, 0, 0, 0, 6, 4],</span></span><br><span class="line"><span class="string">        [1, 3, 8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">c[<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(a, b, c)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[1, 1, 1, 1],</span></span><br><span class="line"><span class="string">        [1, 1, 1, 3],</span></span><br><span class="line"><span class="string">        [8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">tensor([[1, 1, 1, 1, 1, 1],</span></span><br><span class="line"><span class="string">        [1, 3, 8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">tensor([[1, 1, 1, 1, 1, 1],</span></span><br><span class="line"><span class="string">        [1, 3, 8, 8, 5, 7]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="torch.resize">torch.resize()</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">a = torch.arange(<span class="number">24</span>).view(<span class="number">4</span>, <span class="number">6</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[ 0,  1,  2,  3,  4,  5],</span></span><br><span class="line"><span class="string">        [ 6,  7,  8,  9, 10, 11],</span></span><br><span class="line"><span class="string">        [12, 13, 14, 15, 16, 17],</span></span><br><span class="line"><span class="string">        [18, 19, 20, 21, 22, 23]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">a.resize_(<span class="number">6</span>, <span class="number">4</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[ 0,  1,  2,  3],</span></span><br><span class="line"><span class="string">        [ 4,  5,  6,  7],</span></span><br><span class="line"><span class="string">        [ 8,  9, 10, 11],</span></span><br><span class="line"><span class="string">        [12, 13, 14, 15],</span></span><br><span class="line"><span class="string">        [16, 17, 18, 19],</span></span><br><span class="line"><span class="string">        [20, 21, 22, 23]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">a.resize_(<span class="number">3</span>, <span class="number">3</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[0, 1, 2],</span></span><br><span class="line"><span class="string">        [3, 4, 5],</span></span><br><span class="line"><span class="string">        [6, 7, 8]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">a.resize_(<span class="number">7</span>, <span class="number">4</span>)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Out:</span></span><br><span class="line"><span class="string">tensor([[              0,               1,               2,               3],</span></span><br><span class="line"><span class="string">        [              4,               5,               6,               7],</span></span><br><span class="line"><span class="string">        [              8,               9,              10,              11],</span></span><br><span class="line"><span class="string">        [             12,              13,              14,              15],</span></span><br><span class="line"><span class="string">        [             16,              17,              18,              19],</span></span><br><span class="line"><span class="string">        [             20,              21,              22,              23],</span></span><br><span class="line"><span class="string">        [140720147688480, 140720141167152,               1,               0]])</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="torch.nn.conv2d">torch.nn.Conv2d()</h1>
+<p><img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210821101344.png" /></p>
+<p><code>torch.nn.Conv2d(1, 10, kernel_size=3,stride=2,bias=False)</code></p>
+<ul>
+<li>1 是指输入的 Channel (channel in)，即图像层数（灰度图 1 层，RGB图 3 层）</li>
+<li>10 是指输出的 Channel (channel out)，也可以指这一层中卷积核的个数</li>
+<li>3 是指卷积核的边长，参数大小为 3*3</li>
+<li>2 是指步长，即卷积核平移时要跨多少个位置</li>
+<li>卷积后每个 channel 的边长 = (原始边长 - (kernel_size-1) + 2<em>padding) / stride. e.g. (6- (3-1) + 2</em>0) / 1 = 4 <img src="https://cdn.jsdelivr.net/gh/jason-huanghao/PicGoBed/imgs/20210821103814.png" /></li>
+</ul>
+<h1 id="torch.nn.lstm">torch.nn.LSTM()</h1>
+<ol type="1">
+<li>input_size: 输入的维度</li>
+<li>hidden_size: 隐藏层向量维度</li>
+<li>num_layers: LSTM 堆叠的层数。注意双向的 Bi-LSTM 也只能算一层</li>
+<li>bias: 是否加入偏置</li>
+<li>batch_first: 若为 True，输入格式按照 [batch_size, seq_len, input_size]，原始格式为 [seq_len, batch_size, input_size]</li>
+<li>dropout: 对网络参数 dropout 的比例</li>
+<li>bidirectional: 是否双向传播</li>
+</ol>
+<p>输入 - input (seq_len, batch, input_size) - h_0 (num_layers * num_directions, batch, hidden_size) - c_0 (num_layers * num_directions, batch, hidden_size)</p>
+<p>输出 - output (seq_len, batch, num_directions * hidden_size) - h_n (num_layers * num_directions, batch, hidden_size) - c_n (num_layers * num_directions, batch, hidden_size)</p>
+<p>举例子：假设词向量维度为 100，句子包含 24 个词，一次训练 10 个句子。那么 batch_size=10, seq_len=24, input_size=100。隐藏层的输出的维度为 hidden_size，它主要用于设置隐藏层向量表示和参数 W，b 的维度。</p>
+<p>如果 hidden_size=16，则 <span class="math inline">\(W_{i}\)</span> 的 shape 为 16×100，<span class="math inline">\(x_t\)</span> 的 shape 为 100×1，<span class="math inline">\(W_{g}\)</span> 的 shape 为 16×16， <span class="math inline">\(h_{t-1}\)</span> 的 shape 为 16×1。</p>
+<p>输入门：</p>
+<p><span class="math inline">\(i_t=\sigma(W_{ii}x_t + b_{ii} + W_{hi}h_{t_1}+b_{hi})\)</span></p>
+<p>遗忘门：</p>
+<p><span class="math inline">\(f_t=\sigma(W_{if}x_t+b_{if}+W_{hf}h_{t-1}+b_{hf})\)</span></p>
+<p><span class="math inline">\(g_t=tanh(W_{ig}x_t+b_{ig}+W_{hg}h_{t-1}+b_{hg})\)</span></p>
+<p>输出门：</p>
+<p><span class="math inline">\(o_t=\sigma(W_{io}x_t+b_{io}+W_{ho}h_{t-1}+b_{ho})\)</span></p>
+<p>两种记忆：</p>
+<p>长期记忆：<span class="math inline">\(c_t=f_t*c_{t-1}+i_t*g_t\)</span></p>
+<p>短期记忆：<span class="math inline">\(h_t=o_t*tanh(c_t)\)</span></p>
+<h1 id="tensor.detach-vs-tensor.detach_">tensor.detach() vs tensor.detach_()</h1>
+<p>这两个方法都会分离模型中的某些参数（通过 <code>self.grad_fn=None</code>）。detach_() 除了冻结节点，还会更改变量的依赖关系有向无环图。这种机制可以实现模型的微调，比如一些语言模型在某个具体分类问题上的微调，其实只需要重新训练分类器就好了，不需要再去学习向量表达 <a target="_blank" rel="noopener" href="https://pytorch.apachecn.org/docs/1.7/04.html">参考</a>。</p>
+<p>detach() 从当前图分离的新变量，该变量永远不会用梯度。返回了一个复制了的变量与原变量指向同一个 tensor.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detach</span>(<span class="params">self</span>):</span></span><br><span class="line">  result = NoGrad()(self)</span><br><span class="line">  result._grad_fn = <span class="literal">None</span></span><br><span class="line">  <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<p>detach_() 直接将变量从创建它的图中分离出来，把它作为叶子节点</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detach_</span>(<span class="params">self</span>):</span></span><br><span class="line">  self.grad_fn = <span class="literal">None</span></span><br><span class="line">  self.requires_grad = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>比如存在这样一个变量依赖链 <span class="math inline">\(x\rightarrow y \rightarrow z\)</span>，然后执行 <code>y._detach()</code>，此时整个变量的依赖关系也变化了 <span class="math inline">\(x, y\rightarrow z\)</span>。如果是执行了 <code>y.detach()</code> 可以达到相同效果，但是保留了原有的图结构。</p>
+<p>假设有两个 layer: <span class="math inline">\(y = A(x), z=B(y)\)</span>，我们想用 z.backward() 为 B 的参数梯度，但是不想求 A 的参数梯度。可以这样实现： <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一种方法 x -&gt; y -&gt; z</span></span><br><span class="line">y = A(x)</span><br><span class="line">z = B(y.detach())</span><br><span class="line">z.backward()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二种方法  x, y -&gt; z</span></span><br><span class="line">y = A(x)</span><br><span class="line">y.detach_()</span><br><span class="line">z = B(y)</span><br><span class="line">z.backward()</span><br></pre></td></tr></table></figure> 第一种方法中，你还可以 <code>y.backward()</code>，但是第二种方法不能 <code>y.backward()</code>，因为 x 与 y 已经在原图中断开了。</p>
+<h1 id="references">References</h1>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Jason Hao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://jason-huanghao.github.io/2021/08/20/Programming/python/Pytorch-%E7%AC%94%E8%AE%B0/" title="Pytorch 笔记">https://jason-huanghao.github.io/2021/08/20/Programming/python/Pytorch-笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Pytorch/" rel="tag"><i class="fa fa-tag"></i> Pytorch</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/20/Programming/python/Pytorch-Environment-Setting-Up/" rel="prev" title="Pytorch Environment Setting Up">
+      <i class="fa fa-chevron-left"></i> Pytorch Environment Setting Up
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/20/Programming/python/Numpy-%E7%AC%94%E8%AE%B0/" rel="next" title="Numpy 笔记">
+      Numpy 笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#torch.reshape"><span class="nav-number">1.</span> <span class="nav-text">torch.reshape()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#torch.view"><span class="nav-number">2.</span> <span class="nav-text">torch.view()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#torch.resize"><span class="nav-number">3.</span> <span class="nav-text">torch.resize()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#torch.nn.conv2d"><span class="nav-number">4.</span> <span class="nav-text">torch.nn.Conv2d()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#torch.nn.lstm"><span class="nav-number">5.</span> <span class="nav-text">torch.nn.LSTM()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tensor.detach-vs-tensor.detach_"><span class="nav-number">6.</span> <span class="nav-text">tensor.detach() vs tensor.detach_()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-number">7.</span> <span class="nav-text">References</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jason Hao"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Jason Hao</p>
+  <div class="site-description" itemprop="description">If you get a dream, You gonna protect it!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jason-huanghao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jason-huanghao" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/jason.hao.academic@gmail.com" title="E-Mail → jason.hao.academic@gmail.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/Hao%20Huang" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;Hao Huang" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Hao</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="Symbols count total">147k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">2:14</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'STLjflsxBIAFNnGAcBVgq6Vu-gzGzoHsz',
+      appKey     : '6zO0wFSDgLF6LulPGcifgFOW',
+      placeholder: "Thank you for your opinions! ^ω^ I will reply you soon! Leave your email if you want. ^ω^",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'en' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

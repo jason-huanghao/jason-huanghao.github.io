@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="baidu-site-verification" content="code-SnIEO2eNeq">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jason-huanghao.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+
+
+  <meta name="description" content="Learning Part General Reading  机器之心专栏 各个组织的分享文章. SOTA models AI研习社 Paperweekly 机器之心, Paperweekly Official Site Machine Deep Learning daiwk 深度学习集合 ❤️ NLP-journey Aminer AI 报告，硕博论文 ❤️  综述文章  预训练模型 Pre-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NLP Learning and Coding Resources">
+<meta property="og:url" content="https://jason-huanghao.github.io/2021/07/29/Research%20Method/NLP-Learning-and-Coding-Resources/index.html">
+<meta property="og:site_name" content="Jason Hao&#39;s Blog">
+<meta property="og:description" content="Learning Part General Reading  机器之心专栏 各个组织的分享文章. SOTA models AI研习社 Paperweekly 机器之心, Paperweekly Official Site Machine Deep Learning daiwk 深度学习集合 ❤️ NLP-journey Aminer AI 报告，硕博论文 ❤️  综述文章  预训练模型 Pre-">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img.shields.io/github/stars/tmikolov/word2vec.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/stanfordnlp/GloVe.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/inejc/paragraph-vectors.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/jhlau/doc2vec.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/facebookresearch/fastText.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/openai/finetune-transformer-lm.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/Separius/BERT-keras.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/huggingface/transformers.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/openai/gpt-2.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/huggingface/transformers.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/CyberZHG/keras-gpt-2.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/allenai/allennlp.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/allenai/bilm-tf.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/google-research/bert.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/Separius/BERT-keras.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/huggingface/transformers.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/imgarylai/bert-embedding.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/PaddlePaddle/ERNIE.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/hanxiao/bert-as-service.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/CyberZHG/keras-bert.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/kimiyoung/transformer-xl.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/kimiyoung/transformer-xl.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/huggingface/transformers.svg?style=social">
+<meta property="og:image" content="https://camo.githubusercontent.com/0240a1c511e07d69ef1c1603e5bf0145cd364ef08fc306152b31fc7ddb9cfb3a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f7468756e6c702f45524e49452e7376673f7374796c653d736f6369616c">
+<meta property="og:image" content="https://img.shields.io/github/stars/pytorch/fairseq.svg?style=social">
+<meta property="og:image" content="https://img.shields.io/github/stars/huggingface/transformers.svg?style=social">
+<meta property="og:image" content="https://camo.githubusercontent.com/f03cf48e9c26126c987989a67732ece1602e0ee6569b60347473781ec30268ed/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6272696768746d6172742f616c626572745f7a682e7376673f7374796c653d736f6369616c">
+<meta property="og:image" content="https://img.shields.io/github/stars/huggingface/transformers.svg?style=social">
+<meta property="og:image" content="https://camo.githubusercontent.com/bfac3d61895ba22d34c6b2cfa6e4376a4e2d85a2a6a86e5195ca2f9cd1fe9e48/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f676f6f676c652d72657365617263682f746578742d746f2d746578742d7472616e736665722d7472616e73666f726d65722e7376673f7374796c653d736f6369616c">
+<meta property="article:published_time" content="2021-07-29T07:52:59.000Z">
+<meta property="article:modified_time" content="2021-09-19T04:12:02.873Z">
+<meta property="article:author" content="Jason Hao">
+<meta property="article:tag" content="researcher,NLP,topic model,ontology,graph model,主题模型,自然语言处理,图模型,科研,计算机">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.shields.io/github/stars/tmikolov/word2vec.svg?style=social">
+
+<link rel="canonical" href="https://jason-huanghao.github.io/2021/07/29/Research%20Method/NLP-Learning-and-Coding-Resources/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <!-- require APlayer -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+  <!-- require MetingJS -->
+  <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+  <meting-js
+    server="netease"
+    type="playlist"
+    fixed="true"
+    id="430657150"
+    auto=""
+    mini="true"
+    autoplay="true"
+    theme=""
+    loop="all"
+    order="random"
+    preload="auto"
+    volume="0.5"
+    mutex="true"
+    list-folded="true"
+    list-max-height="340px"
+    storage-name="metingjs" >
+  </meting-js>
+
+  <title>NLP Learning and Coding Resources | Jason Hao's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Jason Hao's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>Sitemap</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/jason-huanghao" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jason-huanghao.github.io/2021/07/29/Research%20Method/NLP-Learning-and-Coding-Resources/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jason Hao">
+      <meta itemprop="description" content="If you get a dream, You gonna protect it!">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jason Hao's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NLP Learning and Coding Resources
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-29 15:52:59" itemprop="dateCreated datePublished" datetime="2021-07-29T15:52:59+08:00">2021-07-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-09-19 12:12:02" itemprop="dateModified" datetime="2021-09-19T12:12:02+08:00">2021-09-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Research-Method/" itemprop="url" rel="index"><span itemprop="name">Research Method</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/07/29/Research%20Method/NLP-Learning-and-Coding-Resources/" class="post-meta-item leancloud_visitors" data-flag-title="NLP Learning and Coding Resources" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2021/07/29/Research%20Method/NLP-Learning-and-Coding-Resources/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/07/29/Research%20Method/NLP-Learning-and-Coding-Resources/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>4.1k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              <span>4 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <span id="more"></span>
+<h1 id="learning-part">Learning Part</h1>
+<h2 id="general-reading">General Reading</h2>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://www.jiqizhixin.com/columns">机器之心专栏</a> 各个组织的分享文章. <a target="_blank" rel="noopener" href="https://www.jiqizhixin.com/sota">SOTA models</a></li>
+<li><a target="_blank" rel="noopener" href="https://paper.yanxishe.com">AI研习社</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jiqizhixin.com/columns/paperweekly">Paperweekly 机器之心</a>, <a target="_blank" rel="noopener" href="https://www.paperweekly.site">Paperweekly Official Site</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lartpang/Machine-Deep-Learning">Machine Deep Learning</a></li>
+<li><a target="_blank" rel="noopener" href="https://daiwk.github.io/posts/dl.html">daiwk 深度学习集合</a> ❤️</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/msgi/nlp-journey">NLP-journey</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.aminer.cn/research_report/articlelist">Aminer AI 报告，硕博论文</a> ❤️</li>
+</ol>
+<h3 id="综述文章">综述文章</h3>
+<ul>
+<li>预训练模型 Pre-trained Models for Natural Language Processing: A Survey. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2003.08271.pdf"><code>paper</code></a></li>
+<li>上下文嵌入 A Survey on Contextual Embeddings. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2003.07278.pdf"><code>paper</code></a></li>
+<li>文本分类 Deep Learning Based Text Classification: A Comprehensive Review. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2004.03705.pdf"><code>paper</code></a></li>
+<li>命名实体识别 A Survey on Deep Learning for Named Entity Recognition. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1812.09449.pdf"><code>paper</code></a></li>
+<li>对抗生成 A Review on Generative Adversarial Networks: Algorithms, Theory, and Applications. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2001.06937.pdf"><code>paper</code></a></li>
+<li>关系抽取 More Data, More Relations, More Context and More Openness: A Review and Outlook for Relation Extraction. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2004.03186.pdf"><code>paper</code></a></li>
+<li>知识图谱 A Survey on Knowledge Graphs: Representation, Acquisition and Applications. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2002.00388.pdf"><code>paper</code></a></li>
+</ul>
+<h2 id="graph-neural-networks">Graph Neural Networks</h2>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://github.com/joeat1/GNN_note">GNN note</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xinguoxia/KGE">Knowledge Graph Embedding</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/SivilTaram/p/graph_neural_network_1.html">从图到图卷积漫谈 GNN</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/poows">poows GNN 多个仓库收藏</a> ❤️, <a target="_blank" rel="noopener" href="https://github.com/poows/GNN">GNN 工具, 模型, 应用</a> ❤️</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Jiakui/awesome-bert">awsome bert implements and paper</a> ❤️</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Jiakui/awesome-gcn">awsome GCN implements and paper</a> ❤️</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mengliu1998/awesome-deep-gnn">awesome-deep-gnn papers</a> 📚</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eugeneyan/ml-surveys">ML survey</a> 📚</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/KaiyuanGao/AI-Surveys">AI survey</a> 📚</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/we1l1n/Documents">知识图谱 Documents</a> 📚</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/FighterLYL/GraphNeuralNetwork">《深入浅出图神经网络：GNN原理解析》配套代码 Pytorch</a> ❤️</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/thunlp/GNNPapers">GNN must read papers by 公孙茂团队</a> ❤️❤️❤️</li>
+<li><a target="_blank" rel="noopener" href="https://tkipf.github.io/graph-convolutional-networks/">Kipf 对gcn的直觉</a> 入门推荐 | <a target="_blank" rel="noopener" href="https://drive.google.com/file/d/1Fp-0eP1eiRusEpQ90qdf2CLLNtvE48OO/view">Tony slids</a> ❤️</li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV135411t76X">唐杰老师图神经网络学习班</a> | <a target="_blank" rel="noopener" href="http://keg.cs.tsinghua.edu.cn/jietang/publications/2020-baai-GNN-Cognitive-Graph.pdf">对应PPT</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/IndexFziQ/GNN4NLP-Papers">GNN for NLP papers</a></li>
+</ol>
+<h2 id="knowledge-graph">Knowledge Graph</h2>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://github.com/npubird/KnowledgeGraphCourse">知识图谱必学课程</a> 🎓 ❤️❤️❤️</li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=FRcF6sh8sI0&amp;list=PLDhh0lALedc5paY4N3NRZ3j_ui9foL7Qc">Stanford CS520: 2021 Knowledge Graphs</a> 🎓 ❤️❤️</li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=mmQl6VGvX-c&amp;list=PLOU2XLYxmsII2vIhzAyW6eouf62ur2Z2q">introduce to KG by google</a> ❤️</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/memect/kg-beijing">北京知识图谱学习小组</a> 🎓 ❤️❤️</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/husthuke/awesome-knowledge-graph">awesome knowledge graph</a> 整理知识图谱相关学习资料，提供系统化的知识图谱学习路径</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/liuhuanyong">刘焕勇</a> 知识图谱相关项目参考， 中国科学院软件研究所 | <a target="_blank" rel="noopener" href="https://blog.csdn.net/lhy2014">personal blog</a> | <a target="_blank" rel="noopener" href="https://github.com/liuhuanyong/KnowledgeGraphSlides">知识图谱会议报告合集</a> ❤️❤️❤️</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xinguoxia/KGE">知识图谱最新进展论文</a> ❤️❤️❤️</li>
+<li><a target="_blank" rel="noopener" href="https://www.omegaxyz.com/2021/02/10/kg-github/">知识图谱应用Github仓库（长期更新）</a> ❤️</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zhilonglu/Knowledge-Graph">Knowledge-Graph github</a> 📚</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/KaiyuanGao/awesome-deeplearning-nlp-papers">Awesome-Deeplearning-NLP-Papers</a> 📚</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/shaoxiongji/knowledge-graphs">Knowledge Graphs papers</a> 📚</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xinguoxia/KGE">Knowledge Graph Embedding papers</a> 📚</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/thunlp/KRLPapers">KRL: knowledge representation learning &amp; KE: knowledge embedding must read papers</a> 📚</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/THU-KEG/Knowledge_Graph_Reasoning_Papers">Knowledge Graph Reasoning Papers</a> 📚</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/heathersherry/Knowledge-Graph-Tutorials-and-Papers">Knowledge Graph Tutorials and Papers &amp; Data</a> ❤️</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/haipinglu/awesome-knowledge-graph">Awesome Knowledge Graph papers &amp; Data</a> ❤️ <a target="_blank" rel="noopener" href="https://www.sheffield.ac.uk/dcs/people/academic/haiping-lu">吕海平 The University of Sheffield</a> machine learning, brain imaging, and tensor analysis</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/dkmfbk/dket">Ontology Learning as Machine Translation</a> Expressive ontology learning as neural machine translation,2018 把OL当做MT来做 ❤️</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/edowson/ai-ontology">AI/RL Ontology</a> 一个强化学习领域的Ontology by <a target="_blank" rel="noopener" href="https://webprotege.stanford.edu">WebProtege</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/vieyra/KnOWLearn-Tool">KnOWLearn-Tool</a> 一个ontology learning 工具，包含 term extraction, <a target="_blank" rel="noopener" href="https://github.com/vieyra/KnOWLearn-Tool/tree/master/KnOWLearn-Tool/data">data from different domain</a> Author<a target="_blank" rel="noopener" href="https://github.com/vieyra">Samuel Vieyra</a> ❤️</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/SmartDataAnalytics/Knowledge-Graph-Analysis-Programming-Exercises">Programming Exercises for the Analysis of Knowledge Graphs</a> allows interested students and researchers to perform hands-on analysis of knowledge graphs <a target="_blank" rel="noopener" href="https://github.com/SmartDataAnalytics">Smart Data Analytics Github</a> from <a target="_blank" rel="noopener" href="https://sda.tech">Smart Data Analytics of University of Bonn, German</a> ❤️</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lihanghang/NLP-Knowledge-Graph">NLP-Knowledge-Graph</a> 自然语言处理、知识图谱、对话系统三大技术研究与应用 📚</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/liuhuanyong/TextGrapher">TextGrapher</a> - 输入一篇文档，形成对文章语义信息的图谱化展示</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/richgene/article/details/80481044">知识图谱 （Knowledge Graph） 专知 荟萃</a> ❤️❤️</li>
+</ol>
+<h1 id="coding-part">Coding Part</h1>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://github.com/lartpang/PyTorchTricks">Pytorch Tricks</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/graykode/gpt-2-Pytorch">GPT2 Pytorch</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/graykode/nlp-tutorial">NLP tutorial</a> ❤️❤️❤️ by <a target="_blank" rel="noopener" href="https://github.com/graykode?tab=repositories">Tae-Hwan Jung</a> Seoul, South Korea</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/graykode/ALBERT-Pytorch">ALBERT-Pytorch</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/graykode/transformers">Transformer-Pytorch</a></li>
+</ol>
+<h2 id="knowledge-graph-1">Knowledge Graph</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.ldf.fi/service/rdf-grapher">ldf.fi/service/rdf-grapher</a> RDF 可视化（在线）</li>
+<li>https://jena.apache.org/ 构建语义网和关联数据（或称链接数据）的开源框架</li>
+<li>https://github.com/lambdamusic/Ontospy Python library and command-line interface for inspecting and visualizing RDF models.</li>
+<li><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/s-match/">S-Match</a> S-Match is a semantic matching framework.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gsi-upm/sematch">sematch</a> semantic similarity framework for knowledge graph</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/SmartDataAnalytics/Knowledge-Graph-Analysis-Programming-Exercises">Knowledge-Graph-Analysis-Programming-Exercises</a></li>
+<li>https://github.com/chrisjmccormick/simsearch （最后更新 2016）</li>
+<li>https://gate.ac.uk/ GATE，开源的文本处理平台</li>
+<li>http://owlready.8326.n8.nabble.com/ Owlready2，基于Python 3、面向本体OWL的开源库</li>
+</ul>
+<h2 id="embeddings">Embeddings</h2>
+<p><a target="_blank" rel="noopener" href="https://github.com/Separius/awesome-sentence-embedding">嵌入相关论文和代码</a> 参考</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Embedding/Chinese-Word-Vectors">Chinese-Word-Vectors</a></p>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Date</th>
+<th style="text-align: center;">Model Name</th>
+<th style="text-align: center;">Paper</th>
+<th style="text-align: center;">Codes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>浅层词嵌入</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2013/01</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://code.google.com/archive/p/word2vec/">Word2Vec</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1301.3781">Efficient Estimation of Word Representations in Vector Space</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/tmikolov/word2vec">C</a> <img src="https://img.shields.io/github/stars/tmikolov/word2vec.svg?style=social" /></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2014</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://nlp.stanford.edu/projects/glove/">Glove</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://nlp.stanford.edu/pubs/glove.pdf">GloVe: Global Vectors for Word Representation</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/stanfordnlp/GloVe">C</a> <img src="https://img.shields.io/github/stars/stanfordnlp/GloVe.svg?style=social" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2014/05</td>
+<td style="text-align: center;">Doc2Vec</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1405.4053">Distributed Representations of Sentences and Documents</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/inejc/paragraph-vectors">Pytorch</a> <img src="https://img.shields.io/github/stars/inejc/paragraph-vectors.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/jhlau/doc2vec">Python</a> <img src="https://img.shields.io/github/stars/jhlau/doc2vec.svg?style=social" /></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2016/07</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://fasttext.cc/docs/en/english-vectors.html">fastText</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1607.04606">Enriching Word Vectors with Subword Information</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/facebookresearch/fastText">C++</a> <img src="https://img.shields.io/github/stars/facebookresearch/fastText.svg?style=social" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>上下文嵌入</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">（大多数的预训练模型可以通过transformers库进行加载）</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2018</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/openai/finetune-transformer-lm">GPT</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://s3-us-west-2.amazonaws.com/openai-assets/research-covers/language-unsupervised/language_understanding_paper.pdf">Improving Language Understanding by Generative Pre-Training</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/openai/finetune-transformer-lm">TF</a> <img src="https://img.shields.io/github/stars/openai/finetune-transformer-lm.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/Separius/BERT-keras">Keras</a> <img src="https://img.shields.io/github/stars/Separius/BERT-keras.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/huggingface/transformers">Pytorch, TF2.0</a> <img src="https://img.shields.io/github/stars/huggingface/transformers.svg?style=social" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">GPT-2(<a target="_blank" rel="noopener" href="https://github.com/openai/gpt-2">117M</a>, <a target="_blank" rel="noopener" href="https://github.com/openai/gpt-2">124M</a>, <a target="_blank" rel="noopener" href="https://github.com/openai/gpt-2">345M</a>, <a target="_blank" rel="noopener" href="https://github.com/openai/gpt-2">355M</a>, <a target="_blank" rel="noopener" href="https://github.com/openai/gpt-2">774M</a>, <a target="_blank" rel="noopener" href="https://github.com/openai/gpt-2">1558M</a>)</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://d4mucfpksywv.cloudfront.net/better-language-models/language-models.pdf">Language Models are Unsupervised Multitask Learners</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/openai/gpt-2">TF</a> <img src="https://img.shields.io/github/stars/openai/gpt-2.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/huggingface/transformers">Pytorch, TF2.0</a> <img src="https://img.shields.io/github/stars/huggingface/transformers.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/CyberZHG/keras-gpt-2">Keras</a> <img src="https://img.shields.io/github/stars/CyberZHG/keras-gpt-2.svg?style=social" /></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2018/02</td>
+<td style="text-align: center;">ELMO(<a target="_blank" rel="noopener" href="https://allennlp.org/elmo">AllenNLP</a>, <a target="_blank" rel="noopener" href="https://tfhub.dev/google/elmo/2">TF-Hub</a>)</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1802.05365">Deep contextualized word representations</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/allenai/allennlp">Pytorch</a> <img src="https://img.shields.io/github/stars/allenai/allennlp.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/allenai/bilm-tf">TF</a> <img src="https://img.shields.io/github/stars/allenai/bilm-tf.svg?style=social" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2018/10</td>
+<td style="text-align: center;">BERT(<a target="_blank" rel="noopener" href="https://github.com/google-research/bert#pre-trained-models">BERT</a>, <a target="_blank" rel="noopener" href="https://github.com/PaddlePaddle/ERNIE">ERNIE</a>, <a target="_blank" rel="noopener" href="https://github.com/SKTBrain/KoBERT">KoBERT</a>)</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1810.04805">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/google-research/bert">TF</a> <img src="https://img.shields.io/github/stars/google-research/bert.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/Separius/BERT-keras">Keras</a> <img src="https://img.shields.io/github/stars/Separius/BERT-keras.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/huggingface/transformers">Pytorch, TF2.0</a> <img src="https://img.shields.io/github/stars/huggingface/transformers.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/imgarylai/bert-embedding">MXNet</a> <img src="https://img.shields.io/github/stars/imgarylai/bert-embedding.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/PaddlePaddle/ERNIE">PaddlePaddle</a> <img src="https://img.shields.io/github/stars/PaddlePaddle/ERNIE.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/hanxiao/bert-as-service/">TF</a> <img src="https://img.shields.io/github/stars/hanxiao/bert-as-service.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/CyberZHG/keras-bert">Keras</a> <img src="https://img.shields.io/github/stars/CyberZHG/keras-bert.svg?style=social" /></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2019/01</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/kimiyoung/transformer-xl/tree/master/tf">Transformer-XL</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1901.02860">Transformer-XL: Attentive Language Models Beyond a Fixed-Length Context</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/kimiyoung/transformer-xl/tree/master/tf">TF</a> <img src="https://img.shields.io/github/stars/kimiyoung/transformer-xl.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/kimiyoung/transformer-xl/tree/master/pytorch">Pytorch</a> <img src="https://img.shields.io/github/stars/kimiyoung/transformer-xl.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/huggingface/transformers">Pytorch, TF2.0</a> <img src="https://img.shields.io/github/stars/huggingface/transformers.svg?style=social" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2019/05</td>
+<td style="text-align: center;">ERNIE</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1905.07129">ERNIE: Enhanced Language Representation with Informative Entities</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/thunlp/ERNIE">Pytorch</a> <a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/0240a1c511e07d69ef1c1603e5bf0145cd364ef08fc306152b31fc7ddb9cfb3a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f7468756e6c702f45524e49452e7376673f7374796c653d736f6369616c"><img src="https://camo.githubusercontent.com/0240a1c511e07d69ef1c1603e5bf0145cd364ef08fc306152b31fc7ddb9cfb3a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f7468756e6c702f45524e49452e7376673f7374796c653d736f6369616c" alt="img" /></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2019/07</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/pytorch/fairseq/blob/master/examples/roberta/README.md#pre-trained-models">RoBERTa</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1907.11692">RoBERTa: A Robustly Optimized BERT Pretraining Approach</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/pytorch/fairseq">Pytorch</a> <img src="https://img.shields.io/github/stars/pytorch/fairseq.svg?style=social" /><br><a target="_blank" rel="noopener" href="https://github.com/huggingface/transformers">Pytorch, TF2.0</a> <img src="https://img.shields.io/github/stars/huggingface/transformers.svg?style=social" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2019/09</td>
+<td style="text-align: center;">ALBERT</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1909.11942">ALBERT: A Lite BERT for Self-supervised Learning of Language Representations</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/brightmart/albert_zh">TF</a> <a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/f03cf48e9c26126c987989a67732ece1602e0ee6569b60347473781ec30268ed/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6272696768746d6172742f616c626572745f7a682e7376673f7374796c653d736f6369616c"><img src="https://camo.githubusercontent.com/f03cf48e9c26126c987989a67732ece1602e0ee6569b60347473781ec30268ed/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6272696768746d6172742f616c626572745f7a682e7376673f7374796c653d736f6369616c" alt="img" /></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2019/10</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/huggingface/transformers/tree/master/examples/distillation">DistilBERT</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1910.01108">DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/huggingface/transformers">Pytorch, TF2.0</a> <img src="https://img.shields.io/github/stars/huggingface/transformers.svg?style=social" /></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2019/10</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/google-research/text-to-text-transfer-transformer#released-model-checkpoints">T5</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1910.10683">Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://github.com/google-research/text-to-text-transfer-transformer">TF</a> <a target="_blank" rel="noopener" href="https://camo.githubusercontent.com/bfac3d61895ba22d34c6b2cfa6e4376a4e2d85a2a6a86e5195ca2f9cd1fe9e48/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f676f6f676c652d72657365617263682f746578742d746f2d746578742d7472616e736665722d7472616e73666f726d65722e7376673f7374796c653d736f6369616c"><img src="https://camo.githubusercontent.com/bfac3d61895ba22d34c6b2cfa6e4376a4e2d85a2a6a86e5195ca2f9cd1fe9e48/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f676f6f676c652d72657365617263682f746578742d746f2d746578742d7472616e736665722d7472616e73666f726d65722e7376673f7374796c653d736f6369616c" alt="img" /></a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2020/05</td>
+<td style="text-align: center;">GPT3</td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2005.14165v2">Language Models are Few-Shot Learners</a></td>
+<td style="text-align: center;">https://github.com/openai/gpt-3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section"></h3>
+<h1 id="references">References</h1>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Jason Hao
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://jason-huanghao.github.io/2021/07/29/Research%20Method/NLP-Learning-and-Coding-Resources/" title="NLP Learning and Coding Resources">https://jason-huanghao.github.io/2021/07/29/Research Method/NLP-Learning-and-Coding-Resources/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/07/27/Research%20Method/LS2N-lab/" rel="prev" title="LS2N lab">
+      <i class="fa fa-chevron-left"></i> LS2N lab
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/07/29/Research%20Method/NLP-roadmap/" rel="next" title="NLP roadmap">
+      NLP roadmap <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#learning-part"><span class="nav-number">1.</span> <span class="nav-text">Learning Part</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#general-reading"><span class="nav-number">1.1.</span> <span class="nav-text">General Reading</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%BC%E8%BF%B0%E6%96%87%E7%AB%A0"><span class="nav-number">1.1.1.</span> <span class="nav-text">综述文章</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#graph-neural-networks"><span class="nav-number">1.2.</span> <span class="nav-text">Graph Neural Networks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#knowledge-graph"><span class="nav-number">1.3.</span> <span class="nav-text">Knowledge Graph</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#coding-part"><span class="nav-number">2.</span> <span class="nav-text">Coding Part</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#knowledge-graph-1"><span class="nav-number">2.1.</span> <span class="nav-text">Knowledge Graph</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#embeddings"><span class="nav-number">2.2.</span> <span class="nav-text">Embeddings</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#section"><span class="nav-number">2.2.1.</span> <span class="nav-text"></span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#references"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jason Hao"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Jason Hao</p>
+  <div class="site-description" itemprop="description">If you get a dream, You gonna protect it!</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/jason-huanghao" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;jason-huanghao" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/jason.hao.academic@gmail.com" title="E-Mail → jason.hao.academic@gmail.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/Hao%20Huang" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;Hao Huang" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i>FB Page</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Hao</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    <span title="Symbols count total">147k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">2:14</span>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'STLjflsxBIAFNnGAcBVgq6Vu-gzGzoHsz',
+      appKey     : '6zO0wFSDgLF6LulPGcifgFOW',
+      placeholder: "Thank you for your opinions! ^ω^ I will reply you soon! Leave your email if you want. ^ω^",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'en' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
